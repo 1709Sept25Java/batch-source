@@ -5,6 +5,11 @@ package com.revature.hello;
  * base package for Java is java.lang
  */
 
+import com.revature.oop.*;
+//this just saves us typing. Brings in contents of a single package with wildcard (*)
+import static java.lang.System.*; //gets all static members of the java.lang.System class
+
+
 public class First {
 	
 	/*
@@ -39,6 +44,16 @@ public class First {
 		//STS (and, under the hood, Eclipse) uses incremental compilation
 		//this means, every time a file is saved, it and any files depending upon it is re-compiled. 
 		
+		//to access Animal.java, we need to give its fully qualified classname
+		//(package name + class name) 
+		//OR! do an import at the top of the class 
+		//com.revature.oop.Animal a = new com.revature.oop.Animal("Fred");
+		Animal a = new Animal("Fred");
+		
+		//using our static import 
+		out.println("I'm using a static import to print this");
+		
+		//one public class per file, must share name of the file 
 	}
 	
 
