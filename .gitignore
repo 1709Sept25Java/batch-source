@@ -38,6 +38,8 @@ local.properties
 # Eclipse Core 
 .project 
 
+Servers/
+
 # External tool builders 
 .externalToolBuilders/ 
 
