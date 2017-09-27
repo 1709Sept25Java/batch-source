@@ -4,25 +4,23 @@ public class BubbleSort {
 
 	public static void main(String[] args) {
 		
-		 int a [] = {64, 34, 25, 12, 22, 11, 90};
+		 int a [] = {1,0,5,6,3,2,3,7,9,8,4};
 		 bubbleSort(a);
-		 
-	        for (int i=0; i<a.length; i++)
-	            System.out.println(a[i] + " ");
-	        
-		 
-	
 		
-
-	}
+	        for (int k=0; k<a.length; k++) {
+	            System.out.println(a[k]+ " ");
+	        }
+		 
+}
 	public static void bubbleSort(int [] sortArray) {
 		
-		int l= sortArray.length;
-		for (int i=0; i<l-1; i++) {
+		int n= sortArray.length;
+		for (int i=0; i<n-1; i++) {
 			
-			for (int j=0; j<j-i-1; j++) {
+			for (int j=0; j<n-i-1; j++) {
 				
 				if (sortArray[j] > sortArray[j+1]) {
+					
 					int temp = sortArray[j];
 					sortArray[j]= sortArray[j+1];
 					sortArray[j+1]= temp;
