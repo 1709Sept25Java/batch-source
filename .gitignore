@@ -38,7 +38,11 @@ local.properties
 # Eclipse Core 
 .project 
 
+<<<<<<< HEAD
 Servers/
+=======
+
+>>>>>>> 22fc421837213380e6408848d0da3f70084cd22f
 
 # External tool builders 
 .externalToolBuilders/ 
