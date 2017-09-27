@@ -5,10 +5,12 @@ public class BubbleSort {
 		int toSort[] = {5,1,12,3,20};
 		
 		for (int i=0; i<toSort.length-1; i++) {
-			if (toSort[i]>toSort[i+1]) {
-				int tmp = toSort[i];
-				toSort[i] = toSort[i+1];
-				toSort[i+1] = tmp;
+			for (int j=i; j<toSort.length-1; j++) {
+				if (toSort[i]>toSort[i+1]) {
+					int tmp = toSort[i];
+					toSort[i] = toSort[i+1];
+					toSort[i+1] = tmp;
+				}
 			}
 		}
 		for (int i=0; i<toSort.length-1; i++) {
