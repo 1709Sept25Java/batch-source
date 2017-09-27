@@ -129,8 +129,9 @@ public class WednesdayAfternoon {
 		}
 		//if we try to access elements beyond the array's size, we get 
 		//ArrayIndexOutOfBoundsException
-		System.out.println(intArray1D[7]);
+		//System.out.println(intArray1D[7]);
 		
+		//Arrays utility class also has a sort, search, etc - see documentation
 	}
 	
 	
