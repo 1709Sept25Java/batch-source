@@ -129,10 +129,18 @@ public class WednesdayAfternoon {
 		System.out.println(intArray2D.toString());
 		System.out.println(Arrays.toString(intArray2D));
 		for(int i=0; i<intArray2D.length; i++) {
-			for(int j=0; j<intArray2D[i].length; j++) {
+			/* for(int j=0; j<intArray2D[i].length; j++) {
 				System.out.print(intArray2D[i][j]+" ");
-			}
+			} 
 			System.out.println();
+			*/
+			System.out.println(Arrays.toString(intArray2D[i]));
 		}
+		
+		//if we try to access elements beyond an array's size, we get
+		//ArrayIndexOutOfBoundsException
+		//System.out.println(intArray1D[7]);
+		
+		//Arrays utility class also has a sort,search,etc (look at documentation)
 	}
 }
