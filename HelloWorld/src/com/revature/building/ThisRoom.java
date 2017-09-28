@@ -24,16 +24,24 @@ public class ThisRoom extends Room implements Rectangle{
 		return side1;
 	}
 
-	public void setSide1(Double side1) {
-		this.side1 = side1;
+	public void setSide1(Double side1) throws ImpossibleRoomException {
+		if(side1.isNaN() || side1.isInfinite() || side1.doubleValue() == 0.0){
+			throw new ImpossibleRoomException();
+		}else{
+			this.side1 = side1;
+		}
 	}
 
 	public Double getSide2() {
 		return side2;
 	}
 
-	public void setSide2(Double side2) {
-		this.side2 = side2;
+	public void setSide2(Double side2) throws ImpossibleRoomException {
+		if(side2.isNaN() || side2.isInfinite() || side2.doubleValue() == 0.0){
+			throw new ImpossibleRoomException();
+		}else{
+			this.side2 = side2;
+		}
 	}
 	
 	public RoomType getType(){
