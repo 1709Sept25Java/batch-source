@@ -1,6 +1,12 @@
 package com.revature.media;
 
-public abstract class Media {
+import java.io.Serializable;
+
+public abstract class Media implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public Media(String author, String title, int yearPublished, String genre) {
 		super();
 		this.author = author;

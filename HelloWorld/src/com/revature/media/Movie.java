@@ -1,6 +1,13 @@
 package com.revature.media;
 
-public class Movie extends Media {
+import java.io.Serializable;
+
+public class Movie extends Media implements Comparable<Movie>, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Movie() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -19,5 +26,10 @@ public class Movie extends Media {
 	public String toString() {
 		return "Movie [author=" + author + ", title=" + title + ", yearPublished=" + yearPublished + ", genre=" + genre
 				+ "]";
+	}
+	
+	@Override
+	public int compareTo(Movie m) {
+		return this.title.compareTo(m.title);
 	}
 }

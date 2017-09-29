@@ -4,8 +4,6 @@ import java.io.*;
 public class Question20 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//        String fileName = "Data.txt";
 
 		String fileName = "C:\\Users\\anahi\\GitRepos\\1709-sept25-java\\batch-source\\JavaAssignment1\\src\\com\\revature\\assignment1/Data.txt";
         String line = null;
