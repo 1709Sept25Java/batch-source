@@ -1,6 +1,6 @@
 package com.revature.homework;
 
-public class Question5 {
+public class Question05 {
 
 	/*
 	 * Write a substring method that accepts a string str and an integer idx and 

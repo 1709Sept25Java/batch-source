@@ -1,6 +1,6 @@
 package com.revature.homework;
 
-public class Question6 {
+public class Question06 {
 	/*
 	 * Write a program to determine if an integer is even without using the modulus operator
 	 * */

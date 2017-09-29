@@ -1,6 +1,6 @@
 package com.revature.homework;
 
-public class Question4 {
+public class Question04 {
 	
 	/*
 	 * Write a program to compute N factorial.

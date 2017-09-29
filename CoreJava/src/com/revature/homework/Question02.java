@@ -1,6 +1,6 @@
 package com.revature.homework;
 
-public class Question2 {
+public class Question02 {
 
 	//Write a program to display the first 25 Fibonacci numbers beginning at 0
 	

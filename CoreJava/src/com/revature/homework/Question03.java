@@ -1,6 +1,6 @@
 package com.revature.homework;
 
-public class Question3 {
+public class Question03 {
 	
 	/*
 	 * Reverse a string without using a temporary variable.  Do NOT use reverse() 
