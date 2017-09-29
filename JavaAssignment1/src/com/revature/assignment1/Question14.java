@@ -26,14 +26,11 @@ public class Question14 {
 			    break;
 	
 			case 3:
-				String [] words = new String[5];
+				String[] words = new String[5];
 				for(String w:s1.split(" ")){
 					System.out.println(w);
 				}
-				break;
-
-				
-				
+				break;				
 		}
 	}
 	
