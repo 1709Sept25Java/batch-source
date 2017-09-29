@@ -1,19 +1,19 @@
 package com.revature.Hello;
+import java.util.Scanner;
 
-public class Scanner {
 
 	public class ScannerCalculator {
-		public Number add(number1, number2)
+		
+		public  numeric add( double number1, double number2){
 		{
-			double sum ;
-			sum = number1 + sumber2 ;
+		return number1 + number2 ;
 		}
-		
-	public static void main(String [] args) {
-		
+	public static void main(String [] args){
+		ScannerCalculator scan  = new ScannerCalculator();	
 		double numbers;
 		
 		Scanner input = new Scanner(System.in);
+		
 		System.out.println(" What data type do you prefer");
 		if ( input.hasNextInt())
 		{ 
@@ -38,17 +38,17 @@ public class Scanner {
 				 numbers = (double) input.nextDouble();
 			 }
 			 else
+			 {
 			System.out.println(" Invalid");
-	} ;
+	} 
 
 	System.out.println(" Please enter two numbers");
-	double num1 ;
-	double num2 ;
-	input.nextDouble();
 
-	num1=input.nextDouble();
-	num2 = input.nextDouble();
-	double number ;
+	 double num1 = input.nextDouble();
+	double num2 = input.nextDouble();
+	System.out.println(" the sume is" + scan.numeric() );
+	
 	}
 
 }
+
