@@ -3,33 +3,21 @@ package com.revature.Hello;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
 public class BubbleSort {
-static void BubbleSort(int []array) {
-	int n= array.length;
-	int temporary = 0;
-	for (int i= 0; i <n; i++)
-	{
-		for (int j= 1; j < n-1; j++)
-		{
-			if ( array[j-1] > array[j])
-				temporary = array[j-1];
-			array[j - 1] = array[j] ;
-			array[j] = temporary ;
-		}
+	public static void main(String [] args){
+		int [] numbers = { 1,0,5,6,3,2,3,7,9,8,4};
+		boolean swapped = false;
+		do {
+			swapped = false;
+			for ( int j = 0; j <numbers.length -1 ; j++)
+				 if (numbers[j] > numbers[j + 1]) {
+					 int tmp = numbers[j + 1];
+					 numbers[j + 1] = numbers[j];
+					 numbers[j] = tmp;
+					 swapped = true;
+				 }
+		} while (swapped);
+		for ( int pos = 0; pos < numbers.length; pos++)
+			System.out.print(numbers[pos]+" ");
+		System.out.println();
 	}
 }
-
- public static void main(String[] args) {
-	 
-	 int array[] = { 6,9,12,40,37} ;
-	 System.out.println(" Array before bubble sort"     );
-	 for ( int i= 0; i < array.length;i++){
-		 System.out.println(array[i]);
-	 }
-	for ( int i=0; i<array.length; i++){
-		System.out.println("Array after bubble sort" );
-		for (int j= 0; j <array.length; j++);
-		System.out.println(array[i]);
-	}
- }
- 
- }
