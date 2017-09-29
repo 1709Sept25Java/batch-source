@@ -2,6 +2,8 @@ package com.revature.media;
 
 public class Book extends Media {
 	
+	private String publisher;
+	
 	public Book() {
 		super();
 	}
@@ -17,7 +19,7 @@ public class Book extends Media {
 	@Override
 	public String toString() {
 		return "Book [author=" + author + ", title=" + title + ", yearPublished=" + yearPublished + ", genre=" + genre
-				+ "]";
+				+ ", publisher=" + publisher+"]";
 	}
 
 }
