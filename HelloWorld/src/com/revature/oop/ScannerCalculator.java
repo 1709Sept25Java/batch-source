@@ -74,6 +74,7 @@ public class ScannerCalculator {
 	
 	public static Number add(Number n1, Number n2) {
 		
+		//The mildly cheat way to make the numbers add without switching (better option)
 		Double result= n1.doubleValue()+ n2.doubleValue();
 		
 		return result;
