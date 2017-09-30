@@ -26,21 +26,6 @@ public class Question09 {
 		}
 		return true;
 	}
-	
-//	static void primeNumbers(ArrayList<Integer> numbers, int i) {
-//		Iterator<Integer> it = numbers.iterator();
-//
-//		while(it.hasNext()) {
-//			 int number = it.next();
-//
-//			 if (number%i==0) {
-//				 it.remove();
-//			 }
-//		}
-//	}
-
-	
-
 }
 
 

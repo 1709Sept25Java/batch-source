@@ -1,7 +1,6 @@
-package com.revature.assignment1;
+package com.revature.assignment1.question15;
 
-public class Question15Class implements Question15Interface {
-
+public class Operations implements Math {
 	@Override
 	public Number addition(Number n1, Number n2) {
 		String datatype = n1.getClass().getSimpleName();
