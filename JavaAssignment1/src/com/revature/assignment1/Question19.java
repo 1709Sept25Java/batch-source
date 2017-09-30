@@ -1,6 +1,7 @@
 package com.revature.assignment1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
  * Q19. Create an ArrayList and insert integers 1 through 10. 
@@ -40,6 +41,19 @@ public class Question19 {
 		System.out.println(sumEvenNumbers);
 		System.out.println(sumOddNumbers);
 		
+		Iterator<Integer> it = list.iterator();
+
+		System.out.println(isPrime(1) + " 1");
+		while(it.hasNext()) {
+			 int number = it.next();
+			 if (!isPrime(number)) {
+				 it.remove();
+			 }
+		}
+
+		for (Integer i:list) {
+			System.out.println(i);
+		}
 		
 		
 	}
@@ -48,5 +62,17 @@ public class Question19 {
 		for (Integer i: list) {
 			System.out.println(i);
 		}
+	}
+	
+	static boolean isPrime(Integer n){
+		if (n<2) {
+			return false;
+		}
+		for (int i = 2; i<(n/2)+1; i++) {
+			if (n%i == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
