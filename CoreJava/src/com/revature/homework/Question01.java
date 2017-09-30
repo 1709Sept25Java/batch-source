@@ -11,10 +11,10 @@ public class Question01 {
 		int[] toSort = new int[]{1,0,5,6,3,2,3,7,9,8,4};
 		bubble(toSort); //call bubble sort function
 		
-		System.out.println("Sorted Array:");
+		System.out.println("Sorted Array: ");
 		for(int i=0; i<toSort.length; i++) {
 			//display the sorted array
-			System.out.println(toSort[i]);
+			System.out.print(toSort[i]+" ");
 		}
 	}
 	
