@@ -2,6 +2,10 @@ package com.revature.assignment1.question07;
 
 import java.util.Comparator;
 
+/*
+ * Comparator class for Name
+ 	* Compares based on name using getter function getName()
+ */
 public class NameCompare implements Comparator<Employee>{
 	
 	public NameCompare() {

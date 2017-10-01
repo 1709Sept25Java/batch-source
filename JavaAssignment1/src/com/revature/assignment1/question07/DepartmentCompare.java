@@ -2,6 +2,10 @@ package com.revature.assignment1.question07;
 
 import java.util.Comparator;
 
+/*
+ * Comparator class for Department
+ 	* Compares based on department using getter function getDepartment()
+ */
 public class DepartmentCompare implements Comparator<Employee>{
 	
 	public DepartmentCompare() {

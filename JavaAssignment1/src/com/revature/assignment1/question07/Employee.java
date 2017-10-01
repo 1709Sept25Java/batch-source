@@ -1,5 +1,12 @@
 package com.revature.assignment1.question07;
 
+/*
+ * Employee Class 
+ * Contains:
+	 * Variables: age, department & name
+	 * Constructors with and without parameters
+	 * Getter functions for each variable
+ */
 public class Employee {
 	String name;
 	String department;

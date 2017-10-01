@@ -2,6 +2,10 @@ package com.revature.assignment1.question07;
 
 import java.util.Comparator;
 
+/*
+ * Comparator class for Age
+ 	* Compares based on age using getter function getAge()
+ */
 public class AgeCompare implements Comparator<Employee>{
 	
 	public AgeCompare() {

@@ -7,11 +7,9 @@ public class Driver {
 		Characters input = new Characters();
 		String input1 = "HELLo";
 		String input2 = "15";
-		System.out.println(input.uppercaseCheck(input1));
-		System.out.println(input.lowerToUpperCase(input1));
+		System.out.println("1. The string '" + input1 +"' contains uppercase characters? " + input.uppercaseCheck(input1));
+		System.out.println("2. The string '" + input1 + "' in all uppercase characters is '" + input.lowerToUpperCase(input1) + "'");
 		input.toInteger(input2);
-		
-		
 	}
 
 }
