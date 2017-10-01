@@ -1,5 +1,9 @@
 package com.revature.question07;
 
+/*
+ * Basic Employee class consisting of name, department, age and their 
+ * getter and setter functions.
+ * */
 public class Employee {
 
 	public Employee(String name, String department, int age) {

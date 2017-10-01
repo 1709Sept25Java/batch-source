@@ -1,5 +1,8 @@
 package com.revature.question15;
 
+/*
+ * Class that implements the BasicMath class. Has a default constructor.
+ * */
 public class MyMaths implements BasicMath {
 
 	public MyMaths() {

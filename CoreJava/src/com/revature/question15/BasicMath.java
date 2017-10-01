@@ -1,5 +1,9 @@
 package com.revature.question15;
 
+/*
+ * Math interface that requires addition, subtraction, multiplication, and
+ * division be implemented
+ * */
 public interface BasicMath {
 
 	public int addition(int a,int b);
