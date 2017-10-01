@@ -5,7 +5,7 @@ public class Question20 {
 
 	public static void main(String[] args) {
 
-		String fileName = "C:\\Users\\anahi\\GitRepos\\1709-sept25-java\\batch-source\\JavaAssignment1\\src\\com\\revature\\assignment1/Data.txt";
+		String fileName = "src/com/revature/assignment1/Data.txt";
         String line = null;
         try {
 	        FileReader fileReader = new FileReader(fileName);

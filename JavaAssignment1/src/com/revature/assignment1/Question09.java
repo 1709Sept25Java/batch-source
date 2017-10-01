@@ -7,18 +7,17 @@ public class Question09 {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
-		for(int i=1; i<=100; i++) {
-			numbers.add(i);
-			if (isPrime(i)) {
-				System.out.println(i);
-			}
-		}
-		
+		printPrimeNumbers(numbers);
 	}
-	static boolean isPrime(Integer n){
+	
+	public static boolean isPrime(Integer n){
+		//Base Case 
 		if (n<2) {
 			return false;
 		}
+		
+		//We only need to check half the numbers n could be divisible by 
+			//because the other half of possible numbers is a multiple of the first half
 		for (int i = 2; i<(n/2)+1; i++) {
 			if (n%i == 0) {
 				return false;
@@ -26,6 +25,22 @@ public class Question09 {
 		}
 		return true;
 	}
+	
+	public static void printPrimeNumbers(ArrayList<Integer> numbers) {
+		//Iterate numbers 1 to 100 and check each to see whether it is prime
+		for(int i=1; i<=100; i++) {
+			
+			//All numbers will be stored into array
+				//Note: Decided check whether a number is prime as we store the number
+			numbers.add(i);
+			
+			//Only print out the number if it's prime
+			if (isPrime(i)) {
+				System.out.println(i);
+			}
+		}
+	}
+	
 }
 
 
