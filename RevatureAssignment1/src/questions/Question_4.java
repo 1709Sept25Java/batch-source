@@ -1,6 +1,6 @@
 package questions;
 
-public class Question4 {
+public class Question_4 {
 
 	//write a program that computes N factorial
 

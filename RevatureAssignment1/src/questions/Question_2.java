@@ -1,6 +1,6 @@
 package questions;
 
-public class Question2 {
+public class Question_2 {
 	// Write a program to display the first 25 Fibonacci numbers beginning at 0.
 
 	public static void main (String[]args) {
