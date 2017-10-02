@@ -18,9 +18,18 @@ public class AnalyzeMutations {
 				if (start.charAt(i) != end.charAt(i)) {
 					mutatedGene[i] = end.charAt(i);
 					mutations++;
-					/* Checking if gene is valid */
+					/*
+					 *  Checking if gene is valid 
+					 *  Attempted to check strings with mutations as soon as I encountered mutation
+					*/
+					
 				}	
 			}
+			
+			/*
+			 * The mutated gene should be checked after finding out 
+			 * how many mutations there are in the string
+			 */
 			if (validGene(mutatedGene,bank)) {
 				return mutations;
 			}
