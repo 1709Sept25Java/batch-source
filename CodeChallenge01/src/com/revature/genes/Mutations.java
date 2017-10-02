@@ -41,7 +41,8 @@ public class Mutations {
 		}
 		
 		count++;
-		int changes=count;
+		int changes = count; //this was meant to be changes = Integer.MAX_VALUE 
+							 //the function as is will only return 0, 1 or -1
 		Iterator<String> it = mutant.iterator();
 		while(it.hasNext()) {
 			String str = it.next();

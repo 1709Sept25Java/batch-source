@@ -6,7 +6,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		String filename = "";
+		//String filename = "";
 		Scanner sc =new Scanner(System.in);
 		
 		System.out.println("Please enter a start string: ");
