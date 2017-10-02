@@ -52,6 +52,9 @@ public class StringMutation {
 				}
 				break;
 			}
+			if(charDifference(start, end) == 1) { //to account for start being a string not in bank
+				count++;
+			}
 		}
 		return count; //return number of mutation 
 	}
