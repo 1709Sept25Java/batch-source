@@ -14,7 +14,7 @@ public class Driver {
 		bank.add(start);
 		bank.add(end);
 		MinimumMutations mut = new MinimumMutations();
-		System.out.println(mut.Mutation(start, end, bank));
+		System.out.println("Numbers of Mutations is " + mut.Mutation(start, end, bank));
 	}
 
 }

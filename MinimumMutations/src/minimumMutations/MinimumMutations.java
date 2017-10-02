@@ -8,25 +8,26 @@ public class MinimumMutations {
 	}
 
 	public int Mutation(String start, String end, ArrayList<String> bank) {
-		
+
 		int count = 0;
-		
-		if(start.equals(end)) {
+
+		if (start.equals(end)) {
 			return 0;
 		}
-		
-		for(int i = 0; i<start.length();i++) {
-			if(start.charAt(i) != end.charAt(i)) {
+
+		for (int i = 0; i < start.length(); i++) {
+			if (start.charAt(i) != end.charAt(i)) {
 				count++;
-			} 
+			}
 		}
 		
-		
-		if(count == 0) {
+		System.out.println(bank);
+
+		if (count == 0) {
 			return -1;
 		}
-	
+
 		return count;
 	}
-	
+
 }
