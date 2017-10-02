@@ -1,8 +1,15 @@
 package com.revature.oop;
 
-public class Dog extends Animal {
+public class Dog extends Animal{
+	public Dog() {
+		super();
+	}
 
-	public void makeNoise() {
+	public Dog(String name) {
+		super(name);
+	}
+
+	public void makeNoise(){
 		System.out.println("woof");
 	}
 }

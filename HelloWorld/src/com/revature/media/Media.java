@@ -1,21 +1,41 @@
 package com.revature.media;
 
-public abstract class Media {
+import java.io.Serializable;
+
+public abstract class Media implements Serializable {
 	
-	protected String authour;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7579498246883300633L;
+
+	public Media() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Media(String author, String title, int yearPublished, String genre) {
+		super();
+		this.author = author;
+		this.title = title;
+		this.yearPublished = yearPublished;
+		this.genre = genre;
+	}
+
+	protected String author;
 	
 	protected String title;
 	
-	protected String yearsPublished;
+	protected int yearPublished;
 	
 	protected String genre;
 
-	public String getAuthour() {
-		return authour;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setAuthour(String authour) {
-		this.authour = authour;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public String getTitle() {
@@ -26,12 +46,12 @@ public abstract class Media {
 		this.title = title;
 	}
 
-	public String getYearsPublished() {
-		return yearsPublished;
+	public int getYearPublished() {
+		return yearPublished;
 	}
 
-	public void setYearsPublished(String yearsPublished) {
-		this.yearsPublished = yearsPublished;
+	public void setYearPublished(int yearPublished) {
+		this.yearPublished = yearPublished;
 	}
 
 	public String getGenre() {
@@ -42,18 +62,12 @@ public abstract class Media {
 		this.genre = genre;
 	}
 
-	public Media(String authour, String title, String yearsPublished, String genre) {
-		super();
-		this.authour = authour;
-		this.title = title;
-		this.yearsPublished = yearsPublished;
-		this.genre = genre;
+	@Override
+	public String toString() {
+		return "Media [author=" + author + ", title=" + title + ", yearPublished=" + yearPublished + ", genre=" + genre
+				+ "]";
 	}
+	
+	
 
-	public Media() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 }
