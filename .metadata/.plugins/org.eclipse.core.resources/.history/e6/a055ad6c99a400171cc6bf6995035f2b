@@ -1,0 +1,19 @@
+package com.revature.corejava;
+
+import java.io.FileReader;
+import java.io.BufferReader;
+
+public class Q20_DataReadOut {
+	
+	public static void main(String[] args) {
+		dataReadOut();
+	}
+	
+	public static void dataReadOut() {
+		try {
+			FileReader fReader = new FileReader(Data.txt);
+			BufferReader bReader = new BufferReader(fReader);
+		}
+	}
+
+}

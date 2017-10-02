@@ -1,0 +1,9 @@
+package com.revature.codechallenge1;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		System.out.println(Mutations.isMutation("AACCGGAT","AACCGGTA"));
+	}
+	
+}

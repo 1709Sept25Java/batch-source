@@ -1,0 +1,35 @@
+package com.revature.corejava;
+
+public class Q3_ReverseString {
+	
+	public static void main(String[] args) {
+		stringReverse("hello");
+	}
+	
+	public static void stringReverse(String str) {
+		char[] charArray = new char[str.length()];
+		for (int i = 0; i<str.length(); i++) {
+			charArray[i] = str.charAt(i);
+		}
+		int swapChars;
+		if (str.length()%2 == 0) {
+			swapChars = str.length()/2;
+		}
+		else {
+			swapChars = (str.length()-1)/2;
+		}
+		char[] swappedArray = new char[str.length()];
+		for (int j = 0; j<swapChars-1; j++) {
+			swappedArray[j]=charArray[str.length()-j];
+		}
+		printArray(swappedArray);
+	}
+	
+	public static void printArray(char[] arr) {
+		String str = ""; // creates an empty string
+		for (int i=0; i<arr.length; i++) {
+			str = str + arr[i]; 
+		}
+		System.out.println(str); //when the string includes all the indices, it is printed
+	}
+}

@@ -1,0 +1,13 @@
+package com.revature.corejava;
+
+import java.util.Comparator;
+
+public class CompareByName implements Comparator<Q7_Employee>  {
+
+	@Override
+	public int compare(Q7_Employee o1, Q7_Employee o2) {
+		
+		return 0;
+	}
+	
+}

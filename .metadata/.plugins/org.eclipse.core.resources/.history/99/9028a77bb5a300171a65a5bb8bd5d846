@@ -1,0 +1,6 @@
+package com.revature.corejavafloats;
+
+public class Floats {
+	float x = 54;
+	float y = 13;
+}

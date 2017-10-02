@@ -1,0 +1,14 @@
+package com.revature.corejava;
+
+public class Q6_Integer {
+	
+	public static void isInt(Object integer) {
+		if (integer instanceof Integer) {
+			System.out.println(integer + " is an integer");
+		}
+		else {
+			System.out.println(integer + " is an integer");
+		}
+	}
+
+}

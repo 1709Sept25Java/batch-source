@@ -1,0 +1,15 @@
+package com.revature.corejava;
+
+public class Q18_Subclass extends Q18_Superclass {
+
+	public boolean checkUppercase(String str) {
+		return true;
+	}
+	public String toUpper(String str) {
+		return "hello";
+	}
+	public int addTen(String str) {
+		return 0;
+	}
+	
+}

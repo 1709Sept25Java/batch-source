@@ -1,0 +1,24 @@
+package com.revature.media;
+
+public class Movie extends Media {
+
+	public void watch() {
+		System.out.println("get more popcorn! we're watching "+this.title);
+	}
+
+	public Movie() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Movie(String author, String title, String genre, int yearPublished) {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [author=" + author + ", title=" + title + ", genre=" + genre + ", yearPublished=" + yearPublished
+				+ "]";
+	}
+	
+}

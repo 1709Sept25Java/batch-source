@@ -1,0 +1,13 @@
+package com.revature.corejava;
+
+public class Q20_DataReadOut {
+	
+	public static void main(String[] args) {
+		dataReadOut();
+	}
+	
+	public static void dataReadOut() {
+		
+	}
+
+}

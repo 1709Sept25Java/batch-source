@@ -1,0 +1,22 @@
+package com.revature.corejava;
+
+public class Q13_TrianglePrint {
+	
+	public static void print() {
+		int character = 1;
+		for (int i = 1; i<4; i++) {
+			if(character == 1) {
+				character = 0;
+				System.out.println(character);
+			}
+			if(character == 0) {
+				character = 1;
+				System.out.println(character);
+			}
+		}
+	}
+
+	public static void main(Strings[] args) {
+		print();
+	}
+}

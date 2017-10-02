@@ -1,0 +1,13 @@
+package com.revature.media;
+
+public class Media {
+	
+	protected String author;
+	
+	protected String title;
+	
+	protected String genre;
+	
+	protected int yearPublished; 
+
+}

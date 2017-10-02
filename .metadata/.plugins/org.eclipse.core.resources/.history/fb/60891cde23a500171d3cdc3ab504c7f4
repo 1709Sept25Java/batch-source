@@ -1,0 +1,12 @@
+package com.revature.media;
+
+import java.awt.List;
+import java.util.ArrayList;
+
+public class Driver implements List{
+
+	public static void main(String[] args) {
+		List<Media> mediaList = new ArrayList<Media>;
+	}
+
+}

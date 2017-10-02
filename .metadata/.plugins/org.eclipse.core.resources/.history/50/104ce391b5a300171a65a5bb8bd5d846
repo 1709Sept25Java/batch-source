@@ -1,0 +1,13 @@
+package com.revature.corejavafloats;
+
+public class Floats {
+	
+	float x;
+	float y;
+	
+	static Floats(){
+		this.x = 54;
+		this.y = 13;
+	}
+	
+}

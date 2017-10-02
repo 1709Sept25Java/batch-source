@@ -1,0 +1,22 @@
+package com.revature.corejava;
+
+import java.util.Scanner;
+
+public class Q16_NumChars {
+	
+	public static void main( String[] args ) {
+		stringNums();
+
+	}
+	
+	public static int stringNums() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter your string:");
+		String str = scan.nextLine();
+		System.out.println("Your string has "+str.length()+" characters");
+		scan.close();
+		return str.length();
+	}
+	
+
+}

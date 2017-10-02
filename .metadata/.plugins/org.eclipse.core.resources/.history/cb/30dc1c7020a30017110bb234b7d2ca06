@@ -1,0 +1,14 @@
+package com.revature.corejava;
+
+public class Q4_Factorial {
+	
+	public static void nfac(int n) {
+		if (n == 1) {
+			return 1;
+		}
+		else {
+			return n*(n-1);
+		}
+	}
+
+}

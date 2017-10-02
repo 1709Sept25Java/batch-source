@@ -1,0 +1,49 @@
+package com.revature.corejava;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Q7_Employee implements Comparator<Q7_Employee> {
+
+	String name;
+	String dpt;
+	int age;
+
+	public static void main(String[] args) {
+		Q7_Employee joan = new Q7_Employee("Joan", "HR", 58);
+		Q7_Employee paul = new Q7_Employee("Paul", "IT", 45);
+		compareAge(joan, paul);
+	}
+
+	Q7_Employee(String name, String dpt, int age) {
+		this.name = name;
+		this.dpt = dpt;
+		this.age = age;
+	}
+
+	public static ArrayList<Q7_Employee> compareAge(Q7_Employee emp1, Q7_Employee emp2) {
+		ArrayList<Q7_Employee> list = new ArrayList<Q7_Employee>(2);
+		list.add(emp1);
+		list.add(emp2);
+		Collections.sort(list, new CompareByAge());
+		(Q7_Employee e: list){
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+
+	public String toString() {
+		return ("Name: " + this.name + ", Department: " + this.dpt + ", Age: " + this.age);
+	}
+
+	@Override
+	public int compare(Q7_Employee o1, Q7_Employee o2) {
+		if(o1.name.compareTo(o2.name)>1) {
+			
+		}
+		return 0;
+	}
+
+
+}

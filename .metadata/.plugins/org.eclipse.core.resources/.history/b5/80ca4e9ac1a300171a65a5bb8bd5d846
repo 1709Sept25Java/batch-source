@@ -1,0 +1,16 @@
+package com.revature.corejava;
+
+import java.util.Calendar;
+
+public class Q14_SwitchCase {
+	
+	public static void threeCases(int i) {
+		switch (i) {
+			case 1:
+			case 2: 
+				System.out.println(Calendar.getInstance().getTime());
+			case 3:
+		}	
+	}
+
+}

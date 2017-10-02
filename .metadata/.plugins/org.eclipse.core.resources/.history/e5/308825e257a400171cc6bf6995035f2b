@@ -1,0 +1,58 @@
+package com.revature.calculator;
+
+import java.util.Scanner;
+
+public class ScannerCalculator {
+	
+	public static void main(String[] args) {
+		calculate();
+	}
+	
+	
+	public static Number calculate() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Please enter the data type you would like to add:");
+		String dataType = scan.nextLine();
+		System.out.println("Please enter your augend:");
+		String s1 = scan.nextLine();
+		System.out.println("Please enter your addend:");
+		String s2 = scan.nextLine();
+		scan.close();
+		switch (dataType) {
+			case "integer":
+				return addInteger(s1,s2);
+			case "double":
+				return addDouble();
+			case "short":
+				return addShort();
+			case "float":
+				return addFloat();
+			case "long":
+				return addLong();
+			default:
+				System.out.println("I'm sorry that is not a valid subtype of Number.");
+				return calculate();
+		}
+	}
+	
+	public static Number addInteger(String s1, String s2) {
+		return 0;
+	}
+	
+	public static Number addDouble(String s1, String s2) {
+		return 0;
+	}
+	
+	public static Number addShort(String s1, String s2) {
+		return 0;
+	}
+	
+	public static Number addFloat(String s1, String s2) {
+		return 0;
+	}
+	
+	public static Number addLong(String s1, String s2) {
+		return 0;
+	}
+
+}

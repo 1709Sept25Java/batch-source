@@ -1,0 +1,12 @@
+package com.revature.corejava;
+
+import java.util.Scanner;
+
+public class Q16_NumChars {
+	
+	public static void main( String[] args ) {
+		Scanner scan = new Scanner();
+		
+	}
+
+}

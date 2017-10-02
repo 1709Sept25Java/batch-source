@@ -1,0 +1,7 @@
+package com.revature.corejava;
+
+import java.util.Comparator;
+
+public class SortByName implements Comparator<Q7_Employee>  {
+
+}

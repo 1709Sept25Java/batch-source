@@ -1,0 +1,5 @@
+package com.revature.corejava;
+
+public abstract class Q18_SuperClass {
+
+}

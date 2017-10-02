@@ -1,0 +1,34 @@
+package com.revature.corejava;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+
+
+public class Q20_DataReadOut {
+	
+	public static void main(String[] args) {
+		dataReadOut();
+	}
+	
+	public static void dataReadOut() {
+		try {
+			FileReader fReader = new FileReader("Data.txt");
+			BufferedReader bReader = new BufferedReader(fReader);
+			String line;
+			String[] creds;
+			while ((line = bReader.readLine()) != null) {
+				creds = line.split(":");
+				System.out.println("Name: "+creds[0]+" "+creds[1]);
+				System.out.println("Age: "+creds[2]);
+				System.out.println("State: "+creds[3]+" State");
+				System.out.println();
+			}	
+			bReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

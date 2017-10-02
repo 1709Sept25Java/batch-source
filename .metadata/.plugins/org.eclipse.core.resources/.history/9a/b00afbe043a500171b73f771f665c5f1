@@ -1,0 +1,68 @@
+package com.revature.corejava;
+
+import java.util.ArrayList;
+
+public class Q19_SumsPrimes {
+	
+	
+	public static void main (String[] args) {
+		ArrayList<Integer> arr = Array(10);
+		System.out.println(sumEvens(arr));
+		System.out.println(sumOdds(arr));
+		printPrimes(arr);	
+	}
+	
+	
+	public static ArrayList<Integer> Array(int n){
+		ArrayList<Integer> nums = new ArrayList<Integer>();
+		for (int i = 0; i<n; i++) {
+			nums.add(i);
+		}
+		return nums;
+	}
+	
+	public static int sumEvens(ArrayList<Integer> nums) {
+		int sum = 0;
+		for(int n : nums) {
+			if (n%2 == 0) {
+				sum = sum+n;
+			}
+		}
+		return sum;
+	}
+	
+	public static int sumOdds(ArrayList<Integer> nums) {
+		int sum = 0;
+		for(int n : nums) {
+			if (n%2 == 1) {
+				sum = sum+n;
+			}
+		}
+		return sum;
+	}
+	
+	public static ArrayList<Integer> printPrimes(ArrayList<Integer> nums) {
+		ArrayList<Integer> primes = new ArrayList<Integer>();
+		for(int n : nums) {
+			if (n == 2) {
+				primes.add(n);
+			}
+			for(int j = 2; j<n; j++) {
+				if(n%j==0) {
+					j=n;
+				}
+				else {
+					if (j==(n-1)) {
+						primes.add(n);
+						
+					}
+				}
+			}
+		}
+		nums.removeAll(primes);
+		System.out.println(nums);
+		return nums;
+	}
+	
+
+}

@@ -1,0 +1,19 @@
+package com.revature.corejava;
+
+import java.util.Scanner;
+
+public class Q16_NumChars {
+	
+	public static void main( String[] args ) {
+		stringNums();
+
+	}
+	
+	public static int stringNums() {
+		Scanner scan = new Scanner();
+		scan.nextLine();
+		return 0;
+	}
+	
+
+}

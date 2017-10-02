@@ -1,0 +1,17 @@
+package com.revature.corejavaQ1;
+
+public class Q2_Fibonacci {
+	
+	
+	public static void main(String[] args) {  
+		fib(25);
+	}
+	
+	public static void fib(int num) {
+		for (int i=0; i<num; i++) {
+			System.out.println(num);
+			num = num+num;
+		}
+	}
+
+}

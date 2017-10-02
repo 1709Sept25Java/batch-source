@@ -1,0 +1,65 @@
+package com.revature.media;
+
+public class Media {
+	
+	protected String author;
+	
+	protected String title;
+	
+	protected String genre;
+	
+	protected int yearPublished;
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public int getYearPublished() {
+		return yearPublished;
+	}
+
+	public void setYearPublished(int yearPublished) {
+		this.yearPublished = yearPublished;
+	}
+
+	public Media() {
+		super();
+	}
+
+	public Media(String author, String title, String genre, int yearPublished) {
+		super();
+		this.author = author;
+		this.title = title;
+		this.genre = genre;
+		this.yearPublished = yearPublished;
+	}
+
+	@Override
+	public String toString() {
+		return "Media [author=" + author + ", title=" + title + ", genre=" + genre + ", yearPublished=" + yearPublished
+				+ "]";
+	} 
+	
+	
+
+}

@@ -1,0 +1,15 @@
+package com.revature.corejava;
+
+public class CompareTest {
+
+	public static void main(String[] args) {
+		String str1 = "hello";
+		String str2 = "world";
+		
+		str2.compareTo(str1);
+		str1.compareTo(str2);
+		str1.compareTo("hello);
+
+	}
+
+}

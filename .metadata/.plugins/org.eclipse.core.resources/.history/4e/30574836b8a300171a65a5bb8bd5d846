@@ -1,0 +1,34 @@
+package com.revature.corejava;
+
+public class Calculator implements Calculate {
+
+	@Override
+	public int addition(int augend, int addend) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int subtraction(int minuend, int subtrahend) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int multiplication(int multiplier, int multiplicand) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int division(int dividend, int divisor) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

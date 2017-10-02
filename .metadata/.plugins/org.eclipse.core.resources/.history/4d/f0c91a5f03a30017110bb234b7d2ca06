@@ -1,0 +1,20 @@
+package com.revature.corejavaQ1;
+
+public class Q2_Fibonacci {
+	
+	
+	public static void main(String[] args) {  
+		fib(25);
+	}
+	
+	public static int Nfib(int n) {
+		return 0;
+	}
+	
+	public static void fib(int n) {
+		for(int i = 0; i<n; i++) {
+			System.out.println(Nfib(n));
+		}
+	}
+
+}

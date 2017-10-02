@@ -1,0 +1,40 @@
+package com.revature.corejava;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+
+public class Q14_SwitchCase {
+	
+	public static void threeCases(int i) { 
+		if (i>3 || i<1) {
+			System.out.println("'threeCases' can only take int arguments 1, 2, and 3");
+		} // prints an error statement if an invalid case is an argument 
+		switch (i) { //switch case for valid arguments 
+			case 1:
+				System.out.println("The square root of 196 is "+Math.sqrt(196));
+				break; 
+			case 2: 
+				System.out.println(DateTimeFormatter.ofPattern("MM/dd/yyyy").format(LocalDate.now()));
+				break;
+			case 3:
+				String str = "I am learning Core Java";
+				String[] strArr = str.split("//s");
+				for (String a : strArr) {
+					System.out.print(a + " ");	
+				}
+				System.out.println();
+				break;
+
+		}	
+	}
+	
+	public static void main(String[] args) {
+		threeCases(1);
+		threeCases(2);
+		threeCases(3);
+		threeCases(0);
+		
+	}
+
+}

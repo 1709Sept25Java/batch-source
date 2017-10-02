@@ -1,0 +1,12 @@
+package com.revature.corejava;
+
+import com.revature.corejavafloats.*;
+
+public class Q11_AccessFloats {
+
+	public static void main(String[] args) {
+		System.out.println(
+				"Floats from package com.revature.corejavafloats are " + Floats.getx() + " and " + Floats.gety());
+	}
+
+}

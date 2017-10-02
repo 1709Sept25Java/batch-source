@@ -1,0 +1,13 @@
+package com.revature.corejava;
+
+public class Q5_Substring {
+	
+	public static String sub( String str, int lastIndex ) {
+		char[] charArray = new char[lastIndex];
+		for (int i = 0; i<lastIndex; i++) {
+			charArray[i] = str.charAt(i);
+		}
+		return Q3_ReverseString.printArray(charArray);;
+	}
+
+}

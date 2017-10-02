@@ -1,0 +1,35 @@
+package com.revature.corejava;
+
+public class Q4_Factorial {
+	
+	public static void main(String[] args) {
+		Factorial(0);
+		Factorial(1);
+		Factorial(2);
+		Factorial(4);
+		Factorial(6);
+		Factorial(26);
+	}
+	
+	public static long nfac(int n) { //output type is long, otherwise max n = 16
+		if (n>25) { // when n>16, the number is too large, overflows, and wraps around to a negative
+			//throw exception
+			System.out.println("Factorial too high, please enter an argument of 25 or less");
+			return 0;
+		}
+		if (n == 1) {
+			return 1;
+		}		
+		if ( n == 0) {
+			return 1;
+		}
+		else {
+			return n*nfac(n-1);
+		}
+	}
+	
+	public static void Factorial(int n) {
+		System.out.println(nfac(n));
+	}
+
+}

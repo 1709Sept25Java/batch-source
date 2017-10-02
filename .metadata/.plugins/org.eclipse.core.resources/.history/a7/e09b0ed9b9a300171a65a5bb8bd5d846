@@ -1,0 +1,37 @@
+package com.revature.corejava;
+
+public class Calculator implements Calculate {
+
+	public static int addition(int augend, int addend) {
+		int sum;
+		sum = augend+addend;
+		return sum;
+	}
+	
+	public static int subtraction(int minuend, int subtrahend){
+		int difference;
+		difference = minuend - subtrahend;
+		return difference;
+	}
+	
+	public static int multiplication(int multiplier, int multiplicand){
+		int product;
+		product = multiplier*multiplicand;
+		return product;
+	}
+	
+	public static int division(int dividend, int divisor){
+		int quotient;
+		quotient = dividend/divisor;
+		return quotient;
+	}
+
+	public static void main(String[] args) {
+		addition(10,2);
+		subtraction(10,2);
+		multiplication(10,2);
+		division(10,2);
+
+	}
+
+}

@@ -1,0 +1,31 @@
+package com.revature.corejavaQ1;
+
+public class Q1_Sort {
+//main method initates the array to be sorted
+	public static void main(String[] args) { 
+		int[] arr1 = {1,0,5,6,3,2,3,7,9,8,4};
+		BSort(arr1);	
+	}
+	
+	public static void BSort(int[] arr) {
+		for (int j=0; j<arr.length; j++) {
+			for (int i=0; i<(arr.length-1); i++) {
+				if (arr[i]>arr[i+1]) {
+					int holder = arr[i];
+					arr[i] = arr[i+1];
+					arr[i+1] = holder;
+				}
+			}
+		}
+		printArray(arr);	
+	}
+	
+	public static void printArray(int[] arr) {
+		String str = "";
+		for (int i=0; i<arr.length; i++) {
+			str = str +" "+ arr[i];
+		}
+		System.out.println(str);
+	}
+	
+}

@@ -1,0 +1,26 @@
+package com.revature.corejava;
+
+import java.util.ArrayList;
+
+public class Q12_Evens {
+
+	public static void main(String[] args) {
+		printEvens(100);
+	}
+
+	public static ArrayList<Integer> printEvens(int size) {
+		ArrayList<Integer> nums = new ArrayList<Integer>(size);
+		for (int i = 1; i < size + 1; i++) {
+			nums.add(i);
+		}
+
+		for (int n : nums) {
+			if (n % 2 == 0) {
+				System.out.print(n + " ");
+			}
+		}
+
+		return nums;
+	}
+
+}

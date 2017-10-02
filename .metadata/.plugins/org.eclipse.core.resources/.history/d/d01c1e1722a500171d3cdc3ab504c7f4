@@ -1,0 +1,9 @@
+package com.revature.media;
+
+public class Book extends Media {
+
+		public void read() {
+			System.out.println("Reading "+this.title);
+		}
+		
+}

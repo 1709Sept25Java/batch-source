@@ -1,0 +1,28 @@
+package com.revature.corejava;
+
+public class Calculator implements Calculate {
+
+	public int addition(int augend, int addend) {
+		int sum;
+		sum = augend+addend;
+		return sum;
+	}
+	
+	public int subtraction(int minuend, int subtrahend){
+int 
+	}
+	
+	public int multiplication(int multiplier, int multiplicand){
+		return sum;
+	}
+	
+	public int division(int dividend, int divisor){
+		return sum;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

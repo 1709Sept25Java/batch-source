@@ -1,0 +1,24 @@
+package com.revature.corejava;
+
+import java.util.Comparator;
+
+public class Q7_Employee {
+	
+	String name;
+	String dpt;
+	int age;
+	
+	public static void main(String[] args) {
+		Q7_Employee joan = new Q7_Employee("Joan", "HR", 58);
+		Q7_Employee paul = new Q7_Employee("Paul", "IT", 45);
+		int joan.age.compareTo(paul.age);
+		
+	}
+
+	Q7_Employee(String name, String dpt, int age){
+		this.name = name;
+		this.dpt = dpt;
+		this.age = age;
+	}
+	
+}

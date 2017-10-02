@@ -1,0 +1,15 @@
+package com.revature.corejavafloats;
+
+public class Floats {
+	
+	public float x = 54;
+	public float y = 13;
+	
+	public float getx() {
+		return x;
+	}
+	
+	public float gety() {
+		return y;
+	}
+}

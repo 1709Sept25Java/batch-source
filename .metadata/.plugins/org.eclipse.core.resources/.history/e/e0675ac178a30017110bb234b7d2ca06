@@ -1,0 +1,27 @@
+package com.revature.corejava;
+import java.util.ArrayList;
+
+public class Q9_Primes {
+	
+	public static void main (String[] args) {
+		arr(100);
+		
+	}
+	
+	public static ArrayList<Integer> arr(int size){
+		ArrayList<Integer> nums = new ArrayList<Integer>(size);
+		for (int i = 1; i<size+1; i++) {
+			nums.add(i);
+		}
+		
+		for (int n : nums) { //checks through every number in
+			for (int j=1; j<n;j++) {
+				if (n%j==0) {
+					primes.remove(n);
+				}
+			}
+		}
+		System.out.println(primes);
+		return nums;
+	}
+}

@@ -1,0 +1,23 @@
+package com.revature.media;
+
+public class Book extends Media {
+
+		public void read() {
+			System.out.println("Reading "+this.title+" by "+this.author);
+		}
+
+		public Book() {
+			super();			// TODO Auto-generated constructor stub
+		}
+
+		public Book(String author, String title, String genre, int yearPublished) {
+			super(author, title, genre, yearPublished);
+		}
+
+		@Override
+		public String toString() {
+			return "Book [author=" + author + ", title=" + title + ", genre=" + genre + ", yearPublished="
+					+ yearPublished + "]";
+		}
+		
+}

@@ -1,0 +1,27 @@
+package com.revature.corejava;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+
+public class Q20_DataReadOut {
+	
+	public static void main(String[] args) {
+		dataReadOut();
+	}
+	
+	public static void dataReadOut() {
+		try {
+			FileReader fReader = new FileReader("Data.txt");
+			BufferedReader bReader = new BufferedReader(fReader);
+			while (bReader.readLine() != null) {
+				System.out.println();
+			}	
+			bReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

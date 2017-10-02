@@ -1,0 +1,68 @@
+package com.revature.corejava;
+
+import java.util.ArrayList;
+
+public class Q19_SumsPrimes {
+	
+	
+	public static void main (String[] args) {
+		ArrayList<Integer> arr = Array(10); //calls method to create an array
+		System.out.println(sumEvens(arr)); //calls method to sum of evens 
+		System.out.println(sumOdds(arr)); //calls method to sum odds
+		printPrimes(arr);	//calls method to print primes
+	}
+	
+	
+	public static ArrayList<Integer> Array(int n){ //method returns an ArrayList, takes an int argument
+		ArrayList<Integer> nums = new ArrayList<Integer>(); //creates an ArrayList
+		for (int i = 0; i<n; i++) {
+			nums.add(i); //adds the numbers from 0 to the int argument
+		}
+		return nums; 
+	}
+	
+	public static int sumEvens(ArrayList<Integer> nums) { //takes an ArrayList
+		int sum = 0; //initializes sum
+		for(int n : nums) { //for loop runs through all arguments, when (n%2 == 0) condition is true,
+			if (n%2 == 0) { //number is odd and it is added to the sum
+				sum = sum+n;
+			}
+		} 
+		return sum; //for loop ends when ArrayList ends and the sum is returned
+	}
+	
+	public static int sumOdds(ArrayList<Integer> nums) {
+		int sum = 0;
+		for(int n : nums) {
+			if (n%2 == 1) { //same as odds, but (n%2 == 1) condition true when n is odd
+				sum = sum+n;
+			}
+		}
+		return sum;
+	}
+	
+	public static ArrayList<Integer> printPrimes(ArrayList<Integer> nums) {
+		ArrayList<Integer> primes = new ArrayList<Integer>();
+		for(int n : nums) {
+			if (n == 2) {
+				primes.add(n);
+			}
+			for(int j = 2; j<n; j++) {
+				if(n%j==0) {
+					j=n;
+				}
+				else {
+					if (j==(n-1)) {
+						primes.add(n);
+						
+					}
+				}
+			}
+		}
+		nums.removeAll(primes);
+		System.out.println(nums);
+		return nums;
+	}
+	
+
+}

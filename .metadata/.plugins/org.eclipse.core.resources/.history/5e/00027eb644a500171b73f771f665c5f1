@@ -1,0 +1,69 @@
+package com.revature.corejava;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Q7_Employee {
+
+	String name;
+	String dpt;
+	int age;
+
+	public static void main(String[] args) {
+		Q7_Employee joan = new Q7_Employee("Joan", "HR", 58);
+		Q7_Employee paul = new Q7_Employee("Paul", "IT", 45);
+		compareAge(joan, paul);
+		System.out.println();
+		compareName(joan, paul);
+		System.out.println();
+		compareAge(joan, paul);
+		System.out.println();
+		compareDepartment(joan, paul);
+	}
+
+	Q7_Employee(String name, String dpt, int age) {
+		this.name = name;
+		this.dpt = dpt;
+		this.age = age;
+	}
+
+	public static ArrayList<Q7_Employee> compareName(Q7_Employee emp1, Q7_Employee emp2) {
+		ArrayList<Q7_Employee> list = new ArrayList<Q7_Employee>(2);
+		list.add(emp1);
+		list.add(emp2);
+		Collections.sort(list, new CompareByName());
+		for(Q7_Employee e: list){
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+	
+	public static ArrayList<Q7_Employee> compareDepartment(Q7_Employee emp1, Q7_Employee emp2) {
+		ArrayList<Q7_Employee> list = new ArrayList<Q7_Employee>(2);
+		list.add(emp1);
+		list.add(emp2);
+		Collections.sort(list, new CompareByDepartment());
+		for(Q7_Employee e: list){
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+	
+	public static ArrayList<Q7_Employee> compareAge(Q7_Employee emp1, Q7_Employee emp2) {
+		ArrayList<Q7_Employee> list = new ArrayList<Q7_Employee>(2);
+		list.add(emp1);
+		list.add(emp2);
+		Collections.sort(list, new CompareByAge());
+		for(Q7_Employee e: list){
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+
+	public String toString() {
+		return ("Name: " + this.name + ", Department: " + this.dpt + ", Age: " + this.age);
+	}
+
+
+}

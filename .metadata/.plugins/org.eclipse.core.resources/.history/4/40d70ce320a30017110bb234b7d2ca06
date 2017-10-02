@@ -1,0 +1,27 @@
+package com.revature.corejava;
+
+public class Q4_Factorial {
+	
+	public static void main(String[] args) {
+		Factorial(0);
+		Factorial(1);
+		Factorial(2);
+		Factorial(4);
+		Factorial(6);
+		Factorial(36);
+	}
+	
+	public static int nfac(int n) {
+		if (n == 1) {
+			return 1;
+		}
+		else {
+			return n*(n-1);
+		}
+	}
+	
+	public static void Factorial(int n) {
+		System.out.println(nfac(n));
+	}
+
+}

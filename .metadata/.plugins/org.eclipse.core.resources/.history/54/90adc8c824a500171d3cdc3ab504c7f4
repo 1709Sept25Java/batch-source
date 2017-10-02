@@ -1,0 +1,15 @@
+package com.revature.corejava;
+
+public class Q10_Minimum {
+	
+	public static int min(int a, int b) {
+		return ( a < b ) ? a : b;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(min(4,3));
+		System.out.println(min(92,103));
+		System.out.println(min(0,3));
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.revature.corejava;
+
+import java.util.Scanner;
+
+public class Q17_Interest {
+	
+	public static void main( String[] args ) {
+		interest();
+	}
+	
+	public static void interest() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Welcome to the interest calculator.");
+		System.out.println("Please enter principal amount:");
+		double p = Double.parseDouble(scan.nextLine());
+		System.out.println("Please enter interest rate (in decimal form):");
+		double r = Float.parseDouble(scan.nextLine());
+		System.out.println("Please enter number of years:");
+		double t = Float.parseDouble(scan.nextLine());
+		scan.close();
+		int accruedAmount = p*(1+r*t);
+		System.out.println("The accrued amount is accruedAmount);
+	}
+
+}

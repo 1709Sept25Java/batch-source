@@ -1,0 +1,10 @@
+package com.revature.corejava;
+
+public interface Calculate {
+	
+	public static int addition(int augend, int addend);
+	public static int subtraction(int minuend, int subtrahend);
+	public static int multiplication(int multiplier, int multiplicand);
+	public int division(int dividend, int divisor);
+	
+}

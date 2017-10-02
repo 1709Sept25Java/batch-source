@@ -1,0 +1,34 @@
+package com.revature.corejava;
+
+import java.util.Calendar;
+
+public class Q14_SwitchCase {
+	
+	public static void threeCases(int i) {
+		switch (i) {
+			case 1:
+				System.out.println("The square root of 196 is "+Math.sqrt(196));
+				break;
+			case 2: 
+				System.out.println(Calendar.getInstance().getTime());
+				break;
+			case 3:
+				String str = "I am learning Core Java";
+				String[] strArr = str.split("//s");
+				System.out.println(Array.toString(strArr));
+				for (String a : strArr) {
+					System.out.print(a + " ");	
+				}
+				break;
+
+		}	
+	}
+	
+	public static void main(String[] args) {
+		threeCases(1);
+		threeCases(2);
+		threeCases(3);
+		
+	}
+
+}

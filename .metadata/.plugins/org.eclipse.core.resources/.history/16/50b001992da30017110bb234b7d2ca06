@@ -1,0 +1,25 @@
+package com.revature.corejava;
+
+public class Q5_Substring {
+	
+	public static void main( String[] args) {
+		System.out.println(sub("Greetings",3));
+	}
+	
+	public static String sub( String str, int lastIndex ) {
+		char[] charArray = new char[lastIndex];
+		for (int i = 0; i<lastIndex; i++) {
+			charArray[i] = str.charAt(i);
+		}
+		return ArrayToString(charArray, lastIndex);
+	}
+
+	public static String ArrayToString(char[] arr, int lastIndex) {
+		String str = "";
+		for (int i = 0; i<lastIndex; i++) {
+			str = str + arr[i];
+		}
+		return str;
+			
+	}
+}
