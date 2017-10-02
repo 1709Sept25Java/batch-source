@@ -8,6 +8,7 @@ public class BubbleSort {
 		toSort[1] = 3;
 		toSort[2] = 10;
 		toSort[3] = 5;
+		
 		bubbles(toSort);		
 	}
 	public static void bubbles(int[] toSort) {
