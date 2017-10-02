@@ -8,42 +8,41 @@ public class OperationTest implements Operations{
 
 @Override
 public int addition(int n1, int n2) {
-	int sum = n1 + n2 ;// TODO Auto-generated method stub
-	return sum ;
+	return n1 + n2;
 }
 
 @Override
 public int substraction(int num1, int num2) {
-	int difference = num1 - num2 ;// TODO Auto-generated method stub
-	return difference;
+		return  num1 - num2; 
 }
 
 @Override
-public float multiplication(float number1, float number2) {
-	float product = number1 * number2 ;// TODO Auto-generated method stub
-	return product ;
+public int multiplication(int number1, int number2) {
+	
+	return number1 * number2 ;
 }
 
 @Override
-public double division(double nb1, double nb2) {
-	double answer = nb1 / nb2 ;// TODO Auto-generated method stub
-	return answer ;
-}
-public OperationTest( 7, 3. 10, 5. 7.0, 3.0, 50.0,5.0){
+public int division(int nb1, int nb2) {
 	
-	System.out.println( " Addition" + test.addition());
-	System.out.println( "Substraction" + test.substraction());
-	System.out.println( "Multiplication" + test.addmultiplicatin());
-	System.out.println( "division" + test.division())
+	return nb1 / nb2 ;
 }
 
 
-public static void main(String [] args){
+
+public static void main(String[]args) {
+	OperationTest test = new OperationTest();
 	
-OperationTest test = new OperationTest();
+	System.out.println( "Addition of 7 and 2 is :" + test.addition(7,2));
+	System.out.println( "Substraction of 17 and 7 is: " + test.substraction(17, 10));
+	System.out.println( "Multiplication of 7 and 3 is :" + test.multiplication(7,3));
+	System.out.println( "division of 50 and 5 is " + test.division(50,5));
+}
+
+
 
 
 		
 
 }
-}
+
