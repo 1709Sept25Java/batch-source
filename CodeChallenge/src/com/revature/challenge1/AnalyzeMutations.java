@@ -13,34 +13,23 @@ public class AnalyzeMutations {
 			if (start.equals(end)) {
 				return 0;
 			}
-			
+			char[] mutatedGene = start.toCharArray(); 
 			for (int i=0; i<start.length(); i++){
-				char[] mutatedGene = start.toCharArray(); 
-				int change = -1;
-				//System.out.println(mutatedGene);
 				if (start.charAt(i) != end.charAt(i)) {
 					mutatedGene[i] = end.charAt(i);
-					//System.out.println(start + " \n" + String.valueOf(mutatedGene) + " \n" + end + "\n");
 					mutations++;
 					/* Checking if gene is valid */
-					if (validGene(mutatedGene,bank)) {
-						mutatedGene = start.toCharArray();
-						mutatedGene[i] = end.charAt(i);
-						//mutations++;
-					}
 				}	
 			}
-			
-			if (mutations == 0) {
-				return -1;
+			if (validGene(mutatedGene,bank)) {
+				return mutations;
 			}
-			
-			return mutations;
+			return -1;
 		}
 
 		public boolean validGene(char mutations[], ArrayList<String> bank) {
 			for (String gene:bank) {
-				System.out.println("Mutation: " + String.valueOf(mutations));
+				//System.out.println("Mutation: " + String.valueOf(mutations));
 				if (gene.equals(String.valueOf(mutations))) {
 					//System.out.println("Valid mutation: " + mutation + " " + gene);
 					return true;
