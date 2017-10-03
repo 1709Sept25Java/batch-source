@@ -1,0 +1,41 @@
+2017-10-03 14:56:05 WARN  root:13 - warn message
+2017-10-03 14:56:05 ERROR root:14 - error message
+2017-10-03 14:56:05 FATAL root:15 - fatal message
+2017-10-03 15:00:53 WARN  root:13 - warn message
+2017-10-03 15:00:53 ERROR root:14 - error message
+2017-10-03 15:00:53 FATAL root:15 - fatal message
+2017-10-03 15:00:53 FATAL root:19 - / by zero
+java.lang.ArithmeticException: / by zero
+	at com.revature.logging.App.exceptionThrowingGarbage(App.java:19)
+	at com.revature.logging.App.main(App.java:12)
+2017-10-03 15:01:30 WARN  root:13 - warn message
+2017-10-03 15:01:30 ERROR root:14 - error message
+2017-10-03 15:01:30 FATAL root:15 - fatal message
+2017-10-03 15:01:30 FATAL root:19 - / by zero
+java.lang.ArithmeticException: / by zero
+	at com.revature.logging.App.exceptionThrowingGarbage(App.java:19)
+	at com.revature.logging.App.main(App.java:12)
+2017-10-03 15:02:08 WARN  root:13 - warn message
+2017-10-03 15:02:08 ERROR root:14 - error message
+2017-10-03 15:02:08 FATAL root:15 - fatal message
+2017-10-03 15:02:08 FATAL root:19 - / by zero
+java.lang.ArithmeticException: / by zero
+	at com.revature.logging.App.exceptionThrowingGarbage(App.java:19)
+	at com.revature.logging.App.main(App.java:12)
+2017-10-03 15:06:30 TRACE root:10 - trace message
+2017-10-03 15:06:30 DEBUG root:11 - debug message
+2017-10-03 15:06:30 INFO  root:12 - info message
+2017-10-03 15:06:30 WARN  root:13 - warn message
+2017-10-03 15:06:30 ERROR root:14 - error message
+2017-10-03 15:06:30 FATAL root:15 - fatal message
+2017-10-03 15:06:30 FATAL root:19 - / by zero
+java.lang.ArithmeticException: / by zero
+	at com.revature.logging.App.exceptionThrowingGarbage(App.java:19)
+	at com.revature.logging.App.main(App.java:12)
+2017-10-03 15:06:51 WARN  root:13 - warn message
+2017-10-03 15:06:51 ERROR root:14 - error message
+2017-10-03 15:06:51 FATAL root:15 - fatal message
+2017-10-03 15:06:51 FATAL root:19 - / by zero
+java.lang.ArithmeticException: / by zero
+	at com.revature.logging.App.exceptionThrowingGarbage(App.java:19)
+	at com.revature.logging.App.main(App.java:12)
