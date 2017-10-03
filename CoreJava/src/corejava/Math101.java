@@ -1,6 +1,6 @@
 package corejava;
 
-public class Math101 extends DoMath{ //inherits the method from 
+public class Math101 extends DoMath{ //inherits the method from DoMath
 
 	public static void main(String[] args) {
 		double a = 4;
