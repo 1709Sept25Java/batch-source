@@ -10,7 +10,9 @@ public static void main(String[] args) {
 	Thread Thread1 = new Thread() {
 		public void run() {
 			int stringInt = Integer.parseInt(stringArray[0]);
-			System.out.println(stringInt*stringInt);
+			stringInt = stringInt*stringInt;
+			stringArray[0] = Integer.toString(stringInt);
+			System.out.println(stringInt);
 		}
 	};
 	
