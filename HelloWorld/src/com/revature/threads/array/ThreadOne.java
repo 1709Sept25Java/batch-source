@@ -2,16 +2,17 @@ package com.revature.threads.array;
 
 public class ThreadOne extends Thread {
 	
-	String x;
+	String[] array;
 	
-	ThreadOne(String a) {
-		this.x = a;
+	ThreadOne(String[] array) {
+		this.array = array;
 	}
 	
 	public void run() {
-		double b = Integer.parseInt(x);
-		double sqrt = b * b; 
-		System.out.println("Thread One Starting: " + sqrt);
+		double b = Integer.parseInt(array[0]);
+		double sqr = b * b; 
+		array[0]=Double.toString(sqr);
+		System.out.println("Thread One Starting: " + sqr);
 		
 	}
 }

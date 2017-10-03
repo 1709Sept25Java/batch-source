@@ -8,9 +8,9 @@ public class Driver {
 		array[1] = "two";
 		array[2] = "three";
 		
-		ThreadOne t1 = new ThreadOne(array[0]);
-		ThreadTwo t2 = new ThreadTwo(array[1]);
-		ThreadThree t3 = new ThreadThree(array[2]);
+		ThreadOne t1 = new ThreadOne(array);
+		ThreadTwo t2 = new ThreadTwo(array);
+		ThreadThree t3 = new ThreadThree(array);
 		
 		t1.start();
 		t2.start();
@@ -24,6 +24,9 @@ public class Driver {
 			e.printStackTrace();
 		}
 		System.out.println("...all threads have completed");
+		for(String s : array) {
+			System.out.println(s);
+		}
 	}
 
 }
