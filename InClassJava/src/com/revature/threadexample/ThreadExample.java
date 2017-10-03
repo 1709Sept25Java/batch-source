@@ -35,7 +35,8 @@ public static void main(String[] args) {
 			for(int i = 0; i<charArray.length; i++) {
 				str3 = str3 + charArray[i];
 			}
-			System.out.println(str3);
+			stringArray[2] = str3;
+			System.out.println(stringArray[2]);
 			
 		}
 	};
