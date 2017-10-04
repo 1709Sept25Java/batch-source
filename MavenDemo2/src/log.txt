@@ -1,0 +1,7 @@
+2017-10-03 19:39:42 WARN  root:13 - warning message
+2017-10-03 19:39:42 ERROR root:14 - error message
+2017-10-03 19:39:42 FATAL root:15 - fatal message
+2017-10-03 19:39:42 FATAL root:19 - / by zero
+java.lang.ArithmeticException: / by zero
+	at com.revature.logging.App.exceptionThrowingGarbage(App.java:22)
+	at com.revature.logging.App.main(App.java:14)
