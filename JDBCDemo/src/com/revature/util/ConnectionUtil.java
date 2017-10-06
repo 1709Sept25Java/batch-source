@@ -11,6 +11,8 @@ import java.util.Properties;
 
 public class ConnectionUtil {
 	
+	private static String filename = "connection.properties";
+	
 	//THIS IS EGREGIOUS DON'T DO IT. 
 	//it hardcodes you db credentials into your source code. Tightly coupled and insecure. 
 	public static Connection getConnection() throws SQLException {
@@ -21,7 +23,7 @@ public class ConnectionUtil {
 	}
 	
 	//better way
-	public static Connection getConnectionFromFile(String filename) throws IOException, SQLException{
+	public static Connection getConnectionFromFile() throws IOException, SQLException{
 		Properties prop = new Properties();
 		InputStream in = new FileInputStream(filename);
 		prop.load(in);
