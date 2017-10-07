@@ -1,0 +1,65 @@
+package com.revature.domain;
+
+import java.sql.Date; //more expedient for converting to SQL queries, many ways to handle date/time
+
+public class Bear {
+	public Bear(String name, Cave cave, BearType bearType, int weight, Date birthdate) {
+		super();
+		this.name = name;
+		this.cave = cave;
+		this.bearType = bearType;
+		this.weight = weight;
+		this.birthdate = birthdate;
+	}
+	public Bear() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	private int id;
+	private String name;
+	private Cave cave;
+	private BearType bearType;
+	private int weight;
+	private Date birthdate;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Cave getCave() {
+		return cave;
+	}
+	public void setCave(Cave cave) {
+		this.cave = cave;
+	}
+	public BearType getBearType() {
+		return bearType;
+	}
+	public void setBearType(BearType bearType) {
+		this.bearType = bearType;
+	}
+	public int getWeight() {
+		return weight;
+	}
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+	@Override
+	public String toString() {
+		return "Bear [id=" + id + ", name=" + name + ", cave=" + cave + ", bearType=" + bearType + ", weight=" + weight
+				+ ", birthdate=" + birthdate + "]";
+	}
+}
