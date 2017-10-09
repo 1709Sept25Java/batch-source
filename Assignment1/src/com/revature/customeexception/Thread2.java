@@ -1,10 +1,11 @@
 package com.revature.customeexception;
 
-public class Thread2 {
+public class Thread2 extends Thread {
 
+	ArrayofStrings getArray = new ArrayofStrings();
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		 (new Thread(new Thread2())).start();
 	}
 
 }
