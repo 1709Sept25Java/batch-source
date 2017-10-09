@@ -81,4 +81,8 @@ Servers/
 .scala_dependencies 
 .worksheet 
 
+codechallenge2/.project
+codechallenge2/.classpath
+codechallenge2/bin/
+
 # End of https://www.gitignore.io/api/eclipse
