@@ -39,14 +39,14 @@ public class Driver {
 		BearTypeDao btd = new BearTypeDaoImpl();
 		System.out.println(btd.getBearTypes().toString());
 		System.out.println(btd.getBearTypeById(2).toString());
-		*/
+		
 		
 		BearDao bd = new BearDaoImpl();
 		List<Bear> bearList = bd.getBears();
 		for (Bear b : bearList){
 			System.out.println(b.toString());
 		}
-		/*
+	
 		bd.feedBear(13,5,5);
 		
 		System.out.println(bd.getBearById(13));
@@ -55,7 +55,15 @@ public class Driver {
 		
 		System.out.println(bd.createBear(b));*/
 		
+		//new implementation! 
 		
+		BearDao bd = new BearDaoXMLImpl("src/Bears.xml");
+		List<Bear> bearList = bd.getBears();
+		System.out.println(bearList.toString());
+
+		//this breaks our DAO pattern a bit, so be aware that you would want to organize 
+		//your code differently if you were relying on marshaling/unmarshaling 
+		//System.out.println(((BearDaoXMLImpl)bd).unmarshalBear("src/BearToUnmarshal.xml").toString());
 		
 
 	}

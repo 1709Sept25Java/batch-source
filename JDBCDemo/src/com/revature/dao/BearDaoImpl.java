@@ -109,7 +109,7 @@ public class BearDaoImpl implements BearDao{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bear.getBearType().getId());
 			pstmt.setString(2, bear.getName());
-			pstmt.setDate(3, bear.getBirthdate());
+			pstmt.setDate(3, new java.sql.Date(bear.getBirthdate().getTime()));
 			pstmt.setInt(4, bear.getCave().getId());
 			bearsCreated = pstmt.executeUpdate();
 			con.commit();
