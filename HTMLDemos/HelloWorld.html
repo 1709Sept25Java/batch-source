@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- you may need to include encoding information -->
+	<title>Hello World</title>
+	<style>
+		body {background-color:red}
+	</style>
+	<link rel="stylesheet" href="myCoolStyles.css"/>
+</head>
+<body style="background-color:#67d3ff">
+	<h1 class="center">this is a large heading</h1>
+	<h2>this is a slightly smaller heading</h2>
+	<h3 class="center">this is a slightly smaller heading</h3>
+	<h4>this is a slightly smaller heading</h4>
+	<h5 class="center">this is a slightly smaller heading</h5>
+	<h6>this is a slightly smaller heading</h6>
+	<div id="div1"><a href = "https://en.wikipedia.org/wiki/Grizzly_bear">all about grizzly bears</a>
+	<img src="http://www.biologicaldiversity.org/assets/img/species/mammals/GrizzlyBearRobinSilver.jpg" 
+			width="150" height="125" alt="sleepy bear"/></div>
+	<div>
+		<p id="p1">Of course he's a happy little stone, cause we don't have any other kind. The only thing worse than yellow snow is green snow. If you overwork it you become a cloud killer. There's nothing worse than a cloud killer. In this world, everything can be happy.
+Let's make a happy little mountain now. This is the fun part It's a good way of getting rid of all your anxieties and hostilities. It's a very cold picture, I may have to go get my coat. Itâ€™s about to freeze me to death.
+Let's make some happy little clouds in our world. Let's have a happy little tree in here. We'll put some happy little leaves here and there. Let's put some happy trees and bushes back in here. In your imagination you can go anywhere you want. Now then, let's play.
+You're meant to have fun in life. In your world you can create anything you desire. Be so very light. Be a gentle whisper.
+I can't think of anything more rewarding than being able to express yourself to others through painting. Put light against light - you have nothing. Put dark against dark - you have nothing. It's the contrast of light and dark that each give the other one meaning. This is unplanned it really just happens.</p>
+	</div>
+	<!-- forms! -->
+	<button type="button" onclick="alert('Hello World!')">Click me!</button>
+	<br>
+	<br>
+	<div id="formDiv">
+		<form method="post" action="Congrats.html"> <!-- specifies url where to submit form (default: this page) --> 
+			some text: <input type="text"/>
+			<br>
+			<br>
+			a number: <input type="number"/>
+			<br>
+			<br>
+			a date: <input type="date"/>
+			<br>
+			<br>
+			a dropdown: <select name="bears">
+							<option value="grizzly" selected>Grizzly</option>
+							<option value="polar">Polar</option>
+							<option value="panda">Panda</option>
+						</select>
+			<br>
+			<br>
+			a text area: <textarea name="message" rows="4" cols="25">Your text here</textarea>
+			<br>
+			<br>
+			from HTML5: datalists (also keygen and output) 
+			 <input list="browsers">
+			<datalist id="browsers">
+			<option value="Internet Explorer">
+			<option value="Firefox">
+			<option value="Chrome">
+			<option value="Opera">
+			<option value="Safari">
+			</datalist> 
+			<br>
+			<br>
+			radio buttons: <br>
+			<input type="radio" name="bearType" value="grizzly" checked>Grizzly<br>
+			<input type="radio" name="bearType" value="polar">Polar<br>
+			<input type="radio" name="bearType" value="panda">Panda<br>
+			<br>
+			<br> 
+			<input type="submit" value="Submit"/> <!-- buttton for submitting the form data to a form handler -->
+			<!-- if a form element does not have a name attributed, that data will not be submitted --> 
+		</form>
+	</div>
+	
+</body>
+</html>
