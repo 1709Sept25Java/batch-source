@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- you may need to include encoding info -->
+	<title>Hello World</title>
+	<style>
+		body{ background-color:red;}
+	</style>
+	<link rel="stylesheet" href="myCoolStyles.css"/>
+</head>
+<body style="background-color:#67d3ff">
+	<h1 class="center">This is a large heading</h1>
+	<h2>This is a slightly smaller heading</h2>
+	<h3 class="center">This is a slightly smaller heading</h3>
+	<h4>This is a slightly smaller heading</h4>
+	<h5 class="center">This is a slightly smaller heading</h5>
+	<h6>This is a slightly smaller heading</h6>
+	<div id="div1"><a href="https://en.wikipedia.org/wiki/Grizzly_bear">all about bears</a></div>
+	<div id="div2">
+		<img src="http://www.biologicaldiversity.org/assets/img/species/mammals/GrizzlyBearRobinSilver.jpg"
+			width ="150px" height="125px"alt="sleepy bear"/>
+		<p id="p1">Anytime you learn something your time and energy are not wasted. I guess I'm a little weird. I like 
+			to talk to trees and animals. That's okay though; I have more fun than most people. There's nothing wrong 
+			with having a tree as a friend. In this world, everything can be happy. That's what makes life fun. That 
+			you can make these decisions. That you can create the world that you want.</p>
+	</div>
+	
+	<!-- forms! -->
+	<button type="button" onlick="alert('Hello World!')">Click me!</button>
+	<div id="formDiv"> 
+		<form action="Congrats.html"> <!-- specifies url where to subit form (default is the page itself)-->
+			Some text: <input type="text"/>
+			<br>
+			<br>
+			A number: <input type="number"/>
+			<br>
+			<br>
+			A date: <input type="date"/>
+			<br>
+			<br>
+			A drop down: <select name="bears">
+							<option value="grizzly" selected>Grizzly</option>
+							<option value="polar">Polar</option>
+							<option value="panda">Panda</option>
+						 </select>
+			<br>
+			<br>
+			A text area: <textarea area name="message" rows="4" cols="25">Your text here</textarea>
+			<br>
+			<br>
+			<input type="radio" name="bearType" value="grizzly" checked>Grizzly<br>
+			<input type="radio" name="bearType" value="polar">Polar<br>
+			<input type="radio" name="bearType" value="panda">Panda<br>
+			<br>
+			<br>
+			<input type="submit" value="Submit"/> <!-- defines a button for submitting the form data to a form handler-->
+			<!-- if a form element does not have a name attribute, that data will not be submitted-->
+		</form>
+	</div>
+	
+</body>
+</html>
