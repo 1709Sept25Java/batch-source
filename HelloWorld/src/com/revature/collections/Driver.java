@@ -84,7 +84,7 @@ public class Driver {
 		//While maps are not collections, the EntrySet of a Map IS a Collection
 		//implementation of Set (entrySet)
 		for (Entry<Integer, Media> entry: hashMap.entrySet()) {
-			System.out.println(entry.getKey+"\t"+entry.getValue());
+			System.out.println(entry.getKey()+"\t"+entry.getValue());
 			System.out.println(entry.toString());
 		}
 	}

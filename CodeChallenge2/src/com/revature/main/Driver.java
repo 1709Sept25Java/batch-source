@@ -43,13 +43,9 @@ public class Driver {
 		try {
 			Connection con = DriverManager.getConnection(url,username,password);
 			PreparedStatement dept = con.prepareStatement("SELECT * FROM DEPARTMENTS WHERE DEPART_ID = ?");
-			getDepts.
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-	
+		}	
 	}
-
 }

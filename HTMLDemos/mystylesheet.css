@@ -1,0 +1,14 @@
+.center {
+	color:red;
+	text-align:center;
+}
+
+#p1 {
+	padding: 30px;
+	border: 5px;
+}
+
+img {
+
+	display:inline;
+}

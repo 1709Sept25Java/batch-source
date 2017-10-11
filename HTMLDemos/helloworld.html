@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- you may have to include encoding information -->
+		<title>Hello World</title>
+		<style>
+			body {background-color:red}
+		</style>
+		<link rel="stylesheet" href="mystylesheet.css"/>
+	</head>
+	<body style="background-color:#67d3ff">
+		<h1 class="center">this is a large heading</h1>
+		<h2 class="center">this is a slight smaller heading</h2>
+		<h3 class="center">this is a slight smaller heading</h3>
+		<h4>this is a slight smaller heading</h4>
+		<h5>this is a slight smaller heading</h5>
+		<h6>this is a slight smaller heading</h6>
+		<div id="div1">
+			<a href="https://en.wikipedia.org/wiki/Grizzly_bear">all about grizzly bears</a>
+			<img src="http://www.biologicaldiversity.org/assets/img/species/mammals/GrizzlyBearRobinSilver.jpg" width="150px" height="125px" alt="sleepy bear"/>
+
+		</div>
+		<div id="div2">
+			<p id="p1">
+				In your world you can create anything you desire. Here we're limited by the time we have. You don't want to kill all your dark areas they are very important. We don't have to be committed. We are just playing here. Now, we're going to fluff this cloud.
+			</p>
+
+		</div>
+		<button type="button" onclick="alert('Hello world')">Click me!</button>
+		<div id="formDiv">
+			<form action="congrats.html"> <!-- Specificies url where to submit the form -->
+				<input type="text"/>
+				<br>
+				<br>
+				<input type="number"/>
+				<br>
+				<br>
+				<br>
+				<input type="date"/>
+				<br>
+				<br>
+				a dropdown: <select name="bears"> 
+								<option value="grizzly" selected>Grizzly</option>
+								<option value="polar">Polar</option>
+								<option value="pand">Panda</option>
+
+							</select>
+				<br>
+				<br>
+				a text are: <textarea name="message" rows="4" cols="25">Your text area</textarea>
+				<br>
+				<br>
+				
+				from HTML5: datalists 
+				<input list="browsers">
+					<datalist id="browsers">
+						<option value="firefox">
+					</datalist>
+				<br>
+				<br>
+				radio buttons: <br>
+				<input type = "radio" name ="bearType" value="grizzly" checked>Grizzly<br>
+				<input type = "radio" name ="bearType" value="polar">Polar<br>
+				<input type = "radio" name ="bearType" value="panda">Panda<br>
+				<br>
+				<br>
+				
+				<input type="submit" value="Submit"/> <!--button for submitting the form data to a form handler --!>
+				<!-- if a form element doesn't have a submit button, the data won't be saved and lost --!>
+				
+				
+			</form>
+		</div>
+
+		</body>
+
+</html>
