@@ -2,6 +2,10 @@ package com.revature.domain;
 
 import java.sql.Date; //more expedient for converting to SQL queries, many ways 
 
+import javax.xml.bind.annotation.*;
+
+
+@XmlRootElement
 public class Bear {
 
 		public Bear(String name, Cave cave, BearType bearType, int weight, Date birthdate) {
@@ -32,18 +36,23 @@ public class Bear {
 		private int weight;
 		private Date birthdate;
 		
+		@XmlAttribute
 		public int getId() {
 			return id;
 		}
+		
 		public void setId(int id) {
 			this.id = id;
 		}
+		@XmlElement
 		public String getName() {
 			return name;
 		}
+		
 		public void setName(String name) {
 			this.name = name;
 		}
+		@XmlElement
 		public Cave getCave() {
 			return cave;
 		}
@@ -56,12 +65,14 @@ public class Bear {
 		public void setBearType(BearType bearType) {
 			this.bearType = bearType;
 		}
+		@XmlElement
 		public int getWeight() {
 			return weight;
 		}
 		public void setWeight(int weight) {
 			this.weight = weight;
 		}
+		@XmlElement
 		public Date getBirthdate() {
 			return birthdate;
 		}

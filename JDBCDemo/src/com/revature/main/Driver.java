@@ -10,7 +10,7 @@ import com.revature.util.ConnectionUtil;
 public class Driver {
 
 	public static void main(String[] args) {
-		
+		/*
 		Connection con=null;
 		try {
 			con = ConnectionUtil.getConnectionFromFile();
@@ -18,7 +18,7 @@ public class Driver {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		BeehiveDao bhd = new BeehiveDaoImpl();
 		System.out.println(bhd.getBeehives().toString());
 		System.out.println(bhd.getBeehiveById(7).toString());
@@ -30,6 +30,11 @@ public class Driver {
 		Bear b = new Bear("Joe",new Cave(7,"MANHATTAN",10),new BearType(1,"Grizzly"),200,new Date(1992,9,5));
 		
 		System.out.println(bd.createBear(b));
+		*/
+		
+		BearDao bd = new BearDaoXMLImpl("src/Bears.xml");
+		System.out.println(((BearDaoXMLImpl)bd).unmarshalBear("src/bearToUnmarshal.sml").toString());
+		
 	}
 	
 }
