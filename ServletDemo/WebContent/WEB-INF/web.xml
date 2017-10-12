@@ -8,8 +8,16 @@ id="WebApp_ID" version="3.1">
   	<servlet-name>calculator</servlet-name>
   	<servlet-class>com.revature.servlet.CalculatorServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>hello</servlet-name>
+  	<servlet-class>com.revature.servlet.HelloWorldServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>calculator</servlet-name>
   	<url-pattern>/calculator</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<url-pattern>/hello</url-pattern>
   </servlet-mapping>
 </web-app>
