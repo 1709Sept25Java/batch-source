@@ -20,7 +20,6 @@ public class MinimumMutations {
 				count++;
 			}
 		}
-		
 		System.out.println(bank);
 
 		if (count == 0) {

@@ -4,6 +4,14 @@ import java.io.Serializable;
 
 public abstract class Media implements Serializable{
 
+	private static final long serialVersionUID = 7579498246883300633L;
+
+
+
+	public Media() {
+
+		super();
+	}
 	public Media(String author, String title, int yearPublished, String genre) {
 		super();
 		this.author = author;

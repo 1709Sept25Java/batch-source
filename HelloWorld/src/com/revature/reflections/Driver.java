@@ -16,7 +16,7 @@ public class Driver {
 		Book b2 = new Book("Barack Obama", "Dreams from my Father", 1995, "Memoir");
 		// Book b3 = (Book) notGeneric(b1); -- does not work -- throws
 		// ClassCastException, but compiles
-		Book b3 = genericMethod(b1);
+		//Book b3 = genericMethod(b1);
 
 		Movie m1 = new Movie("", "Iron Man", 2008, "Action");
 		List<Media> mediaList = new LinkedList<Media>();

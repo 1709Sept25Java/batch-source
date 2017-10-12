@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bears>
+	<bear id = "7">
+	<name>
+	</name>
+	<cave id = "2">
+		<name></name>
+		<maxBears></maxBears>
+	</cave>
+	<weight></weight>
+	<birthdate></birthdate>
+	<bearType id = "1"></bearType>
+	</bear>
+
+</bears>

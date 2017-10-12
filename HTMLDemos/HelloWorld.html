@@ -1,0 +1,70 @@
+<!DOCTYPE html/>
+<html>
+<head>
+	<!--you may need to include encoding information -->
+	<title>Hello World</title>
+	<style>
+		body (background-color:red)
+	</style>
+	<link rel="stylesheet" href = "myCoolStyles.css"/>
+</head>
+<body style="background-color:#67d3ff">
+	<h1 class ="center">This is a large heading</h1>
+	<h2>this is a slighly smaller heading</h2>
+	<h3 class ="center">this is a slighly smaller heading</h3>
+	<h4>this is a slighly smaller heading</h4>
+	<h5 class ="center">this is a slighly smaller heading</h5>
+	<h6>this is a slighly smaller heading</h6>
+	<div id = "div1"><a href = "https://en.wikipedia.org/wiki/Grizzly_bear">all about bears</a></div>
+	<div id = "div2">
+		<img src = "http://www.biologicaldiversity.org/assets/img/species/mammals/GrizzlyBearRobinSilver.jpg" 
+		width="150" height ="125" alt="sleepy bear"/>
+		<p id = "p1">Here we're limited by the time we have. We tell people sometimes: we're like drug dealers, come into town and get everybody absolutely addicted to painting. It doesn't take much to get you addicted. Let's put some happy little clouds in our world.
+</p>
+	</div>
+	<!--forms! -->
+	<button type ="button" onclick ="alert('helloworld!')">Click me! </button>
+	<br>
+	<br>
+	<div id ="formDiv">
+		<form method = "post" action ="Congrats.html"> <!-- specifies url where to submit form(default:this page) -->
+			some text: <input type = "text"/>
+			<br>
+			<br>
+			a number: <input type = "number"/>
+			<br>
+			<br>
+			a date: <input type = "date"/>
+			<br>
+			<br>
+			a dropdown: <select name ="bears">
+							<option values = "grizzly" selected>Grizzly</option>
+							<option values = "polar">Polar</option>
+							<option values = "panda">Panda</option>
+						</select>
+			<br>
+			<br>
+			a text area: <textarea name = "message" rows = "4" cols = "25"> your text here</textarea>
+			from HTML5: datalists (also kaygan and output)
+			<input list ="browsers">
+			<datalist id="browsers">
+			<option value ="internet explorer">
+			<option value ="chrome">
+			<option value ="firefox">
+			</datalist>
+			<br>
+			<br>
+			radio buttons: <br>
+			<input type ="radio" name "bearType" value="grizzly" checked>Grizzly<br>
+			<input type ="radio" name "bearType" value="polar">polar<br>
+			<input type ="radio" name "bearType" value="panda">panda<br>
+			<br>
+			<br>
+			<input type ="submit" value="Submit"/> <!--button for submitting the form data to a form handler-->
+			<!--if a form element does not have a name attributed, the data will not be submitted-->
+			<!--if it does not have a handle, it will be lost either-->
+		
+		</form>
+	</div>
+</body>
+</html>

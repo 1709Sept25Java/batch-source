@@ -23,7 +23,7 @@ class Basket {
 	public synchronized int get() {
 		while(!available) {
 			try {
-				System.out.println("\t\t\t" + Thread.currentThread().getName() + "is waiting");
+				System.out.println("\t\t\t" + Thread.currentThread().getName() + " is waiting");
 				wait();
 			} catch(InterruptedException e) {
 				e.printStackTrace();
@@ -39,7 +39,7 @@ class Basket {
 	public synchronized void put(int value) {
 		while(available) {
 			try {
-				System.out.println("\t\t\t" + Thread.currentThread().getName() + "is waiting");
+				System.out.println("\t\t\t" + Thread.currentThread().getName() + " is waiting");
 				wait();
 			} catch(InterruptedException e) {
 				e.printStackTrace();

@@ -3,6 +3,13 @@ package com.revature.media;
 import java.io.Serializable;
 
 public class Movie extends Media implements Comparable<Movie>, Serializable{
+	private static final long serialVersionUID = -8232955013119782695L;
+	public Movie() {
+
+		super();
+
+
+	}
 	public Movie(String author, String title, int yearPublished, String genre) {
 		super(author, title, yearPublished, genre);
 		// TODO Auto-generated constructor stub
