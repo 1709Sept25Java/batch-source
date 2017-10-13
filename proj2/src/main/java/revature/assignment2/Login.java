@@ -1,15 +1,14 @@
 package revature.assignment2;
 
-import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
+
 import java.io.*;
 import java.sql.*;
 
 public class Login {	
-	
-	private static String filename = "connection.properties";
-	
 	Login(){
 		super();
 	}
@@ -39,8 +38,7 @@ public class Login {
 	}
 	
 	public void fillUserTable() throws SQLException, IOException{
-		//singleton
-		
+		//testing connection
 		String driver_db="jdbc:oracle:thin:";
 		String hostname_db="@sept25java.c1tpw2p9yz97.us-east-2.rds.amazonaws.com:1521:ORCL";
 		String user_db="Admin";
@@ -48,10 +46,7 @@ public class Login {
 		String test="Select FIRSTNAME from EMPLOYEE where EMPLOYEEID=0";
 		
 		Connection dbcon = null;
-		//get inputstream from connection.properties
-		//dbcon=ConnectionUtil.getConnectionFromFile();
-		
-		//get stored procedure from callable statement
+
 			try {	
 			dbcon=DriverManager.getConnection(driver_db+ hostname_db, user_db, pass_db);
 			PreparedStatement ps= dbcon.prepareStatement(test);
@@ -67,15 +62,6 @@ public class Login {
 				e.printStackTrace();
 			}
 	}
-	
-	public static Connection getConnectionFromFile() throws IOException, SQLException{
-		Properties prop = new Properties();
-		InputStream in = new FileInputStream(filename);
-		prop.load(in);
-		String url = prop.getProperty("url");
-		String username = prop.getProperty("username");
-		String password = prop.getProperty("password");
-		return DriverManager.getConnection(url,username,password);
-	}
+
 
 }
