@@ -1,17 +1,20 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import com.revature.domain.BankAccount;
+import com.revature.util.ConnectionUtil;
 
 public interface BankAccountDao {
 
-	public BankAccount getAccounts(int uId);
+	public List<BankAccount> getAccounts(int uId,ConnectionUtil cu);
 	
-	public boolean deleteAccount(int id);
+	public boolean deleteAccount(int uId,int id,ConnectionUtil cu);
 	
-	public boolean createAccount(int id);
+	public boolean createAccount(int uId,ConnectionUtil cu);
 	
-	public boolean withdraw(int id,double amt);
+	public int withdraw(int id,double amt,ConnectionUtil cu);
 	
-	public boolean deposit(int id,double amt);
+	public int deposit(int id,double amt,ConnectionUtil cu);
 	
 }

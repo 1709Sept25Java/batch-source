@@ -11,11 +11,12 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		Connection con = null;
+		ConnectionUtil cu = ConnectionUtil.getInstance();
 		
 		try {
-			con = ConnectionUtil.getConnection();
+			con = cu.getConnected();
 			
-			System.out.println(con.getClientInfo());
+			System.out.println(con.getTransactionIsolation());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

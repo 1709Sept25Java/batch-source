@@ -2,6 +2,14 @@ package com.revature.domain;
 
 public class Users {
 
+	public Users(int id, String username, String fname, String lname, boolean isAdmin) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.fname = fname;
+		this.lname = lname;
+		this.isAdmin = isAdmin;
+	}
 	public Users(int id, String username, String password, String fname, String lname, boolean isAdmin) {
 		super();
 		this.id = id;
@@ -73,7 +81,7 @@ public class Users {
 	}
 	@Override
 	public String toString() {
-		return "Users [username=" + username + ", password=" + password + ", fname=" + fname + ", lname=" + lname
+		return "Users [username=" + username + ", fname=" + fname + ", lname=" + lname
 				+ ", isAdmin=" + isAdmin + "]";
 	}
 }
