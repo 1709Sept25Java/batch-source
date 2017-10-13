@@ -1,0 +1,18 @@
+@charset "ISO-8859-1";
+
+body{
+		background-color:skyblue;
+		padding-left:100px;
+		padding-top: 50px;
+	}
+#div2
+	{
+		padding-left:100px;
+	}
+#testbox	
+	{
+		padding-left:100px;
+		background-color:red;
+		width:50px;
+		height: 50px;
+ 	}
