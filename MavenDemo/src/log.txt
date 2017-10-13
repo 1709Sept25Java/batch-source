@@ -1,0 +1,52 @@
+2017-10-03 14:49:43 WARN  root:14 - warn message
+2017-10-03 14:49:43 ERROR root:15 - error message
+2017-10-03 14:49:43 FATAL root:16 - fatal message
+2017-10-03 14:55:01 TRACE root:10 - trace message
+2017-10-03 14:55:01 DEBUG root:11 - debug message
+2017-10-03 14:55:01 INFO  root:12 - info message
+2017-10-03 14:55:01 WARN  root:14 - warn message
+2017-10-03 14:55:01 ERROR root:15 - error message
+2017-10-03 14:55:01 FATAL root:16 - fatal message
+2017-10-03 14:59:17 TRACE root:10 - trace message
+2017-10-03 14:59:17 DEBUG root:11 - debug message
+2017-10-03 14:59:17 INFO  root:12 - info message
+2017-10-03 14:59:17 WARN  root:14 - warn message
+2017-10-03 14:59:17 ERROR root:15 - error message
+2017-10-03 14:59:17 FATAL root:16 - fatal message
+2017-10-03 15:02:17 TRACE root:10 - trace message
+2017-10-03 15:02:17 DEBUG root:11 - debug message
+2017-10-03 15:02:17 INFO  root:12 - info message
+2017-10-03 15:02:17 WARN  root:14 - warn message
+2017-10-03 15:02:17 ERROR root:15 - error message
+2017-10-03 15:02:17 FATAL root:16 - fatal message
+2017-10-03 15:03:18 TRACE root:10 - trace message
+2017-10-03 15:03:18 DEBUG root:11 - debug message
+2017-10-03 15:03:18 INFO  root:12 - info message
+2017-10-03 15:03:18 WARN  root:14 - warn message
+2017-10-03 15:03:18 ERROR root:15 - error message
+2017-10-03 15:03:18 FATAL root:16 - fatal message
+2017-10-03 15:03:18 FATAL root:25 - / by zero
+java.lang.ArithmeticException: / by zero
+	at logging.demo.App.exceptionThrowingGarbage(App.java:20)
+	at logging.demo.App.main(App.java:11)
+2017-10-03 15:09:16 WARN  root:14 - warn message
+2017-10-03 15:09:16 ERROR root:15 - error message
+2017-10-03 15:09:16 FATAL root:16 - fatal message
+2017-10-03 15:09:16 FATAL root:25 - / by zero
+java.lang.ArithmeticException: / by zero
+	at logging.demo.App.exceptionThrowingGarbage(App.java:20)
+	at logging.demo.App.main(App.java:11)
+2017-10-03 16:15:48 WARN  root:14 - warn message
+2017-10-03 16:15:48 ERROR root:15 - error message
+2017-10-03 16:15:48 FATAL root:16 - fatal message
+2017-10-03 16:15:48 FATAL root:25 - / by zero
+java.lang.ArithmeticException: / by zero
+	at logging.demo.App.exceptionThrowingGarbage(App.java:20)
+	at logging.demo.App.main(App.java:11)
+2017-10-03 16:16:10 WARN  root:14 - warn message
+2017-10-03 16:16:10 ERROR root:15 - error message
+2017-10-03 16:16:10 FATAL root:16 - fatal message
+2017-10-03 16:16:10 FATAL root:25 - / by zero
+java.lang.ArithmeticException: / by zero
+	at logging.demo.App.exceptionThrowingGarbage(App.java:20)
+	at logging.demo.App.main(App.java:11)
