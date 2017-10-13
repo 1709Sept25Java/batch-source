@@ -13,6 +13,7 @@ public class ConnectionUtil {
 	private static String filename = "connection.properties";
 	
 	public static Connection getConnectionFromFile() throws IOException, SQLException{
+		
 		//check that our driver is being seen by Maven
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
