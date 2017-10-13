@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
@@ -18,6 +19,9 @@ public class CalculatorServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
+		RequestDispatcher rd = req.getRequestDispatcher("Calculator.html");
+		rd.forward(req, resp);
+		
 		PrintWriter pw = resp.getWriter();
 		pw.write("<p>The calculator page is</p> <br> <a href=\"Calculator.html\">here</a>");
 	}
@@ -54,10 +58,21 @@ public class CalculatorServlet extends HttpServlet{
 		} catch(Exception e) {
 			answer = "invalid number or operation";
 		}
+		
+		//including the answer in our request
+		req.setAttribute("answer", answer);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("answer");
+		rd.forward(req,resp);
+		
+		//resp.sendRedirect("answer");
+		
+		/*
 		//display answer
 		PrintWriter pw = resp.getWriter();
 		pw.write("<p style=\"margin:30px;\">The answer is: "+answer+"</p>");
 		pw.write("<p style=\"margin:30px;\"><a href=\"Calculator.html\">MORE NUMBERS PLEASE</a></p>");
+		*/
 	}
 
 }

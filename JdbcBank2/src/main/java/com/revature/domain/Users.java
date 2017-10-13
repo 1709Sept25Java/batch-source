@@ -2,6 +2,15 @@ package com.revature.domain;
 
 public class Users {
 
+	public Users(int id, String username, String password, String fname, String lname, boolean isAdmin) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.fname = fname;
+		this.lname = lname;
+		this.isAdmin = isAdmin;
+	}
 	public Users(String username, String password, String fname, String lname, boolean isAdmin) {
 		super();
 		this.username = username;
@@ -67,5 +76,4 @@ public class Users {
 		return "Users [username=" + username + ", password=" + password + ", fname=" + fname + ", lname=" + lname
 				+ ", isAdmin=" + isAdmin + "]";
 	}
-	
 }

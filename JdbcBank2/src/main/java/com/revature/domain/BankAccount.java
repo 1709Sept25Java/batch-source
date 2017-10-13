@@ -2,6 +2,13 @@ package com.revature.domain;
 
 public class BankAccount {
 
+	public BankAccount(int id, Users owner, int balance) {
+		super();
+		this.id = id;
+		this.owner = owner;
+		this.balance = balance;
+	}
+
 	public BankAccount(Users owner, int balance) {
 		super();
 		this.owner = owner;
@@ -46,5 +53,4 @@ public class BankAccount {
 	public String toString() {
 		return "BankAccount [owner=" + owner + ", balance=" + balance + "]";
 	}
-	
 }

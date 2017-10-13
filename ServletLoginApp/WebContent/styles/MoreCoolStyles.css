@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+
+.box{
+	background-color: #ea518f;
+	margin:40px;
+	padding:20px;
+	border-style:solid;
+	border-width:5px;
+}
+
+a{
+	border-style: solid;
+	border-width: 1px;
+	margin:10px;
+	padding:5px;
+}
+
+body{
+	background-color: #bbbcde;
+}
