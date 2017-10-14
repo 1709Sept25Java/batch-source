@@ -11,6 +11,8 @@ import com.revature.domain.Users;
 import com.revature.exception.InvalidUserException;
 import com.revature.util.ConnectionUtil;
 
+import oracle.jdbc.internal.OracleTypes;
+
 public class UsersDaoImpl implements UsersDao{
 
 	public UsersDaoImpl() {
@@ -31,12 +33,20 @@ public class UsersDaoImpl implements UsersDao{
 		//Try to establish the connection
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call LOGIN(?,?)}";
+			String sql = "{call LOGIN(?,?,?,?)}";
 			cs = conn.prepareCall(sql);	//prepare the function call in the database
 			cs.setString(1, username);	//set the username and password to send in
 			cs.setString(2, password);
+			cs.registerOutParameter(3, java.sql.Types.INTEGER);
+			cs.registerOutParameter(4, OracleTypes.CURSOR);
 			
-			ResultSet rs = cs.executeQuery();	//Execute the call and store in a ResultSet
+			cs.executeQuery();
+			
+			int found = cs.getInt(3);
+			System.out.println(found);
+			
+			//Retrieve the returned cursor and cast it in as a ResultSet
+			ResultSet rs = (ResultSet) cs.getObject(4);
 			
 			//Retrieve the User data from the result set
 			while(rs.next()) {
@@ -115,7 +125,7 @@ public class UsersDaoImpl implements UsersDao{
 		//Try to establish connection to database
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call DELETE_USERS(?)}";
+			String sql = "{call DELETE_USERS(?,?)}";
 			cs = conn.prepareCall(sql);	//Prepare call to database procedure
 			cs.setInt(1, id);	//Set the in parameters for the DELETE_USERS procedure
 			cs.registerOutParameter(2, java.sql.Types.NUMERIC);	//Register the out parameters to catch the return value
@@ -144,7 +154,7 @@ public class UsersDaoImpl implements UsersDao{
 		//Try to establish connection to the database
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call INSERT_USERS(?,?)}";
+			String sql = "{call INSERT_USERS(?,?,?,?)}";
 			cs = conn.prepareCall(sql);	//prepare call to database procedure
 			cs.setString(1, username);	//Set the in parameters of INSERT_USERS
 			cs.setString(2, password);
