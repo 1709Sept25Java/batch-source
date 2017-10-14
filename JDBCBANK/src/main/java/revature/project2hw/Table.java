@@ -1,3 +1,3 @@
-package revature.assignment2;
+package revature.project2hw;
 
 public enum Table  { First, Second };

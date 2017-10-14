@@ -1,4 +1,4 @@
-package revature.assignment2;
+package revature.project2hw;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

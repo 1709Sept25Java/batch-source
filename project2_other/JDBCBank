@@ -1,0 +1,142 @@
+--JANINE LEE ASSIGNMENT 3: BANK PROJECT
+--Creating tables
+
+CREATE TABLE B_USER(
+USER_ID NUMBER,
+U_USERNAME VARCHAR2(50),
+U_NAME VARCHAR2(50), 
+U_PW VARCHAR2(50),
+PRIMARY KEY (USER_ID)
+);
+
+CREATE TABLE B_ACCOUNT(
+ACC_ID NUMBER,
+ACC_TYPE NUMBER, --will be same as C_ACCID and E_RANK, so they have >1 ACC with same name
+ACC_BAL NUMBER,
+PRIMARY KEY (ACC_ID)
+);
+
+CREATE TABLE B_CUSTOMER(
+C_ID NUMBER,
+C_ACCID NUMBER,
+PRIMARY KEY (C_ID)
+);
+
+CREATE TABLE B_EMPLOYEE(
+E_ID NUMBER,
+E_RANK VARCHAR2(50),
+PRIMARY KEY (E_ID)
+);
+--altering to add foreign keys
+/*
+-each user has at least 1 main account (ACC_TYPE), with a number
+-a user may have multiple accounts (ACC_ID)
+    but identified by the same (ACC_TYPE)
+-each customer/employee gets their own account (ACC_ID)
+*/
+
+ALTER TABLE B_ACCOUNT
+ADD CONSTRAINT FK_USER
+FOREIGN KEY (ACC_TYPE) REFERENCES B_USER(USER_ID);
+    --connect userid to accounttype (each user has a main account)
+    
+    --same entries of ACC_TYPE, but unique ACC_ID
+    /*
+    ALTER TABLE B_ACCOUNT
+    ADD CONSTRAINT FK_USER
+    FOREIGN KEY (ACC_TYPE) REFERENCES B_ACCOUNT(ACC_ID);*/
+
+ALTER TABLE B_CUSTOMER
+ADD CONSTRAINT FK_CUSTOMER
+FOREIGN KEY (C_ID) REFERENCES B_ACCOUNT(ACC_ID);
+    --each customer has an accountid for each account
+ALTER TABLE B_EMPLOYEE
+ADD CONSTRAINT FK_EMPLOYEE
+FOREIGN KEY (E_ID) REFERENCES B_ACCOUNT(ACC_ID);
+    --each employee has an accountid for each account
+/*removing constraints
+ALTER TABLE B_ACCOUNT
+DROP CONSTRAINT FK_EMPLOYEE;
+*/
+
+--Creating triggers
+
+CREATE SEQUENCE USER_ID
+            START WITH 1
+            INCREMENT BY 1;
+CREATE SEQUENCE ACC_ID
+            START WITH 1
+            INCREMENT BY 1;
+CREATE SEQUENCE C_ID
+            START WITH 1
+            INCREMENT BY 1;
+CREATE SEQUENCE E_ID
+            START WITH 1
+            INCREMENT BY 1;
+----triggers after insert            
+CREATE OR REPLACE TRIGGER t
+BEFORE INSERT ON B_USER
+    FOR EACH ROW
+BEGIN
+        SELECT USER_ID.nextval INTO: new.USER_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+CREATE OR REPLACE TRIGGER t2
+BEFORE INSERT ON B_ACCOUNT
+    FOR EACH ROW
+BEGIN
+        SELECT ACC_ID.nextval INTO: new.ACC_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+CREATE OR REPLACE TRIGGER t3
+BEFORE INSERT ON EMPLOYEE
+    FOR EACH ROW
+BEGIN
+        SELECT E_ID.nextval INTO: new.E_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+CREATE OR REPLACE TRIGGER t4
+BEFORE INSERT ON CUSTOMER
+    FOR EACH ROW
+BEGIN
+        SELECT C_ID.nextval INTO: new.C_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+
+--function
+--balance transactions being done
+CREATE OR REPLACE FUNCTION b_bal(CURRENT_BAL IN NUMBER, B_TRANS NUMBER)
+RETURN NUMBER
+IS 
+    BAL_FINAL NUMBER;
+BEGIN
+    BAL_FINAL:=CURRENT_BAL+B_TRANS; 
+    RETURN BAL_FINAL;
+END;
+
+--stored procedures
+--getting users
+CREATE OR REPLACE PROCEDURE B_USER_MATCH
+    AS get_U SYS_REFCURSOR; --cursor get_U
+BEGIN
+    OPEN get_U for SELECT * FROM B_USER; --uses cursor, select user
+END;     
+--getting matching pw
+CREATE OR REPLACE PROCEDURE B_PW_MATCH 
+    AS get_PW SYS_REFCURSOR; --cursor get_U
+BEGIN
+    OPEN get_PW for SELECT * FROM B_USER;
+END;
+
+CREATE OR REPLACE PROCEDURE B_ACCOUNT_TRY
+    AS get_ACC SYS_REFCURSOR; --cursor get_ACC
+BEGIN
+     OPEN get_ACC for SELECT ACC_BAL FROM B_ACCOUNT
+        where ACC_TYPE=C_ID;
+     --uses cursor, select user/pw
+    --checks if pw and user is correct
+END;
