@@ -132,17 +132,18 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			throw new OverdraftException();
 		}
 		
+		//Try to establish database connection
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
 			String sql = "{call ACCOUNT_WITHDRAW(?,?)}";
-			cs = conn.prepareCall(sql);
-			cs.setInt(1, b.getId());
+			cs = conn.prepareCall(sql);	//Prepare call to database procedure ACCOUNT_WITHDRAW()
+			cs.setInt(1, b.getId());	//Set the in parameter values for the procedure call
 			cs.setDouble(2, amt);
-			cs.registerOutParameter(3, java.sql.Types.NUMERIC);
+			cs.registerOutParameter(3, java.sql.Types.NUMERIC);	//Register the out parameters to retrieve
 			
 			cs.executeUpdate();
 			
-			newBal = cs.getInt(3);
+			newBal = cs.getInt(3);	//Store the returned result
 			
 			
 		} catch (SQLException e) {
@@ -151,15 +152,36 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			e.printStackTrace();
 		}
 		
+		//Return the new account balance
 		return newBal;
 	}
 
 	@Override
 	public int deposit(int id, double amt) {
+		CallableStatement cs = null;
+		int newBal = 0;
 		
+		//Try to establish the database connection
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call ACCOUNT_DEPOSIT(?,?)}";
+			cs = conn.prepareCall(sql);	//Prepare call to database procedure ACCOUNT_DEPOSIT()
+			cs.setInt(1, id);	//Set the in parameters of the procedure
+			cs.setDouble(2, amt);
+			cs.registerOutParameter(3, java.sql.Types.NUMERIC);	//Register the out parameter to retrieve
+			
+			cs.executeQuery();	//Execute the call to the procedure
+			
+			newBal = cs.getInt(3);	//Store the value returned from the database
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		
-		return 0;
+		//return the new account balance
+		return newBal;
 	}
 
 }
