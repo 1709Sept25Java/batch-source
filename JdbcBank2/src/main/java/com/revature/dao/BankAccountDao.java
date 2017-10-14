@@ -3,18 +3,24 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.domain.BankAccount;
+import com.revature.exception.OverdraftException;
 import com.revature.util.ConnectionUtil;
 
 public interface BankAccountDao {
 
-	public List<BankAccount> getAccounts(int uId,ConnectionUtil cu);
+	//Function to list all the accounts the User has
+	public List<BankAccount> getAccounts(int uId);
 	
-	public boolean deleteAccount(int uId,int id,ConnectionUtil cu);
+	//Function to delete the account the user holds with a given id
+	public boolean deleteAccount(int uId,int id);
 	
-	public boolean createAccount(int uId,ConnectionUtil cu);
+	//Function to create a new account for the user with the id given
+	public boolean createAccount(int uId);
 	
-	public int withdraw(int id,double amt,ConnectionUtil cu);
+	//Function to withdraw the amount of money given from the account with the matching id
+	public int withdraw(BankAccount b,double amt) throws OverdraftException;
 	
-	public int deposit(int id,double amt,ConnectionUtil cu);
+	//Function to deposit the given amount of money from the account with the matching id
+	public int deposit(int id,double amt);
 	
 }

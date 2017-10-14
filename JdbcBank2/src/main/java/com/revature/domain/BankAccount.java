@@ -51,6 +51,6 @@ public class BankAccount {
 
 	@Override
 	public String toString() {
-		return "BankAccount [owner=" + owner + ", balance=" + balance + "]";
+		return "BankAccount [id= "+ id + ", balance=" + balance + "]";
 	}
 }

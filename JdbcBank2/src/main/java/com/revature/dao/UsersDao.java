@@ -3,15 +3,20 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.domain.Users;
+import com.revature.exception.InvalidUserException;
 import com.revature.util.ConnectionUtil;
 
 public interface UsersDao {
 
-	public Users login(String username,String password,ConnectionUtil cu);
+	//Function to allow user login by querying the database for the matching credentials
+	public Users login(String username,String password) throws InvalidUserException;
 	
-	public List<Users> getUsers(int id,ConnectionUtil cu);
+	//Function to Show all the users in the database
+	public List<Users> getUsers(int id);
 	
-	public boolean deleteUser(int id,ConnectionUtil cu);
+	//Function to delete a user with the given id
+	public boolean deleteUser(int id);
 	
-	public boolean createUser(String username,String password,String isAdmin,ConnectionUtil cu);
+	//Function to create a new user in the database
+	public boolean createUser(String username,String password,String isAdmin);
 }

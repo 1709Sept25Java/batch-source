@@ -1,7 +1,5 @@
 package com.revature.dao;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -10,28 +8,38 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.domain.BankAccount;
+import com.revature.exception.OverdraftException;
 import com.revature.util.ConnectionUtil;
 
 public class BankAccountDaoImpl implements BankAccountDao{
 
+	public BankAccountDaoImpl() {
+		super();
+	}
+
+	/*
+	 * Function to retrieve all the accounts for the user with the given id
+	 * */
 	@Override
-	public List<BankAccount> getAccounts(int uId,ConnectionUtil cu) {
+	public List<BankAccount> getAccounts(int uId) {
 		
 		List<BankAccount> ba = null;
 		CallableStatement cs = null;
 		
-		try(Connection conn = cu.getConnected()){
+		//Try to establish database connection
+		try(Connection conn = ConnectionUtil.getConnection()){
 			
 			String sql ="{call GET_ACCOUNTS(?)}";
-			cs = conn.prepareCall(sql);
-			cs.setInt(1, uId);
+			cs = conn.prepareCall(sql);	//Prepare the call to the Database function GET_ACCOUNTS()
+			cs.setInt(1, uId);	//Set the in parameter for the function
 			
-			ResultSet rs = cs.executeQuery();
+			ResultSet rs = cs.executeQuery();	//Store the returned accounts in a result set
+			//Loop to retrieve the data returned in the ResultSet
 			while(rs.next()) {
 				int id = rs.getInt("ACCOUNT_ID");
 				int bal = rs.getInt("BALANCE");
 				BankAccount b = new BankAccount(id,null,bal);
-				ba.add(b);
+				ba.add(b); //Store the retrieved accounts in a list
 			}
 			
 		} catch (SQLException e) {
@@ -40,25 +48,31 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			e.printStackTrace();
 		}
 		
+		//return the accounts
 		return ba;
 	}
 
+	/*
+	 * Function that deletes and account with the matching id and userid
+	 * Returns true if the delete was successful
+	 * */
 	@Override
-	public boolean deleteAccount(int uId,int id,ConnectionUtil cu) {
+	public boolean deleteAccount(int uId,int id) {
 		
 		CallableStatement cs = null;
-		 try(Connection conn = cu.getConnected()){
+		//Try to establish the database connection
+		 try(Connection conn = ConnectionUtil.getConnection()){
 			 
 			 String sql = "{call DELETE_ACCOUNT(?,?)}";
-			 cs = conn.prepareCall(sql);
-			 cs.setInt(1, uId);
+			 cs = conn.prepareCall(sql);	//Prepares the call to the database procedure DELETE_ACCOUNT
+			 cs.setInt(1, uId);		//Set the in parameters for the procedure
 			 cs.setInt(2, id);
-			 cs.registerOutParameter(3, java.sql.Types.NUMERIC);
+			 cs.registerOutParameter(3, java.sql.Types.NUMERIC);	//Register the out parameter to be returned
 			 
 			 cs.executeUpdate();
 			 
-			 int result = cs.getInt(3);
-			 if(result == -1) {
+			 int result = cs.getInt(3);	//Store the returned value
+			 if(result == -1) {	//Return false if the delete did not execute properly
 				 return false;
 			 }
 			 
@@ -68,26 +82,28 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			e.printStackTrace();
 		}
 		
+		 //Return true if the delete executed successfully
 		return true;
 	}
 
 	@Override
-	public boolean createAccount(int uId,ConnectionUtil cu) {
+	public boolean createAccount(int uId) {
 		
 		CallableStatement cs = null;
 		
-		try(Connection conn = cu.getConnected()){
+		//Establish the database connection
+		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call INSER_ACCOUNT(?)}";
-			cs = conn.prepareCall(sql);
-			cs.setInt(1, uId);
-			cs.registerOutParameter(2, java.sql.Types.NUMERIC);
+			String sql = "{call INSERT_ACCOUNT(?)}";
+			cs = conn.prepareCall(sql);	//Prepare the call to the stored procedure INSERT_ACCOUNT()
+			cs.setInt(1, uId);	//Set the in parameters for the procedure
+			cs.registerOutParameter(2, java.sql.Types.NUMERIC);	//Register the out parameters
 			
 			cs.executeUpdate();
 			
-			int result = cs.getInt(2);
+			int result = cs.getInt(2);	//Store the returned result
 			if(result == -1) {
-				return false;
+				return false;	//Return false if the account was not successfully added to the database
 			}
 			
 		} catch (SQLException e) {
@@ -96,19 +112,53 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			e.printStackTrace();
 		}
 		
+		//Return true if the account was successful inserted
 		return true;
 	}
 
+	/*
+	 * Function to withdraw from an account
+	 * It takes in the account id of the account to withdraw from and the amount of money to withdraw
+	 * 
+	 * */
 	@Override
-	public int withdraw(int id, double amt,ConnectionUtil cu) {
+	public int withdraw(BankAccount b, double amt) throws OverdraftException{
 		
+		CallableStatement cs = null;
+		int newBal = 0;
 		
+		//Throw an exception if the amount entered is greater than the account balance
+		if(b.getBalance()<amt) {
+			throw new OverdraftException();
+		}
 		
-		return 0;
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call ACCOUNT_WITHDRAW(?,?)}";
+			cs = conn.prepareCall(sql);
+			cs.setInt(1, b.getId());
+			cs.setDouble(2, amt);
+			cs.registerOutParameter(3, java.sql.Types.NUMERIC);
+			
+			cs.executeUpdate();
+			
+			newBal = cs.getInt(3);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return newBal;
 	}
 
 	@Override
-	public int deposit(int id, double amt,ConnectionUtil cu) {
+	public int deposit(int id, double amt) {
+		
+		
+		
 		return 0;
 	}
 

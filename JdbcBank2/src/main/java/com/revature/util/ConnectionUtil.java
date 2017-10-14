@@ -14,21 +14,9 @@ public class ConnectionUtil {
 
 	private static String filename = "connection.properties";
 	
-	private ConnectionUtil() {};
-	
-	private static ConnectionUtil connU;
-	private static Connection conn;
-	
-	public static ConnectionUtil getInstance() {
-		if(connU == null) {
-			connU = new ConnectionUtil();
-		}
+	public static Connection getConnection() throws IOException, SQLException{
 		
-		return connU;
-	}
-	
-	private Connection getConnection() throws IOException, SQLException{
-		
+		//Check that Maven has loaded JDBC
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -37,20 +25,15 @@ public class ConnectionUtil {
 		
 		Properties prop = new Properties();
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		
+		//Read the connection information from the properties file
 		prop.load(loader.getResourceAsStream(filename));
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
 		String password = prop.getProperty("password");
 		
+		//Create and return the connection
 		return DriverManager.getConnection(url,username,password);
-	}
-	
-	public Connection getConnected() throws IOException, SQLException {
-		if(conn == null){
-			conn = this.getConnection();
-		}
-		
-		return conn;
 	}
 	
 }
