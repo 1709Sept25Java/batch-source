@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class UserHist {
 
-	public UserHist(String type, Date logDate, Users owner, BankAccount owned) {
+	public UserHist(Date logDate, String type, Users owner, int owned) {
 		super();
 		this.type = type;
 		this.logDate = logDate;
@@ -24,7 +24,7 @@ public class UserHist {
 	
 	private Users owner;
 	
-	private BankAccount owned;
+	private int owned;
 
 	public int getId() {
 		return id;
@@ -58,11 +58,11 @@ public class UserHist {
 		this.owner = owner;
 	}
 
-	public BankAccount getOwned() {
+	public int getOwned() {
 		return owned;
 	}
 
-	public void setOwned(BankAccount owned) {
+	public void setOwned(int owned) {
 		this.owned = owned;
 	}
 

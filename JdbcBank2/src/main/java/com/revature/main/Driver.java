@@ -11,10 +11,9 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		Connection con = null;
-		ConnectionUtil cu = ConnectionUtil.getInstance();
 		
 		try {
-			con = cu.getConnected();
+			con = ConnectionUtil.getConnection();
 			
 			System.out.println(con.getTransactionIsolation());
 		} catch (IOException e) {
