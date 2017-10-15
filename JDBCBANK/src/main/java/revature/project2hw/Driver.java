@@ -23,8 +23,13 @@ public class Driver {
 			A user can execute multiple deposits or withdrawals in a session. 
 			A user can logout. 		 
 		 */
-		Login lg= new Login();
-		lg.checkUser();
+		//Login lg= new Login();
+		//lg.runCheckCredentials();
+		//CreateUserPass cuser= new CreateUserPass();
+		//cuser.runCreateAcc();
+		StoredProcedureTest spt= new StoredProcedureTest();
+		spt.checkUser();
+		//remember transactions and callable statements for procedures
 	}
 
 }

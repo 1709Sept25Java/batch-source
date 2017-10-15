@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import java.io.*;
 import java.sql.*;
+import revature.project2hw.IncorrectPwException;
 
 public class Login{	
 	Login(){
@@ -22,8 +23,7 @@ public class Login{
 	}
 
 	public void setUser1(String user1) {
-		//concatenate Strings for SQL syntax
-		this.user1 = "'"+user1+"'";
+		this.user1 = user1;
 	}
 
 	public String getPw1() {
@@ -31,7 +31,7 @@ public class Login{
 	}
 
 	public void setPw1(String pw1) {
-		this.pw1 = "'"+pw1+"'";
+		this.pw1 = pw1;
 	}
 	
 	public void userInput(){
@@ -39,42 +39,43 @@ public class Login{
 		Scanner scan= new Scanner(System.in);
 		
 		System.out.println("Username: ");
-		this.user1=scan.nextLine();
+		String u1=scan.nextLine();
 		System.out.println("Password: ");
-		this.pw1=scan.nextLine();
+		String pw1=scan.nextLine();
+		
+		this.user1=u1;
+		this.pw1=pw1;
 	}
 	
-	public String checkUser() throws SQLException {
+	public void checkUser() throws SQLException {
 		Connection con=null;
-		String fname=null, lname=null;
+		String user2=null; 
 		//replace with function that calls driver manager
 		try {
-			ManageConnection lg= new ManageConnection();
+			//ManageConnection lg= new ManageConnection();
 			con=ManageConnection.getConnectionFromFile();
 			
 			//test insert
-			this.user1="'Andrew'";
 			
-			String selectSQL = "SELECT FIRSTNAME,LASTNAME FROM EMPLOYEE WHERE FIRSTNAME="+this.user1;
+			String selectSQL = "SELECT U_USERNAME FROM B_USER WHERE U_USERNAME="+"'"+user1+"'";
 			PreparedStatement preparedStatement = con.prepareStatement(selectSQL);
 			ResultSet rs = preparedStatement.executeQuery(selectSQL );
 			ResultSetMetaData rms = rs.getMetaData();
 			rms.getCatalogName(0);
 			
 			while (rs.next()) {
-				fname = rs.getString(1); 
-				lname = rs.getString(2);
-				
+				user2 = rs.getString(1); 	
 			}
-			if(fname!=null|lname!=null) {
-				System.out.println(fname +" " +lname);
-				//if successfully doesn't return null, prints name out
+			
+			if(user2!=null) {
+				//System.out.println("Welcome back "+user+ "!!!");
+				//if successfully doesn't return null does get user
 				//might have this do nothing for later till pw is typed in too, 
 				//but always blocks login
 				//then checks for pw
 			}
 			else{
-				System.out.println("Did you forget your name?");
+				System.out.println("No username: "+user1+" Did you forget your UserName?");
 			}
 			
 			//.out.println(con.getMetaData().getDriverName());
@@ -83,46 +84,63 @@ public class Login{
 		}
 		//prevent leaking the connection
 		con.close();
-		String fullname= fname;
-		return fullname;
 	}
 	
-	public String checkPW(String user) throws SQLException{
+	public void checkPW() throws SQLException{
 		Connection con2=null;
 		String pw="";
-		user=this.user1;
-		//get password
-		String selectSQL = "SELECT LASTNAME FROM EMPLOYEE WHERE ="+this.user1 +" FIRSTNAME";
-		PreparedStatement preparedStatement = con2.prepareStatement(selectSQL);
-		ResultSet rs = preparedStatement.executeQuery(selectSQL );
-		ResultSetMetaData rms = rs.getMetaData();
-		
-		while (rs.next()) {
-			pw = rs.getString(1); 	
-		}
+		//get password---from user
 		
 		try {
-			ManageConnection lg= new ManageConnection();
+			//ManageConnection lg= new ManageConnection();
 			con2=ManageConnection.getConnectionFromFile();
+			
+			//U_PW is where pw is located
+			String selectSQL = "SELECT U_BAL FROM B_ACCOUNT WHERE U_USERNAME="
+					+ ""+"'"+user1+"'"+"AND U_PW=" + "'"+pw1+"'";
+			PreparedStatement preparedStatement = con2.prepareStatement(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery(selectSQL );
+			ResultSetMetaData rms = rs.getMetaData();
+
+			while (rs.next()) {
+				pw = rs.getString(1); 
+			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		System.out.println(pw);
-		
+		//if it doesn't succeeds in finding a password throws exception
+		if (pw!="") {
+		}
+		else if(pw=="") {
+			user1=null;
+			pw1=null;
+			try {
+				throw new IncorrectPwException("Incorrect Pw");
+			} catch (IncorrectPwException e) {
+				System.out.println("Incorrect Password or User! Please Try Again.");
+			}
+		}
+			
 		con2.close();
-		
-		return pw;
 	}
 	
 	public void checkCredentials(String user, String pw) throws SQLException {
-		if ((checkPW(this.user1)==null) || (checkUser()==null)) {
+		if (user1==null | (pw1==null)) {
 			System.out.println("Login Failure!");
 		}
-		else if((checkPW(this.user1)!=null) && (checkUser()!=null))
+		else if(user1!=null && pw1!=null)
 		{
-			System.out.println("Login Success! "+"Welcome "+this.user1);
+			System.out.println("Login Success! "+"Welcome "+user1+ "!");
 		}
+	}
+	
+	public void runCheckCredentials() throws SQLException {
+		userInput();
+		checkUser();
+		checkPW();
+		checkCredentials(user1,pw1);
+		//System.out.println("Success!");
 	}
 
 }
