@@ -1,6 +1,7 @@
 package com.revature.domain;
 
 public class Account {
+	
 	public Account(int accountID, String accountUser, String accountType, int accountBalance, String openDate) {
 		super();
 		this.accountID = accountID;
@@ -17,6 +18,8 @@ public class Account {
 	private String accountType;
 	private int accountBalance;
 	private String accountDate;
+	
+	//Get & set functions
 	public int getAccountID() {
 		return accountID;
 	}
@@ -41,9 +44,10 @@ public class Account {
 	public void setAccountBalance(int accountBalance) {
 		this.accountBalance = accountBalance;
 	}
+	
+	//Printing in a column-sort of way
 	@Override
 	public String toString() {
-		return "Account [accountID=" + accountID + ", accountUser=" + accountUser + ", accountType=" + accountType
-				+ ", accountBalance=" + accountBalance + "]";
+		return String.format("%-10s %-10s %-10s", accountID, ("$"+accountBalance+".00"), accountType); 
 	}
 }

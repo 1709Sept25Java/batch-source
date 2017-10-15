@@ -1,0 +1,11 @@
+package com.revature.bank;
+
+public class DuplicateUsernameException extends Exception {
+
+	private static final long serialVersionUID = 1L;
+
+	public DuplicateUsernameException(String message) {
+		super(message);
+	}
+
+}

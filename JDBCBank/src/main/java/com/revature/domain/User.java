@@ -1,6 +1,8 @@
 package com.revature.domain;
 
 public class User {
+	
+	//Different constructors for different cases | ex: we don't always want a user's password
 	public User(int userID, String userName, String userPassword, String userType) {
 		super();
 		this.userID = userID;
@@ -29,6 +31,8 @@ public class User {
 	private String userName;
 	private String userPassword;
 	private String userType;
+	
+	//Get & Set functions
 	public int getUserID() {
 		return userID;
 	}
@@ -53,8 +57,10 @@ public class User {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	
+	//Printing in a column-sort of way
 	@Override
 	public String toString() {
-		return "User [userID=" + userID + ", userName=" + userName + ", userType=" + userType + "]";
+		return String.format("%-10s %-10s %-10s", userID, userName, userType); 
 	}
 }

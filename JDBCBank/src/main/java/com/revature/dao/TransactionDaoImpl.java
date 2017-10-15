@@ -12,13 +12,16 @@ import com.revature.domain.Transaction;
 import oracle.jdbc.OracleTypes;
 
 public class TransactionDaoImpl implements TransactionDao {
-	Connection con;
-	int accountID;
+	private Connection con;
+	private int accountID;
+	
+	//Constructor needs a connection and account id
 	public TransactionDaoImpl(Connection con, int id) {
 		this.con = con;
 		this.accountID = id;
 	}
 	
+	//Returns an array of Transaction objects
 	public ArrayList<Transaction> viewTransactions() {
 		ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 		String viewTransaction = "{call VIEW_TRANSACTIONS(?,?)}";
@@ -36,7 +39,6 @@ public class TransactionDaoImpl implements TransactionDao {
 				String tTime = rs.getString(4);
 				int pBalance = rs.getInt(5);
 				int cBalance = rs.getInt(6);
-
 				Transaction transaction = new Transaction(tID, tA, tType, pBalance, cBalance, tTime);
 				transactions.add(transaction);
 			}		

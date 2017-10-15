@@ -1,6 +1,5 @@
 package com.revature.dao;
 
-
 public interface AdminDao {
 
 	public void viewUsers();

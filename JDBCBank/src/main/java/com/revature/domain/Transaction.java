@@ -21,11 +21,12 @@ public class Transaction {
 	private int transactionPrevious;
 	private int transactionCurrent;
 	private String transactionTime;
+	
+	//Printing in a column-sort of way
 	@Override
 	public String toString() {
-		return "Transaction [transactionID=" + transactionID + ", transactionAccount=" + transactionAccount
-				+ ", transactionType=" + transactionType + ", transactionPrevious=" + transactionPrevious
-				+ ", transactionCurrent=" + transactionCurrent + ", transactionTime=" + transactionTime + "]";
+		return String.format(" %-10s %-10s %-10s %-10s", transactionType, ("$"+transactionPrevious+".00"),  ("$"+transactionCurrent+".00"), transactionTime); 
+
 	}
 	public int getTransactionID() {
 		return transactionID;

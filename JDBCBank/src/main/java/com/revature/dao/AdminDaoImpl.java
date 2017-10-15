@@ -13,12 +13,21 @@ import com.revature.domain.User;
 
 import oracle.jdbc.OracleTypes;
 
+//AdminDao object is created from within Bank Session
+//The menu options we get for admin are:
+//		1. view users
+//		2. create user
+//		3. update user
+//		4. delete user
+//Note that both admin & customer dao use User objects
+//Until admin logs out, the admin can keep choosing a menu option
+
 public class AdminDaoImpl implements AdminDao {
 	
-	int adminID;
-	Connection con;	
-	boolean login;
-	List<User> users;
+	private int adminID;
+	private Connection con;	
+	private boolean login;
+	private List<User> users;
 	
 	public AdminDaoImpl(Connection con, int id) {
 		super();
@@ -32,7 +41,7 @@ public class AdminDaoImpl implements AdminDao {
 		return login;
 	}
 
-	public void logout() {
+	private void logout() {
 		this.login = false;
 	}
 	
@@ -48,6 +57,7 @@ public class AdminDaoImpl implements AdminDao {
 		logout();
 	}
 	
+	//Controls the methods that are called based on admin input
 	private void adminCommand(int option) {
 		switch (option){
 			case 0:
@@ -65,30 +75,27 @@ public class AdminDaoImpl implements AdminDao {
 		}
 	}
 
-	public static int adminMenu() {
+	private static int adminMenu() {
 		System.out.println("Admin menu");
 		String[] options = {"View Users","Create User", "Update User", "Delete User","Logout"};
-		return userInput(options)-1;
-	}
-
-	public static int userInput(String[] options) {
 		Scanner sc = new Scanner(System.in);
 		for (int i=0; i<options.length; i++) {
 			System.out.println((i+1) + ". " + options[i]);
 		}
         System.out.print("Please choose an option: ");
         String input = sc.nextLine();
-        return Integer.parseInt(input);
+        return Integer.parseInt(input)-1;
 	}
 	
 	public void viewUsers() {
 		this.users = getUsers();
+		System.out.printf("%-10s %-10s %-10s %-10s\n","","userid","username","usertype");
 		for (int i=0; i<users.size(); i++) {
-			System.out.println((i+1)+'\t'+users.get(i).toString());
+			System.out.printf("%-10s %-10s\n",(i+1),users.get(i).toString());
 		}
 	}
 	
-	public ArrayList<User> getUsers() {
+	private ArrayList<User> getUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		String viewUsers = "{call VIEW_USERS(?,?)}";
 		CallableStatement pstmt;
@@ -206,9 +213,6 @@ public class AdminDaoImpl implements AdminDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-
-	
+	}	
 
 }
