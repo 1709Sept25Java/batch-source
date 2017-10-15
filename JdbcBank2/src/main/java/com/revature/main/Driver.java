@@ -24,7 +24,6 @@ public class Driver {
 		Scanner sc = new Scanner(System.in);
 		String select = sc.nextLine();
 		int choice = Integer.parseInt(select);
-		//sc.close();
 		
 		//Chose next action based on user menu choice
 		switch (choice) {
@@ -39,13 +38,13 @@ public class Driver {
 			}
 			break;
 		case 3:
-			System.out.println("Goodbye!");
 			break;
 		default:
 			System.out.println("Not a menu option!");
-			System.out.println("Goodbye!");
 		}
 		sc.close();
+		
+		System.out.println("Goodbye!");
 	}
 	
 	public static void login(Scanner sc) {
@@ -63,9 +62,9 @@ public class Driver {
 			Users user = accessUsers.login(username, pw);
 			System.out.println(user);
 			if(!user.isAdmin()) {
-				UserSession.userSession(user);
+				UserSession.userSession(user,sc);
 			} else {
-				UserSession.adminSession(user);
+				UserSession.adminSession(user,sc);
 			}
 		} catch (InvalidUserException e) {
 			e.printStackTrace();

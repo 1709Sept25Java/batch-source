@@ -2,14 +2,14 @@ package com.revature.domain;
 
 public class BankAccount {
 
-	public BankAccount(int id, Users owner, int balance) {
+	public BankAccount(int id, int owner, int balance) {
 		super();
 		this.id = id;
 		this.owner = owner;
 		this.balance = balance;
 	}
 
-	public BankAccount(Users owner, int balance) {
+	public BankAccount(int owner, int balance) {
 		super();
 		this.owner = owner;
 		this.balance = balance;
@@ -21,7 +21,7 @@ public class BankAccount {
 
 	private int id;
 	
-	private Users owner;
+	private int owner;
 	
 	private int balance;
 
@@ -33,11 +33,11 @@ public class BankAccount {
 		this.id = id;
 	}
 
-	public Users getOwner() {
+	public int getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Users owner) {
+	public void setOwner(int owner) {
 		this.owner = owner;
 	}
 

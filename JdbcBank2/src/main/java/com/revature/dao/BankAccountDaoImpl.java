@@ -6,10 +6,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.revature.domain.BankAccount;
 import com.revature.exception.OverdraftException;
 import com.revature.util.ConnectionUtil;
+
+import oracle.jdbc.OracleTypes;
 
 public class BankAccountDaoImpl implements BankAccountDao{
 
@@ -23,22 +26,30 @@ public class BankAccountDaoImpl implements BankAccountDao{
 	@Override
 	public List<BankAccount> getAccounts(int uId) {
 		
-		List<BankAccount> ba = null;
+		List<BankAccount> ba = new ArrayList<>();
 		CallableStatement cs = null;
 		
 		//Try to establish database connection
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql ="{call GET_ACCOUNTS(?)}";
+			String sql ="{call GET_ACCOUNTS(?,?)}";
 			cs = conn.prepareCall(sql);	//Prepare the call to the Database function GET_ACCOUNTS()
 			cs.setInt(1, uId);	//Set the in parameter for the function
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
 			
-			ResultSet rs = cs.executeQuery();	//Store the returned accounts in a result set
+			cs.execute();
+			
+			ResultSet rs = (ResultSet)cs.getObject(2);	//Store the returned accounts in a result set
+			
+			if(rs == null) {
+				return ba;
+			}
+			
 			//Loop to retrieve the data returned in the ResultSet
 			while(rs.next()) {
 				int id = rs.getInt("ACCOUNT_ID");
 				int bal = rs.getInt("BALANCE");
-				BankAccount b = new BankAccount(id,null,bal);
+				BankAccount b = new BankAccount(id,uId,bal);
 				ba.add(b); //Store the retrieved accounts in a list
 			}
 			
@@ -67,7 +78,7 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			 cs = conn.prepareCall(sql);	//Prepares the call to the database procedure DELETE_ACCOUNT
 			 cs.setInt(1, uId);		//Set the in parameters for the procedure
 			 cs.setInt(2, id);
-			 cs.registerOutParameter(3, java.sql.Types.NUMERIC);	//Register the out parameter to be returned
+			 cs.registerOutParameter(3, java.sql.Types.INTEGER);	//Register the out parameter to be returned
 			 
 			 cs.executeUpdate();
 			 
@@ -94,10 +105,10 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		//Establish the database connection
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call INSERT_ACCOUNT(?)}";
+			String sql = "{call INSERT_ACCOUNT(?,?)}";
 			cs = conn.prepareCall(sql);	//Prepare the call to the stored procedure INSERT_ACCOUNT()
 			cs.setInt(1, uId);	//Set the in parameters for the procedure
-			cs.registerOutParameter(2, java.sql.Types.NUMERIC);	//Register the out parameters
+			cs.registerOutParameter(2, java.sql.Types.INTEGER);	//Register the out parameters
 			
 			cs.executeUpdate();
 			
@@ -122,7 +133,7 @@ public class BankAccountDaoImpl implements BankAccountDao{
 	 * 
 	 * */
 	@Override
-	public int withdraw(BankAccount b, double amt) throws OverdraftException{
+	public int withdraw(BankAccount b, int amt) throws OverdraftException{
 		
 		CallableStatement cs = null;
 		int newBal = 0;
@@ -135,11 +146,11 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		//Try to establish database connection
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call ACCOUNT_WITHDRAW(?,?)}";
+			String sql = "{call ACCOUNT_WITHDRAW(?,?,?)}";
 			cs = conn.prepareCall(sql);	//Prepare call to database procedure ACCOUNT_WITHDRAW()
 			cs.setInt(1, b.getId());	//Set the in parameter values for the procedure call
 			cs.setDouble(2, amt);
-			cs.registerOutParameter(3, java.sql.Types.NUMERIC);	//Register the out parameters to retrieve
+			cs.registerOutParameter(3, java.sql.Types.INTEGER);	//Register the out parameters to retrieve
 			
 			cs.executeUpdate();
 			
@@ -157,18 +168,19 @@ public class BankAccountDaoImpl implements BankAccountDao{
 	}
 
 	@Override
-	public int deposit(int id, double amt) {
+	public int deposit(int id, int amt) {
 		CallableStatement cs = null;
 		int newBal = 0;
 		
 		//Try to establish the database connection
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call ACCOUNT_DEPOSIT(?,?)}";
+			String sql = "{call ACCOUNT_DEPOSIT(?,?,?)}";
 			cs = conn.prepareCall(sql);	//Prepare call to database procedure ACCOUNT_DEPOSIT()
-			cs.setInt(1, id);	//Set the in parameters of the procedure
-			cs.setDouble(2, amt);
-			cs.registerOutParameter(3, java.sql.Types.NUMERIC);	//Register the out parameter to retrieve
+			//Set the in parameters of the procedure
+			cs.setInt(1, id);	
+			cs.setInt(2, amt);
+			cs.registerOutParameter(3, java.sql.Types.INTEGER);	//Register the out parameter to retrieve
 			
 			cs.executeQuery();	//Execute the call to the procedure
 			

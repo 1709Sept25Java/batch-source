@@ -18,9 +18,9 @@ public interface BankAccountDao {
 	public boolean createAccount(int uId);
 	
 	//Function to withdraw the amount of money given from the account with the matching id
-	public int withdraw(BankAccount b,double amt) throws OverdraftException;
+	public int withdraw(BankAccount b,int amt) throws OverdraftException;
 	
 	//Function to deposit the given amount of money from the account with the matching id
-	public int deposit(int id,double amt);
+	public int deposit(int id,int amt);
 	
 }
