@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.revature.domain.Users;
 import com.revature.exception.InvalidUserException;
+import com.revature.exception.UserNotCreatedException;
 import com.revature.util.ConnectionUtil;
 
 public interface UsersDao {
@@ -18,5 +19,8 @@ public interface UsersDao {
 	public boolean deleteUser(int id);
 	
 	//Function to create a new user in the database
-	public boolean createUser(String username,String password,String isAdmin);
+	public boolean createUser(String username,String password,String isAdmin) throws UserNotCreatedException;
+	
+	//Function to update user, giving or taking admin flag
+	public boolean updateUser(int uId, String isAdm);
 }

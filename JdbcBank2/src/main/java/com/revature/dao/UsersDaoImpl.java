@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.revature.domain.Users;
 import com.revature.exception.InvalidUserException;
+import com.revature.exception.UserNotCreatedException;
 import com.revature.util.ConnectionUtil;
 
 import oracle.jdbc.internal.OracleTypes;
@@ -43,7 +44,9 @@ public class UsersDaoImpl implements UsersDao{
 			cs.executeQuery();
 			
 			int found = cs.getInt(3);
-			System.out.println(found);
+			if(found == -1) {
+				throw new InvalidUserException();
+			}
 			
 			//Retrieve the returned cursor and cast it in as a ResultSet
 			ResultSet rs = (ResultSet) cs.getObject(4);
@@ -56,7 +59,7 @@ public class UsersDaoImpl implements UsersDao{
 				String lname = rs.getString("LAST_NAME");
 				String admin = rs.getString("IS_ADMIN");
 				boolean isAdmin = false;
-				if(admin.equals("T")) {
+				if(admin.equals("t")) {
 					isAdmin = true;
 				}
 				//Save the user data locally
@@ -148,7 +151,7 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean createUser(String username, String password,String isAdmin) {
+	public boolean createUser(String username, String password,String isAdmin) throws UserNotCreatedException {
 		
 		CallableStatement cs = null;
 		//Try to establish connection to the database
@@ -165,7 +168,7 @@ public class UsersDaoImpl implements UsersDao{
 			
 			int result = cs.getInt(4);	//Store the returned value of the procedure
 			if(result == -1) {
-				return false;	//If the returned value is -1 then the User was not created
+				throw new UserNotCreatedException(); //If the returned value is -1 then the User was not created
 			}
 			
 		} catch (SQLException e) {
@@ -175,6 +178,39 @@ public class UsersDaoImpl implements UsersDao{
 		}
 		
 		//Return true if the create successfully executed
+		return true;
+	}
+	
+	/*
+	 * Function to update change a user's admin status
+	 * */
+	public boolean updateUser(int uId, String isAdm) {
+		CallableStatement cs = null;
+		
+		//Try to establish database connection
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call UPDATE_USER(?,?,?)}";
+			//Prepare call to database function UPDATE_USER()
+			cs = conn.prepareCall(sql);	
+			cs.setInt(1, uId);
+			cs.setString(2, isAdm);
+			//Register the out parameter for errors in the database
+			cs.registerOutParameter(3, java.sql.Types.INTEGER); 
+			
+			cs.execute();
+			
+			int result = cs.getInt(3);
+			if(result == -1) {
+				//Return false if the user was not successfully updated
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 
