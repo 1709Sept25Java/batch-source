@@ -8,6 +8,20 @@ public class User {
 		this.userPassword = userPassword;
 		this.userType = userType;
 	}
+	
+	public User(int userID, String userType) {
+		super();
+		this.userID = userID;
+		this.userType = userType;
+	}
+	
+	public User(int userID, String username, String userType) {
+		super();
+		this.userID = userID;
+		this.userName = username;
+		this.userType = userType;
+	}
+	
 	public User() {
 		super();
 	}

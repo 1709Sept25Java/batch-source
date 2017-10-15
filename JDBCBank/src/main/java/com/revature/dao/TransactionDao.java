@@ -1,10 +1,10 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.domain.Transaction;
 
 public interface TransactionDao {
-	public List<Transaction> getTransactions();
-	public Transaction getTransactionByID(int id);
+	public ArrayList<Transaction> viewTransactions();
 }

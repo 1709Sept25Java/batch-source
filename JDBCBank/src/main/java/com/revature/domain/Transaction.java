@@ -1,6 +1,7 @@
 package com.revature.domain;
 
 public class Transaction {
+
 	public Transaction(int transactionID, int transactionAccount, String transactionType, int transactionPrevious,
 			int transactionCurrent, String transactionTime) {
 		super();

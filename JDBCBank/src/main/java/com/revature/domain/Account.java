@@ -1,12 +1,13 @@
 package com.revature.domain;
 
 public class Account {
-	public Account(int accountID, String accountUser, String accountType, int accountBalance) {
+	public Account(int accountID, String accountUser, String accountType, int accountBalance, String openDate) {
 		super();
 		this.accountID = accountID;
 		this.accountUser = accountUser;
 		this.accountType = accountType;
 		this.accountBalance = accountBalance;
+		this.accountDate = openDate;
 	}
 	public Account() {
 		super();
@@ -15,6 +16,7 @@ public class Account {
 	private String accountUser;
 	private String accountType;
 	private int accountBalance;
+	private String accountDate;
 	public int getAccountID() {
 		return accountID;
 	}
