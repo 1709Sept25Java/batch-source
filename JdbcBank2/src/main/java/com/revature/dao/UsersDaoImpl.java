@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.domain.Users;
@@ -84,15 +85,23 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public List<Users> getUsers(int id) {
-		List<Users> u = null;
+		List<Users> u = new ArrayList<>();
 		CallableStatement cs = null;
 		
 		//Try to establish the database connection
 		try(Connection conn = ConnectionUtil.getConnection()){
-			String sql = "{call VIEW_USERS(?)}";
+			String sql = "{call VIEW_USERS(?,?)}";
 			cs = conn.prepareCall(sql);	//prepare the call to the database function
-			cs.setInt(1, id);	//set the id of the admin looking to view the users (their own user info
-			ResultSet rs = cs.executeQuery();										//won't be displayed)
+			//set the id of the admin looking to view the users (their own user info won't be displayed)
+			cs.setInt(1, id);
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
+			
+			cs.execute();
+			ResultSet rs = (ResultSet) cs.getObject(2);
+			
+			if(rs == null) {
+				return u;
+			}
 			
 			//Retrieve the User data from the ResultSet and store it in a List of Users
 			while(rs.next()) {
@@ -131,7 +140,7 @@ public class UsersDaoImpl implements UsersDao{
 			String sql = "{call DELETE_USERS(?,?)}";
 			cs = conn.prepareCall(sql);	//Prepare call to database procedure
 			cs.setInt(1, id);	//Set the in parameters for the DELETE_USERS procedure
-			cs.registerOutParameter(2, java.sql.Types.NUMERIC);	//Register the out parameters to catch the return value
+			cs.registerOutParameter(2, java.sql.Types.INTEGER);	//Register the out parameters to catch the return value
 			
 			cs.executeUpdate();
 			

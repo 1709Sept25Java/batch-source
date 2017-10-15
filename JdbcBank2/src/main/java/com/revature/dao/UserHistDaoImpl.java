@@ -8,10 +8,13 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.domain.UserHist;
 import com.revature.util.ConnectionUtil;
+
+import oracle.jdbc.internal.OracleTypes;
 
 public class UserHistDaoImpl implements UserHistDao{
 
@@ -24,18 +27,30 @@ public class UserHistDaoImpl implements UserHistDao{
 	public List<UserHist> getHistory(int id) {
 		
 		CallableStatement cs = null;
-		List<UserHist> uh = null;
+		List<UserHist> uh = new ArrayList<>();
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call VIEW_USER_HIST(?)}";
+			String sql = "{call VIEW_USER_HIST(?,?)}";
 			//Prepare call to the database function VIEW_USER_HIST()
 			cs = conn.prepareCall(sql);
 			//Set the in parameter for the function
 			cs.setInt(1, id);
+			//Register the out parameter
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
+			
+			cs.execute();
 			
 			//Execute function call and store in a ResultSet
-			ResultSet rs = cs.executeQuery();
+			ResultSet rs = (ResultSet) cs.getObject(2);
+			
+			//Check if the resultset is empty
+			if(!rs.next()) {
+				return uh;
+			}
+			//Reset the cursor if not emp
+			rs.beforeFirst();
+			
 			//Loop to retrieve the USER_HIST records in the result set
 			while(rs.next()) {
 				//Capture the values for the records
@@ -45,7 +60,7 @@ public class UserHistDaoImpl implements UserHistDao{
 				int account = rs.getInt("ACCOUNT_ID");
 				//Store the User_hist record retrieved locally
 				UserHist newUH = new UserHist(ld,type,null,account);
-				
+				uh.add(newUH);
 			}
 			
 		} catch (SQLException e) {

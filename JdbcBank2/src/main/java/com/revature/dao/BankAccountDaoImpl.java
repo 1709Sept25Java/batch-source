@@ -74,7 +74,7 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		//Try to establish the database connection
 		 try(Connection conn = ConnectionUtil.getConnection()){
 			 
-			 String sql = "{call DELETE_ACCOUNT(?,?)}";
+			 String sql = "{call DELETE_ACCOUNT(?,?,?)}";
 			 cs = conn.prepareCall(sql);	//Prepares the call to the database procedure DELETE_ACCOUNT
 			 cs.setInt(1, uId);		//Set the in parameters for the procedure
 			 cs.setInt(2, id);

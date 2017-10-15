@@ -18,7 +18,7 @@ public class Driver {
 		System.out.println("Please select an option from the menu below:");
 		System.out.println("\t 1) Log in to your account");
 		System.out.println("\t 2) Create a new account");
-		System.out.println("\t 3) Exit the console bank");
+		System.out.println("\t 3) Exit the First Intergalactic Bank of Prosper");
 		
 		//Retrieve user menu selection input
 		Scanner sc = new Scanner(System.in);

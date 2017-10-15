@@ -6,10 +6,17 @@ import java.util.Scanner;
 
 import com.revature.dao.BankAccountDao;
 import com.revature.dao.BankAccountDaoImpl;
+import com.revature.dao.UsersDao;
+import com.revature.dao.UsersDaoImpl;
 import com.revature.domain.BankAccount;
 import com.revature.domain.Users;
 import com.revature.exception.OverdraftException;
+import com.revature.exception.PasswordMismatchException;
+import com.revature.exception.UserNotCreatedException;
 
+/*
+ * Function that controls a user session for the bank
+ * */
 public class UserSession {
 	
 	public static void userSession(Users user, Scanner sc) {
@@ -25,21 +32,22 @@ public class UserSession {
 			System.out.println("You have no accounts.");
 		}
 		
-		
-		
+		//Loop to continue displaying options until the user logs out
 		while(user != null) {
+			//Menu options
 			System.out.println("Please select an item from the list below:");
 			System.out.println("\t 1) Create new account");
 			System.out.println("\t 2) Delete account");
 			System.out.println("\t 3) Deposit int an account");
 			System.out.println("\t 4) Withdraw from an account");
-			System.out.println("\t 5) Log out");
+			System.out.println("\t 5) Log out of the Intergalactic Bank of Prosper");
 			
 			int choice = Integer.parseInt(sc.nextLine());
-			
+			//Switch to perform user desired function
 			switch (choice){
 			case 1:
 				boolean created = baDao.createAccount(user.getId());
+				//Let the user know if the account was successfully created
 				if(created) {
 					System.out.println("You have successfully created a new account!");
 				} else {
@@ -47,6 +55,7 @@ public class UserSession {
 				}
 				break;
 			case 2:
+				//Check that the user has accounts before calling the delete function
 				if(!accounts.isEmpty()) {
 					userDeleteAccount(user,baDao,accounts);
 					break;
@@ -55,9 +64,8 @@ public class UserSession {
 					break;
 				}
 			case 3:
-				
+				//Check that the user has an account before giving them deposit options
 				if(!accounts.isEmpty()) {
-					
 					userDeposit(user,sc,baDao,accounts);
 					
 				} else {
@@ -65,8 +73,8 @@ public class UserSession {
 				}
 				break;
 			case 4:
+				//Check that the user had an account before giving them withdrawal options
 				if(!accounts.isEmpty()) {
-					
 					userWithdraw(user,sc,baDao,accounts);
 					
 				} else {
@@ -74,6 +82,7 @@ public class UserSession {
 				}
 				break;
 			case 5:
+				//Break the loop to end the user session
 				user = null;
 				break;
 			default:
@@ -81,7 +90,58 @@ public class UserSession {
 				break;
 			}
 		}
+			
+	}
+	
+	/*
+	 * Function that controls admin user sessions
+	 * */
+	public static void adminSession(Users user, Scanner sc) {
 		
+		//Call to show all use accounts
+		UsersDao uDao = new UsersDaoImpl();
+		List<Users> customers = uDao.getUsers(user.getId());
+		if(!customers.isEmpty()) {
+			for(Users u : customers) {
+				System.out.println(u.toString());
+			}
+		} else {
+			System.out.println("There are no user accounts!");
+		}
+		
+		while(user != null) {
+			//Admin menu options
+			System.out.println("Please select an item from the list below:");
+			System.out.println("\t 1) Create new user");
+			System.out.println("\t 2) Delete a user");
+			System.out.println("\t 3) Alter user rights");
+			System.out.println("\t 4) Log out as Prosper Admin");
+			int choice = Integer.parseInt(sc.nextLine());
+			
+			//Switch to perform actions desired by admin
+			switch(choice) {
+			case 1:
+				try {
+					adminCreateAccount(uDao,sc);
+				} catch (PasswordMismatchException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 2:
+				admDeleteUser(uDao,sc,customers);
+				break;
+			case 3:
+				admUpdateUser(uDao,sc,customers);
+				break;
+			case 4:
+				user = null;
+				break;
+			default:
+				System.out.println("Not a menu option, please try again!");
+				break;
+			}
+			
+		}
 		
 	}
 	
@@ -94,7 +154,7 @@ public class UserSession {
 		Iterator<BankAccount> it = accounts.iterator();
 		while(it.hasNext()) {
 			BankAccount b = it.next();
-			if(b.getId() == baId && b.getBalance() != 0) {
+			if(b.getId() == baId && b.getBalance() == 0) {
 				deleted = baDao.deleteAccount(user.getId(), baId);
 				it.remove();
 			}
@@ -169,14 +229,85 @@ public class UserSession {
 		
 	}
 	
-	public static void adminSession(Users user, Scanner sc) {
+	public static void adminCreateAccount(UsersDao uDao,Scanner sc) throws PasswordMismatchException {
+		//Have the user set the username and password for their new account
+				System.out.println("Create Account ");
+				System.out.println("Username: ");
+				String uname = sc.nextLine();
+				System.out.println("Password: ");
+				String pw = sc.nextLine();
+				System.out.println("Verify password: ");
+				String pwCheck = sc.nextLine();
+				System.out.println("Is this user an admin(t/f): ");
+				String adm = sc.nextLine();
+				
+				//Throw an exception if the password does not match
+				if(!pw.equals(pwCheck)) {
+					throw new PasswordMismatchException();
+				}
+				
+				//Try to insert a new user into the database
+				boolean create;
+				try {
+					create = uDao.createUser(uname,pw,adm);
+					System.out.println("Please login: ");
+					//Call the login function if the user is successfully inserted
+					if(create) {
+						System.out.println("User successfully added to the database");
+					}
+					
+				} catch (UserNotCreatedException e) {
+					e.printStackTrace();
+				}
+	}
+	
+	public static void admUpdateUser(UsersDao uDao, Scanner sc, List<Users> customers) {
 		
-		//Call to show all use accounts
+		System.out.println("Please enter the id of the customer you wish to update: ");
+		int uId = Integer.parseInt(sc.nextLine());
+		boolean updated = false;
 		
-		System.out.println("Please select an item from the list below:");
-		System.out.println("\t 1) Create new user");
-		System.out.println("\t 2) Delete a user");
-		System.out.println("\t 3) Alter user rights");
+		Iterator<Users> it = customers.iterator();
+		while(it.hasNext()) {
+			Users u = it.next();
+			
+			if(u.getId() == uId) {
+				if(u.isAdmin()) {
+					updated = uDao.updateUser(u.getId(), "f");
+					u.setAdmin(false);
+				} else {
+					updated = uDao.updateUser(u.getId(), "t");
+					u.setAdmin(true);
+				}
+			}
+		}
+		
+		if(updated) {
+			System.out.println("Update success!");
+		}
+		
+	}
+	
+	public static void admDeleteUser(UsersDao uDao,Scanner sc,List<Users> customers) {
+		
+		System.out.println("Please enter the id of the User you wish to delete: ");
+		int uId = Integer.parseInt(sc.nextLine());
+		boolean deleted = false;
+		
+		Iterator<Users> it = customers.iterator();
+		while(it.hasNext()) {
+			Users u = it.next();
+			
+			if(u.getId() == uId) {
+				deleted = uDao.deleteUser(u.getId());
+				it.remove();
+			}
+		}
+		
+		if(deleted) {
+			System.out.println("User successfully deleted!");
+		}
+		
 	}
 
 }
