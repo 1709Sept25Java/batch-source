@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Driver {
 
@@ -23,13 +24,30 @@ public class Driver {
 			A user can execute multiple deposits or withdrawals in a session. 
 			A user can logout. 		 
 		 */
-		//Login lg= new Login();
-		//lg.runCheckCredentials();
-		//CreateUserPass cuser= new CreateUserPass();
-		//cuser.runCreateAcc();
-		StoredProcedureTest spt= new StoredProcedureTest();
-		spt.checkUser();
+		switchActions();
+		//StoredProcedureTest spt= new StoredProcedureTest();
+		//spt.checkUser();
 		//remember transactions and callable statements for procedures
+	}
+
+	public static void switchActions() throws SQLException {
+		Scanner scan= new Scanner(System.in);
+		System.out.println("Select a number...."
+				+ "\n1)Login"
+				+ "\n2)Create an Account");
+		int choice=scan.nextInt();
+		switch(choice) {
+		case 1:
+			Login lg= new Login();
+			lg.runCheckCredentials();
+			break;
+		case 2:
+			CreateUserPass cuser= new CreateUserPass();
+			cuser.runCreateAcc();
+			break;
+		default:
+			break;
+		}
 	}
 
 }

@@ -96,8 +96,8 @@ public class Login{
 			con2=ManageConnection.getConnectionFromFile();
 			
 			//U_PW is where pw is located
-			String selectSQL = "SELECT U_BAL FROM B_ACCOUNT WHERE U_USERNAME="
-					+ ""+"'"+user1+"'"+"AND U_PW=" + "'"+pw1+"'";
+			String selectSQL = "SELECT U_PW FROM B_USER WHERE U_USERNAME= "
+					+ ""+"'"+user1+"'"+" AND U_PW= " + "'"+pw1+"'";
 			PreparedStatement preparedStatement = con2.prepareStatement(selectSQL);
 			ResultSet rs = preparedStatement.executeQuery(selectSQL );
 			ResultSetMetaData rms = rs.getMetaData();
