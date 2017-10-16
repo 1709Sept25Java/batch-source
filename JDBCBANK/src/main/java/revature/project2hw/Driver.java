@@ -25,10 +25,10 @@ public class Driver {
 			A user can logout. 		 
 		 */
 		
-		//switchActions();
+		switchActions();
 
-		StoredProcedureTest t=new StoredProcedureTest();
-		t.checkUser();
+		//StoredProcedureTest t=new StoredProcedureTest();
+		//t.checkUser();
 		//StoredProcedureTest spt= new StoredProcedureTest();
 		//spt.checkUser();
 		//remember transactions and callable statements for procedures
