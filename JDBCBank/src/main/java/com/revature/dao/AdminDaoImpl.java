@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.bank.DuplicateUsernameException;
 import com.revature.connection.DatabaseConnection;
 import com.revature.domain.User;
 
@@ -34,7 +35,7 @@ public class AdminDaoImpl implements AdminDao {
 		this.adminID = id;
 		this.con = con;
 		this.login = true;
-		this.users = getUsers();
+		this.users = getUsers(); //We get users as part of constructutor 
 	}
 
 	public boolean loggedIn() {
@@ -45,16 +46,18 @@ public class AdminDaoImpl implements AdminDao {
 		this.login = false;
 	}
 	
+	//Session initiates and we keep admin logged in until they log out
 	public void session() {
 		System.out.println("Welcome admin");
 		int option;
+		//We use a do-while loop to keep admin logged in
 		do {
-			option = adminMenu();
-			adminCommand(option);
+			option = adminMenu(); //Get the command admin wants to run
+			adminCommand(option); //Call the appropriate method
 		} while (option!=4);
 		
 		
-		logout();
+		logout(); //Once out of the do-while loop then we are "logged out"
 	}
 	
 	//Controls the methods that are called based on admin input
@@ -64,7 +67,11 @@ public class AdminDaoImpl implements AdminDao {
 				viewUsers();
 				break;
 			case 1:
-				createUser();
+				try {
+					createUser();
+				} catch (Exception e) {
+					e.printStackTrace(); //Reused exception from bank (register)
+				}
 				break;
 			case 2:
 				updateUser();
@@ -75,6 +82,8 @@ public class AdminDaoImpl implements AdminDao {
 		}
 	}
 
+	//The menu of option for the admin
+	//Allow user input via console
 	private static int adminMenu() {
 		System.out.println("Admin menu");
 		String[] options = {"View Users","Create User", "Update User", "Delete User","Logout"};
@@ -87,6 +96,8 @@ public class AdminDaoImpl implements AdminDao {
         return Integer.parseInt(input)-1;
 	}
 	
+	//Method to view users
+	//We also call view users under delete users to pick user to delete 
 	public void viewUsers() {
 		this.users = getUsers();
 		System.out.printf("%-10s %-10s %-10s %-10s\n","","userid","username","usertype");
@@ -95,6 +106,8 @@ public class AdminDaoImpl implements AdminDao {
 		}
 	}
 	
+	//Returns a list of users, it is good to call it multiple times in case 
+	//we created more users
 	private ArrayList<User> getUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		String viewUsers = "{call VIEW_USERS(?,?)}";
@@ -118,16 +131,17 @@ public class AdminDaoImpl implements AdminDao {
 		return users;
 	}
 
-	public void createUser() {
+	//Create user using user input from console
+	public void createUser() throws DuplicateUsernameException{
 		Scanner sc = new Scanner(System.in);
         System.out.println("Create User");
         System.out.print("Username: ");
         String un = sc.next();
         System.out.print("Password: ");
         String pw = sc.next();
-        System.out.print("Choose:\n\t1. Admin\n\t2.Customer\n");
+        System.out.print("Choose: 1. Admin OR 2.Customer\n");
         int type = Integer.parseInt(sc.next());
-        String t = (type==1)?"A":"C";
+        String t = (type==1)?"A":"C"; //ternary operator to map type of user
 		String create = "{call CREATE_USER(?,?,?,?,?)}";
 		CallableStatement pstmt;
 		try {
@@ -143,14 +157,14 @@ public class AdminDaoImpl implements AdminDao {
 				System.out.println("User created!");
 			}
 			else {
-				System.out.println("Username already taken");
+				throw new DuplicateUsernameException("User with that username already exists!");
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-
+	//Admin can update user via console
 	public void updateUser() {	
 		Scanner sc = new Scanner(System.in);
 		viewUsers();
@@ -161,9 +175,9 @@ public class AdminDaoImpl implements AdminDao {
         String un = sc.next();
         System.out.print("Password: ");
         String pw = sc.next();
-        System.out.print("Chose:1. Admin\2.Customer");
+        System.out.print("Choose: 1. Admin OR 2.Customer\n");
         int type = Integer.parseInt(sc.next());
-        String t = (type==1)?"A":"C";
+        String t = (type==1)?"A":"C"; //ternary operator to map type of user
 		String create = "{call UPDATE_USER(?,?,?,?,?,?)}";
 		CallableStatement pstmt;
 		try {
@@ -181,13 +195,15 @@ public class AdminDaoImpl implements AdminDao {
 				System.out.println("User updated!");
 			}
 			else {
-				System.out.println("User not updated");
+				System.out.println("User not updated"); //possible exception
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
+	//Admin can delete a user with basically no controls 
+	//unlike customer that can only delete account if there is no balance
 	public void deleteUser() {
 		Scanner sc = new Scanner(System.in);
 		viewUsers();
@@ -207,7 +223,7 @@ public class AdminDaoImpl implements AdminDao {
 				System.out.println("User deleted!");
 			}
 			else {
-				System.out.println("User not deleted");
+				System.out.println("User not deleted"); //possible exception
 			}		
 
 		} catch (SQLException e) {

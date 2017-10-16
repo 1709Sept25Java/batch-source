@@ -2,6 +2,7 @@ package com.revature.domain;
 
 public class Account {
 	
+	//Constructors for creating account
 	public Account(int accountID, String accountUser, String accountType, int accountBalance, String openDate) {
 		super();
 		this.accountID = accountID;
@@ -13,6 +14,7 @@ public class Account {
 	public Account() {
 		super();
 	}
+	
 	private int accountID;
 	private String accountUser;
 	private String accountType;

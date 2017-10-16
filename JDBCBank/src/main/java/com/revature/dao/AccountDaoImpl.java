@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.bank.UserNotFoundException;
 import com.revature.domain.Account;
 import com.revature.domain.Transaction;
 
@@ -43,7 +44,9 @@ public class AccountDaoImpl implements AccountDao {
 		accountCommand(option);
 	}
 	
-	//Menu of things that can be done to account
+	//Menu of things that can be done for each account
+	//We call for user input via console
+	//Future: validate user input
 	private int accountMenu() {
 		System.out.println("Account menu");
 		String[] options = {"Deposit Account", "Withdraw Account", "Delete Account", "View Transactions"};
@@ -53,16 +56,22 @@ public class AccountDaoImpl implements AccountDao {
 		}
         System.out.print("Please choose an option: ");
         String input = sc.nextLine();
-        return Integer.parseInt(input)-1;
+        return Integer.parseInt(input)-1; //We display 1 to n options but array is 0 to n-1 index
 	}
 	
+	//Switch case on user input from accountMenu method
 	private void accountCommand(int option) {
 		switch (option){
 			case 0:
 				depositAccount();
 				break;
 			case 1:
-				withdrawAccount();
+				try {
+					//AccountOverDraftException
+					withdrawAccount();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			case 2:
 				deleteAccount();
@@ -73,6 +82,9 @@ public class AccountDaoImpl implements AccountDao {
 		}
 	}
 	
+	//We delete the account we are viewing 
+	//Note: we are sure account exists and we don't delete unless balance is zero
+	//Future: throw exception if balance is not zero
 	public void deleteAccount() {
 		String viewUsers = "{call DELETE_ACCOUNT(?,?)}";
 		CallableStatement pstmt;
@@ -86,6 +98,8 @@ public class AccountDaoImpl implements AccountDao {
 		}
 	}
 	
+	//Deposit + Withdraw: similar except withdraw throws an exception
+	//User input via console
 	public void depositAccount() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Amount to Deposit: ");
@@ -96,13 +110,20 @@ public class AccountDaoImpl implements AccountDao {
 			pstmt = this.con.prepareCall(create);
 			pstmt.setInt(1,this.accountID);
 			pstmt.setInt(2, amount);
+			pstmt.registerOutParameter(3, OracleTypes.NUMBER);
 			pstmt.executeUpdate();
+			int result = pstmt.getInt(3);
+			if (result==0) {
+				System.out.println("Successful deposit");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void withdrawAccount() {
+	//Deposit + Withdraw: similar except withdraw throws an exception
+		//User input via console
+	public void withdrawAccount() throws AccountOverdraftException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Amount to Deposit: ");
 		int amount = Integer.parseInt(sc.next());
@@ -112,17 +133,27 @@ public class AccountDaoImpl implements AccountDao {
 			pstmt = this.con.prepareCall(create);
 			pstmt.setInt(1,this.accountID);
 			pstmt.setInt(2, amount);
+			pstmt.registerOutParameter(3, OracleTypes.NUMBER);
 			pstmt.executeUpdate();
+			int result = pstmt.getInt(3);
+			if (result==0) {
+				System.out.println("Withdraw success");
+			}
+			else {
+				throw new AccountOverdraftException("Overdraft error");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	//Allow to view transactions for this particular account
+	//Call TransactionDao to get a list of transactions
 	public void viewTransactions() {
 		System.out.println("View transactions");
 		TransactionDao transaction = new TransactionDaoImpl(con, this.accountID);
 		ArrayList<Transaction> transactions = transaction.viewTransactions();
-		if (transactions.size()==0) {
+		if (transactions.size()==0) { //Might throw exception here
 			System.out.println("No transactions for this account");
 		}
 		else {

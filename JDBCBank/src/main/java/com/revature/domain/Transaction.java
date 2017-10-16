@@ -2,6 +2,7 @@ package com.revature.domain;
 
 public class Transaction {
 
+	//Constructor for Transaction
 	public Transaction(int transactionID, int transactionAccount, String transactionType, int transactionPrevious,
 			int transactionCurrent, String transactionTime) {
 		super();
@@ -28,6 +29,8 @@ public class Transaction {
 		return String.format(" %-10s %-10s %-10s %-10s", transactionType, ("$"+transactionPrevious+".00"),  ("$"+transactionCurrent+".00"), transactionTime); 
 
 	}
+	
+	//Get & set methods
 	public int getTransactionID() {
 		return transactionID;
 	}

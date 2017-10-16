@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import com.revature.connection.DatabaseConnection;
 import com.revature.domain.User;
+
+import junit.framework.Assert;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -16,12 +19,8 @@ import oracle.jdbc.OracleTypes;
 
 public class BankTest {
 
-	@Test(expected = UserNotFoundException.class)
-	public final void UserNotFoundThrowsException() {
-		BankTest.login();		
-	}
-	
-	public static final User login() {
+	@Test 
+	public final void loginTest() {
 		Connection con = DatabaseConnection.getConnection();
 		ArrayList<String> results = new ArrayList<String>();
 		results.add("blah");
@@ -50,7 +49,7 @@ public class BankTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
+		assertNull(user);
 	}
 
 }

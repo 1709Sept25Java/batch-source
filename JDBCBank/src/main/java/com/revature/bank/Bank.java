@@ -19,7 +19,9 @@ import oracle.jdbc.OracleTypes;
 public class Bank {
 
 	private Connection con;
-	
+
+	//The bank object has a connection to database that will be passed to 
+	//DAO objects - there's only one connection to the database
 	public Bank() {
 		super();
 		con = DatabaseConnection.getConnection();
@@ -34,12 +36,14 @@ public class Bank {
 				//While logged in variable is true, we keep going back to admin or customer menu
 				//When not logged in, we set AdminDao or CustomerDao to null
 				User user = login(con);
-				if (user.getUserType().equals("A")) {
+				if (user.getUserType().equals("A")) { //Check what kind of user
 					AdminDao admin = new AdminDaoImpl(con,user.getUserID());
-					while (admin.loggedIn()) {
+					while (admin.loggedIn()) { //While loop ends as soon as adminDao "logs out"
 						admin.session();
 					}
-					admin = null;
+					this.con.close(); //Close connection to database
+					admin = null; //Set admin dao to null as a "log out" mechanism
+									//We will no longer be able to use admin.viewusers, admin.createuser, etc
 					System.out.println("Logged out");
 				}
 				else {
@@ -47,10 +51,14 @@ public class Bank {
 					while (customer.loggedIn()) {
 						customer.session();
 					}
-					customer = null;
+					this.con.close(); //Close connection to database
+					customer = null; //Set customer dao to null as a "log out" mechanism
+										//We will no longer be able to user customer dao methods 
+											//and also including account dao & transaction dao methods
 					System.out.println("Logged out");
 				}	
 			} catch (Exception e) {
+				//User not found exception
 				e.printStackTrace();
 			}
 		}
@@ -58,11 +66,18 @@ public class Bank {
 			try {
 				register(con);
 			} catch (Exception e) {
+				//Duplicate username exception
+				//The main reason for registration failure 
+				//should be an already existing user with that username
 				e.printStackTrace();
 			}
 		}
 	}
 
+	//Login using Database connection passed from session method
+	//We retrieve a user object if login is successful
+	//int result is 1 if a user is created 
+	//else no user was found and we throw UserNotFoundException
 	public static User login(Connection con) throws SQLException, UserNotFoundException {
 		CallableStatement pstmt;
 		ArrayList<String> results;
@@ -96,6 +111,10 @@ public class Bank {
 		return user;
 	}
 	
+	//Login using Database connection passed from session method
+		//We create a user object if username is not created
+		//int result is 0 if user doesn't exist and we make the user 
+		//else a user was found and we throw a duplicate username exception
 	public static void register(Connection con) throws SQLException, DuplicateUsernameException {
 		CallableStatement pstmt;
 		ArrayList<String> results;
@@ -121,7 +140,10 @@ public class Bank {
 	}
 	
 
-	//Start menu
+	//Start menu: The two initial options
+	//login or register
+	//Ask for user input from console
+	//Future: validate input
 	public static int startMenu(Connection con) {
 		System.out.println("Welcome");
 		String[] options = {"Login","Register"};
@@ -134,7 +156,8 @@ public class Bank {
         return Integer.parseInt(input) -1 ;
 	}
 	
-	//User input for login or register
+	//User input for login or register methods
+	//We ask for username and password
 	public static ArrayList<String> loginOrRegisterInput(String option) {
 		ArrayList<String> results = new ArrayList<String>();
 		Scanner sc = new Scanner(System.in);
