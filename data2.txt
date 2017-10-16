@@ -1,0 +1,15 @@
+Name: Mickey Mouse
+Age: 35
+State: Arizona
+
+Name: Hulk Hogan
+Age: 50
+State: Virginia
+
+Name: Roger Rabbit
+Age: 22
+State: California
+
+Name: Wonder Woman
+Age: 18
+State: Montana
