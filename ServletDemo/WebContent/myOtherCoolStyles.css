@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+
+#calcFormDiv {
+	background-color: #89fd7a;
+	text_align: center;
+	padding: 30px;
+	margin: 60px;
+}
+
+.center {
+	color: red;
+	text-align: center;
+}
+
+#p1 {
+	padding: 30px;
+	border: 5px;
+	margin: 30px;
+}
+
+img {
+	display: inline;
+}
+
+#formDiv {
+	padding: 30px;
+	margin: 30px;
+}
+
+#formDiv {
+	border: 3px solid #f1f1f1;
+	text_align: center;
+	padding: 20px;
+	margin: 30px;
+}

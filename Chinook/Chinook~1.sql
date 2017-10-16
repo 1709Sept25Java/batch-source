@@ -223,25 +223,21 @@ FROM
 --3.4 User Defined Table Valued Functions
 --Task – Create a function that returns all employees who are born after 1968.
 
-CREATE OR REPLACE FUNCTION get_emp_bd RETURN NUMBER IS
-    emp_id   NUMBER;
+CREATE OR REPLACE FUNCTION GET_EMP_BD RETURN SYS_REFCURSOR
+AS
+   EMP_BORN_AFTER_68 SYS_REFCURSOR; 
 BEGIN
-    SELECT
-        employeeid
-    INTO
-        emp_id
-    FROM
-        employee
-    WHERE
-        EXTRACT(YEAR FROM TO_DATE(birthdate,'DD-MON-YY') ) > 1968;
+OPEN EMP_BORN_AFTER_68 FOR
+SELECT LASTNAME FROM EMPLOYEE WHERE (EXTRACT(YEAR FROM TO_DATE(BIRTHDATE,'DD-MON-YY'))) > 1968;
+RETURN EMP_BORN_AFTER_68;
 
-    RETURN emp_id;
+CLOSE EMP_BORN_AFTER_68;
 END;
 
 SELECT
-    get_emp_bd
+   GET_EMP_BD
 FROM
-    dual;
+    DUAL;
 
 --4.0 Stored Procedures
 --4.1 Basic Stored Procedure
@@ -305,51 +301,16 @@ BEGIN
                     WHEN NEW_FIRSTNAME IS NULL 
                     THEN FIRSTNAME ELSE NEW_FIRSTNAME
                 END,
-            BIRTHDATE =
-                CASE
-                    WHEN NEW_BIRTHDATE IS NULL 
-                    THEN BIRTHDATE ELSE NEW_BIRTHDATE
-                END,
-            ADDRESS =
-                CASE
-                    WHEN NEW_ADDRESS IS NULL 
-                    THEN ADDRESS ELSE NEW_ADDRESS
-                END,
-            CITY =
-                CASE
-                    WHEN NEW_CITY IS NULL 
-                    THEN CITY ELSE NEW_CITY
-                END,
-            STATE =
-                CASE
-                    WHEN NEW_STATE IS NULL 
-                    THEN STATE ELSE NEW_STATE
-                END,
-            COUNTRY =
-                CASE
-                    WHEN NEW_COUNTRY IS NULL 
-                    THEN COUNTRY ELSE NEW_COUNTRY
-                END,
-            POSTALCODE =
-                CASE
-                    WHEN NEW_POSTALCODE IS NULL 
-                    THEN POSTALCODE ELSE NEW_POSTALCODE
-                END,
-            PHONE =
-                CASE
-                    WHEN NEW_PHONE IS NULL 
-                    THEN PHONE ELSE NEW_PHONE
-                END,
-            FAX =
-                CASE
-                    WHEN NEW_FAX IS NULL 
-                    THEN FAX ELSE NEW_FAX
-                END,
-            EMAIL =
-                CASE
-                    WHEN NEW_EMAIL IS NULL 
-                    THEN EMAIL ELSE NEW_EMAIL
-                END
+            BIRTHDATE = NEW_BIRTHDATE,
+            ADDRESS = NEW_ADDRESS,
+            CITY = NEW_CITY,
+            STATE = NEW_STATE,
+            COUNTRY = NEW_COUNTRY,
+            POSTALCODE = NEW_POSTALCODE,
+            PHONE = NEW_PHONE,
+            FAX = NEW_FAX,
+            EMAIL = NEW_EMAIL
+            
     WHERE
         EMPLOYEEID = EMPLOYEE_ID;
 
