@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE countries SYSTEM "countries.dtd">
+<countries>
+	<country>
+		<country-name>Vietnam</country-name>
+		<country-capital>Hanoi</country-capital>
+	</country>
+	<country>
+		<country-name>United States</country-name>
+		<country-capital>Washingon D.C</country-capital>
+	</country>
+	<country>
+		<country-name>China</country-name>
+		<country-capital>Beijing</country-capital>
+	</country>
+	<country>
+		<country-name>Japan</country-name>
+		<country-capital>Tokyo</country-capital>
+	</country>
+	<country>
+		<country-name>France</country-name>
+		<country-capital>Paris</country-capital>
+	</country>
+</countries>

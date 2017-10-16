@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT countries (country)>
+<!ELEMENT country (country-name, country-capital)>
+<!ELEMENT country-name (#PCDATA)>
+<!ELEMENT country-capital (#PCDATA)>
