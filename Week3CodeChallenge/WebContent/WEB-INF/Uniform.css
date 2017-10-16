@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+h1, h2 {
+	text-align: center;
+}
+
+body {
+	background-color: #ef8072;
+}
+
+div {
+	border: 10px solid #818688;
+	text-align: center;
+	margin-left: ;
+}
