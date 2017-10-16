@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<countries>
+	<country>
+		<country id="1">
+			<name>Bahamas</name>
+				<capital id="2">Nassau</capital>
+		</country>
+	</country>
+	<country>
+		<country id="3">
+			<name>Canada</name>
+				<capital id="4">Ottawa</capital>
+		</country>
+	</country>
+	<country>
+		<country id="5">
+			<name>Cuba</name>
+				<capital id="6">Havana</capital>
+		</country>
+	</country>
+	<country>
+		<country id="7">
+			<name>Dominica</name>
+				<capital id="8">Roseau</capital>
+		</country>
+	</country>
+	<country>
+		<country id="9">
+			<name>Jamaica</name>
+				<capital id="10">Kingston</capital>
+		</country>
+	</country>
+</countries>
