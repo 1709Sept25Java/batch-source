@@ -6,6 +6,6 @@ import com.revature.domain.*;
 
 public interface BearTypeDao {
 	public List<BearType> getBearTypes();
-	public BearType getBeartTypeById(int id);
+	public BearType getBearTypeById(int id);
 
 }

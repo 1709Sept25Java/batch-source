@@ -1,8 +1,10 @@
 package com.revature.main;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.revature.dao.*;
+import com.revature.domain.Bear;
 import com.revature.util.*;
 public class Driver {
 
@@ -25,15 +27,26 @@ public class Driver {
 		System.out.println(bhd.updateBeehiveWeight(47, -130));
 		System.out.println(bhd.getBeehivebyId(47).toString());
 		*/
-		/*CaveDao cd = new CaveDaoImpl();
+		CaveDao cd = new CaveDaoImpl();
 		System.out.println(cd.getCaves().toString());
-		System.out.println(cd.getCaveById(45).toString());*/
-		/*
-		BearTypeDao btd = new BearTypeDaoImpl();
+		//System.out.println(cd.getCaveById(45).toString());
+		
+		/*BearTypeDao btd = new BearTypeDaoImpl();
 		System.out.println(btd.getBearType().toString());
 		System.out.println(btd.getBearTypeById(2).toString());
 		
 		*/
+		BearDao bd = new BearDaoImpl();
+
+		List<Bear> bearList = bd.getBears();
+
+		/*for (Bear b : bearList){
+
+			System.out.println(b.toString());
+
+		}*/
+
+		bd.feedBear(13,5,5);
 	}
 
 }

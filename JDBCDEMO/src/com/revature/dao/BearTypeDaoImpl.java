@@ -16,7 +16,7 @@ public class BearTypeDaoImpl implements BearTypeDao{
 
 	@Override
 	public List<BearType> getBearTypes() {
-		List<BEAR_TYPE> btl = new ArrayList<>();
+		List<BearType> btl = new ArrayList<>();
 		try(Connection con = ConnectionUtil.getConnectionFromFile()){
 			//use a Statement - remember the danger of SQL Injection
 			String sql = "SELECT * FROM BEAR_TYPE";
@@ -38,8 +38,7 @@ public class BearTypeDaoImpl implements BearTypeDao{
 	}
 
 	@Override
-	public BearType getBeartTypeById(int id) {
-		// TODO Auto-generated method stub
+	public BearType getBearTypeById(int id) {
 		return null;
 	}
 	

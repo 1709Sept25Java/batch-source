@@ -5,23 +5,23 @@ public class Users {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Users(String username, String password, BankAccount bankaccid) {
+	public Users(String username, String password, UserType usertype) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.bankaccid = bankaccid;
+		this.usertype = usertype;
 	}
-	public Users(int userID, String username, String password, BankAccount bankaccid) {
+	public Users(int userID, String username, String password, UserType usertype) {
 		super();
 		this.userID = userID;
 		this.username = username;
 		this.password = password;
-		this.bankaccid = bankaccid;
+		this.usertype = usertype;
 	}
 	private int userID;
 	private String username;
 	private String password;
-	private BankAccount bankaccid;
+	private UserType usertype;
 	public int getUserID() {
 		return userID;
 	}
@@ -40,16 +40,16 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public BankAccount getBankaccid() {
-		return bankaccid;
+	public UserType getUsertype() {
+		return usertype;
 	}
-	public void setBankaccid(BankAccount bankaccid) {
-		this.bankaccid = bankaccid;
+	public void setUsertype(UserType usertype) {
+		this.usertype = usertype;
 	}
 	@Override
 	public String toString() {
-		return "Users [userID=" + userID + ", username=" + username + ", password=" + password + ", bankaccid="
-				+ bankaccid + "]";
+		return "Users [userID=" + userID + ", username=" + username + ", password=" + password + ", UserType="
+				+ usertype + "]";
 	}
 	
 }
