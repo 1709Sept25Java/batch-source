@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<countries>
+	<country>
+		<name>UNITED STATES</name>
+		<capital-name>WASHINGTON, D.C.</capital-name>
+	</country>
+	<country>
+		<name>BELGIUM</name>
+		<capital-name>BRUSSELS</capital-name>
+	</country>
+	<country>
+		<name>MACEDONIA</name>
+		<capital-name>SKOPJE</capital-name>
+	</country>
+	
+	<country>
+		<name>ITALY</name>
+		<capital-name>ROME</capital-name>
+	</country>
+	
+	<country>
+		<name>EGYPT</name>
+		<capital-name>CAIRO</capital-name>
+	</country>
+</countries>
