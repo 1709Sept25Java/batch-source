@@ -1,0 +1,11 @@
+#user-input, #pass-input{
+	background: lightblue;
+	padding: 20px;
+	
+}
+
+#header {
+	background: lightblue;
+	padding: 5px;
+	border : 1px solid black;
+}
