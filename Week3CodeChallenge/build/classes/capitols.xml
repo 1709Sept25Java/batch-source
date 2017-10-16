@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<countries>
+
+	<country>
+		<name>Argentina</name>
+		<capitol>Buenos Aires</capitol>
+	</country>
+	
+	<country>
+		<name>Armenia</name>
+		<capitol>Yerevan</capitol>
+	</country>
+	
+	<country>
+		<name>Australia</name>
+		<capitol>Canberra</capitol>
+	</country>
+	
+	<country>
+		<name>Austria</name>
+		<capitol>Vienna</capitol>
+	</country>
+	
+	<country>
+		<name>Germany</name>
+		<capitol>Berlin</capitol>
+	</country>
+
+</countries>
