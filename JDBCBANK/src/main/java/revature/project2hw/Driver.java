@@ -27,8 +27,8 @@ public class Driver {
 		
 		//switchActions();
 
-		ViewAcc dc= new ViewAcc();
-		dc.ViewAccount();
+		StoredProcedureTest t=new StoredProcedureTest();
+		t.checkUser();
 		//StoredProcedureTest spt= new StoredProcedureTest();
 		//spt.checkUser();
 		//remember transactions and callable statements for procedures
@@ -80,8 +80,6 @@ public class Driver {
 				break;
 			}
 		}
-		
-		
 	}
 
 }

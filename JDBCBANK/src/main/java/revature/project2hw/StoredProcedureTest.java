@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Types;
 
 public class StoredProcedureTest {
 
@@ -19,13 +20,14 @@ public class StoredProcedureTest {
 			con=ManageConnection.getConnectionFromFile();
 			
 			//test insert
-			String sql="{call B_USER_MATCH(?)}"; 
+			//String sql="{call B_USER_MATCH(?)}"; 
+			String sql="{getName(?,?)}"; 
 			CallableStatement cs =
 				    con.prepareCall(sql);
 			cs.setString(1, "'test'");
-			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+			cs.registerOutParameter(2, Types.VARCHAR);
 			cs.execute();
-				user2 = cs.getString(1); 	
+				user2 = cs.getString(2); 	
 			
 			//System.out.println(user2);
 			System.out.println(user2);
