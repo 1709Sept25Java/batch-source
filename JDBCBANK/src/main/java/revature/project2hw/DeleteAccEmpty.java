@@ -42,17 +42,16 @@ public class DeleteAccEmpty {
 		try {
 			//ManageConnection lg= new ManageConnection();
 			con=ManageConnection.getConnectionFromFile();
-			
 			//test insert
 			
-			String selectSQL = "SELECT U_USERNAME FROM B_USER WHERE U_USERNAME="
-			+"'"+l.getUser1()+"'"+" AND U_PW="+"'"+l.getPw1()+"'";
+			String selectSQL = "DELETE from B_USER where "
+					+ "U_USERNAME= 'testinsert2'";
 			PreparedStatement preparedStatement = con.prepareStatement(selectSQL);
-			ResultSet rs = preparedStatement.executeQuery(selectSQL );
+			ResultSet rs = preparedStatement.executeQuery(selectSQL);
 			ResultSetMetaData rms = rs.getMetaData();
 
 			while (rs.next()) {
-				acc = rs.getString(1); 
+				acc = rs.getString(1);
 			}
 		}
 		catch (Exception e) {

@@ -75,7 +75,7 @@ public class CreateUserPass {
 			if(startUser!=null|startPw!=null) {
 				System.out.println("Success! New Account\n"
 						+ " User: "+ startUser +" Password: " +startPw
-						+ "Welcome "+ startName+ "!");
+						+ " Welcome "+ startName+ "!");
 				//if successfully doesn't return null, prints name out
 				//might have this do nothing for later till pw is typed in too, 
 				//but always blocks login

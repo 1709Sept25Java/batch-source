@@ -125,22 +125,29 @@ public class Login{
 		con2.close();
 	}
 	
-	public void checkCredentials(String user, String pw) throws SQLException {
+	public Boolean checkCredentials(String user, String pw) throws SQLException {
+		Boolean loginSuccess=false;
 		if (user1==null | (pw1==null)) {
 			System.out.println("Login Failure!");
 		}
 		else if(user1!=null && pw1!=null)
 		{
 			System.out.println("Login Success! "+"Welcome "+user1+ "!");
+			loginSuccess=true;
 		}
+		return loginSuccess;
 	}
 	
-	public void runCheckCredentials() throws SQLException {
+	public Boolean runCheckCredentials() throws SQLException {
+		Boolean loginSuccess=false;
 		userInput();
 		checkUser();
 		checkPW();
-		checkCredentials(user1,pw1);
+		if(checkCredentials(user1,pw1)) {
+			loginSuccess=true;
+		}
 		//System.out.println("Success!");
+		return loginSuccess;
 	}
 
 }

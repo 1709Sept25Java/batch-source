@@ -23,12 +23,12 @@ public class StoredProcedureTest {
 			CallableStatement cs =
 				    con.prepareCall(sql);
 			cs.setString(1, "'test'");
-			//cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
 			cs.execute();
 				user2 = cs.getString(1); 	
 			
 			//System.out.println(user2);
-			System.out.println(sql);
+			System.out.println(user2);
 			
 			if(user2!=null) {
 				//System.out.println("Welcome back "+user+ "!!!");
