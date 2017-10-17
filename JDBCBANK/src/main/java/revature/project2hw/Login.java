@@ -50,7 +50,7 @@ public class Login{
 	public void checkUser() throws SQLException {
 		Connection con=null;
 		String user2=null; 
-		//replace with function that calls driver manager
+		//replace  with function that calls driver manager
 		try {
 			//ManageConnection lg= new ManageConnection();
 			con=ManageConnection.getConnectionFromFile();

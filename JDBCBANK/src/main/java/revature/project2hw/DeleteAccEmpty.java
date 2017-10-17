@@ -43,9 +43,9 @@ public class DeleteAccEmpty {
 			//ManageConnection lg= new ManageConnection();
 			con=ManageConnection.getConnectionFromFile();
 			//test insert
-			
+			l.getUser1();
 			String selectSQL = "DELETE from B_USER where "
-					+ "U_USERNAME= 'testinsert2'";
+					+ "U_USERNAME= "+"'"+l.getUser1()+"'";
 			PreparedStatement preparedStatement = con.prepareStatement(selectSQL);
 			ResultSet rs = preparedStatement.executeQuery(selectSQL);
 			ResultSetMetaData rms = rs.getMetaData();

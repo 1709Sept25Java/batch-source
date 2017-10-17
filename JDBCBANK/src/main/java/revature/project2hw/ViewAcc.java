@@ -18,9 +18,8 @@ public class ViewAcc {
 		try {
 			//ManageConnection lg= new ManageConnection();
 			con=ManageConnection.getConnectionFromFile();
-			
 			//test insert
-			String selectSQL = "Select * FROM B_USER WHERE U_USERNAME= 'test'";
+			String selectSQL = "Select * FROM B_USER WHERE U_USERNAME="+"'"+"test"+"'";
 			//+"'"+l.getUser1()+"'";
 			PreparedStatement preparedStatement = con.prepareStatement(selectSQL);
 			ResultSet rs = preparedStatement.executeQuery(selectSQL );
@@ -36,8 +35,7 @@ public class ViewAcc {
 				for (String columnName : columns) {
 			        String value = rs.getString(columnName);
 			        System.out.println(columnName + " = " + value);
-			      }
-				
+			      }			
 			}
 		}
 		catch (Exception e) {
