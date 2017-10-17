@@ -1,0 +1,183 @@
+--JANINE LEE ASSIGNMENT 3: BANK PROJECT (Project2)
+
+--Creating tables
+
+CREATE TABLE B_USER(
+USER_ID NUMBER,
+U_USERNAME VARCHAR2(50),
+U_NAME VARCHAR2(50), 
+U_PW VARCHAR2(50),
+PRIMARY KEY (USER_ID)
+);
+
+CREATE TABLE B_ACCOUNT(
+ACC_ID NUMBER,
+ACC_TYPE NUMBER, --will be same as C_ACCID and E_RANK, so they have >1 ACC with same name
+ACC_BAL NUMBER,
+PRIMARY KEY (ACC_ID)
+);
+
+CREATE TABLE B_CUSTOMER(
+C_ID NUMBER,
+C_ACCID NUMBER,
+PRIMARY KEY (C_ID)
+);
+
+--populating tables with test/dummy info
+
+--B_USER
+INSERT INTO B_USER (U_NAME, U_PW, U_USERNAME) VALUES ('BOB', 'pass123', 'BOBROCKS');
+INSERT INTO B_USER (U_NAME, U_PW, U_USERNAME) VALUES ('VERANICA', 'notpassword', 'TOWER765');
+INSERT INTO B_USER (U_NAME, U_PW, U_USERNAME) VALUES ('EREN', 'testing123', 'AOT125');
+INSERT INTO B_USER (U_NAME, U_PW, U_USERNAME) VALUES ('ALAN', 'worstpw', 'ALEXANDERTG123');
+INSERT INTO B_USER (U_NAME, U_PW, U_USERNAME) VALUES ('easytest', 'pw', 'test');
+
+INSERT INTO B_USER (U_NAME, U_PW, U_USERNAME) VALUES ('ADMIN', 'pw', 'SUPERUSER');
+--B_ACCOUNT
+INSERT INTO B_ACCOUNT (ACC_BAL) VALUES (126);
+INSERT INTO B_ACCOUNT (ACC_BAL) VALUES (56020);
+INSERT INTO B_ACCOUNT (ACC_BAL) VALUES (2360);
+INSERT INTO B_ACCOUNT (ACC_BAL) VALUES (1260);
+--B_CUSTOMER
+INSERT INTO B_CUSTOMER (C_ACCID) VALUES (5);
+INSERT INTO B_CUSTOMER (C_ACCID) VALUES (2);
+
+--altering to add foreign keys
+/*
+-each user has at least 1 main account (ACC_TYPE), with a number
+-a user may have multiple accounts (ACC_ID)
+    but identified by the same (ACC_TYPE)
+-each customer/employee gets their own account (ACC_ID)
+*/
+
+ALTER TABLE B_ACCOUNT
+ADD CONSTRAINT FK_USER
+FOREIGN KEY (ACC_TYPE) REFERENCES B_USER(USER_ID);
+  --connect userid to accounttype (each user has a main account)
+    
+    --same entries of ACC_TYPE, but unique ACC_ID
+    /*
+    ALTER TABLE B_ACCOUNT
+    ADD CONSTRAINT FK_USER
+    FOREIGN KEY (ACC_TYPE) REFERENCES B_ACCOUNT(ACC_ID);*/
+
+ALTER TABLE B_CUSTOMER
+ADD CONSTRAINT FK_CUSTOMER
+FOREIGN KEY (C_ID) REFERENCES B_ACCOUNT(ACC_ID);
+    --each customer has an accountid for each account
+/*
+--removing constraints
+ALTER TABLE B_ACCOUNT
+DROP CONSTRAINT FK_User;
+*/
+
+--setting account types
+update B_ACCOUNT set ACC_TYPE=22 where ACC_ID=2; --user test
+update B_ACCOUNT set ACC_TYPE=22 where ACC_ID=4;
+update B_ACCOUNT set ACC_TYPE=22 where ACC_ID=3;
+update B_ACCOUNT set ACC_TYPE=4 where ACC_ID=5; --user AOT125
+
+--Creating triggers
+
+CREATE SEQUENCE USER_ID
+            START WITH 1
+            INCREMENT BY 1;
+CREATE SEQUENCE ACC_ID
+            START WITH 1
+            INCREMENT BY 1;
+CREATE SEQUENCE C_ID
+            START WITH 1
+            INCREMENT BY 1;
+CREATE SEQUENCE E_ID
+            START WITH 1
+            INCREMENT BY 1;
+----triggers after insert            
+CREATE OR REPLACE TRIGGER t
+BEFORE INSERT ON B_USER
+    FOR EACH ROW
+BEGIN
+        SELECT USER_ID.nextval INTO: new.USER_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+CREATE OR REPLACE TRIGGER t2
+BEFORE INSERT ON B_ACCOUNT
+    FOR EACH ROW
+BEGIN
+        SELECT ACC_ID.nextval INTO: new.ACC_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+CREATE OR REPLACE TRIGGER t3
+BEFORE INSERT ON B_EMPLOYEE
+    FOR EACH ROW
+BEGIN
+        SELECT E_ID.nextval INTO: new.E_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+CREATE OR REPLACE TRIGGER t4
+BEFORE INSERT ON B_CUSTOMER
+    FOR EACH ROW
+BEGIN
+        SELECT C_ID.nextval INTO: new.C_ID FROM DUAL;
+        --.nextval remember, along with new. ... or else bad bind
+END;
+/
+
+--functions
+--balance transactions being done
+CREATE OR REPLACE FUNCTION b_bal(CURRENT_BAL IN NUMBER, B_TRANS NUMBER)
+RETURN NUMBER
+IS 
+    BAL_FINAL NUMBER;
+BEGIN
+    BAL_FINAL:=CURRENT_BAL+B_TRANS; 
+    RETURN BAL_FINAL;
+END;
+/
+
+--stored procedures
+--getting users
+create or replace PROCEDURE B_USER_MATCH(USER1 IN VARCHAR2)
+    AS get_U SYS_REFCURSOR; --cursor get_U
+BEGIN
+    OPEN get_U for SELECT U_USERNAME 
+        FROM B_USER WHERE U_USERNAME=USER1; --uses cursor, sees if user is there
+END B_USER_MATCH;  
+
+--getting matching pw
+create or replace PROCEDURE B_PW_MATCH(U_PW in VARCHAR2)
+    AS get_PW SYS_REFCURSOR; --cursor get_U
+BEGIN
+    OPEN get_PW for SELECT * FROM B_USER
+        WHERE U_PW=U_PW;
+END;
+
+CREATE or replace PROCEDURE B_ACCOUNT_TRY(S OUT SYS_REFCURSOR)
+    IS --cursor get_ACC
+BEGIN
+     OPEN S for SELECT * FROM B_ACCOUNT
+        where ACC_TYPE=22;
+     --uses cursor, select user/pw
+    --checks if pw and user is correct
+END;
+
+CREATE OR REPLACE PROCEDURE getName 
+   (U_ID IN NUMBER, U_USERNAME OUT VARCHAR) AS
+BEGIN
+   SELECT first INTO U_USERNAME
+   FROM B_USER
+   WHERE ID = U_ID;
+END;
+/
+--transactions
+--when insertions into certain tables, its foreign key ref is also inserted
+--deletions "^"
+--handle user bank account transations
+
+--A superuser can view, create, update, and delete all users.
+--GRANT SELECT,VIEW,CREATE,UPDATE,DELETE ON B_EMPLOYEE TO E_RANK; 
+CREATE USER SUPERUSER IDENTIFIED BY pw;
+GRANT SELECT, INSERT, UPDATE, DELETE ON B_USER 
+TO SUPERUSER;
