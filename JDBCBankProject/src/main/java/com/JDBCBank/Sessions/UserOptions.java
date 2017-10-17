@@ -23,13 +23,12 @@ public class UserOptions {
 		while(isLoggedIn) {
 			
 			System.out.println("enter any of the following optionts.");
-			System.out.println("1 - VIEW ALL ACCOUNTS");
-			System.out.println("2 - CREATE NEW BANK ACCOUNT");
-			System.out.println("3 - DELETE BANK ACCOUNT");
-			System.out.println("4 - WTIHDRAW MONEY");
-			System.out.println("5 - DEPOSIT MONEY");
-			System.out.println("6 - VIEW TRANSACTION HISTORY");
-			System.out.println("7 - LOGOUT");
+			System.out.println("1 - view all account");
+			System.out.println("2 - create new account");
+			System.out.println("3 - delete  account");
+			System.out.println("4 - withdraw money");
+			System.out.println("5 - deposit money");
+			System.out.println("7 - logout");
 			
 			int in = sc.nextInt();
 			
