@@ -40,7 +40,8 @@ public class UserSession {
 			System.out.println("\t 2) Delete account");
 			System.out.println("\t 3) Deposit int an account");
 			System.out.println("\t 4) Withdraw from an account");
-			System.out.println("\t 5) Log out of the Intergalactic Bank of Prosper");
+			System.out.println("\t 5) View accounts");
+			System.out.println("\t 6) Log out of the Intergalactic Bank of Prosper");
 			
 			int choice = Integer.parseInt(sc.nextLine());
 			//Switch to perform user desired function
@@ -81,7 +82,17 @@ public class UserSession {
 					System.out.println("You have no accounts to withdraw from");
 				}
 				break;
-			case 5:
+			case 5:	// I ADDED IN THIS OPTION TO MAKE THE DEMO EASIER
+				accounts = baDao.getAccounts(user.getId());
+				if(!accounts.isEmpty()) {
+					for(BankAccount b : accounts) {
+						System.out.println(b.toString());
+					}
+				} else {
+					System.out.println("You have no accounts.");
+				}
+				break;
+			case 6: 
 				//Break the loop to end the user session
 				user = null;
 				break;
@@ -250,7 +261,7 @@ public class UserSession {
 				boolean create;
 				try {
 					create = uDao.createUser(uname,pw,adm);
-					System.out.println("Please login: ");
+					//System.out.println("Please login: ");
 					//Call the login function if the user is successfully inserted
 					if(create) {
 						System.out.println("User successfully added to the database");

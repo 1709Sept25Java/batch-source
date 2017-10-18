@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Some Functions</title>
+	<style>
+		body {
+		background-color:#411456;
+		}
+		.functionDiv {
+			border: solid 5px black;
+			margin: 20px;
+			padding: 20px;
+		}
+		.displayDiv {
+			border: solid 5px black;
+			margin: 20px;
+			padding: 20px;
+			background-color: #289fe7;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="functionDiv">
+		<button onclick="getCount()">Increment!</button>
+	</div>
+	<div class="functionDiv">
+		<button onclick="getAppleCount()">Increment Apples!</button>
+	</div>
+	<div class="functionDiv">
+		<button onclick="getPearCount()">Increment Pears!</button>
+	</div>
+	<div clas="displayDiv">
+		<button onclick="showBears()">Show Bears!</button>
+		<div class="displayDiv" id="bear1"></div>
+		<div class="displayDiv" id="bear2"></div>
+		<div class="displayDiv" id="bear3"></div>
+	</div>
+	
+	
+<script src="../scripts/closure.js"></script>
+<script scr="../script/parse.js"></script>
+<script>
+	var count = getCount();
+	var apples = getCount("apple");
+	var pears = getCount("pear");
+</script>
+</body>
+</html>

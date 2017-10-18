@@ -101,7 +101,7 @@ public class Driver {
 		} catch (UserNotCreatedException e) {
 			e.printStackTrace();
 		}
-		createUser(sc);
+		//createUser(sc);	--THIS WAS THE ERROR IN THE DEMO
 	}
 
 }

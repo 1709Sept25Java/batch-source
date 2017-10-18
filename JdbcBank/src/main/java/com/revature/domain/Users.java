@@ -81,7 +81,6 @@ public class Users {
 	}
 	@Override
 	public String toString() {
-		return "Users [id= "+id+" username=" + username + ", fname=" + fname + ", lname=" + lname
-				+ ", isAdmin=" + isAdmin + "]";
+		return "User : id= "+id+" username=" + username +  ", isAdmin=" + isAdmin;
 	}
 }
