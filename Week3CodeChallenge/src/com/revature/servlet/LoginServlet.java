@@ -39,12 +39,15 @@ public class LoginServlet extends HttpServlet {
 		pw.println("Hello, "+username+". Welcome to your profile.");
 		
 		CountriesXML xml = new CountriesXML();
-		ArrayList<Country> countries = xml.readCountriesDOM();
-		pw.println(countries.size());
-		for (Country c:countries) {
-			pw.println("Something here");
-			pw.println(c.toString());
-		}
+//		ArrayList<Country> countries = xml.readCountriesDOM();
+//		pw.println(countries.size());
+//		for (Country c:countries) {
+//			pw.println("Something here");
+//			pw.println(c.toString());
+//		}
+		
+		int count = xml.readCountriesDOM();
+		pw.println("<p> Trying to read xml countries </p>");
 		
 //http://localhost:8082/Week3CodeChallenge/login		
 		

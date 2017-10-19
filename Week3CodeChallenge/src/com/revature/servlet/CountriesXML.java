@@ -14,12 +14,13 @@ import org.w3c.dom.NodeList;
 
 public class CountriesXML {
 	
-	private String docLocation = "src/Countries.xml";
+	private String docLocation = "\\Users\\anahi\\GitRepos\\1709-sept25-java\\batch-source\\Week3CodeChallenge\\src\\Countries.xml";
 	public CountriesXML() {
 		super();
 	}
 	
-	public ArrayList<Country> readCountriesDOM() {
+	public int readCountriesDOM() {
+		int count = 0;
 		ArrayList<Country> countries = new ArrayList<Country>();
 		String filename = this.docLocation;
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -30,7 +31,7 @@ public class CountriesXML {
 			Document doc = db.parse(filename);
 			doc.getDocumentElement().normalize();
 			NodeList countriesList = doc.getElementsByTagName("country");
-			
+			//count = countriesList.getLength();
 			for (int i=0; i<countriesList.getLength(); i++) {
 				Node country = countriesList.item(i);
 				Country newCountry = new Country();
@@ -38,11 +39,11 @@ public class CountriesXML {
 				newCountry.setCapital(country.getAttributes().item(1).getNodeValue());
 				countries.add(newCountry);		
 			}	
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return countries;
+		return countries.size();
 	}
 	
 	

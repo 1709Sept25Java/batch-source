@@ -104,7 +104,7 @@ public class AccountDaoImpl implements AccountDao {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Amount to Deposit: ");
 		int amount = Integer.parseInt(sc.next());
-		String create = "{call ACCOUNT_DEPOSIT(?,?)}";
+		String create = "{call ACCOUNT_DEPOSIT(?,?,?)}"; //Missing Parameter ?
 		CallableStatement pstmt;
 		try {
 			pstmt = this.con.prepareCall(create);
@@ -125,9 +125,9 @@ public class AccountDaoImpl implements AccountDao {
 		//User input via console
 	public void withdrawAccount() throws AccountOverdraftException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Amount to Deposit: ");
+		System.out.println("Amount to Withdraw: ");
 		int amount = Integer.parseInt(sc.next());
-		String create = "{call ACCOUNT_WITHDRAWAL(?,?)}";
+		String create = "{call ACCOUNT_WITHDRAWAL(?,?,?)}";
 		CallableStatement pstmt;
 		try {
 			pstmt = this.con.prepareCall(create);

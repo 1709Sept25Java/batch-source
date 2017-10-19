@@ -27,14 +27,8 @@ public class Driver {
 		InputStream in;
 		try {
 			in = new FileInputStream(filename);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			prop.load(in);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		String url = prop.getProperty("url");

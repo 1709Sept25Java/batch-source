@@ -168,8 +168,8 @@ public class AdminDaoImpl implements AdminDao {
 	public void updateUser() {	
 		Scanner sc = new Scanner(System.in);
 		viewUsers();
-        System.out.println("Select User to Delete");
-        int option = Integer.parseInt(sc.next());
+        System.out.println("Select User to Update");
+        int option = Integer.parseInt(sc.next())-1;
         int ui = users.get(option).getUserID();
         System.out.print("Username: ");
         String un = sc.next();
@@ -208,13 +208,14 @@ public class AdminDaoImpl implements AdminDao {
 		Scanner sc = new Scanner(System.in);
 		viewUsers();
         System.out.println("Select User to Delete");
-        int ui = Integer.parseInt(sc.next());
+        int ui = Integer.parseInt(sc.next())-1;
+        int id = users.get(ui).getUserID();
 		String create = "{call DELETE_USER(?,?,?)}";
 		CallableStatement pstmt;
 		try {
 			pstmt = this.con.prepareCall(create);
 			pstmt.setInt(1,this.adminID);
-			pstmt.setInt(2, ui);
+			pstmt.setInt(2, id);
 			pstmt.registerOutParameter(3, OracleTypes.NUMBER);
 			pstmt.executeUpdate();
 			int result = pstmt.getInt(3);
