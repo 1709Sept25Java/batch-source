@@ -28,10 +28,11 @@ public class LoginServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		
 		if(password.equals("admin123")) {
-			pw.println("Welcome, "+username);
-			pw.println("<a href=\"Index.html\">Go back</a>");
+			/*pw.println("Welcome, "+username);
+			pw.println("<a href=\"Index.html\">Go back</a>");*/
 			session.setAttribute("username", username);
 			session.setAttribute("problem", null);
+			resp.sendRedirect("profile");
 		} else {
 			/*pw.println("Lol no");
 			pw.println("<a href=\"Index.html\">Go back</a>");*/
