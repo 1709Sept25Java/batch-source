@@ -20,7 +20,7 @@ function fibonacci(n){
     n--;
   }
   return y;
-}
+};
 
 /*
  2. Sort array of integers
