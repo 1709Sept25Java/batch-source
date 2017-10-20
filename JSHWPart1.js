@@ -9,6 +9,7 @@ var homework = {};
  f(1) = 1
  f(10) = 55
 */
+
 function fibonacci(n){
   var x = 1, y = 0, temp;
 
@@ -34,15 +35,22 @@ function fibonacci(n){
 	 array.sort();
  }
 */
-function sort(array) {
-	var arraytemp;
-	for(var i=0; i<array.length; i++){
-		for(var j=0; j<array.length; j++){
-			if(array[i]>array[i+1])
-			array[i]=array[i+1];
-			array[i+1]=arraytemp;
-		}
-	}
+
+array=[15,3,7,2,21]; 
+function arraySort(a) {
+    var temp;
+    do {
+        temp = false;
+        for (var i=0; i < a.length-1; i++) {
+            if (a[i] > a[i+1]) {
+                var temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                temp = true;
+            }
+        }
+    } while (temp);
+return a;
 };
 
 /*
@@ -58,7 +66,7 @@ function factorial(n) {
   else {
       return (n * factorial(n-1));
   }
-}
+};
 //factorial(3);
 
 /*
@@ -72,16 +80,19 @@ function factorial(n) {
 
 */
 
-function rotateleft(array) {
-	var arraytemp;
-	for(var i=0; i<array.length; i++){
-		for(var j=0; j<array.length; j++){
-			for(var x; x<array.length; x++)
-			array[i]=array[i+1];
-			array[i+1]=arraytemp;
-		}
-	}
+leftarray=[15,3,7,2,21]; //3,7,2,21,15  //7,2,21,15,3
+function rotateLeft(array,n) {
+//duplicate first and move to back, remove first
+	if(n==0){return a;}
+    
+      var arraytemp=[];
+		for(var i=1;i<a.length;i++){
+             arraytemp=a[n-1];
+             a=a.concat(arraytemp) 
+             return a.slice(n,a.length);  
+         }
 };
+
 
 /*
  5. Balanced Brackets
@@ -107,6 +118,7 @@ function rotateleft(array) {
  Return false if not balanced
 */
 
+//please create an array to check for balanced brackets example below
 var r=["(",")","(",")"];
 
 function balancedBrackets(a) {
