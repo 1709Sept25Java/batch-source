@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Events!</title>
+<link rel="stylesheet" src="../styles/styles.css"/>
+<style>
+	#div1{
+		height:450px;
+		width:600px;
+	}
+</style>
+</head>
+<body>
+	<div id="div2" class="displayDiv">
+		<p>mouse x position: </p><p id="mouseX"></p>
+		<p>mouse y position: </p><p id="mouseY"></p>
+	</div>
+	<div id="div1" class="displayDiv">
+		<p id="p1"></p>
+	</div>
+	<div id="div3" clas="displayDiv"></div>
+	<div id="div4" class="displayDiv">
+		<div id="div5" class="displayDiv">
+			<div id="div6" class="displayDiv"></div>
+		</div>
+	</div>
+
+	<div id="div7" class="displayDiv">
+		<table id="t1" onclick="alert('hello from t1')">
+			<tr id="tr1"> <td id="c1">one</td></tr>
+			<tr id="tr2"> <td id="c2">two</td></tr>
+		</table>
+	</div>
+
+</body>
+<script src="../scripts/events.js"></script>
+</html>
