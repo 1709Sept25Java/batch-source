@@ -233,5 +233,5 @@ var x=0; var y=0; var t=[];
 
   return y;
   //return y +"<br></br>" + arr1 +"<br></br>" + arr2 +"<br></br>" + arr3 +"<br></br>" + arr4 + x;
-}
+}; 
 //document.getElementById("demo").innerHTML = balancedBrackets(r);
