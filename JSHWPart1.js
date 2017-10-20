@@ -10,10 +10,10 @@ homework.fibonacci = function(n){
 	var fib = 0;
 	var fib2 = 1;
 	if(n===0){
-		console.log(fib);
+		//console.log(fib);
 		return fib;
 	} else if(n===1){
-		console.log(fib2);
+		//console.log(fib2);
 		return fib2;
 	}
 	for(var i=0;i<n-1;i++){
@@ -21,7 +21,7 @@ homework.fibonacci = function(n){
 		fib2 = fib + fib2;
 		fib = tmp;
 	}
-	console.log(fib2);
+	//console.log(fib2);
 	return fib2;
 };
 
@@ -42,7 +42,7 @@ homework.sort = function(array){
 			}
 		}
 	}
-	console.log(array);
+	//console.log(array);
 	return array;
 };
 
@@ -54,7 +54,7 @@ homework.factorial = function(n){
 	for(var i=1;i<=n;i++){
 		fact = fact * i;
 	}
-	console.log(fact);
+	//console.log(fact);
 	return fact;
 };
 
@@ -70,7 +70,7 @@ homework.rotateLeft = function(array,n){
 		var j = (i+n)%array.length;
 		shiftArr[i] = array[j];
 	}
-	console.log(shiftArr);
+	//console.log(shiftArr);
 	return shiftArr;
 };
 
@@ -103,25 +103,25 @@ homework.balancedBrackets = function(bracketsString){
 			check.push(spot);
 		} else if(spot===')'){
 			if(check.pop()!=='('){
-				console.log(false);
+				//console.log(false);
 				return false;
 			}
 		} else if(spot==='}'){
 			if(check.pop()!=='{'){
-				console.log(false);
+				//console.log(false);
 				return false;
 			}
 		} else if(spot===']'){
 			if(check.pop()!=='['){
-				console.log(false);
+				//console.log(false);
 				return false;
 			}
 		}
 	}
 	if(check.length>0){
-		console.log(false);
+		//console.log(false);
 		return false;
 	}
-	console.log(true);
+	//console.log(true);
 	return true;
 };
