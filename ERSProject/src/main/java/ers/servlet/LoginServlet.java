@@ -1,10 +1,16 @@
-package com.revature.servlet;
+package ers.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
+
+import ers.dao.UsersDao;
+import ers.dao.UsersDaoImpl;
 
 public class LoginServlet extends HttpServlet {
 	
@@ -13,7 +19,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		PrintWriter pw = resp.getWriter();
 		resp.setContentType("text/html");
-		req.getRequestDispatcher("Login.html").include(req, resp);
+		req.getRequestDispatcher("index.html").include(req, resp);
 	}
 	
 	@Override
@@ -22,20 +28,24 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		resp.setContentType("text/html");
-		PrintWriter pw = resp.getWriter();
 		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
-		if(password.equals("admin123")) {
-			/*pw.println("Welcome, "+username);
-			pw.println("<a href=\"Index.html\">Go back</a>");*/
+		UsersDao ud = new UsersDaoImpl();
+		int ur_id = ud.getUserRoleId(username, password);
+
+		if(ur_id == 1) {
+			resp.sendRedirect(req.getContextPath() 
+					+ "/employee.html");
 			session.setAttribute("username", username);
 			session.setAttribute("problem", null);
-			resp.sendRedirect("profile");
-		} else {
-			/*pw.println("Lol no");
-			pw.println("<a href=\"Index.html\">Go back</a>");*/
+		} else if (ur_id == 2){
+			resp.sendRedirect(req.getContextPath() 
+					+ "/manager.html");
+			session.setAttribute("username", username);
+			session.setAttribute("problem", null);
+		}else {
 			session.setAttribute("problem", "incorrect password");
 			resp.sendRedirect("login");
 		}

@@ -12,18 +12,18 @@ public class BankAccountsDaoImplTest {
 	
 	@Test(expected = AccountNotEmptyException.class)
 	public final void bankAccountNotEmpty() throws AccountNotEmptyException {
-			bd.deleteBankAccount(106);
+			bd.deleteBankAccount(472);
 		
 	}
 	
 	@Test(expected = OverdraftException.class)
 	public final void notEnoughMoney() throws OverdraftException {
-		bd.withdrawFromBankAccount(472, 800);
+		bd.withdrawFromBankAccount(472, 5000);
 	}
 	
 	@Test
 	public void withdrawFromOneAccount() throws OverdraftException {
-		int i = bd.withdrawFromBankAccount(106, 500);
+		int i = bd.withdrawFromBankAccount(472, 1);
 		assertEquals(1, i);
 	}
 	
