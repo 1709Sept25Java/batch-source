@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+body {
+	background-color:#ff8080;
+}
+.functionDiv {
+	border: solid 5px black;
+	margin: 20px;
+	padding: 20px;
+}
+.displayDiv {
+	border: solid 5px black;
+	margin: 20px;
+	padding: 20px;
+	background-color: #c0c0c0;
+}
+.displayBox{
+	border: solid 2px balck;
+	margin: 5px;
+	padding: 5px;
+	background-color: #58ab72;
+}

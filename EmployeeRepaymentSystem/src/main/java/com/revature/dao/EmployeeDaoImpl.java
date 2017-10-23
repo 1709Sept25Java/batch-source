@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.revature.domain.Employee;
 import com.revature.util.ConnectionUtil;
@@ -13,6 +14,7 @@ import oracle.jdbc.OracleTypes;
 
 public class EmployeeDaoImpl implements EmployeeDao{
 
+	//Function to retrieve user from the DB based on their login credentials
 	@Override
 	public Employee login(String username, String password) {
 		Employee emp = null;
@@ -56,8 +58,6 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				emp = new Employee(id,uname,pw,fname,lname,email,mgr);
 			}
 			
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -65,6 +65,24 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		}
 		
 		return emp;
+	}
+
+	@Override
+	public List<Employee> getEmployees() {
+		
+		List<Employee> employees = null;
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call GET_EMPLOYEES(?)}";
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return employees;
 	}
 
 }

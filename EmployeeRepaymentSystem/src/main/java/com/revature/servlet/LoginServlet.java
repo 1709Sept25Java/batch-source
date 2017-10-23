@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 
 import com.revature.dao.EmployeeDao;
 import com.revature.dao.EmployeeDaoImpl;
+import com.revature.doacontrol.EmployeeAccess;
 import com.revature.domain.Employee;
 
 public class LoginServlet extends HttpServlet{
@@ -23,8 +24,7 @@ public class LoginServlet extends HttpServlet{
 		String password = req.getParameter("password");
 		
 		//Retrieve user from the database
-		EmployeeDao eDao = new EmployeeDaoImpl();
-		Employee emp = eDao.login(username, password);
+		Employee emp = EmployeeAccess.getLogin(username, password);
 		
 		if(emp != null) {
 			//Set session attributes
@@ -41,7 +41,8 @@ public class LoginServlet extends HttpServlet{
 			
 		} else {
 			//Invalid log-in
-			resp.sendError(404);
+			//Set an attribute that JavaScript will respond to?
+			session.setAttribute("error", "invalid login");
 		}
 		
 	}

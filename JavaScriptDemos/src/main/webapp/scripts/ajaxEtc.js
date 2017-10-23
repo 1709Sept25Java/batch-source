@@ -38,7 +38,7 @@ window.onload = function(){
 	 var initTime = document.getElementById("time");
 	var html = initTime.lastChild.innerHTML;
 	var d = new Date();
-	html += "<h4>"+d.getHours+":"+d.getMinutes()+":"+d.getSeconds()+"</h4>"; 
+	html += "<h4>"+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"</h4>"; 
 	initTime.innerHTML = html;
 	setInterval(function(){
 		sendAjaxGet('http://localhost:8082/JavaScriptDemos/time',showTime);

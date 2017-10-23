@@ -1,0 +1,8 @@
+{
+"bears" : [
+	{"id":4,"name":"Yoda","age":5000,"cave":{"id":2,"name":"Dagoba"}},
+	{"id":5,"name":"Luke","age":19,"cave":{"id":2,"name":"Dagoba"}},
+	{"id":54,"name":"Darth","age":47,"cave":{"id":50,"name":"DeathStar"}},
+	{"id":10,"name":"Han","age":150,"cave":{"id":82,"name":"MillenniumFalcon"}}
+]
+}

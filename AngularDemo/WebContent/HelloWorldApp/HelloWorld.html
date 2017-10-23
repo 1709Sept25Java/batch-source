@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="HelloWorldApp"> <!-- ng-app can go anywhere but Angular will only apply in elements within the ng-app tag -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello World</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="HelloWorldApp.js"></script>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+	<div ng-controller="ColorCtrl" class="displayDiv">
+		<h3>ColorCtrl's favorite color is: {{myColor}}</h3>
+		
+		<input ng-model="myColor"/>
+		
+		<br><br>
+		<input type="button" value="set color" ng-click="myStyle={color:myColor}"> <br>
+		<input type="button" value="set background" ng-click="myStyle={'background-color':'blue'}"> <br>
+		<input type="button" value="clear" ng-click="myStyle={}"> <br>
+		
+		<span ng-style="myStyle">This is some text</span>
+		<pre>myStyle={{myStyle}}</pre>
+		
+	</div>
+	
+	<form ng-controller="DivisionCtrl" class="displayDiv">
+		<label>Number: </label><input name="number" ng-model="data.number" ng-change="divisionNeeded()">
+		<br> <br>
+		<label>Divisor: </label><input name="divisor" ng-model="data.divisor" ng-change="divisionNeeded()">
+		<br> <br>
+		<label>Result: </label>{{data.result}}<br><br>
+	</form>
+	
+	<div class="displayDiv">
+		<p>fun with expressions</p>
+		<p>{{'7'+'3'+'9'}}</p> <!-- this does math -->
+		<p>{{data.result}}</p> <!-- we don't have access to DivisionCtrl here -->
+	</div>
+
+	<div class="displayDiv" ng-controller="BearCtrl">
+		<table>
+			<tr ng-repeat="b in bears | orderBy: 'id'">
+				<td class="displayBox">{{b.id}}</td>
+				<td class="displayBox">{{b.name}}</td>
+				<td class="displayBox">{{b.age}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div ng-controller="ServiceCtrl" class="displayDiv">
+		<label>Our current location is</label><p ng-bind="myUrl"></p>
+		<br>
+		<label>Show the time?</label><input type="checkbox" ng-model="showTime">
+		<br>
+		<div ng-show="showTime" class="displayDiv">
+			<label>The current time is</label><p ng-bind="theTime"></p>
+		</div>
+	</div>
+	
+	<!-- custome directive invoked as an element -->
+	<my-directive></my-directive>
+	<!-- custom directive invoked as an attribute -->
+	<div my-directive></div>
+	<!-- custom directive invoked as a class -->
+	<div class="my-directive"></div>
+	
+
+</body>
+</html>
