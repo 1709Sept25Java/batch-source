@@ -15,6 +15,7 @@ function getUSA()
 	return console.log(x2.innerHTML);
 };
 getUSA();
+
 /*2*/
 function getPeopleInSales()
 {
@@ -26,6 +27,7 @@ function getPeopleInSales()
 	return console.log(emp);
 };
 getPeopleInSales();
+
 /*3*/
 function getAnchorChildren()
 {
@@ -38,6 +40,7 @@ function getAnchorChildren()
 	}
 };
 getAnchorChildren();
+
 /*4*/
 function Hobbies()
 {
@@ -52,6 +55,7 @@ function Hobbies()
 };
 Hobbies();
 //Hobbies;
+
 /*5*/
 function getCustomAttribute()
 {
@@ -59,6 +63,7 @@ function getCustomAttribute()
 	return console.log(ca);
 };
 getCustomAttribute();
+
 /*6
 Regarding these elements:
 	
@@ -104,6 +109,7 @@ function skills()
 	}
 };
 skills();
+
 /*8
  When a user selects a color, create an alert with a message similar to:
 	
@@ -122,8 +128,8 @@ function favColor()
 	current.onchange=alert("So you like" +current+ " more than yellow now?");
 };
 favColor();
-/*9*/
 
+/*9*/
 function mouse() {
 	var empn= document.getElementsByClassName("empName");
 	empn.addEventListener("mouseover", mouseOver);
@@ -151,6 +157,7 @@ function currentTime()
 	return console.log(ds);
 };
 currentTime();
+
 /*11*/
 function delay()
 {
@@ -163,6 +170,7 @@ function delay()
 	}
 };
 delay();
+
 /*12
 This function should traverse every node in the DOM. 
 Use recursion.
@@ -174,11 +182,8 @@ function walkTheDOM(node, func)
 	//transverse through child nodes
 	function func(){
 	for (var i = 0; i < document.body.childNodes.length; i++) {
-	     ( document.body.childNodes[i] )}; // Text, DIV, Text, UL, ..., SCRIPT
+	     ( document.body.childNodes[i] )}; 
 	return console.log(node);   
 	}
 };
-
-
-
 
