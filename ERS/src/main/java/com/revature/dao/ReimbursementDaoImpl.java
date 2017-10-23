@@ -24,7 +24,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	@Override
-	public int getReimbursements() {
+	public List<Reimbursement> getReimbursements() {
 		List<Reimbursement> reimbursements = new ArrayList<>();
 		String sql = "{call VIEW_REIMBURSEMENTS(?)}";
 		CallableStatement pstmt;
@@ -40,36 +40,37 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				int uIDAuthor = rs.getInt(4);
 				int rType = rs.getInt(5);
 				int rStatus = rs.getInt(6);
-				Reimbursement account = new Reimbursement(rID,amt,submitted, uIDAuthor, rType, rStatus);
-				reimbursements.add(account);
+				Reimbursement reimbursement = new Reimbursement(rID,amt,submitted, uIDAuthor, rType, rStatus);
+				reimbursements.add(reimbursement);
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return reimbursements.size();
+		return reimbursements;
 	}
 
+	//Simple Query returns Reimbursement fields, allows us to create reimbursement object
 	@Override
 	public Reimbursement getReimbursementById(int id) {
 		PreparedStatement pstmt = null;
-		Reimbursement r1 = null; 	
+		Reimbursement reimbursement = null; 	
 		String sql = "SELECT * FROM REIMBURSEMENTS WHERE R_ID = ?";
 		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				int rID = rs.getInt("R_ID");
-				int amount = rs.getInt("R_AMOUNT");
-				int uIDAuthor = rs.getInt("U_ID_AUTHOR");
-				int rType = rs.getInt("RT_TYPE");
-				int rStatus = rs.getInt("RT_TYPE");
-				Date rSubmitted = rs.getDate("R_SUBMITTED");
-				r1 = new Reimbursement(rID,amount,rSubmitted, uIDAuthor, rType, rStatus);
-			}
+				int rID = rs.getInt(1);
+				int amt = rs.getInt(2);
+				Date submitted = rs.getDate(3); 
+				int uIDAuthor = rs.getInt(4);
+				int rType = rs.getInt(5);
+				int rStatus = rs.getInt(6);
+				reimbursement = new Reimbursement(rID,amt,submitted, uIDAuthor, rType, rStatus);
+			}	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return r1;
+		return reimbursement;
 	}
 }

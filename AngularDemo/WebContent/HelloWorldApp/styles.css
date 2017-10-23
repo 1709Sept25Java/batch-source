@@ -13,5 +13,14 @@ body {
 	border: solid 5px black;
 	margin: 20px;
 	padding: 20px;
-	background-color: #289fe7;
+	background-color: #00ff00;
 }
+
+
+.displayRow {
+	border: solid 2px black;
+	margin: 5px;
+	padding: 5px;
+	background-color: #58ab72;
+}
+

@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.revature.util.ConnectionUtil;
-
 import com.revature.domain.*;
 
 import com.revature.dao.*;
@@ -21,7 +19,6 @@ import com.revature.dao.*;
 public class Driver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String filename = "connection.properties";
 		Properties prop = new Properties();
 		InputStream in;
