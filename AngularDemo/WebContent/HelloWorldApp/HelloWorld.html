@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="HelloWorldApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello World</title>
+<link href="styles.css"></link>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+ <script type="text/javascript" src="HelloWorldApp.js"></script>
+ 
+</head>
+<body>
+
+	<div ng-controller="ColorCtrl">
+		<h3>ColorCtrl's favorite color is: </h3><br>
+		<h3>{{myColor}}</h3>
+		
+		<inpu t ng-model="myColor"/>
+		<br><br>
+	<input type="button" value="set color"
+		ng-click="myStyle={'color':'myColor'}"><br><br>
+	<input type="button" value="set background"
+		ng-click="myStyle={'background-color': 'blue'}"><br><br>
+	<input type="button" value="clear"
+		ng-click="myStyle={}"><br>
+		
+		<span ng-style="myStyle">This is some text</span>
+		<pre>myStyle={{myStyle}}</pre>
+	</div>
+	
+	<form ng-controller="DivisionCtrl">
+	<label>Number:</label><input name="Number" ng-model="data.number"
+	ng-change="divisionNeeded()"> <br> <br>
+	<label>Divisor:</label><input name="Divisor" ng-model="data.divisor"
+	ng-change="divisionNeeded()"> <br> <br>
+	<label>Result:</label>{{data.result}}<br><br>
+	</form>
+	
+	<div>
+		<p>Fun with expression</p>
+		<p>{{7+3+9}}</p> <!-- this does match -->
+		<p>{{'7'+'3'+'10'}}</p> <!--this does not -->
+		<p>{{data.result}}</p> <!-- we don't have access to divisionCtrl here -->
+	
+	</div>
+	
+	<div class="displayDiv" ng-controller="BearCtrl">
+	<table>
+		<tr ng-repeat="b in bears">
+		<td>{{b.id}}</td>
+		<td>{{b.name}}</td>
+		<td>{{b.age}}</td>
+		<td>{{b.cave}}</td>
+		</tr>
+	</table>
+	
+	
+	</div>
+</body>
+</html>

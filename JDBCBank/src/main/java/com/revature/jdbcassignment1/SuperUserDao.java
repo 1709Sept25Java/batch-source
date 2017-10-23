@@ -104,8 +104,8 @@ public class SuperUserDao {
 			}
 			case 3:
 				System.out.println("Create a new username for the user");
-				userName = input.nextLine();
-				
+				 userName = input.nextLine();
+				input.nextLine();
 				System.out.println("Create a new password");
 				passWord = input.nextLine();
 				

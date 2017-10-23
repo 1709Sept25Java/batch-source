@@ -65,7 +65,7 @@ public class UserOperationDao {
 			Connection con = null;
 			CallableStatement cs = null;
 			ResultSet rs = null;
-			String deposit = "{CALL DEPOSIT_PROCEDURE (?, ?, ?)}";
+			String deposit = "{CALL DEPOSIT_PROCEDURE (?, ?)}";
 			try {
 
 				con = JavaConnectDB.getConnectionFromFile("connection.properties");
@@ -73,11 +73,10 @@ public class UserOperationDao {
 				cs.setInt(1, 10);
 				cs.setFloat(1, amount);
 				cs.setInt(2, accNumber);
-				cs.registerOutParameter(3, java.sql.Types.NUMERIC);
 				cs.executeUpdate();
 
 				rs = cs.getResultSet();
-				System.out.println("Your new balance is" + cs.getInt(3));
+				System.out.println("Your deposit was successful");
 
 			} catch (Exception e) {
 				e.printStackTrace();

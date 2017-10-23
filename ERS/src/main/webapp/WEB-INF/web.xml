@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>ERS</display-name>
+ 
+    <description></description>
+    <display-name>ERS</display-name>
+    <servlet>
+    <servlet-name>EmpLogin</servlet-name>
+    <servlet-class>com.revature.erservlets.EmpLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpLogin</servlet-name>
+    <url-pattern>/EmpLogin</url-pattern>
+  </servlet-mapping>
+</web-app>

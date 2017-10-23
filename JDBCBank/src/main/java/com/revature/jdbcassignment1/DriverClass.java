@@ -6,19 +6,18 @@ public class DriverClass {
 
 	public static void main(String[] args) {
 
-		/* Login log = new Login();
-		 log.execute();
-		  UserOperation.perform();
-		try {
-			UserOperation.regiterNewUser();
-		} catch (SQLException e) {
+		//SuperUser sUser = new SuperUser();
+		//sUser.superUserFunction();
 
-			e.printStackTrace();
-		}
-		*/
-		
-		SuperUser sUser = new SuperUser();
-		sUser.superUserFunction();
-		
+		/*try { UserOperation.regiterNewUser(); 
+		} catch (SQLException e) {
+				  
+				  e.printStackTrace(); 
+		}*/
+
+
+		 Login log = new Login();
+		 log.execute();
+		 UserOperation.perform();
 	}
 }
