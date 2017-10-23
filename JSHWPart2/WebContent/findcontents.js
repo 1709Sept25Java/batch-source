@@ -18,7 +18,9 @@ getUSA();
 /*2*/
 function getPeopleInSales()
 {
+	//get empName
 	var emp=document.getElementsByClassName("empName");
+	//nested node... get those in sales
 	var emp2=emp.contains("tr");
 	//childnode with tr=sales
 	return console.log(emp);
@@ -27,7 +29,9 @@ getPeopleInSales();
 /*3*/
 function getAnchorChildren()
 {
+	//grab all from a, and nested span element
 	var child=document.querySelectorAll("a span");
+	//loop through array
 	for(var i=0; i<child.length;i++){
 		var child2=child[i].innerHTML;
 	console.log(child2);
@@ -37,8 +41,9 @@ getAnchorChildren();
 /*4*/
 function Hobbies()
 {
+	//get num2
 	var h = document.getElementById("num2");
-	
+	//list all
 	 var select = "Select: ";
 	    for (var i = 0; i < h.length; i++) {
 	        select = select + "\n" + h.options[i].select;
@@ -89,8 +94,9 @@ function Sum()
 
 function skills()
 {
+	//event listener
 	document.getElementById("num2").addEventListener("skll", skll());
-	
+	// selection
 	return function skll(){
 	var s=document.getElementById("num2");
 	var select=s.options.value.text;
@@ -135,7 +141,9 @@ mouse();
 /*10*/
 function currentTime()
 {
+	//get Date
 	var d = new Date();
+	//get hours+minutes+seconds
 	var ds = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" +
 			+ ("0" + d.getSeconds()).slice(-2);
 	var dl=document.getElementById("currentTime").innerHTML;
