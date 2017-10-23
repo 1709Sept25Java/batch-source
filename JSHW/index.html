@@ -100,11 +100,11 @@
 	</div>
     <script type="text/javascript">
 		window.onload = function() {
-			//getUSA();
-			//getPeopleInSales();
-			//getAnchorChildren();
-			//getHobbies();
-			//getCustomAttribute();
+			getUSA();
+			getPeopleInSales();
+			getAnchorChildren();
+			getHobbies();
+			getCustomAttribute();
 		};
 		// 1. USA
 		//Define function getUSA()
@@ -252,16 +252,13 @@
 		for (var fc = 0; fc<colors.length; fc++){
 			colors[fc].addEventListener("click", function(){
 				if(this.name==="favoriteColor") {
-					console.log(this);
-					//Can't change color
-					this.style.backgroundColor = "red";
+					//console.log("style" + this.style);
+					//selected the element but can't change color
+					this.style.backgroundColor=this.value;
 				}
 			})
 		}
 		
-		
-		
-	
 		//9. Show/Hide Event
 		//NOTE: Write unobtrusive Javascript
 		//When user hovers over an employees name:
@@ -276,18 +273,17 @@
 		var employees = table.getElementsByClassName("empName");
 
 		for (var em = 0; em < employees.length; em++){
-			employees[em].addEventListener("mouseover", function(event) {
-				console.log(this.style.display);
+			console.log(em + employees[em].innerHTML);
+			employees[em].addEventListener("click", function(event) {
+				console.log(this.style.visibility);
 				if (  !this.style.visibility || this.style.visibility === "visible"){
 					this.style.visibility = "hidden";
 				}
-				else {
+				if (this.style.visibility === "hidden") {
 					this.style.visibility = "visible";
 				}
-				return this;
 			});
 		}
-		
 		
 		table.addEventListener("click", function(event){
 			var employees = table.getElementsByClassName("empName");
