@@ -224,15 +224,6 @@ function changeColor() {
 // Use recursion.
 // On each node, call func(node).
 
-//function walkTheDomFromRoot(node, func) {
-//	func(node);
-//    node = node.firstChild;
-//    while (node) {
-//        walkTheDomFromRoot(node, func);
-//        node = node.nextSibling;
-//    }
-//}
-
 function walkTheDomFromRoot(node, func) {
 	if (node == null){
 		return;
