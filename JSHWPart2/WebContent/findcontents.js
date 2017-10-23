@@ -21,8 +21,6 @@ function getPeopleInSales()
 {
 	//get empName
 	var emp=document.getElementsByClassName("empName");
-	//nested node... get those in sales
-	var emp2=emp.contains("tr");
 	//childnode with tr=sales
 	return console.log(emp);
 };
@@ -100,13 +98,14 @@ function Sum()
 function skills()
 {
 	//event listener
-	document.getElementById("num2").addEventListener("skll", skll());
+	var ski=document.getElementById("num2");
 	// selection
 	return function skll(){
 	var s=document.getElementById("num2");
 	var select=s.options.value.text;
     alert("Are you sure "+select+ " is one of your skills?");
 	}
+	ski.addEventListener("click", skll());	
 };
 skills();
 
@@ -125,14 +124,14 @@ function favColor()
 	//five colors: green, blue, red, purple, yellow... default is yellow
 	var def_color="yellow";
 	var current=document.getElementsByTagName("select")[0].value;
-	current.onchange=alert("So you like" +current+ " more than yellow now?");
+	current.onchange=alert("So you like " +current+ " more than yellow now?");
 };
 favColor();
 
 /*9*/
 function mouse() {
 	var empn= document.getElementsByClassName("empName");
-	empn.addEventListener("mouseover", mouseOver);
+	
 	
 	return function mouseOver(){
 	 if (empn.style.display === "none") {
@@ -141,6 +140,7 @@ function mouse() {
 	        empn.style.display = "none";
 	    }
 	}
+	empn.addEventListener("mouseover", mouseOver);
 }
 mouse();
 
@@ -164,10 +164,10 @@ function delay()
 	//get helloWorld element
 	var dl=document.getElementById("helloWorld").innerHTML;
 	//delay ...3000=3s
-	dl.onclick="setTimeout(colorChange(), 3000)";
-	return function colorChange(){
+	function colorChange(){
 		dl.style.color=blue;
 	}
+	dl.onclick="setTimeout(colorChange(), 3000)";
 };
 delay();
 
@@ -180,7 +180,7 @@ On each node, call func(node).
 function walkTheDOM(node, func)
 {
 	//transverse through child nodes
-	function func(){
+	function func(node){
 	for (var i = 0; i < document.body.childNodes.length; i++) {
 	     ( document.body.childNodes[i] )}; 
 	return console.log(node);   
