@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.domain.Employee;
@@ -58,6 +59,49 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				emp = new Employee(id,uname,pw,fname,lname,email,mgr);
 			}
 			
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return emp;
+	}
+	
+	@Override
+	public Employee empInfo(int uId) {
+		Employee emp = null;
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call EMPLOYEE_INFO(?,?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//Set in parameters, register out parameters
+			cs.setInt(1, uId);
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
+			
+			cs.execute();
+			
+			ResultSet rs = (ResultSet) cs.getObject(2);
+			
+			//Always plan for the bad things
+			if(rs == null) {
+				return emp;
+			}
+			//Retrieve info from the ResultSet
+			while(rs.next()) {
+				String uname = rs.getString("USERNAME");
+				String fname = rs.getString("FNAME");
+				String lname = rs.getString("LNAME");
+				String email = rs.getString("EMAIL");
+				
+				emp = new Employee(uId,uname,fname,lname,email);
+			}
+			
+			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -70,11 +114,44 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public List<Employee> getEmployees() {
 		
-		List<Employee> employees = null;
+		List<Employee> employees = new ArrayList<>();
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
 			String sql = "{call GET_EMPLOYEES(?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.registerOutParameter(1, OracleTypes.CURSOR);
+			
+			cs.execute();
+			
+			ResultSet rs = (ResultSet) cs.getObject(1);
+			
+			//In case something went horribly wrong
+			if(rs == null) {
+				return employees;
+			}
+			while(rs.next()) {
+				Employee emp;
+				//retrieve data from the resultset
+				int id = rs.getInt("E_ID");
+				String uname = rs.getString("USERNAME");
+				String pw = rs.getString("E_PASSWORD");
+				String fname = rs.getString("FNAME");
+				String lname = rs.getString("LNAME");
+				String email = rs.getString("EMAIL");
+				String isMgr = rs.getString("IS_MANAGER");
+				
+				//set the boolean value for manager status
+				boolean mgr = false;
+				if(isMgr.equals("t")) {
+					mgr = true;
+				}
+				
+				emp = new Employee(id,uname,pw,fname,lname,email,mgr);
+				employees.add(emp);
+			}
+			
+			conn.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

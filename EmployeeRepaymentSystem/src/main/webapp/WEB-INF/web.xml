@@ -39,10 +39,20 @@
   
   <servlet>
   	<servlet-name>mgrhome</servlet-name>
-  	<servlet-class>com.revature.servlet.EmpHomeServlet</servlet-class>
+  	<servlet-class>com.revature.servlet.MgrHomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>emphome</servlet-name>
+  	<servlet-name>mgrhome</servlet-name>
   	<url-pattern>/manager</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>empinfo</servlet-name>
+  	<servlet-class>com.revature.servlet.EmpInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empinfo</servlet-name>
+  	<url-pattern>/empinfo</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

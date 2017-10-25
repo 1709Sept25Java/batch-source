@@ -8,13 +8,13 @@ import javax.servlet.http.*;
 
 import com.revature.dao.EmployeeDao;
 import com.revature.dao.EmployeeDaoImpl;
-import com.revature.doacontrol.EmployeeAccess;
 import com.revature.domain.Employee;
+import com.revature.util.EmployeeAccess;
 
 public class LoginServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
-		req.getRequestDispatcher("views/index.html").forward(req, resp);
+		req.getRequestDispatcher("views/login.html").forward(req, resp);
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
@@ -24,11 +24,12 @@ public class LoginServlet extends HttpServlet{
 		String password = req.getParameter("password");
 		
 		//Retrieve user from the database
-		Employee emp = EmployeeAccess.getLogin(username, password);
+		EmployeeDao eDao = new EmployeeDaoImpl();
+		Employee emp = eDao.login(username, password);
 		
 		if(emp != null) {
 			//Set session attributes
-			session.setAttribute("id", emp.getId());
+			session.setAttribute("uid", emp.getId());
 			session.setAttribute("username", username);
 			session.setAttribute("mgr", emp.isMgr());
 			
@@ -40,9 +41,7 @@ public class LoginServlet extends HttpServlet{
 			}
 			
 		} else {
-			//Invalid log-in
-			//Set an attribute that JavaScript will respond to?
-			session.setAttribute("error", "invalid login");
+			resp.sendRedirect("main");
 		}
 		
 	}
