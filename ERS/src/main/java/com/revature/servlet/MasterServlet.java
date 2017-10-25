@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.revature.control.Login;
 import com.revature.dao.*;
 import com.revature.domain.*;
 import com.revature.util.ConnectionUtil;
@@ -42,34 +43,20 @@ public class MasterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//https://www.javatpoint.com/http-session-in-session-tracking
+		//String destination = RequestHelper.process(req);
+		//resp.sendRedirect(destination);
+		
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		//pw.println("Hello, "+username+". Welcome to your profile.");
-		
-		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
-			String sql = "{call LOGIN(?,?,?)}";
-			pw.println("Connected to database");
-			CallableStatement pstmt;
-			pstmt = con.prepareCall(sql);
-			pstmt.setString(1,username);
-			pstmt.setString(2,password);
-			pstmt.registerOutParameter(3, OracleTypes.CURSOR);
-			pstmt.executeUpdate();
-			ResultSet rs = (ResultSet) pstmt.getObject(3);
-			while(rs.next()){
-				int id = rs.getInt(1);
-				String role = rs.getString(2);
-				pw.println(username + " " + id+" "+role);
-				HttpSession session = req.getSession();
-				session.setAttribute("id", id);
-				session.setAttribute("role",role);
-			
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		User userLogin = Login.login(username, password);
+		if (userLogin != null) {
+			pw.println(userLogin.getuID()+" "+userLogin.getUsername() + " " + userLogin.getRole());
+			req.getSession().setAttribute("id", userLogin.getuID());
+			req.getSession().setAttribute("username", userLogin.getUsername());
 		}
+		String destination = userLogin.getRole();
+		resp.sendRedirect(destination.toLowerCase());
 	}
 }

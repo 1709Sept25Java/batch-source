@@ -12,6 +12,14 @@ public class User {
 	public User() {
 		super();
 	}
+
+	//Constructor with no password 
+	public User(int uID, String username, String role) {
+		super();
+		this.uID = uID;
+		this.username = username;
+		this.role = role;
+	}
 	
 	public User(int uID, String username, String password, String role) {
 		super();
@@ -21,6 +29,18 @@ public class User {
 		this.role = role;
 	}
 
+
+	public User(int uID, String username, String firstName, String lastName, String email, String role) {
+		super();
+		this.uID = uID;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.role = role;
+	}
+
+	
 	public int getuID() {
 		return uID;
 	}

@@ -9,4 +9,38 @@
     <servlet-name>master</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>employee</servlet-name>
+    <servlet-class>com.revature.servlet.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>employee</servlet-name>
+    <url-pattern>/employee</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>manager</servlet-name>
+    <servlet-class>com.revature.servlet.ManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>manager</servlet-name>
+    <url-pattern>/manager</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>basicinfo</servlet-name>
+    <servlet-class>com.revature.servlet.BasicInfoServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>basicinfo</servlet-name>
+    <url-pattern>/basicinfo</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>reimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.ReimbursementsServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>reimbursements</servlet-name>
+    <url-pattern>/reimbursements</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
