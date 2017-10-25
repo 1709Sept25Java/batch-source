@@ -5,10 +5,10 @@ function empBasicInfo(xhr){
 	
 	var bio = document.getElementById("empInfo");
 	var node = document.createElement("tr");
-	bio.innerHTML = "<tr><td>Username: </td> <td>" +eInfo.username+"</td></tr>";
-	bio.innerHTML += "<tr><td>First Name: </td> <td>" +eInfo.fName+"</td></tr>";
-	bio.innerHTML += "<tr><td>Last Name: </td> <td>" +eInfo.lName+"</td></tr>";
-	bio.innerHTML += "<tr><td>Email: </td> <td>" +eInfo.email+"</td></tr>";
+	bio.innerHTML = "<span class='col-md-4'>Username: </span><span class='col-md-4'>" +eInfo.username+"</span>";
+	bio.innerHTML += "<span class='col-md-4'>First Name: </span><span class='col-md-4'>" +eInfo.fName+"</span>";
+	bio.innerHTML += "<span class='col-md-4'>Last Name: </span><span class='col-md-4'>" +eInfo.lName+"</span>";
+	bio.innerHTML += "<span class='col-md-4'>Email: </span><span class='col-md-4'>" +eInfo.email+"</span>";
 }
 
 function sendAJAX(url,func){
