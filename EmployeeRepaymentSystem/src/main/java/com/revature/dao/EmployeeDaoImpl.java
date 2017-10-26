@@ -198,8 +198,31 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public boolean updatePw(int eId, String pw) {
+		boolean updated = false;
 		
-		return false;
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call EMP_PW_CHANGE(?,?,?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//Set and register parameters
+			cs.setInt(1, eId);
+			cs.setString(2, pw);
+			cs.registerOutParameter(3, OracleTypes.INTEGER);
+			
+			//execute and get return value
+			cs.execute();
+			int found = cs.getInt(3);
+			if(found == 1) {
+				updated = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return updated;
 	}
 
 }

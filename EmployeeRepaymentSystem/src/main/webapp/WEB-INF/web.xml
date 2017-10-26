@@ -55,4 +55,13 @@
   	<url-pattern>/empinfo</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>empupdate</servlet-name>
+  	<servlet-class>com.revature.servlet.EmpUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empupdate</servlet-name>
+  	<url-pattern>/update</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
