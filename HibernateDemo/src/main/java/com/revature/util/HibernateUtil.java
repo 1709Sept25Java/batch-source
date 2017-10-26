@@ -8,15 +8,20 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-	private static SessionFactory sessionFactory(String filename) {
-		Configuration c = new Configuration().configure(filename);
-		ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(
-				c.getProperties()).build();
-		return c.buildSessionFactory(sr);
+	private static SessionFactory sessionFactory;
+
+	private static SessionFactory getSessionFactory(String filename) {
+		if (HibernateUtil.sessionFactory != null) {
+			return HibernateUtil.sessionFactory;
+		} else {
+			Configuration c = new Configuration().configure(filename);
+			ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(c.getProperties()).build();
+			return c.buildSessionFactory(sr);
+		}
 	}
 
 	public static Session getSession() {
-		return sessionFactory("hibernate.cfg.xml").openSession();
+		return getSessionFactory("hibernate.cfg.xml").openSession();
 	}
 
 }

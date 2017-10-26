@@ -8,21 +8,37 @@ import org.hibernate.Transaction;
 import com.revature.domain.*;
 import com.revature.util.HibernateUtil;
 
+import com.revature.dao.*;
+
 public class Driver {
 
 	public static void main(String[] args) {
 		//init();
+		BatDao bd = new BatDaoImpl();
+		CaveDao cd = new CaveDaoImpl();
+		//System.out.println(bd.getBats());
+		
+		//get v load
+		/*
+		if (bd.getBatById(2) != null) {
+			System.out.println("bat 2 exists");
+		} else {
+			System.out.println("bat 2 does not exist");
+		}
+		System.out.println(bd.getBatById(2));
+		*/
+		
+		//save
+		//System.out.println(cd.addCave(new Cave("awesomecave2",3)));
+		
+		//update
+		Cave c = new Cave(92,"newnameforawesomecave2",3);
+		cd.updateCave(c);
 	}
 
 	static void init() {
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
-		/*
-		List<Bear> bears = s.createQuery("from Bear").list();
-
-		for (Bear b : bears) {
-			System.out.println(b);
-		}*/
 		
 		//create transient objects
 		
@@ -47,6 +63,7 @@ public class Driver {
 		System.out.println(s.save(b5));
 		
 		tx.commit();
+		System.out.println("finished tx");
 		s.close();
 	}
 

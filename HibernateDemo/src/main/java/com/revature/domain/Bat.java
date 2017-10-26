@@ -35,7 +35,7 @@ public class Bat implements Serializable {
 	@Column(name="BAT_NAME")
 	private String name;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="CAVE_ID")
 	private Cave cave;
 
@@ -61,5 +61,10 @@ public class Bat implements Serializable {
 
 	public void setCave(Cave cave) {
 		this.cave = cave;
+	}
+
+	@Override
+	public String toString() {
+		return "Bat [id=" + id + ", name=" + name + ", cave=" + cave + "]";
 	}
 }
