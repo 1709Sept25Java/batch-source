@@ -162,4 +162,44 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return employees;
 	}
 
+	@Override
+	public boolean updateInfo(int eId, String uname, String fname, String lname, String email) {
+		boolean updated = false;
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call EMP_INFO_UPDATE(?,?,?,?,?,?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//set and register parameters
+			cs.setInt(1, eId);
+			cs.setString(2, uname);
+			cs.setString(3, fname);
+			cs.setString(4, lname);
+			cs.setString(5, email);
+			cs.registerOutParameter(6, OracleTypes.INTEGER);
+			
+			//Execute procedure and get out parameter 
+			cs.execute();
+			int found = cs.getInt(6);
+			if(found == -1) {
+				return updated;
+			} else {
+				updated = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return updated;
+	}
+
+	@Override
+	public boolean updatePw(int eId, String pw) {
+		
+		return false;
+	}
+
 }

@@ -3,13 +3,26 @@
 function empBasicInfo(xhr){
 	var eInfo = JSON.parse(xhr.responseText);
 	
+	document.getElementById("uname").setAttribute("value",eInfo.username);
+	document.getElementById("fname").setAttribute("value",eInfo.fName);
+	document.getElementById("lname").setAttribute("value",eInfo.lName);
+	document.getElementById("email").setAttribute("value",eInfo.email);
+};
+
+
+document.getElementById("editInfo").addEventListener("click",function(){
+	console.log("Clicked");
+	document.getElementById("uname").removeAttribute('disabled');
+	document.getElementById("pw").removeAttribute('disabled');
+	document.getElementById("fname").removeAttribute('disabled');
+	document.getElementById("lname").removeAttribute('disabled');
+	document.getElementById("email").removeAttribute('disabled');
+	
 	var bio = document.getElementById("empInfo");
-	var node = document.createElement("tr");
-	bio.innerHTML = "<span class='col-md-4'>Username: </span><span class='col-md-4'>" +eInfo.username+"</span>";
-	bio.innerHTML += "<span class='col-md-4'>First Name: </span><span class='col-md-4'>" +eInfo.fName+"</span>";
-	bio.innerHTML += "<span class='col-md-4'>Last Name: </span><span class='col-md-4'>" +eInfo.lName+"</span>";
-	bio.innerHTML += "<span class='col-md-4'>Email: </span><span class='col-md-4'>" +eInfo.email+"</span>";
-}
+	bio.innerHTML += "<button type='submit' class='btn btn-default'>Submit</button>"
+	
+	this.setAttribute("disabled",true);
+});
 
 function sendAJAX(url,func){
 	var xhr = new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest");

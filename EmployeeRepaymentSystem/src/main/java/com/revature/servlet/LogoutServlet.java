@@ -11,13 +11,10 @@ public class LogoutServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
 		HttpSession session = req.getSession();
 		
-		session.removeAttribute("uid");
-		session.removeAttribute("username");
-		session.removeAttribute("mgr");
-		session = null;
-		req.getRequestDispatcher("views/index.html").include(req, resp);
-		PrintWriter pw = resp.getWriter();
-		pw.write("<p>Session attributes: "+session.getAttributeNames()+"</p>");
+		if(session != null) {
+			session.invalidate();
+		}
+		resp.sendRedirect("main");
 	}
 	
 }
