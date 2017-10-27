@@ -21,4 +21,14 @@
     <servlet-name>testServlet</servlet-name>
     <url-pattern>/testServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCustomerInfo</display-name>
+    <servlet-name>GetCustomerInfo</servlet-name>
+    <servlet-class>customer.GetCustomerInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCustomerInfo</servlet-name>
+    <url-pattern>/GetCustomerInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

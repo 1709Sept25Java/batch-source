@@ -12,7 +12,8 @@ import driver.ManageConnection;
 public class Login {
 	
 	public static boolean credentials(String user1,String pass1){  
-		boolean status=false;  
+		boolean status=false;
+		String cred=null;
 		try{  
 		Connection con=ManageConnection.getConnectionFromFile(); 
 		      
@@ -21,8 +22,15 @@ public class Login {
 		ps.setString(1,user1);  
 		ps.setString(2,pass1);  
 		      
-		ResultSet rs=ps.executeQuery();  
-		status=rs.next();  		          
+		ResultSet rs=ps.executeQuery();
+		//if gets preparedstatement successfully, then returns true
+		while(rs.next())
+			{
+			cred=rs.getString(1);
+				if(cred!=null) {
+					status=true;
+				}
+			}
 		}
 		catch(IOException ioe)
 		{

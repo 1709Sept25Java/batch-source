@@ -31,9 +31,21 @@ public class ManageConnection {
 	    //creates a connection, with drivermanager, 
 	    //using a connectionstring with arguements from connection.properties file with inputstream
 	public static Connection getConnectionFromFile() throws IOException, SQLException{
+		
+		//check that our driver is being seen by Maven, otherwise will not find driver
+				try {
+					Class.forName("oracle.jdbc.driver.OracleDriver");
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+		
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream(filename);
-		prop.load(in);
+		//InputStream in = new FileInputStream(filename);
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		
+		//makes it so will find connection.properties in resources file
+		prop.load(loader.getResourceAsStream(filename));
+		//finally retrieves information from file
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
 		String password = prop.getProperty("password");
