@@ -34,8 +34,8 @@ public class Cave implements Serializable {
 	@Column(name="MAX_BEARS")
 	private int maxBears;
 	
-	@OneToMany(mappedBy="cave",fetch=FetchType.LAZY)
-	private List<Bat> bats;
+	@OneToMany(mappedBy="cave",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	private List<Animal> animals;
 	
 	public int getId() {
 		return id;
@@ -59,8 +59,8 @@ public class Cave implements Serializable {
 	public String toString() {
 		return "Cave [id=" + id + ", name=" + name + ", maxBears=" + maxBears + "]";
 	}
-	public List<Bat> getBats() {
-		return bats;
+	public List<Animal> getAnimals() {
+		return animals;
 	}
 
 }

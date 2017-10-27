@@ -34,7 +34,8 @@ public class CaveDaoImpl implements CaveDao {
 	public int addCave(Cave c) {
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
-		int result = (int) s.save(c); //persist - no return type, guaranteed to execute in tx
+		int result = 0;//(int) s.save(c); //persist - no return type, guaranteed to execute in tx
+		s.saveOrUpdate(c);
 		tx.commit();
 		s.close();
 		return result;
@@ -54,8 +55,11 @@ public class CaveDaoImpl implements CaveDao {
 
 	@Override
 	public void deleteCave(Cave c) {
-		// TODO Auto-generated method stub
-
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+			s.delete(c);
+		tx.commit();
+		s.close();
 	}
 
 }
