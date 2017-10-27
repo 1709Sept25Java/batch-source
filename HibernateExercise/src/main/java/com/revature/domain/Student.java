@@ -14,14 +14,12 @@ public class Student implements Serializable{
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.flashcards = flashcards;
 	}
 
-	public Student(String firstname, String lastname, List<Flashcard> flashcards) {
+	public Student(String firstname, String lastname) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.flashcards = flashcards;
 	}
 
 	public Student() {
@@ -33,16 +31,16 @@ public class Student implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqStudent")
 	@SequenceGenerator(allocationSize=1,name="seqStudent",sequenceName="SQ_STUDENT")
 	@Column(name="S_ID")
-	int id;
+	private int id;
 	
 	@Column(name="S_FNAME")
-	String firstname;
+	private String firstname;
 	
 	@Column(name="S_LNAME")
-	String lastname;
+	private String lastname;
 	
 	@OneToMany(mappedBy="author",fetch=FetchType.EAGER)
-	List<Flashcard> flashcards;
+	private List<Flashcard> flashcards;
 
 	public int getId() {
 		return id;
@@ -70,6 +68,11 @@ public class Student implements Serializable{
 
 	public void setFlashcards(List<Flashcard> flashcards) {
 		this.flashcards = flashcards;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
 	
 }

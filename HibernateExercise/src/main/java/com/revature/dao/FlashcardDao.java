@@ -7,8 +7,8 @@ import com.revature.domain.Student;
 
 public interface FlashcardDao {
 
-	List<Flashcard> getFlashcards(int id);
+	public List<Flashcard> getFlashcards();
 	
-	void addFlashcard(String q,String ans,Student auth);
+	public int addFlashcard(Flashcard f);
 	
 }

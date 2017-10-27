@@ -11,14 +11,13 @@ public class HibernateUtil {
 	private static SessionFactory session; 
 	
 	private static SessionFactory sessionFactory(String filename) {
-		if(HibernateUtil.session != null) {
-			
-		} else {
-			
+		if(HibernateUtil.session == null) {
+			Configuration con = new Configuration().configure(filename);
+			ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(con.getProperties()).build();
+			HibernateUtil.session = con.buildSessionFactory(sr);
 		}
-		Configuration c = new Configuration().configure(filename);
-		ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(c.getProperties()).build();
-		return c.buildSessionFactory(sr);
+		
+		return HibernateUtil.session;
 	}
 	
 	public static Session getSession() {

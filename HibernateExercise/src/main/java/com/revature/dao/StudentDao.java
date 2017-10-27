@@ -1,11 +1,13 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import com.revature.domain.Student;
 
 public interface StudentDao {
 
-	Student getStudent(int id);
+	public List<Student> getStudent();
 	
-	void addStudent(String fname,String lname);
+	public int addStudent(Student s);
 	
 }

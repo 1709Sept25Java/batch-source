@@ -31,17 +31,17 @@ public class Flashcard implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqFlashcard")
 	@SequenceGenerator(allocationSize=1,name="seqFlashcard",sequenceName="SQ_FLASHCARD")
 	@Column(name="FC_ID")
-	int id;
+	private int id;
 	
 	@Column(name="FC_QUESTION")
-	String question;
+	private String question;
 	
 	@Column(name="FC_ANSWER")
-	String answer;
+	private String answer;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FC_AUTHOR")
-	Student author;
+	private Student author;
 
 	public int getId() {
 		return id;
@@ -69,6 +69,11 @@ public class Flashcard implements Serializable{
 
 	public void setAuthor(Student author) {
 		this.author = author;
+	}
+
+	@Override
+	public String toString() {
+		return "Flashcard [id=" + id + ", question=" + question + ", answer=" + answer + ", author=" + author + "]";
 	}
 	
 }
