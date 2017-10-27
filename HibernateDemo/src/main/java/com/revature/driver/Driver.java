@@ -2,6 +2,7 @@ package com.revature.driver;
 
 import java.util.List;
 
+import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -32,8 +33,37 @@ public class Driver {
 		//System.out.println(cd.addCave(new Cave("awesomecave2",3)));
 		
 		//update
-		Cave c = new Cave(92,"newnameforawesomecave2",3);
-		cd.updateCave(c);
+		//Cave c = new Cave(92,"newnameforawesomecave2",3);
+		//cd.updateCave(c);
+		
+		updateAndMerge();
+	}
+	
+	static void updateAndMerge(){
+		Cave c = new Cave("testCave",2);
+	    Session s1 = HibernateUtil.getSession();
+        Transaction tx1 = s1.beginTransaction();
+        int genId = (Integer) s1.save(c);
+        tx1.commit();
+        s1.close();
+
+        c.setMaxBears(3);
+
+        Session s2 = HibernateUtil.getSession();
+        Transaction tx2 = s2.beginTransaction();
+        try {
+        	Cave updatedCave=(Cave)s2.get(Cave.class,genId);//now same object with persistent state attached to s2.
+            c.setMaxBears(9);
+        	//s2.update(c);//will throw exception because update will try to reattach cave object to s2 and 
+            //already one persistent object with same identifier
+
+            s2.merge(c);//it will execute fine.
+
+            tx2.commit();
+        } catch (NonUniqueObjectException ex) {
+            ex.printStackTrace();
+        }
+        s2.close();
 	}
 
 	static void init() {
