@@ -8,6 +8,9 @@ document.getElementById("reimbursementRequest").addEventListener("click", functi
 	sendAjax("reimbursement",reimbursementRequest);
 });
 
+
+
+
 document.getElementById("updateEmployeeRequest").addEventListener("click", function(){
 	sendAjax("empupdate", updateEmployee);
 });
@@ -50,4 +53,3 @@ function updateEmployee(e) {
 	document.getElementById("updateEmployeeForm").innerHTML = e.responseText;
 	console.log("Going to update employee");
 };
-z

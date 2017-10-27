@@ -5,13 +5,46 @@
 <title>Submit Reimbursement</title>
 </head>
 <body>
-	<form class="box" action="reimbursement" method="post">
+	<form id = "the-form" class="box" action="reimbursement" method="post">
 		<fieldset>
-			  <input type="file" name="pic" accept="image/*">
+				amount: <br><input name="amount"><br>
+				description: <br><input name="description"><br>
+				type: <br><input name="type"><br>
+			  <input id="the-file" type="file" name="file" accept="image/*">
 			  <input type="submit">
 		</fieldset>
 		<br>
-		<input type="submit" value="reimbursement">
 	</form>
 </body>
+
+<!--
+<script>
+	
+var form = document.getElementById('the-form');
+console.log(form.innerHTML);
+	
+	  document.getElementById("the-file").addEventListener("change", function(){
+			var fileInput = document.getElementById('the-file');
+			console.log(fileInput.files); // A FileList with all selected files
+			var file = fileInput.files[0];
+			console.log("file " + file.name);
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "reimbursement", true);
+			xhr.send(file);
+	  	return false; // To avoid actual submission of the form
+	 });
+
+</script> -->
 </html>
+
+
+<!-- document.getElementById("the-form").addEventListener("",function(){
+	var fileInput = document.getElementById('the-file');
+	console.log(fileInput.files); // A FileList with all selected files
+	var file = fileInput.files[0];
+	console.log("name: " + file.name); // "my-holiday-photo.jpg"
+	console.log("size: " + file.size); // 1282632
+	console.log("type: " + file.type); // image/jpeg
+
+});
+-->

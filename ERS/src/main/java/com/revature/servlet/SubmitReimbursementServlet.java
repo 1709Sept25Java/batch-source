@@ -35,46 +35,48 @@ public class SubmitReimbursementServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("views/reimbursement.html");
 		rd.forward(req, resp);
 	}
-	
-	@Override	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		PrintWriter pw = resp.getWriter();
-		//http://blog.teamtreehouse.com/uploading-files-ajax
-		String image = req.getParameter("pic");
-		File imageFile = new File(image);
-		//File imageFile = new File("C:/168s.jpg");
-		FileInputStream fin = new FileInputStream(imageFile);
-		pw.println(fin.available());
-		int success;
-		try (Connection con = ConnectionUtil.getConnectionFromFile()) {
-			String sql = "{call SUBMIT_IMAGE(?)}";
-			CallableStatement ps;
-			ps = con.prepareCall(sql);
-			ps.setBinaryStream(1, fin, (int) fin.available());
-			ps.executeUpdate();
-			con.close();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//resp.sendRedirect("employee");
-	}
 
+//	http://www.technicaladvices.com/2011/12/10/ajax-file-upload-to-a-java-servlet-in-html5/
+	
 //	@Override	
 //	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		resp.setContentType("text/html");
 //		PrintWriter pw = resp.getWriter();
-//
-//		String description = req.getParameter("description");
-//		int amount = Integer.parseInt(req.getParameter("amount"));
-//		int type = Integer.parseInt(req.getParameter("type"));
-//		int id = (int) req.getSession().getAttribute("id");
-//		int success = EmployeeRequests.submitReimbursement(amount, description, id, type);
-//		if (success == 1) {
-//			pw.println("Success");
+//		//http://blog.teamtreehouse.com/uploading-files-ajax
+//		String image = req.getParameter("pic");
+//		File imageFile = new File(image);
+//		//File imageFile = new File("C:/168s.jpg");
+//		FileInputStream fin = new FileInputStream(imageFile);
+//		pw.println(fin.available());
+//		int success;
+//		try (Connection con = ConnectionUtil.getConnectionFromFile()) {
+//			String sql = "{call SUBMIT_IMAGE(?)}";
+//			CallableStatement ps;
+//			ps = con.prepareCall(sql);
+//			ps.setBinaryStream(1, fin, (int) fin.available());
+//			ps.executeUpdate();
+//			con.close();
+//		}catch (SQLException e) {
+//			e.printStackTrace();
 //		}
 //		resp.sendRedirect("employee");
 //	}
+
+	@Override	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter pw = resp.getWriter();
+
+		String description = req.getParameter("description");
+		int amount = Integer.parseInt(req.getParameter("amount"));
+		int type = Integer.parseInt(req.getParameter("type"));
+		int id = (int) req.getSession().getAttribute("id");
+		int success = EmployeeRequests.submitReimbursement(amount, description, id, type);
+		if (success == 1) {
+			pw.println("Success");
+		}
+		resp.sendRedirect("employee");
+	}
 
 	
 }
