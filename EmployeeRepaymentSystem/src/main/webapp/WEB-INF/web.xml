@@ -64,4 +64,22 @@
   	<url-pattern>/update</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>rtypes</servlet-name>
+  	<servlet-class>com.revature.servlet.GetTypesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>rtypes</servlet-name>
+  	<url-pattern>/types</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>newreqform</servlet-name>
+  	<servlet-class>com.revature.servlet.ReimbursementFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>newreqform</servlet-name>
+  	<url-pattern>/request</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

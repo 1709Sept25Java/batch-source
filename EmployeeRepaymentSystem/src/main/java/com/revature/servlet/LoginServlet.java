@@ -14,7 +14,9 @@ import com.revature.util.EmployeeAccess;
 public class LoginServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+		
 		req.getRequestDispatcher("views/login.html").forward(req, resp);
+		
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{

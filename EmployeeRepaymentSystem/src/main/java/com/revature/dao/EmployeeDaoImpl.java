@@ -187,6 +187,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				updated = true;
 			}
 			
+			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -215,6 +217,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			if(found == 1) {
 				updated = true;
 			}
+			
+			conn.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

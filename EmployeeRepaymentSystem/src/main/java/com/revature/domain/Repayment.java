@@ -5,6 +5,20 @@ import java.sql.Timestamp;
 
 public class Repayment {
 
+	public Repayment(int id, double amount, String summary, Timestamp sumbitted, Timestamp resolved, Employee emp,
+			Employee mgr, RepayStatus status, RepayType type) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.summary = summary;
+		this.sumbitted = sumbitted;
+		this.resolved = resolved;
+		this.emp = emp;
+		this.mgr = mgr;
+		this.status = status;
+		this.type = type;
+	}
+
 	public Repayment(int id, double amount, String summary, Blob receipt, Timestamp sumbitted, Timestamp resolved,
 			Employee emp, Employee mgr, RepayStatus status, RepayType type) {
 		super();
