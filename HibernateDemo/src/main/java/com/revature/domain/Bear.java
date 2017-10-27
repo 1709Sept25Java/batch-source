@@ -6,6 +6,10 @@ import java.sql.Date; //more expedient for converting to SQL queries, many ways
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 
+@NamedQueries(
+		{
+			@NamedQuery()
+		})
 
 @XmlRootElement
 @Entity

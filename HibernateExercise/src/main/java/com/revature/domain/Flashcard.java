@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+@NamedQueries(@NamedQuery(name="getStudentFlashcards",query="from Flashcard where author = :studentVar"))
 @Entity
 @Table(name="FLASHCARD")
 public class Flashcard implements Serializable{

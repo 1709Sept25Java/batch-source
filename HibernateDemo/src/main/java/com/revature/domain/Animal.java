@@ -3,46 +3,50 @@ package com.revature.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-//	@Table(name="BAT") NOT NEEDED WITH SINGLE INHERITANCE
-@DiscriminatorValue(value = "bat")
-public class Bat extends Animal implements Serializable{
+@Table(name="ANIMAL")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="SPECIES",discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue(value="animal")
+public class Animal implements Serializable{
 
-	public Bat() {
+	public Animal() {
 		super();
 	}
 	
-	public Bat(String name,Cave c) {
-		this.setName(name);
-		this.setCave(c);
+	
+	public Animal(String name,Cave c){
+		this.cave =c;
+		this.name = name;
 	}
 	
-	/*
-	 * 
-	 * NOT NEEDED WITH ANIMAL TABLE
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="batSequence")
-	@SequenceGenerator(allocationSize=1,name="batSequence",sequenceName="SQ_BAT_PK")
-	@Column(name="BAT_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="AnimalSequence")
+	@SequenceGenerator(allocationSize=1,name="AnimalSequence",sequenceName="SQ_Animal_PK")
+	@Column(name="ANIMAL_ID")
 	private int id;
 	
-	@Column(name="BAT_NAME")
+	@Column(name="ANIMAL_NAME")
 	private String name;
 	
-	//@ManyToOne(fetch=FetchType.LAZY)
-	//@JoinColumn(name="CAVE_ID")
-	//private Cave cave;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CAVE_ID")
+	private Cave cave;
 
 	public int getId() {
 		return id;
@@ -60,7 +64,7 @@ public class Bat extends Animal implements Serializable{
 		this.name = name;
 	}
 
-	
+
 	public Cave getCave() {
 		return cave;
 	}
@@ -68,6 +72,6 @@ public class Bat extends Animal implements Serializable{
 	public void setCave(Cave cave) {
 		this.cave = cave;
 	}
-	*/
+
 	
 }

@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,12 +24,12 @@ public class RepaymentDaoImpl implements RepaymentDao{
 			CallableStatement cs = conn.prepareCall(sql);
 			
 			//Set up the blob
-			FileInputStream img = new FileInputStream(file);
+			InputStream img = new FileInputStream(file);
 			
 			//Set and register parameters
 			cs.setDouble(1, amt);
 			cs.setString(2, summary);
-			cs.setBinaryStream(3, img);
+			cs.setBinaryStream(3, img, img.available());
 			cs.setTimestamp(4, submit);
 			cs.setInt(5, eid);
 			cs.setInt(6, type);

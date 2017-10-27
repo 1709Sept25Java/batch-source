@@ -61,4 +61,23 @@ public class Driver {
 		tx.commit();
 		s.close();
 	}
+	
+	static void moreBears() {
+		
+		CaveDao cd = new CaveDaoImpl();
+	}
+	
+	static void newAnimals() {
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		
+		Cave c = (Cave) s.get(Cave.class, 27);
+		Animal a = new Animal("mystery",c);
+		s.save(a);
+		Bat b = new Bat("Juliet",c);
+		
+		tx.commit();
+		s.close();
+	}
+	
 }

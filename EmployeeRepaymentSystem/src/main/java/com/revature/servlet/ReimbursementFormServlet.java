@@ -1,5 +1,6 @@
 package com.revature.servlet;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
 
@@ -28,6 +29,7 @@ public class ReimbursementFormServlet extends HttpServlet{
 		double amt = Double.parseDouble(req.getParameter("amount"));
 		String desc = req.getParameter("desc");
 		String file = req.getParameter("img");
+		
 		int type = Integer.parseInt(req.getParameter("type"));
 		Timestamp submit = new Timestamp(System.currentTimeMillis());
 		

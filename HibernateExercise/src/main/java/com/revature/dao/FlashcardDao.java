@@ -11,4 +11,5 @@ public interface FlashcardDao {
 	
 	public int addFlashcard(Flashcard f);
 	
+	
 }
