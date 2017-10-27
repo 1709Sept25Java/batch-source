@@ -7,9 +7,9 @@ public class RequestHelper {
 
 	public static String process (HttpServletRequest req) throws IOException {
 		switch(req.getParameter("")){
-		case "Employee":
+		case "employee":
 			return "employee";
-		case "Manager":
+		case "manager":
 			return "manager";
 		default:
 			return "error";

@@ -61,16 +61,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.registerOutParameter(2, OracleTypes.CURSOR);
 			pstmt.executeUpdate();
 			ResultSet rs = (ResultSet) pstmt.getObject(2);
-//			R_ID NUMBER NOT NULL,
-//		    R_AMOUNT NUMBER(22,2) NOT NULL,
-//		    R_DESCRIPTION VARCHAR2(100),
-//		    R_RECEIPT BLOB,
-//		    R_SUBMITTED TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-//		    R_RESOLVED TIMESTAMP,
-//		    U_ID_AUTHOR NUMBER NOT NULL,
-//		    U_ID_RESOLVER NUMBER,
-//		    RT_TYPE NUMBER NOT NULL,
-//		    RT_STATUS NUMBER NOT NULL,
 			while(rs.next()){
 				int rID = rs.getInt(1);
 				int rAmount = rs.getInt(2);
@@ -79,14 +69,39 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				Date rSubmitted = rs.getDate(5);
 				Date rResolved = rs.getDate(6);
 				int rAuthor = rs.getInt(7);
-				int rType = rs.getInt(8);
-				int rStatus = rs.getInt(9);
-				
+				int rResolver = rs.getInt(8);
+				int rType = rs.getInt(9);
+				int rStatus = rs.getInt(10);
+				Reimbursement reimbursement = new Reimbursement(rID, rAmount, rDescription, rReceipt, rSubmitted, rResolved, rAuthor, rResolver, rType, rStatus); 
+				reimbursements.add(reimbursement);
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return reimbursements;
 
+	}
+
+	@Override
+	public int createReimbursement(int amount, String description, int author, int type) {
+		String sql = "{call SUBMIT_REIMBURSEMENT(?,?,?,?,?)}";
+		CallableStatement pstmt;
+		int success = 0;
+		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
+			pstmt = con.prepareCall(sql);
+			pstmt.setInt(1,author);
+			pstmt.setString(2, description);
+			pstmt.setInt(3, author);
+			pstmt.setInt(4, type);
+			pstmt.registerOutParameter(5, OracleTypes.NUMBER);
+			pstmt.executeUpdate();
+			ResultSet rs = (ResultSet) pstmt.getObject(2);
+			while(rs.next()){
+				success = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return success;
 	}
 }

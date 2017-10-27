@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.control.EmployeeRequests;
 import com.revature.dao.*;
 import com.revature.domain.User;
@@ -23,7 +24,7 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter pw = resp.getWriter();
 		try {
-			req.getRequestDispatcher("views/Employee.html").include(req,resp);
+			req.getRequestDispatcher("views/employee.html").include(req,resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,6 +32,10 @@ public class EmployeeServlet extends HttpServlet {
 		pw.println("Hello Employee "+ req.getSession().getAttribute("id"));
 		User er = EmployeeRequests.userInfo(id);
 		pw.print(er.getUsername());
+		
+//		resp.setContentType("application/json");
+//		ObjectMapper mapper = new ObjectMapper();
+//		mapper.writeValue(pw, er);	
 	}
 	
 	@Override

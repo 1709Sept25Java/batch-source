@@ -56,7 +56,7 @@ public class MasterServlet extends HttpServlet {
 			req.getSession().setAttribute("id", userLogin.getuID());
 			req.getSession().setAttribute("username", userLogin.getUsername());
 		}
-		String destination = userLogin.getRole();
-		resp.sendRedirect(destination.toLowerCase());
+		String destination = userLogin.getRole().toLowerCase();
+		resp.sendRedirect(destination);
 	}
 }

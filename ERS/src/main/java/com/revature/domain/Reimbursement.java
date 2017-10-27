@@ -29,6 +29,21 @@ public class Reimbursement {
 		this.rtStatus = rtStatus;
 	}
 
+	public Reimbursement(int rID, int rAmount, String rDescription, Blob rReceipt, Date rSubmitted, Date rResolved,
+			int uIDAuthor, int uIDResolver, int rtType, int rtStatus) {
+		super();
+		this.rID = rID;
+		this.rAmount = rAmount;
+		this.rDescription = rDescription;
+		this.rReceipt = rReceipt;
+		this.rSubmitted = rSubmitted;
+		this.rResolved = rResolved;
+		this.uIDAuthor = uIDAuthor;
+		this.uIDResolver = uIDResolver;
+		this.rtType = rtType;
+		this.rtStatus = rtStatus;
+	}
+	
 	public int getrID() {
 		return rID;
 	}

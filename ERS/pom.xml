@@ -10,14 +10,20 @@
   </properties>
   <dependencies>
   	<dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
     </dependency>
   	<dependency>
-			<groupId>com.oracle.ojdbc</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>12.1.0.1</version>
-		</dependency>
+		<groupId>com.oracle.ojdbc</groupId>
+		<artifactId>ojdbc</artifactId>
+		<version>12.1.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.6.3</version>
+	</dependency>
+	
   </dependencies>
 </project>

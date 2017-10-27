@@ -42,5 +42,21 @@
     <servlet-name>reimbursements</servlet-name>
     <url-pattern>/reimbursements</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>reimbursement</servlet-name>
+    <servlet-class>com.revature.servlet.SubmitReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>reimbursement</servlet-name>
+    <url-pattern>/reimbursement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>empupdate</servlet-name>
+    <servlet-class>com.revature.servlet.UpdateEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>empupdate</servlet-name>
+    <url-pattern>/empupdate</url-pattern>
+  </servlet-mapping>
   
 </web-app>

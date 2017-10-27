@@ -42,6 +42,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return user;
 	}
 	
+	@Override
+	public int updateEmployeeById(int id, String un, String pw, String fn, String ln, String em) {
+		String sql = "{call UPDATE_USER(?,?,?,?,?,?,?)}";
+		CallableStatement pstmt;
+		int success = 0;
+		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
+			pstmt = con.prepareCall(sql);
+			pstmt.setInt(1,id);
+			pstmt.setString(2, un);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, fn);
+			pstmt.setString(5, ln);
+			pstmt.setString(6, em);
+			pstmt.registerOutParameter(7, OracleTypes.NUMBER);
+			pstmt.executeUpdate();
+			ResultSet rs = (ResultSet) pstmt.getObject(7);
+			while(rs.next()){
+				success = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return success;
+	}
+	
 	
 	
 	
