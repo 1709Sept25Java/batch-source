@@ -81,6 +81,34 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return reimbursements;
 
 	}
+	
+	@Override
+	public List<Reimbursement> getReimbursementsByStatus(int status) {
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		String sql = "{call STATUS_REIMBURSEMENTS(?,?)}";
+		CallableStatement pstmt;
+		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
+			pstmt = con.prepareCall(sql);
+			pstmt.setInt(1, status);
+			pstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			pstmt.executeUpdate();
+			ResultSet rs = (ResultSet) pstmt.getObject(2);
+			while(rs.next()){
+				int rID = rs.getInt(1);
+				int amt = rs.getInt(2);
+				Date submitted = rs.getDate(3); 
+				int uIDAuthor = rs.getInt(4);
+				int rType = rs.getInt(5);
+				int rStatus = rs.getInt(6);
+				Reimbursement reimbursement = new Reimbursement(rID,amt,submitted, uIDAuthor, rType, rStatus);
+				reimbursements.add(reimbursement);
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reimbursements;
+	}
+	
 
 	@Override
 	public int createReimbursement(int amount, String description, int author, int type) {
@@ -104,4 +132,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		return success;
 	}
+
+
 }

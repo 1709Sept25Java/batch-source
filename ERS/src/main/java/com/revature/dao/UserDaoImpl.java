@@ -9,12 +9,12 @@ import com.revature.util.ConnectionUtil;
 
 import oracle.jdbc.OracleTypes;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class UserDaoImpl implements UserDao {
 
-	public EmployeeDaoImpl() {
+	public UserDaoImpl() {
 		super();
 	}
-
+	
 	@Override
 	public User getUserById(int id) {
 		User user = null;
@@ -66,9 +66,5 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return success;
 	}
-	
-	
-	
-	
 
 }

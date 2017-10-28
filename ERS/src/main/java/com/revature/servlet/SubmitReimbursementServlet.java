@@ -36,6 +36,7 @@ public class SubmitReimbursementServlet extends HttpServlet {
 		rd.forward(req, resp);
 	}
 
+//https://robots.thoughtbot.com/html5-powered-ajax-file-uploads	
 //	http://www.technicaladvices.com/2011/12/10/ajax-file-upload-to-a-java-servlet-in-html5/
 	
 //	@Override	

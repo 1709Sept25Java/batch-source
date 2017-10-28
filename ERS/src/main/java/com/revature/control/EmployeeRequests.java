@@ -12,7 +12,7 @@ public final class EmployeeRequests {
 	}
 	
 	public static User userInfo(int id) {
-		EmployeeDao employee = new EmployeeDaoImpl();
+		UserDao employee = new UserDaoImpl();
 		return employee.getUserById(id);
 	}
 
@@ -28,7 +28,7 @@ public final class EmployeeRequests {
 	}
 	
 	public static int updateEmployee(int id, String un, String pw, String fn, String ln, String em) {
-		EmployeeDao employee = new EmployeeDaoImpl();
+		UserDao employee = new UserDaoImpl();
 		return employee.updateEmployeeById(id, un, pw, fn, ln, em);
 	}
 }

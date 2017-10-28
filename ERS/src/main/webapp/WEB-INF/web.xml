@@ -59,4 +59,14 @@
     <url-pattern>/empupdate</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>pending_reimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.PendingReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pending_reimbursements</servlet-name>
+    <url-pattern>/pending_reimbursements</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
