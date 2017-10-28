@@ -15,7 +15,7 @@ public class MgrHomeServlet extends HttpServlet{
 		Boolean mgr = (Boolean)session.getAttribute("mgr");
 		//Check that the user is logged in
 		if(session != null && session.getAttribute("uid") != null && mgr) {
-			req.getRequestDispatcher("views/homepage.html").include(req, resp);
+			req.getRequestDispatcher("views/mgrHome.html").include(req, resp);
 		} else {
 			resp.sendRedirect("main");
 		}

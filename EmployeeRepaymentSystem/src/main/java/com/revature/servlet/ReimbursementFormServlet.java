@@ -30,6 +30,8 @@ public class ReimbursementFormServlet extends HttpServlet{
 		String desc = req.getParameter("desc");
 		String file = req.getParameter("img");
 		
+		
+		
 		int type = Integer.parseInt(req.getParameter("type"));
 		Timestamp submit = new Timestamp(System.currentTimeMillis());
 		

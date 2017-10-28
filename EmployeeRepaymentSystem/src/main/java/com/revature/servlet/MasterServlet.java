@@ -8,6 +8,10 @@ import javax.servlet.http.*;
 public class MasterServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+		HttpSession session = req.getSession();
+		if(session != null && session.getAttribute("uid") != null) {
+			req.getRequestDispatcher("employee");
+		}
 		req.getRequestDispatcher("views/index.html").forward(req, resp);
 	}
 	

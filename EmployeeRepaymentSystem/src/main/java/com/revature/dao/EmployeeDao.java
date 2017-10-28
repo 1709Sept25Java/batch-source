@@ -13,7 +13,7 @@ public interface EmployeeDao {
 	public Employee empInfo(int uId);
 	
 	//Function to retrieve all the Employees who are not managers from the databse
-	public List<Employee> getEmployees();
+	public List<Employee> getEmployees(int mId);
 	
 	//Function to update the Employee info
 	public boolean updateInfo(int eId,String uname,String fname,String lname,String email);

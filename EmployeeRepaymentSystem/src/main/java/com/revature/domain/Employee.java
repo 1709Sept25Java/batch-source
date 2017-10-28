@@ -2,6 +2,14 @@ package com.revature.domain;
 
 public class Employee {
 
+	public Employee(int id, String fName, String lName, String email) {
+		super();
+		this.id = id;
+		this.fName = fName;
+		this.lName = lName;
+		this.email = email;
+	}
+
 	public Employee(int id, String username, String fName, String lName, String email) {
 		super();
 		this.id = id;

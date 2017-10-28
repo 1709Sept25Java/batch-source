@@ -112,19 +112,20 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	@Override
-	public List<Employee> getEmployees() {
+	public List<Employee> getEmployees(int mId) {
 		
 		List<Employee> employees = new ArrayList<>();
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call GET_EMPLOYEES(?)}";
+			String sql = "{call GET_EMPLOYEES(?,?)}";
 			CallableStatement cs = conn.prepareCall(sql);
-			cs.registerOutParameter(1, OracleTypes.CURSOR);
+			cs.setInt(1, mId);
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
 			
 			cs.execute();
 			
-			ResultSet rs = (ResultSet) cs.getObject(1);
+			ResultSet rs = (ResultSet) cs.getObject(2);
 			
 			//In case something went horribly wrong
 			if(rs == null) {
@@ -134,20 +135,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				Employee emp;
 				//retrieve data from the resultset
 				int id = rs.getInt("E_ID");
-				String uname = rs.getString("USERNAME");
-				String pw = rs.getString("E_PASSWORD");
 				String fname = rs.getString("FNAME");
 				String lname = rs.getString("LNAME");
 				String email = rs.getString("EMAIL");
-				String isMgr = rs.getString("IS_MANAGER");
 				
-				//set the boolean value for manager status
-				boolean mgr = false;
-				if(isMgr.equals("t")) {
-					mgr = true;
-				}
-				
-				emp = new Employee(id,uname,pw,fname,lname,email,mgr);
+				emp = new Employee(id,fname,lname,email);
 				employees.add(emp);
 			}
 			

@@ -13,7 +13,7 @@ public class EmpHomeServlet extends HttpServlet{
 		HttpSession session = req.getSession();
 		//Check that the user is logged in
 		if(session != null && session.getAttribute("uid") != null) {
-			req.getRequestDispatcher("views/homepage.html").include(req, resp);
+			req.getRequestDispatcher("views/empHome.html").include(req, resp);
 		} else {
 			resp.sendRedirect("main");
 		}

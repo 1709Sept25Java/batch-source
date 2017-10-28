@@ -82,4 +82,22 @@
   	<url-pattern>/request</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>empslist</servlet-name>
+  	<servlet-class>com.revature.servlet.AllEmployeesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empslist</servlet-name>
+  	<url-pattern>/employeelist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>allempsview</servlet-name>
+  	<servlet-class>com.revature.servlet.AllEmpsViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>allempsview</servlet-name>
+  	<url-pattern>/allemployees</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
