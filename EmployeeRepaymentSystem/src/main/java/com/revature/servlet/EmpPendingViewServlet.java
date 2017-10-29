@@ -1,0 +1,14 @@
+package com.revature.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+
+public class EmpPendingViewServlet extends HttpServlet{
+
+	protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
+		req.getRequestDispatcher("views/pendingReqs.html").forward(req, resp);
+	}
+	
+}

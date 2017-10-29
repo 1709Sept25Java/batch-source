@@ -145,4 +145,22 @@
   	<url-pattern>/empresolved</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>viewpending</servlet-name>
+  	<servlet-class>com.revature.servlet.EmpPendingViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>viewpending</servlet-name>
+  	<url-pattern>/mypending</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>viewresolved</servlet-name>
+  	<servlet-class>com.revature.servlet.EmpResolvedViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>viewresolved</servlet-name>
+  	<url-pattern>/myresolved</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
