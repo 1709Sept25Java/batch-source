@@ -23,12 +23,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GetCustomerInfo</display-name>
-    <servlet-name>GetCustomerInfo</servlet-name>
-    <servlet-class>customer.GetCustomerInfo</servlet-class>
+    <display-name>GetCustomerServlet</display-name>
+    <servlet-name>GetCustomerServlet</servlet-name>
+    <servlet-class>customer.GetCustomerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetCustomerInfo</servlet-name>
-    <url-pattern>/GetCustomerInfo</url-pattern>
+    <servlet-name>GetCustomerServlet</servlet-name>
+    <url-pattern>/GetCustomerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowCustomerServlet</display-name>
+    <servlet-name>ShowCustomerServlet</servlet-name>
+    <servlet-class>customer.ShowCustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowCustomerServlet</servlet-name>
+    <url-pattern>/ShowCustomerServlet</url-pattern>
   </servlet-mapping>
 </web-app>

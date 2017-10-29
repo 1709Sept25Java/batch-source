@@ -1,5 +1,5 @@
-package employer;
+package dao;
 
-public class SeeCustomerInfo {
+public class EmployeeDaoImpl {
 
 }
