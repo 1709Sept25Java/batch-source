@@ -10,8 +10,8 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<!-- this can be noisy in the console -->
 		<property name="hibernate.show_sql">true</property>
-		<!-- choose whether to create db or update existing db -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- create because this is code-first -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- map domain object classes -->
 		<mapping class="com.revature.domain.Student"/>
 

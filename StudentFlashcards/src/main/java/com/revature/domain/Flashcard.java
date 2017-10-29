@@ -6,6 +6,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="FLASHCARD")
+@NamedQueries({
+	@NamedQuery(
+		name = "findFlashcardsByStudent",
+		query = "from Flashcard f where f.author.id = :id"
+	)
+})
+
 public class Flashcard implements Serializable {
 
 	public Flashcard(int id, String question, String answer, Student author) {
