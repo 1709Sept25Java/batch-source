@@ -9,4 +9,52 @@
   	<servlet-name>login</servlet-name>
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>ers.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>session</servlet-name>
+    <servlet-class>ers.servlet.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session</servlet-name>
+    <url-pattern>/session</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>edit</servlet-name>
+    <servlet-class>ers.servlet.EditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>edit</servlet-name>
+    <url-pattern>/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>emp</servlet-name>
+    <servlet-class>ers.servlet.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>emp</servlet-name>
+    <url-pattern>/emp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>pending</servlet-name>
+    <servlet-class>ers.servlet.PendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pending</servlet-name>
+    <url-pattern>/pending</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>resolved</servlet-name>
+    <servlet-class>ers.servlet.ResolvedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resolved</servlet-name>
+    <url-pattern>/resolved</url-pattern>
+  </servlet-mapping>
 </web-app>

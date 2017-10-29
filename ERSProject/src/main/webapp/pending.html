@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Reimbursements</title>
+
+<link rel="stylesheet" href="styles/base.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<script type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    
+<!--<script src="scripts/EmpCtrl.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</head>
+<style>
+
+	body {
+		background-color: #4682B4;
+	}
+	
+	#infoDiv{
+	
+		background-color: #F0F8FF;
+		width: 1500px;
+		height: 600px;
+		margin: 0 auto;
+		border: 1.5px solid #696969;
+		border-radius: 12px;
+	}
+	
+	h {
+		color: #F5F5F5;
+		font-size: 28px;
+		font-family: Georgia;
+	}
+
+	th {
+		text-align: center;
+		color: #0066CC;
+		border-bottom: 1.5px solid #696969;
+	}
+	
+	td {
+		text-align: center;
+	}
+	
+	#header {
+		width: 1500px;
+		margin: 0 auto;
+		text-align: left;
+	}
+	
+</style>
+
+<body">
+
+<ul>
+  <li><a href="manager.html">Home</a></li>
+  <li><a href="all_employees.html">Employees</a></li>
+  <li> <a class="active" href="pending.html">Pending Reimbursements</a></li>
+  <li> <a href="resolved.html">Resolved Reimbursements</a></li>
+  <li style="float:right"><a href="logout">Logout</a></li>
+</ul>
+
+<div id="header">
+	<h>Reimbursements - Pending</h>
+</div>
+<div ng-controller="PendingCtrl">
+<div id="infoDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div>
+		<table style="width: 100%">
+			<tr>
+				<th>ID</th>
+				<th>Amount</th>
+				<th>Description</th>
+				<th>Receipt</th>
+				<th>Date Submitted</th>
+				<th>Submitted By</th>
+			</tr>
+			<tr ng-repeat="r in reimbursements">
+				<td>{{e.id}}</td>
+				<td>{{e.amount}}</td>
+				<td>{{e.description}}</td>
+				<td>{{e.receipt}}</td>
+				<td>{{e.date_submitted}}</td>
+				<td>{{e.submitted_by}}</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -3,20 +3,130 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>ERS - Employee</title>
-<link rel="stylesheet" href="styles/base.css" />
+
+<link rel="stylesheet" href="styles/base.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<script src="scripts/emInfo.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 </head>
 <style>
 
+	body {
+		background-color: #4682B4;
+	}
+	
+	#infoDiv{
+	
+		background-color: #F0F8FF;
+		width: 800px;
+		height: 400px;
+		margin: 0 auto;
+		border: 1.5px solid #696969;
+		border-radius: 12px;
+		margin-top: 50px;
+	}
+	
+	#emInfo {
+	
+		padding: 10px 0px;
+		font-size: 32px;
+		border-bottom: 1.5px solid #0066CC;
+		font-family: Georgia;
+		color: #0066CC;
+	}
+	
+	.info {
+		
+		font-family: Georgia;
+		padding: 20px;
+		font-weight: 550;
+	}
+	
+	.infoAns {
+		font-family: Georgia;
+		padding: 20px;
+		text-align: right;
+		color: #808080;
+	}
+	
 </style>
 
 <body>
 
 <ul>
   <li><a href="employee.html">Home</a></li>
-  <li><a class="active" href="info.html">Account Information</a></li>
   <li><a href="reimbursements_em.html">Reimbursements</a></li>
-  <li style="float:right"><a href="index.html">Logout</a></li>
+  <li><a class="active" href="info.html">Account</a></li>
+  <li style="float:right"><a href="logout">Logout</a></li>
 </ul>
+
+<div id="infoDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div>
+		<p id="emInfo">Employee Information</p>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<p class="info">User ID:</p>
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<p class="infoAns" id="u_id"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<p class="info">Username:</p>
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<p class="infoAns" id="u_name"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<p class="info">Password:</p>
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<p class="infoAns" id="u_pw"></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<p class="info">First Name:</p>
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<p class="infoAns" id="fname"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<p class="info">Last Name:</p>
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<p class="infoAns" id="lname"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<p class="info">Email:</p>
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<p class="infoAns" id="email"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="text-align: right; padding: 15px">
+			<a href="edit_info.html">Edit</a>
+		</div>
+	</div>
+
+</div>
 
 </body>
 </html>

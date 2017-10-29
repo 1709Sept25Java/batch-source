@@ -87,6 +87,17 @@ public class Users {
 	public void setUr_id(int ur_id) {
 		this.ur_id = ur_id;
 	}
+
+	public Users(int u_id, String username, String firstname, String lastname, String email) {
+		super();
+		this.u_id = u_id;
+		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+	
+	
 	
 	
 	
