@@ -100,4 +100,49 @@
   	<url-pattern>/allemployees</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>pendinglist</servlet-name>
+  	<servlet-class>com.revature.servlet.AllPendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>pendinglist</servlet-name>
+  	<url-pattern>/pendinglist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>resolvedlist</servlet-name>
+  	<servlet-class>com.revature.servlet.AllResolvedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>resolvedlist</servlet-name>
+  	<url-pattern>/resolvedlist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>allresolved</servlet-name>
+  	<servlet-class>com.revature.servlet.AllResolvedViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>allresolved</servlet-name>
+  	<url-pattern>/resolvedrequests</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>emppending</servlet-name>
+  	<servlet-class>com.revature.servlet.EmpPendingReqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>emppending</servlet-name>
+  	<url-pattern>/emppending</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>empresolved</servlet-name>
+  	<servlet-class>com.revature.servlet.EmpResolvedReqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empresolved</servlet-name>
+  	<url-pattern>/empresolved</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

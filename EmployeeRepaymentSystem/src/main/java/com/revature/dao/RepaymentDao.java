@@ -1,10 +1,20 @@
 package com.revature.dao;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import com.revature.domain.Repayment;
 
 public interface RepaymentDao {
 
 	//Function to create new Reimbursement request
-	boolean newRepayment(int eid,double amt,String summary,String file,Timestamp submit,int type);
+	public boolean newRepayment(int eid,double amt,String summary,String file,Timestamp submit,int type);
 	
+	public List<Repayment> pendingRepayments(int eid);
+	
+	public List<Repayment> resolvedRepayments(int eid);
+	
+	public List<Repayment> pendingForEmp(int eid);
+	
+	public List<Repayment> resolvedForEmp(int eid);
 }

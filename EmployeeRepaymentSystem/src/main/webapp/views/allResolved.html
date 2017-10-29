@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ERS-Employee List</title>
+<title>ERS-Resolved Requests</title>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,10 +15,8 @@
 		<div class="container-fluid">
 			<div class="navbar-header"><a class="navbar-brand" href="main">ERS</a></div>
 			<ul class="nav navbar-nav">
-				<li><a href="manager">Manager Home</a></li>
-			</ul>
-			<ul class="nav navbar-nav">
 				<li><a href="employee">Employee Home</a></li>
+				<li><a href="allemployees">Employee List</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
@@ -31,13 +29,14 @@
 		<table class="table table-stripped">
 			<thead>
 				<tr>
-					<th>Employee Id</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
+					<th>Amount</th>
+					<th>Employee ID</th>
+					<th>Type</th>
+					<th>Status</th>
+					<th>Submitted</th>
 				</tr>
 			</thead>
-			<tbody id="empTable">
+			<tbody id="requests">
 				
 			</tbody>
 		</table>
@@ -45,5 +44,4 @@
 	</div>
 
 </body>
-<script src="scripts/employeeList.js"></script>
 </html>

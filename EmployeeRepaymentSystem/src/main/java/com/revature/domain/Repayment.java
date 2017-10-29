@@ -4,23 +4,19 @@ import java.sql.Blob;
 import java.sql.Timestamp;
 
 public class Repayment {
-
-	public Repayment(int id, double amount, String summary, Timestamp sumbitted, Timestamp resolved, Employee emp,
-			Employee mgr, RepayStatus status, RepayType type) {
+	
+	public Repayment(int id, double amount, Timestamp sumbitted, String empName, String status, String type) {
 		super();
 		this.id = id;
 		this.amount = amount;
-		this.summary = summary;
 		this.sumbitted = sumbitted;
-		this.resolved = resolved;
-		this.emp = emp;
-		this.mgr = mgr;
+		this.empName = empName;
 		this.status = status;
 		this.type = type;
 	}
 
 	public Repayment(int id, double amount, String summary, Blob receipt, Timestamp sumbitted, Timestamp resolved,
-			Employee emp, Employee mgr, RepayStatus status, RepayType type) {
+			int emp, int mgr, String status, String type) {
 		super();
 		this.id = id;
 		this.amount = amount;
@@ -30,6 +26,16 @@ public class Repayment {
 		this.resolved = resolved;
 		this.emp = emp;
 		this.mgr = mgr;
+		this.status = status;
+		this.type = type;
+	}
+
+	public Repayment(int id, double amount, Timestamp sumbitted, int emp, String status, String type) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.sumbitted = sumbitted;
+		this.emp = emp;
 		this.status = status;
 		this.type = type;
 	}
@@ -50,13 +56,17 @@ public class Repayment {
 	
 	private Timestamp resolved;
 	
-	private Employee emp;
+	private int emp;
 	
-	private Employee mgr;
+	private String empName;
 	
-	private RepayStatus status;
+	private int mgr;
 	
-	private RepayType type;
+	private String mgrName;
+	
+	private String status;
+	
+	private String type;
 
 	public int getId() {
 		return id;
@@ -106,42 +116,43 @@ public class Repayment {
 		this.resolved = resolved;
 	}
 
-	public Employee getEmp() {
-		return emp;
-	}
-
-	public void setEmp(Employee emp) {
-		this.emp = emp;
-	}
-
-	public Employee getMgr() {
-		return mgr;
-	}
-
-	public void setMgr(Employee mgr) {
-		this.mgr = mgr;
-	}
-
-	public RepayStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(RepayStatus status) {
-		this.status = status;
-	}
-
-	public RepayType getType() {
-		return type;
-	}
-
-	public void setType(RepayType type) {
-		this.type = type;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Repayment [id=" + id + ", amount=" + amount + ", summary=" + summary
-				+ ", sumbitted=" + sumbitted + ", resolved=" + resolved + ", emp=" + emp.getlName() + ", mgr=" 
-				+ mgr.getlName() + ", status=" + status.getStatus() + ", type=" + type.getType() + "]";
+				+ ", sumbitted=" + sumbitted + ", resolved=" + resolved + "]";
+	}
+
+	public int getEmp() {
+		return emp;
+	}
+
+	public void setEmp(int emp) {
+		this.emp = emp;
+	}
+
+	public int getMgr() {
+		return mgr;
+	}
+
+	public void setMgr(int mgr) {
+		this.mgr = mgr;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -16,9 +16,8 @@
 			<div class="navbar-header"><a class="navbar-brand" href="main">Employee Reimbursement System</a></div>
 			<ul class="nav navbar-nav">
 				<li><a href="employee">Employee Home</a></li>
-			</ul>
-			<ul class="nav navbar-nav">
 				<li><a href="allemployees">Employee List</a></li>
+				<li><a href="resolvedrequests">Resolved Requests</a>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
@@ -27,8 +26,24 @@
 	</nav>
 	
 	<div class="container">
-	
+		
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Employee ID</th>
+					<th>Type</th>
+					<th>Status</th>
+					<th>Submitted</th>
+				</tr>
+			</thead>
+			<tbody id="requests">
+				
+			</tbody>
+		</table>
+		
 	</div>
 
 </body>
+<script src="scripts/mgrHome.js"></script>
 </html>
