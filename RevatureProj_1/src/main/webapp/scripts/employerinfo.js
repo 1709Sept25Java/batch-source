@@ -15,7 +15,7 @@ function getCustomer() {
 getCustomer();
 
 function getSelectedC(x){
-	document.getElementById("select"+x);
+	var select=document.getElementById("select"+x);
 	//redirect
 	window.location.replace("http://google.com");
 }

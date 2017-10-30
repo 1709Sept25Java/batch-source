@@ -31,9 +31,6 @@ public class GetCustomerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		Boolean clicked=false;
-		HttpSession session = req.getSession(true);
-		String id1= req.getParameter("selectedUser");
-		session.setAttribute("selectedUser", id1);
 		
 		PrintWriter pw = resp.getWriter();
 		//doGet(req, resp);
@@ -44,10 +41,7 @@ public class GetCustomerServlet extends HttpServlet {
         resp.getWriter().write("<div id=select"+i+" class='cDataTable' onclick='getSelectedC("+i+")'>"+ cdi.getCustomerIdString(i)+"</div>");
 		}
 		cdi.sendBlob("C:\\Users\\jinli\\Desktop\\test1.txt", 1);
-		
-		if(clicked==true) {
-			resp.getWriter().write("");;
-		}
+
 	}
 
 }

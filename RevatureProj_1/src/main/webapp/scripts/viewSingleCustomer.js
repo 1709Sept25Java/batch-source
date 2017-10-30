@@ -12,4 +12,4 @@ function getCustomer() {
   xhttp.send();
 }
 
-getCustomer();
+getCustomer(); 
