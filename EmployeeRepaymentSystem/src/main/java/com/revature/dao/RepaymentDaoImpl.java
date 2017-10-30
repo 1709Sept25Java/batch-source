@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -220,6 +221,50 @@ public class RepaymentDaoImpl implements RepaymentDao{
 		}
 		
 		return resolved;
+	}
+
+	@Override
+	public Repayment repaymentById(int rid) {
+		Repayment rp = null;
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "{call REPAYMENT_BY_ID(?,?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//Set and register parameters
+			cs.setInt(1, rid);
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
+			
+			//Execute call and get ResultSet
+			cs.execute();
+			ResultSet rs = (ResultSet)cs.getObject(2);
+			if(rs == null) {
+				return rp;
+			}
+			
+			while(rs.next()) {
+				int id = rs.getInt("R_ID");
+				double amt = rs.getDouble("R_AMOUNT");
+				String summary = rs.getString("R_SUMMARY");
+				Timestamp submitted = rs.getTimestamp("R_SUBMITTED");
+				Timestamp resolved = rs.getTimestamp("R_RESOLVED");
+				String eName = rs.getString("FNAME");
+				eName += rs.getString("LNAME");
+				String mName = rs.getString("M_FNAME");
+				mName += rs.getString("M_LNAME");
+				String type = rs.getString("RT_TYPE");
+				String status = rs.getString("RS_STATUS");
+				rp = new Repayment(id,amt,summary,submitted,resolved,eName,mName,type,status);
+			}
+			
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return rp;
 	}
 
 }

@@ -19,6 +19,7 @@ public class FlashcardDaoImpl implements FlashcardDao{
 		Transaction tx = session.beginTransaction();
 		List<Flashcard> flashcards = session.createQuery("from Flashcard").list();
 		
+		System.out.println();
 		for(Flashcard f : flashcards) {
 			System.out.println(f);
 		}

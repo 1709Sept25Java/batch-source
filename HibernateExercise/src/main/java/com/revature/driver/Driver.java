@@ -15,9 +15,9 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		//partOne();
+		partOne();
 		
-		//partTwoNamedQuery();
+		partTwoNamedQuery();
 		
 		partTwoCriteria();
 		
@@ -28,15 +28,18 @@ public class Driver {
 		
 		FlashcardDao fd = new FlashcardDaoImpl();
 		StudentDao sd = new StudentDaoImpl();
-		
+		/*
 		Student s = new Student("Sally","Brown");
 		Flashcard f = new Flashcard("why are you telling me?","philosophy",s);
 		
 		sd.addStudent(s);
 		fd.addFlashcard(f);
-		
+		*/
+		System.out.println();
 		sd.getStudent();
+		System.out.println();
 		fd.getFlashcards();
+		System.out.println();
 	}
 	
 	public static void partTwoNamedQuery() {
@@ -66,9 +69,11 @@ public class Driver {
 		
 		List<Flashcard> flashcards = q.setMaxResults(3).list();
 		
+		System.out.println();
 		for(Flashcard f : flashcards) {
 			System.out.println(f);
 		}
+		System.out.println();
 		
 		session.close();
 	}
@@ -86,9 +91,11 @@ public class Driver {
 		Criteria c = session.createCriteria(Student.class).add(Restrictions.like("lastname", "M%"));
 		List<Student> students = c.list();
 		
+		System.out.println();
 		for(Student s : students) {
 			System.out.println(s);
 		}
+		System.out.println();
 		
 		session.close();
 	}

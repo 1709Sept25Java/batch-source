@@ -74,12 +74,21 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>statuses</servlet-name>
+  	<servlet-class>com.revature.servlet.GetStatusesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>statuses</servlet-name>
+  	<url-pattern>/statuses</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>newreqform</servlet-name>
   	<servlet-class>com.revature.servlet.ReimbursementFormServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>newreqform</servlet-name>
-  	<url-pattern>/request</url-pattern>
+  	<url-pattern>/newrequest</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -170,6 +179,24 @@
   <servlet-mapping>
   	<servlet-name>reqbyemp</servlet-name>
   	<url-pattern>/empreqs</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>requestdata</servlet-name>
+  	<servlet-class>com.revature.servlet.FullReqDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>requestdata</servlet-name>
+  	<url-pattern>/requestdata</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>requestview</servlet-name>
+  	<servlet-class>com.revature.servlet.ReqViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>requestview</servlet-name>
+  	<url-pattern>/request</url-pattern>
   </servlet-mapping>
   
 </web-app>

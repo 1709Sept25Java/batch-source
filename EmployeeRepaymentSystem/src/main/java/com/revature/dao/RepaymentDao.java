@@ -17,4 +17,6 @@ public interface RepaymentDao {
 	public List<Repayment> pendingForEmp(int eid);
 	
 	public List<Repayment> resolvedForEmp(int eid);
+	
+	public Repayment repaymentById(int rid);
 }

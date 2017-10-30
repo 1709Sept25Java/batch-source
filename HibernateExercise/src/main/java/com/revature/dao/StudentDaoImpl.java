@@ -16,6 +16,7 @@ public class StudentDaoImpl implements StudentDao{
 		Transaction tx = session.beginTransaction();
 		
 		List<Student> students = session.createQuery("from Student").list();
+		System.out.println();
 		for(Student s : students) {
 			System.out.println(s);
 		}

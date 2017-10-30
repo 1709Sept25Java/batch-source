@@ -4,9 +4,9 @@ function pendingTable(xhr){
 	var table = document.getElementById("requests");
 	
 	for(var i=0;i<pending.length;i++){
-		table.innerHTML += "<tr><td>"+pending[i].amount+"</td><td>"+pending[i].emp+"</td><td>"+
-			pending[i].type+"</td><td>"+pending[i].status+"</td><td>"+pending[i].submitted+
-			"</td><tr>";
+		table.innerHTML += "<tr><td><a href='request?rid="+pending[i].id+"'>"+pending[i].amount+
+		"</td></a><td>"+pending[i].emp+"</td><td>"+pending[i].type+"</td><td>"+pending[i].status+
+		"</td><td>"+pending[i].submitted+"</td><tr>";
 	}
 }
 
