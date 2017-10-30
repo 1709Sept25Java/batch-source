@@ -22,7 +22,7 @@ public class GetCustomerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(true);
 		PrintWriter pw = resp.getWriter();
 		//pw.println("test");
 		req.getRequestDispatcher("../views/employerLogin.html").include(req, resp);
@@ -30,15 +30,24 @@ public class GetCustomerServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		Boolean clicked=false;
+		HttpSession session = req.getSession(true);
+		String id1= req.getParameter("selectedUser");
+		session.setAttribute("selectedUser", id1);
+		
 		PrintWriter pw = resp.getWriter();
 		//doGet(req, resp);
 		String customertable=req.getParameter("customer_data");
 		CustomerDaoImpl cdi=new CustomerDaoImpl();
+		resp.getWriter().write("<div id='dbTitle' style='border-bottom:1pt solid black'> id | user | password | fname | lname | email | rid | </div>");
 		for(int i=1; i<cdi.getCustomer().size()+1;i++) {
-        resp.getWriter().write(cdi.getCustomerIdString(i) + "<br></br>");
+        resp.getWriter().write("<div id=select"+i+" class='cDataTable' onclick='getSelectedC("+i+")'>"+ cdi.getCustomerIdString(i)+"</div>");
 		}
 		cdi.sendBlob("C:\\Users\\jinli\\Desktop\\test1.txt", 1);
+		
+		if(clicked==true) {
+			resp.getWriter().write("");;
+		}
 	}
 
 }
