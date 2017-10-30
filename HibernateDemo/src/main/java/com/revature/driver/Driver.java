@@ -13,10 +13,9 @@ import com.revature.dao.*;
 public class Driver {
 
 	public static void main(String[] args) {
-		//init();
-		BatDao bd = new BatDaoImpl();
-		CaveDao cd = new CaveDaoImpl();
-		//System.out.println(bd.getBats());
+		init();
+		StudentDaoImpl stdi= new StudentDaoImpl();
+		FlashcardDaoImpl fli= new FlashcardDaoImpl();
 		
 		//get v load
 		/*
@@ -29,43 +28,31 @@ public class Driver {
 		*/
 		
 		//save
-		//System.out.println(cd.addCave(new Cave("awesomecave2",3)));
+		System.out.println(stdi.addStudent(new Student("first","second")));
+		//System.out.println(fli.addFlashcard(new Flashcard("question1","answer1",stdt)));
 		
 		//update
-		Cave c = new Cave(92,"newnameforawesomecave2",3);
-		cd.updateCave(c); 
+		Student stdt= new Student("first","second");
+		stdi.updateStudent(stdt);
+			
 	}
 
 	static void init() {
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		
-		//create transient objects
-		/*
-		Cave c1 = new Cave("Prague",5);
-		Cave c2 = new Cave("Madrid",20);
-		
-		Bat b1 = new Bat("Susan",c1);
-		Bat b2 = new Bat("Bob",c1);
-		Bat b3 = new Bat("Hans",c1);
-		Bat b4 = new Bat("Barney",c2);
-		Bat b5 = new Bat("Nosferatu",c2);
+		//create transient objects	
+		Student std= new Student("first","second");
+		Flashcard fl= new Flashcard("question1","answer1", std);
 		
 		//persist them, and print out generated identifiers
-		
-		System.out.println(s.save(c1));
-		System.out.println(s.save(c2));
-		
-		System.out.println(s.save(b1));
-		System.out.println(s.save(b2));
-		System.out.println(s.save(b3));
-		System.out.println(s.save(b4));
-		System.out.println(s.save(b5));
+		System.out.println(s.save(std));
+		System.out.println(s.save(fl));
 		
 		tx.commit();
 		System.out.println("finished tx");
 		s.close();
-		*/
+		
 	}
 
 }

@@ -3,15 +3,17 @@ package com.revature.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity 
+@Table(name="STUDENT")
 public class Student implements Serializable {
 	//Student - with int id, String firstname, String lastname
-	
-	private static final long serialVersionUID = 1L;
 
 	public Student() {
 		super();
@@ -19,6 +21,11 @@ public class Student implements Serializable {
 	
 	public Student(int id, String firstname, String lastname) {
 		this.id=id;
+		this.firstname=firstname;
+		this.lastname=lastname;
+	}
+	
+	public Student(String firstname, String lastname) {
 		this.firstname=firstname;
 		this.lastname=lastname;
 	}

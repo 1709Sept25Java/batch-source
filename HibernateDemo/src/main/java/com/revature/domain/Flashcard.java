@@ -3,6 +3,7 @@ package com.revature.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity 
+@Table(name="FLASHCARD")
 public class Flashcard implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 	//Flashcard - with int id, String question, String answer, Student author
 	public Flashcard() {
 		super();
@@ -34,6 +36,12 @@ public class Flashcard implements Serializable {
 	
 	public Flashcard(int id, String question, String answer, Student author) {
 		this.id=id;
+		this.question=question;
+		this.answer=answer;
+		this.author=author; 
+	}
+	
+	public Flashcard(String question, String answer, Student author) {
 		this.question=question;
 		this.answer=answer;
 		this.author=author; 

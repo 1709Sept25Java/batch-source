@@ -12,13 +12,9 @@
 		<!-- this can be noisy in the console -->
 		<property name="hibernate.show_sql">true</property>
 		<!-- choose whether to create db or update existing db -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- map domain object classes -->
-		<mapping class="com.revature.domain.Bat"/>
-		<mapping class="com.revature.domain.Cave"/>
-		<mapping class="com.revature.domain.Bear"/>
-		<mapping class="com.revature.domain.Beehive"/>
-		<mapping class="com.revature.domain.BearType"/>
+
 		<mapping class="com.revature.domain.Flashcard"/>
 		<mapping class="com.revature.domain.Student"/>
 	</session-factory>
