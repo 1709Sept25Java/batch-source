@@ -163,4 +163,13 @@
   	<url-pattern>/myresolved</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>reqbyemp</servlet-name>
+  	<servlet-class>com.revature.servlet.MgrEmpReqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>reqbyemp</servlet-name>
+  	<url-pattern>/empreqs</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

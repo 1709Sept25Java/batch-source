@@ -27,4 +27,17 @@ public class EmpPendingReqServlet extends HttpServlet{
 		resp.getWriter().write(json);
 	}
 	
+	protected void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
+		
+		int eid = Integer.parseInt(req.getParameter("eid"));
+		
+		//Get pending requests for logged in user
+		RepaymentDao rDao = new RepaymentDaoImpl();
+		List<Repayment> pending = rDao.pendingForEmp(eid);
+		//Convert to JSON string
+		ObjectMapper objmap = new ObjectMapper();
+		String json = objmap.writeValueAsString(pending);
+		//write json
+		resp.getWriter().write(json);
+	}
 }

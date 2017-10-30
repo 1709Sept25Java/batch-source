@@ -4,8 +4,9 @@ function empList(xhr){
 	
 	for(var i = 0;i<employees.length;i++){
 		var table = document.getElementById("empTable");
-		table.innerHTML += "<tr><td>"+employees[i].id+"</td><td>"+employees[i].fName+"</td><td>"+
-			employees[i].lName+"</td><td>"+employees[i].email+"</td></tr>";
+		table.innerHTML += "<tr><td><a href='empreqs?eid="+employees[i].id+"'>"+employees[i].id+
+			"</td><td>"+employees[i].fName+"</td><td>"+employees[i].lName+"</td><td>"+
+			employees[i].email+"</td></a></tr>";
 	}
 }
 

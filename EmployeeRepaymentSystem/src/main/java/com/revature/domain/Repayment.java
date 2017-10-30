@@ -116,14 +116,6 @@ public class Repayment {
 		this.resolved = resolved;
 	}
 
-	
-
-	@Override
-	public String toString() {
-		return "Repayment [id=" + id + ", amount=" + amount + ", summary=" + summary
-				+ ", sumbitted=" + sumbitted + ", resolved=" + resolved + "]";
-	}
-
 	public int getEmp() {
 		return emp;
 	}
@@ -154,5 +146,12 @@ public class Repayment {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "Repayment [id=" + id + ", amount=" + amount + ", summary=" + summary + ", receipt=" + receipt
+				+ ", sumbitted=" + sumbitted + ", resolved=" + resolved + ", emp=" + emp + ", empName=" + empName
+				+ ", mgr=" + mgr + ", mgrName=" + mgrName + ", status=" + status + ", type=" + type + "]";
 	}
 }
