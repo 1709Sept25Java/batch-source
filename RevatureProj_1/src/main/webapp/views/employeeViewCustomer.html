@@ -8,7 +8,7 @@
 
 </head>
 <body>
-	<div id="table1" class="customer_info"></div>
+	<table id="table1" class="customer_info"></table>
 	<!-- delete or update each row
 	--delete account and drop row? 
 	1)username
@@ -18,20 +18,42 @@
 	based on ids
 	update based on ids -->
 	
+	<br></br>
 	<div id="blob1">
-	<img src="" alt="customer'sReinbursement"/> 
+	Upload picture!
+	<img src=""/> 
 	<!-- delete, update, or create blob based on ids
 	update based on ids -->
 	</div>
 	
-	<div id="approval">
-		<select>
-	  	<option value="Yes">Yes</option>
-	  	<option value="No">No</option>
-		</select>
-	</div>
+	<br></br>
+	<form>
+
+	</form>
 	
 	<div id="reinbursement_comments"></div>
+	<br></br>
+	
+	Update/Insert Customer data <br></br>
+	UserId<input type="value" name="userid">
+	Username<input type="text" name="username">
+	Firstname<input type="text" name="firstname">
+	Lastname<input type="text" name="lastname">
+	Email<input type="text" name="email">
+	ReimbursementId<input type="value" name="rid">
+	<br>
+	Reinbursement Amount<input type="text" name="ramount">
+	Reinbursement Type<input type="text" name="rtype">
+	Reinbursement Status	<div id="approval">
+	Approve or Decline Reimbursements
+		<select>
+	  	<option value="Approved">Approve</option>
+	  	<option value="Declined">Decline</option>
+	  	<option value="Pending">Pending</option>
+		</select>
+	</div>
+	</br>
+	
 </body>
 <script type="text/javascript" src="../scripts/employerinfo.js"></script>
 </html>

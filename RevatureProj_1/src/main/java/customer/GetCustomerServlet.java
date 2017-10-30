@@ -36,8 +36,9 @@ public class GetCustomerServlet extends HttpServlet {
 		String customertable=req.getParameter("customer_data");
 		CustomerDaoImpl cdi=new CustomerDaoImpl();
 		for(int i=1; i<cdi.getCustomer().size()+1;i++) {
-        resp.getWriter().write("<tr> "+ cdi.getCustomerIdString(i) + "<br></br> </tr>");
+        resp.getWriter().write(cdi.getCustomerIdString(i) + "<br></br>");
 		}
+		cdi.sendBlob("C:\\Users\\jinli\\Desktop\\test1.txt", 1);
 	}
 
 }

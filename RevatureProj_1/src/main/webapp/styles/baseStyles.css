@@ -6,7 +6,7 @@ input{
 	border-radius:0.2em;
 	box-shadow: 2px 2px 2px #888888;
 }
-#loginBox{
+.loginBox{
 	position:fixed;
 	background-color:white;
 	border:0.5px solid darkgrey;
@@ -28,4 +28,12 @@ input{
 	position:fixed;
 	background-color:lightyellow;
 	left:57%;
+}
+
+table{
+    border: 1px solid black;
+}
+
+#padding1{
+	padding-left:300px;
 }

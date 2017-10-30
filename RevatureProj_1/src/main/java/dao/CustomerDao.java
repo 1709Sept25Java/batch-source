@@ -8,9 +8,9 @@ import domain.Customer;
 public interface CustomerDao {
 
 	public List <Customer> getCustomer();
-	public int createCustomer(Customer customer);
+	public void createCustomer(String user1, String pass1, String fname, String lname, String email);
 	
-	public Customer updateCustomer(String update);
+	public Customer updateCustomer();
 	int deleteCustomer(Customer delete);
 	
 	public Customer getCustomerById(int id);
@@ -24,4 +24,10 @@ public interface CustomerDao {
 	
 	public Customer getCustomerAccById(int id);
 	String getCustomerAccStringById(int id);
+	
+	public void sendBlob(String file, int id);
+	
+	public Customer getCustomerAccByUser(String user);
+	String getCustomerAccStringByUser(String user);
+	
 }

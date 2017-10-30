@@ -29,6 +29,7 @@ public class ShowCustomerServlet extends HttpServlet {
 		
 		//gets session for username, and retrieves user information based on that
 		CustomerDaoImpl cdi= new CustomerDaoImpl();
-		resp.getWriter().write(cdi.getCustomerUserString(req.getSession(false).getAttribute("username").toString()));
+		resp.getWriter().write(cdi.getCustomerUserString(req.getSession(false).getAttribute("username").toString())
+				+"<br></br>" + cdi.getCustomerAccStringByUser(req.getSession(false).getAttribute("username").toString()));
 	}
 }

@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,30 +88,27 @@ public class CustomerDaoImpl implements CustomerDao {
 	} 
  
 	@Override
-	public int createCustomer(Customer customer) {
-		int customerCount=0;
-			Boolean status=false;
+	public void createCustomer(String user1, String pass1, String fname, String lname, String email) {
 			try{  
 				Connection con=ManageConnection.getConnectionFromFile(); 
 				      
 				PreparedStatement ps=con.prepareStatement(  
-				"Insert into ERS_USERS(U_ID,U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL,UR_ID) values (?,?,?,?,?,?,?)");  
+				"Insert into ERS_USERS(U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL) values (?,?,?,?,?)");  
 				//ps.setString(1,user1);  
 				//ps.setString(2,pass1);  
 				      
 				ResultSet rs=ps.executeQuery();
 				ResultSetMetaData rms= rs.getMetaData();
+				ps.executeUpdate();
 				rms.getCatalogName(0);
 				//if gets preparedstatement successfully, then returns true
 				while(rs.next())
 					{
-					ps.setInt(1, customer.getUserId());
-					ps.setString(2, customer.getUsername());
-					ps.setString(3, customer.getPassword());
-					ps.setString(4, customer.getFirstname());
-					ps.setString(5, customer.getLastname());
-					ps.setString(6, customer.getEmail());
-					ps.setInt(7, customer.getReinburse());
+					ps.setString(1, user1);
+					ps.setString(2, pass1);
+					ps.setString(3, fname);
+					ps.setString(4, lname);
+					ps.setString(5, email);
 					}
 				}
 				catch(IOException ioe)
@@ -120,12 +119,11 @@ public class CustomerDaoImpl implements CustomerDao {
 				catch(Exception e){
 					e.printStackTrace();
 				}
-		return customerCount;
 	}
 
 	
 	@Override
-	public Customer updateCustomer(String update) {
+	public Customer updateCustomer() {
 		Customer customer=null;
 		try{  
 			Connection con=ManageConnection.getConnectionFromFile(); 
@@ -162,7 +160,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			catch(Exception e){
 				e.printStackTrace();
 			}
-	return customer;
+		return customer;
 	}
 	
 
@@ -352,5 +350,74 @@ public class CustomerDaoImpl implements CustomerDao {
 				+ getCustomerAccById(id).getR_Status()+" | ";
 		
 		return customer;
+	}
+	
+	@Override
+	public Customer getCustomerAccByUser(String user) {
+		Customer customer = null;
+		try{  
+			Connection con=ManageConnection.getConnectionFromFile(); 
+			PreparedStatement ps=con.prepareStatement(  
+					"SELECT ERS_USERS.U_USERNAME, ERS_REINBURSEMENTS.R_ID, ERS_REINBURSEMENTS.R_AMOUNT, ERS_REINBURSEMENT_TYPE.RT_TYPE, ERS_REINBURSEMENT_STATUS.RS_STATUS" + 
+					" FROM (((ERS_REINBURSEMENTS" + 
+					" INNER JOIN ERS_REINBURSEMENT_TYPE ON ERS_REINBURSEMENTS.R_ID = ERS_REINBURSEMENT_TYPE.RT_ID)" + 
+					" INNER JOIN ERS_REINBURSEMENT_STATUS ON ERS_REINBURSEMENT_TYPE.RT_ID = ERS_REINBURSEMENT_STATUS.RS_ID)" + 
+					" Inner JOIN ERS_USERS ON ERS_REINBURSEMENT_TYPE.RT_ID= ERS_USERS.U_ID)" + 
+					" Where ERS_USERS.U_USERNAME=?");  
+					ps.setString(1,user);
+					ResultSet rs=ps.executeQuery();
+					while(rs.next())
+					{
+					int rid=rs.getInt("R_ID");
+					int rAmount=rs.getInt("R_AMOUNT");
+					String rType=rs.getString("RT_TYPE");
+					String rStatus=rs.getString("RS_STATUS");
+					
+					customer= new Customer(rid,rAmount,rType,rStatus);  
+					}
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+			System.out.println("IO Exception!"); 
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+			      
+		return customer;
+	}
+
+	@Override
+	public String getCustomerAccStringByUser(String user) {
+		String customer;
+		customer=
+				+ getCustomerAccByUser(user).getR_Amount()+" | "
+				+ getCustomerAccByUser(user).getR_Type()+" | "
+				+ getCustomerAccByUser(user).getR_Status()+" | ";
+		
+		return customer;
+	}
+
+	@Override
+	public void sendBlob(String file, int id) {
+		try{  
+			Connection con=ManageConnection.getConnectionFromFile(); 
+			PreparedStatement ps=con.prepareStatement("Update ERS_REINBURSEMENTS SET R_RECEIPT=? WHERE R_ID=?");
+			ps.executeQuery();
+			
+			File test=new File("C:\\Users\\jinli\\Desktop\\test1.txt");
+			FileInputStream fileStream=new FileInputStream(file);
+			ps.setBinaryStream(1, fileStream);
+			ps.setInt(2, id);
+			
+			ps.executeUpdate();
+			System.out.println("Testing file send out");
+			
+			fileStream.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -6,32 +6,32 @@
 <link rel="stylesheet" type = "text/css" href="../styles/baseStyles.css"/>
 <h1>Admin Page</h1>
 </head>
-<body>
-
-	<div id="customer_data" class="customer_info">
-	<!-- select customers content editable for each <tr> -->
-	Customer data
-			<!-- will forward to a page with the 
-			1) individual customer data based on selected 
-			2) approve or disapprove
-			3) blob to add/remove
-			**remember grant permissions
-			4)--create new account?-->
-			<br></br>
-			<form id="getCustomerData" name="customer_data" action="../GetCustomerServlet" method="post" >
-			<div id="getCustomers"></div>
-			</form>
-	</div>
-	<br></br>
-
-	<div id="logsuccess_return">
-	<a href="Login.html">Return to login</a>
-	</div>
+	<body>
 	
-	<div id="logsuccess_logout">
-	<a href="Logout.html">Logout!</a>
-	</div>
-
-</body>
+		<div id="customer_data" class="customer_info">
+		<!-- select customers content editable for each <tr> -->
+		Customer data
+				<!-- will forward to a page with the 
+				1) individual customer data based on selected 
+				2) approve or disapprove
+				3) blob to add/remove
+				**remember grant permissions
+				4)--create new account?-->
+				<br></br>
+				<form id="getCustomerData" name="customer_data" action="../GetCustomerServlet" method="post" >
+				<table id="getCustomers"></table>
+				</form>
+		</div>
+		<br></br>
+	
+		<div id="logsuccess_return">
+		<a href="Login.html">Return to login</a>
+		</div>
+		
+		<div id="logsuccess_logout">
+		<a href="Logout.html">Logout!</a>
+		</div>
+	
+	</body>
 <script type="text/javascript" src="../scripts/employerinfo.js"></script>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create an Account</title>
+<link rel="stylesheet" type = "text/css" href="../styles/baseStyles.css"/>
+<h1>Create a User</h1>
+</head>
+<body>
+
+<!-- note for later...no security for user script characters (script injection)
+... need exceptions to allow/not allow certain characters-->
+<div id="createAccBox" class="loginBox">
+	Please fill in below:
+	<form id="createAccForm" action="../CreateAccServlet" method="post">
+	<br></br>Username: <input id="nUser" type="text" name="nUser"/> <div id="userRequired" name="userRequired">**required </div>   
+	<br></br>Password: <input id="nPass" type="password" name="nPass"/> <div id="passRequired" name="passRequired">**required </div>
+	<br></br>Firstname: <input id="nFname" type="text" name="nFname"/>
+	<br></br>Lastname: <input id="nLname" type="text" name="nLname"/>
+	<br></br>Email: <input id="nEmail" type="email" name="nEmail"/>
+	<br></br>
+	<div><input id="loginButton" type="submit" Value="Create"/></div>
+	</form>
+</div>
+</body>
+<script type="text/javascript" src="../scripts/createAccinfo.js"></script>
+</html>
