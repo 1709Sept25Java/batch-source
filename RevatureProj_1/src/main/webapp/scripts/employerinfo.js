@@ -14,8 +14,9 @@ function getCustomer() {
 
 getCustomer();
 
-function getSelectedC(x){
-	var select=document.getElementById("select"+x);
-	//redirect
-	window.location.replace("http://google.com");
+function getSelectedC(field){
+	var select=document.getElementById(field).childNodes[2].innerHTML;
+    document.getElementById("getfield").innerHTML=select;
 }
+
+

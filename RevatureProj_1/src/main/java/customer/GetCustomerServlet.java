@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CustomerDaoImpl;
+import domain.Customer;
 
 //employee view
 
@@ -36,10 +37,35 @@ public class GetCustomerServlet extends HttpServlet {
 		//doGet(req, resp);
 		String customertable=req.getParameter("customer_data");
 		CustomerDaoImpl cdi=new CustomerDaoImpl();
-		resp.getWriter().write("<div id='dbTitle' style='border-bottom:1pt solid black'> id | user | password | fname | lname | email | rid | </div>");
+		/*resp.getWriter().write("<div id='dbTitle' style='border-bottom:1pt solid black'> id | user | password | fname | lname | email | rid | </div>");
 		for(int i=1; i<cdi.getCustomer().size()+1;i++) {
         resp.getWriter().write("<div id=select"+i+" class='cDataTable' onclick='getSelectedC("+i+")'>"+ cdi.getCustomerIdString(i)+"</div>");
+		}*/
+		Customer customer=new Customer();
+		resp.getWriter().write("<div id='dbTitle' style='border-bottom:1pt solid black'><tr> <td>Id</td>  <td>Username</td> <td>Password</td>  <td>Fname</td>  <td>Lname</td>  <td>Email</td>  <td>RAmount</td> <td>RType</td> <td>RStatus</td> </tr></div>");
+		for(int i=1; i<cdi.getCustomer().size();i++) {
+		customer.setUserId(i);
+		cdi.getCustomer().add(customer);
+		
+		customer.setUsername(cdi.getCustomerById(i).getUsername());
+		customer.setPassword(cdi.getCustomerById(i).getPassword());
+		customer.setFirstname(cdi.getCustomerById(i).getFirstname());
+		customer.setLastname(cdi.getCustomerById(i).getLastname());
+		customer.setEmail(cdi.getCustomerById(i).getEmail());
+		
+		customer.setR_Amount(cdi.getCustomerAccById(i).getR_Amount());
+		customer.setR_Type(cdi.getCustomerAccById(i).getR_Type());
+		customer.setR_Status(cdi.getCustomerAccById(i).getR_Status());
+		
+		resp.getWriter().write("<div><tr id=select"+i+" class='cDataTable' onClick='getSelectedC(this.id)'><td>"+ customer.getUserId()+"</td> <td>"+customer.getUsername()+ "</td> <td> "+customer.getPassword()+ "</td> <td> "
+				+ customer.getFirstname()+ "</td> <td> "+ customer.getLastname()+ "</td> <td> "+ customer.getEmail());
+		
+		resp.getWriter().write("<td>"+customer.getR_Amount()+"</td>"+"<td>"+customer.getR_Type()+"</td>"+"<td>"+customer.getR_Status()+"</td> </tr></div>");
+		
 		}
+
+		//String getSelect=req.getParameter("getfield");
+		//make hidden field that changes on click
 		cdi.sendBlob("C:\\Users\\jinli\\Desktop\\test1.txt", 1);
 
 	}
