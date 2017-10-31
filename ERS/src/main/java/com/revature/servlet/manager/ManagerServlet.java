@@ -1,4 +1,4 @@
-package com.revature.servlet;
+package com.revature.servlet.manager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,23 +18,8 @@ public class ManagerServlet extends HttpServlet {
 	
 	@Override	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter pw = resp.getWriter();
-		try {
-			req.getRequestDispatcher("views/manager.html").include(req,resp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		int id = (int) req.getSession().getAttribute("id");
-		pw.println("Hello Manager "+ req.getSession().getAttribute("id"));
 		User manager = ManagerRequests.userInfo(id);
-		pw.print(manager.getUsername());
-//		User er = EmployeeRequests.userInfo(id);
-//		pw.print(er.getUsername());
-		
-//		resp.setContentType("application/json");
-//		ObjectMapper mapper = new ObjectMapper();
-//		mapper.writeValue(pw, er);	
+		req.getRequestDispatcher("views/manager.html").include(req,resp);	
 	}
-	
-
 }

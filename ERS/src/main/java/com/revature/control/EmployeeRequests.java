@@ -5,6 +5,11 @@ import java.util.List;
 import com.revature.dao.*;
 import com.revature.domain.*;
 
+
+//EmployeeRequests is a utility class to 
+//act as intermediary between dao and servers
+//no direct access to database
+
 public final class EmployeeRequests {
 
 	private EmployeeRequests() {
@@ -12,23 +17,24 @@ public final class EmployeeRequests {
 	}
 	
 	public static User userInfo(int id) {
-		UserDao employee = new UserDaoImpl();
-		return employee.getUserById(id);
+		UserDao ud = new UserDaoImpl();
+		return ud.getUserById(id);
 	}
 
 	public static List<Reimbursement> userReimbursements(int id) {
-		ReimbursementDao empReimbursements = new ReimbursementDaoImpl();
-		return empReimbursements.getReimbursementsById(id);
+		ReimbursementDao rd = new ReimbursementDaoImpl();
+		return rd.getReimbursementsById(id);
 	}
 
-	public static int submitReimbursement(int amount, String description, int author, int type) {
-		ReimbursementDao reimbursementRequest = new ReimbursementDaoImpl();
-		int success = reimbursementRequest.createReimbursement(amount, description, author, type);
-		return success;
+	public static int submitReimbursement(int amount, String description, int author, String type) {
+		ReimbursementDao rd = new ReimbursementDaoImpl();
+		return rd.createReimbursement(amount, description, author, type);
 	}
 	
 	public static int updateEmployee(int id, String un, String pw, String fn, String ln, String em) {
-		UserDao employee = new UserDaoImpl();
-		return employee.updateEmployeeById(id, un, pw, fn, ln, em);
+		UserDao ud = new UserDaoImpl();
+		return ud.updateEmployeeById(id, un, pw, fn, ln, em);
 	}
+	
 }
+

@@ -1,20 +1,11 @@
 window.onload = function() {
-	console.log("hello from employee page");
-	sendAjax("basicinfo",employeeInformation);
-	sendAjax("reimbursements", employeeReimbursements);
+	//Load employee information
+	sendAjax("employeeInformation",employeeInformation);
+	//Load reimbursements for employee
+	//sendAjax("employeeReimbursements", employeeReimbursements);
 };
 
-document.getElementById("reimbursementRequest").addEventListener("click", function(){
-	sendAjax("reimbursement",reimbursementRequest);
-});
-
-
-
-
-document.getElementById("updateEmployeeRequest").addEventListener("click", function(){
-	sendAjax("empupdate", updateEmployee);
-});
-
+//Function to send ajax request 
 function sendAjax(url, cFunction) {
 	var xhr;
 	if (window.XMLHttpRequest) {
@@ -31,25 +22,30 @@ function sendAjax(url, cFunction) {
 	xhr.open("GET",url,true);
 	xhr.send();
 };
-//http://tutorials.jenkov.com/java-json/jackson-objectmapper.html
-//https://code-maven.com/ajax-request-for-json-data
 
+//Function to load basic employee information
 function employeeInformation(e) {
-	//data = JSON.parse(e.responseText);
-	//document.getElementById("employeeInformation").innerHTML = data;
-	document.getElementById("employeeInformation").innerHTML = e.responseText; 
+	//JSON response from server
+	var employee = JSON.parse(e.responseText);
+	
+	//Employee information to be displayed
+	var header  = "<div id = 'user'> <h3>" + employee.username + "'s Personal Information </h3>"
+	var name = "<p>Name: "+employee.firstName + " " + employee.lastName + "</p>"
+	var contact = "<p>Contact: <a href='"+employee.email+"'>"+ employee.email +"</a></p>"
+	//We change the title of the html page and page header 
+	//once we have the employee's username
+	document.getElementById("header").innerHTML = employee.username + "'s Employee Home"; 
+	document.getElementById("title").innerHTML = employee.username + "'s Home"; 
+	
+	//We show the employee's information 
+	//and also allow them to update their information
+	document.getElementById("employeeInformation").innerHTML = header + name + contact + "</div>"; 
 };
 
-
-function employeeReimbursements(e){
-	document.getElementById("employeeReimbursements").innerHTML = e.responseText; 
-};
-
-function reimbursementRequest(r){
-	document.getElementById("reimbursementForm").innerHTML = r.responseText;
-};
+document.getElementById("updateEmployeeRequest").addEventListener("click", function(){
+	sendAjax("employeeUpdate", updateEmployee);
+});
 
 function updateEmployee(e) {
 	document.getElementById("updateEmployeeForm").innerHTML = e.responseText;
-	console.log("Going to update employee");
 };

@@ -1,4 +1,4 @@
-package com.revature.servlet;
+package com.revature.servlet.employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,20 +22,8 @@ public class EmployeeServlet extends HttpServlet {
 
 	@Override	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter pw = resp.getWriter();
-		try {
-			req.getRequestDispatcher("views/employee.html").include(req,resp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		int id = (int) req.getSession().getAttribute("id");
-		pw.println("Hello Employee "+ req.getSession().getAttribute("id"));
-		User er = EmployeeRequests.userInfo(id);
-		pw.print(er.getUsername());
+		req.getRequestDispatcher("views/employee.html").include(req,resp);
 		
-//		resp.setContentType("application/json");
-//		ObjectMapper mapper = new ObjectMapper();
-//		mapper.writeValue(pw, er);	
 	}
 	
 	@Override

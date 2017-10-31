@@ -1,4 +1,4 @@
-package com.revature.servlet;
+package com.revature.servlet.employee;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,19 +23,25 @@ import com.revature.util.ConnectionUtil;
 import oracle.jdbc.OracleTypes;
 
 public class SubmitReimbursementServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
-
-	public SubmitReimbursementServlet() {
-		super();
-	}
 	
 	@Override	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/reimbursement.html");
+		RequestDispatcher rd = req.getRequestDispatcher("views/baseReimbursement.html");
 		rd.forward(req, resp);
 	}
 
+	@Override	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter pw = resp.getWriter();
+		int id = (int) req.getSession().getAttribute("id");
+		String description = req.getParameter("description");
+		int amount = Integer.parseInt(req.getParameter("amount"));
+		String type = req.getParameter("type");
+		int success = EmployeeRequests.submitReimbursement(amount, description, id, type);
+		resp.sendRedirect("employee");
+	}	
+	
 //https://robots.thoughtbot.com/html5-powered-ajax-file-uploads	
 //	http://www.technicaladvices.com/2011/12/10/ajax-file-upload-to-a-java-servlet-in-html5/
 	
@@ -63,21 +69,5 @@ public class SubmitReimbursementServlet extends HttpServlet {
 //		resp.sendRedirect("employee");
 //	}
 
-	@Override	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		PrintWriter pw = resp.getWriter();
 
-		String description = req.getParameter("description");
-		int amount = Integer.parseInt(req.getParameter("amount"));
-		int type = Integer.parseInt(req.getParameter("type"));
-		int id = (int) req.getSession().getAttribute("id");
-		int success = EmployeeRequests.submitReimbursement(amount, description, id, type);
-		if (success == 1) {
-			pw.println("Success");
-		}
-		resp.sendRedirect("employee");
-	}
-
-	
 }

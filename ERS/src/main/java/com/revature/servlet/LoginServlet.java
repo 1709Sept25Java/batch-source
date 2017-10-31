@@ -29,23 +29,19 @@ import oracle.jdbc.OracleTypes;
 import javax.servlet.http.HttpServlet;
 
 
-public class MasterServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
-	public MasterServlet() {
+	public LoginServlet() {
 		super();
 	}
 	@Override	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("views/index.html");
-		rd.forward(request, response);		
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher rd = req.getRequestDispatcher("views/index.html");
+		rd.forward(req, resp);		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//https://www.javatpoint.com/http-session-in-session-tracking
-		//String destination = RequestHelper.process(req);
-		//resp.sendRedirect(destination);
-		
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
 		String username = req.getParameter("username");
@@ -55,6 +51,10 @@ public class MasterServlet extends HttpServlet {
 			pw.println(userLogin.getuID()+" "+userLogin.getUsername() + " " + userLogin.getRole());
 			req.getSession().setAttribute("id", userLogin.getuID());
 			req.getSession().setAttribute("username", userLogin.getUsername());
+		}
+		else {
+			pw.println("<p>Login invalid</p>");
+			req.getRequestDispatcher("views/index.html").include(req, resp);
 		}
 		String destination = userLogin.getRole().toLowerCase();
 		resp.sendRedirect(destination);

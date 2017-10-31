@@ -6,6 +6,8 @@ import java.util.*;
 import com.revature.domain.ReimbursementType;
 import com.revature.util.ConnectionUtil;
 
+import oracle.jdbc.OracleTypes;
+
 public class ReimbursementTypeDaoImpl implements ReimbursementTypeDao {
 
 	private Connection con;
@@ -56,6 +58,26 @@ public class ReimbursementTypeDaoImpl implements ReimbursementTypeDao {
 			e.printStackTrace();
 		}
 		return rt;
+	}
+
+	@Override
+	public int getReimbursementTypeByName(String type) {
+		String sql = "{call REIMBURSEMENT_TYPE_ID(?,?)}";
+		CallableStatement pstmt;
+		int id = 0;
+		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
+			pstmt = con.prepareCall(sql);
+			pstmt.setString(1, type);
+			pstmt.registerOutParameter(2, OracleTypes.NUMBER);
+			pstmt.executeUpdate();
+			ResultSet rs = (ResultSet) pstmt.getObject(2);
+			while(rs.next()){
+				id = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return id;
 	}
 	
 }

@@ -3,7 +3,11 @@ package com.revature.dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import com.revature.domain.Reimbursement;
 import com.revature.domain.User;
 import com.revature.util.ConnectionUtil;
 
@@ -66,5 +70,32 @@ public class UserDaoImpl implements UserDao {
 		}
 		return success;
 	}
+
+	@Override
+	public List<User> getEmployees() {
+		List<User> employees = new ArrayList<>();
+		String sql = "{call VIEW_EMPLOYEES(?)}";
+		CallableStatement pstmt;
+		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
+			pstmt = con.prepareCall(sql);
+			pstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			pstmt.executeUpdate();
+			ResultSet rs = (ResultSet) pstmt.getObject(1);
+			while(rs.next()){
+				int uID = rs.getInt(1);
+				String un = rs.getString(2);
+				String fn = rs.getString(3);
+				String ln = rs.getString(4);
+				String em = rs.getString(5);
+				User employee = new User(uID, un, fn, ln, em, "Employee");
+				employees.add(employee);
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employees;
+	}
+	
+	
 
 }

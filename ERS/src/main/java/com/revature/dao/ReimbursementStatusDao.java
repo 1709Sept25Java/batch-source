@@ -6,5 +6,5 @@ import com.revature.domain.*;
 
 public interface ReimbursementStatusDao {
 	public List<ReimbursementStatus> getReimbursementStatus();
-	public ReimbursementStatus getReimbursementStatusById(int id);
+//	public ReimbursementStatus getReimbursementStatusByName(int id);
 }

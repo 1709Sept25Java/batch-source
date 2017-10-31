@@ -8,5 +8,7 @@ public interface ReimbursementDao {
 	public List<Reimbursement> getReimbursements();
 	public List<Reimbursement> getReimbursementsById(int id);
 	public List<Reimbursement> getReimbursementsByStatus(int status);
-	public int createReimbursement(int amount, String description, int author, int type);
+	public List<Reimbursement> getResolvedReimbursements();
+	public int createReimbursement(int amount, String description, int author, String type);
+	public int updateReimbursement(int rID, int mID, int status);
 }

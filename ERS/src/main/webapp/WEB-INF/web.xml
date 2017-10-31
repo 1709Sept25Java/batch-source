@@ -1,72 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>ERS</display-name>
+  
+  
   <servlet>
-    <servlet-name>master</servlet-name>
-    <servlet-class>com.revature.servlet.MasterServlet</servlet-class>
+    <servlet-name>login</servlet-name>
+    <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>master</servlet-name>
-    <url-pattern>/home</url-pattern>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>com.revature.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <error-page>
+     <error-code>404</error-code>
+  	 <location>/views/error/404.html</location>
+  </error-page>
+  
   <servlet>
     <servlet-name>employee</servlet-name>
-    <servlet-class>com.revature.servlet.EmployeeServlet</servlet-class>
+    <servlet-class>com.revature.servlet.employee.EmployeeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>employee</servlet-name>
     <url-pattern>/employee</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>employeeInformation</servlet-name>
+    <servlet-class>com.revature.servlet.employee.EmployeeInformationServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>employeeInformation</servlet-name>
+    <url-pattern>/employeeInformation</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>employeeReimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.employee.EmployeeReimbursementsServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>employeeReimbursements</servlet-name>
+    <url-pattern>/employeeReimbursements</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>employeePendingReimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.employee.EmployeePendingReimbursementsServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>employeePendingReimbursements</servlet-name>
+    <url-pattern>/employeePendingReimbursements</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>reimbursementRequest</servlet-name>
+    <servlet-class>com.revature.servlet.employee.SubmitReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>reimbursementRequest</servlet-name>
+    <url-pattern>/reimbursementRequest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>employeeUpdate</servlet-name>
+    <servlet-class>com.revature.servlet.employee.UpdateEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>employeeUpdate</servlet-name>
+    <url-pattern>/employeeUpdate</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <!-- MANAGER -->
+  
+  
    <servlet>
     <servlet-name>manager</servlet-name>
-    <servlet-class>com.revature.servlet.ManagerServlet</servlet-class>
+    <servlet-class>com.revature.servlet.manager.ManagerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>manager</servlet-name>
     <url-pattern>/manager</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>basicinfo</servlet-name>
-    <servlet-class>com.revature.servlet.BasicInfoServlet</servlet-class>
+    <servlet-name>managerEmployees</servlet-name>
+    <servlet-class>com.revature.servlet.manager.EmployeesServlet</servlet-class>
   </servlet>
-   <servlet-mapping>
-    <servlet-name>basicinfo</servlet-name>
-    <url-pattern>/basicinfo</url-pattern>
+  <servlet-mapping>
+    <servlet-name>managerEmployees</servlet-name>
+    <url-pattern>/managerEmployees</url-pattern>
   </servlet-mapping>
   
    <servlet>
-    <servlet-name>reimbursements</servlet-name>
-    <servlet-class>com.revature.servlet.ReimbursementsServlet</servlet-class>
+    <servlet-name>pendingReimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.manager.PendingReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pendingReimbursements</servlet-name>
+    <url-pattern>/pendingReimbursements</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>reviewReimbursement</servlet-name>
+    <servlet-class>com.revature.servlet.manager.ReviewReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>reviewReimbursement</servlet-name>
+    <url-pattern>/reviewReimbursement</url-pattern>
+  </servlet-mapping> 
+   <servlet>
+    <servlet-name>viewEmployees</servlet-name>
+    <servlet-class>com.revature.servlet.manager.ViewEmployeesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>viewEmployees</servlet-name>
+    <url-pattern>/viewEmployees</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+    <servlet-name>resolvedReimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.manager.ResolvedReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resolvedReimbursements</servlet-name>
+    <url-pattern>/resolvedReimbursements</url-pattern>
+  </servlet-mapping> 
+  
+  <!--    
+  <servlet>
+    <servlet-name>employeeReimbursements</servlet-name>
+    <servlet-class>com.revature.servlet.manager.ReimbursementsServlet</servlet-class>
   </servlet>
    <servlet-mapping>
-    <servlet-name>reimbursements</servlet-name>
-    <url-pattern>/reimbursements</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>reimbursement</servlet-name>
-    <servlet-class>com.revature.servlet.SubmitReimbursementServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>reimbursement</servlet-name>
-    <url-pattern>/reimbursement</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>empupdate</servlet-name>
-    <servlet-class>com.revature.servlet.UpdateEmployeeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>empupdate</servlet-name>
-    <url-pattern>/empupdate</url-pattern>
+    <servlet-name>employeeReimbursements</servlet-name>
+    <url-pattern>/employeeReimbursements</url-pattern>
   </servlet-mapping>
   
-   <servlet>
-    <servlet-name>pending_reimbursements</servlet-name>
-    <servlet-class>com.revature.servlet.PendingReimbursementsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>pending_reimbursements</servlet-name>
-    <url-pattern>/pending_reimbursements</url-pattern>
-  </servlet-mapping>
   
+   
+   -->
   
 </web-app>

@@ -29,4 +29,25 @@ public class ManagerRequests {
 		ReimbursementDao all = new ReimbursementDaoImpl();
 		return all.getReimbursements();
 	}
+	
+	public static int reviewReimbursement(int rID, int mID, int status) {
+		ReimbursementDao reimbursement = new ReimbursementDaoImpl();
+		return reimbursement.updateReimbursement(rID, mID, status);
+	}
+	
+	public static List<User> viewEmployees(){
+		UserDao ud = new UserDaoImpl();
+		return ud.getEmployees();
+		
+	}
+	
+	public static List<Reimbursement> resolvedReimbursements() {
+		ReimbursementDao rd = new ReimbursementDaoImpl();
+		return rd.getResolvedReimbursements();
+	}
+	
+	public static List<Reimbursement> userReimbursements(int id) {
+		ReimbursementDao empReimbursements = new ReimbursementDaoImpl();
+		return empReimbursements.getReimbursementsById(id);
+	}
 }

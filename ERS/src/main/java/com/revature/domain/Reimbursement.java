@@ -1,12 +1,29 @@
 package com.revature.domain;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.util.Date;
 
 public class Reimbursement {
+	public Reimbursement(int rID, int rAmount, String rDescription, Date rSubmitted, Date rResolved, int uIDAuthor,
+			int uIDResolver, int rtType, int rtStatus) {
+		super();
+		this.rID = rID;
+		this.rAmount = rAmount;
+		this.rDescription = rDescription;
+		this.rSubmitted = rSubmitted;
+		this.rResolved = rResolved;
+		this.uIDAuthor = uIDAuthor;
+		this.uIDResolver = uIDResolver;
+		this.rtType = rtType;
+		this.rtStatus = rtStatus;
+	}
+
 	private int rID;
 	private int rAmount;
 	private String rDescription;
-	private Blob rReceipt;  //ATTENTION HERE! BLOB?
+	private Blob rReceipt;  //Blob used to store in db
+	private InputStream receiptStream = null; //InputStream for retrieving from db due to SQLRecoverableException
+	private int receiptStreamLength = 0;
 	private Date rSubmitted;
 	private Date rResolved;
 	private int uIDAuthor;
@@ -44,6 +61,24 @@ public class Reimbursement {
 		this.rtStatus = rtStatus;
 	}
 	
+	public Reimbursement(int rID, int rAmount, String rDescription, InputStream receipt, int receiptLength, Date rSubmitted, Date rResolved,
+			int uIDAuthor, int uIDResolver, int rtType, int rtStatus) {
+		super();
+		this.rID = rID;
+		this.rAmount = rAmount;
+		this.rDescription = rDescription;
+		this.receiptStream = receipt;
+		this.receiptStreamLength = receiptLength;
+		this.rSubmitted = rSubmitted;
+		this.rResolved = rResolved;
+		this.uIDAuthor = uIDAuthor;
+		this.uIDResolver = uIDResolver;
+		this.rtType = rtType;
+		this.rtStatus = rtStatus;
+	}
+	
+
+
 	public int getrID() {
 		return rID;
 	}
@@ -131,5 +166,19 @@ public class Reimbursement {
 				+ ", uIDResolver=" + uIDResolver + ", rtType=" + rtType + ", rtStatus=" + rtStatus + "]";
 	}
 
+	public InputStream getReceiptStream() {
+		return receiptStream;
+	}
 
+	public void setReceiptStream(InputStream receiptStream) {
+		this.receiptStream = receiptStream;
+	}
+
+	public int getReceiptStreamLength() {
+		return receiptStreamLength;
+	}
+
+	public void setReceiptStreamLength(int receiptStreamLength) {
+		this.receiptStreamLength = receiptStreamLength;
+	}
 }
