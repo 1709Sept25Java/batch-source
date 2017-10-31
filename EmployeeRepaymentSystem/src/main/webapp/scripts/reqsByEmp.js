@@ -9,8 +9,8 @@ function listRequests(xhr){
 	}
 	
 	for(var i=0;i<reqs.length;i++){
-		table.innerHTML+="<tr><td>"+reqs[i].amount+"</td><td>"+reqs[i].type+"</td><td>"+
-			reqs[i].status+"</td><td>"+reqs[i].submitted+"</td></tr>";
+		table.innerHTML+="<tr><td>"+reqs[i].amount+"</td><td>"+reqs[i].type+"</td><td><a href='request?rid="+reqs[i].id+
+			"'>"+reqs[i].status+"</a></td><td>"+reqs[i].submitted+"</td></tr>";
 	}
 	
 }

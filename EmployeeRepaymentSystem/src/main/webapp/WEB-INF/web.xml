@@ -199,4 +199,13 @@
   	<url-pattern>/request</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>receipt</servlet-name>
+  	<servlet-class>com.revature.servlet.BlobServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>receipt</servlet-name>
+  	<url-pattern>/receipt</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

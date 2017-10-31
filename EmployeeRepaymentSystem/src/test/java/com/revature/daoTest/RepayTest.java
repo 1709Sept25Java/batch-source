@@ -20,4 +20,10 @@ public class RepayTest {
 		assertTrue(success);
 	}
 	
+	@Test
+	public final void writeImage() {
+		RepaymentDao rd = new RepaymentDaoImpl();
+		rd.getReceipt(3);
+		
+	}
 }

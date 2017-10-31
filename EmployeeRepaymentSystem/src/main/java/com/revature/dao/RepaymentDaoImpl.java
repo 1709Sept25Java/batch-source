@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -83,7 +84,7 @@ public class RepaymentDaoImpl implements RepaymentDao{
 				String type = rs.getString("RT_TYPE");
 				String status = rs.getString("RS_STATUS");
 				
-				Repayment r = new Repayment(rid,rAmt,rsubmit,empid,type,status);
+				Repayment r = new Repayment(rid,rAmt,rsubmit,empid,status,type);
 				pending.add(r);
 			}
 			
@@ -124,7 +125,7 @@ public class RepaymentDaoImpl implements RepaymentDao{
 				String type = rs.getString("RT_TYPE");
 				String status = rs.getString("RS_STATUS");
 				
-				Repayment r = new Repayment(rid,rAmt,rsubmit,empid,type,status);
+				Repayment r = new Repayment(rid,rAmt,rsubmit,empid,status,type);
 				resolved.add(r);
 			}
 			
@@ -166,7 +167,7 @@ public class RepaymentDaoImpl implements RepaymentDao{
 				String type = rs.getString("RT_TYPE");
 				String status = rs.getString("RS_STATUS");
 				
-				Repayment r = new Repayment(id,amt,submitted,name,type,status);
+				Repayment r = new Repayment(id,amt,submitted,name,status,type);
 				pending.add(r);
 			}
 			
@@ -208,7 +209,7 @@ public class RepaymentDaoImpl implements RepaymentDao{
 				String type = rs.getString("RT_TYPE");
 				String status = rs.getString("RS_STATUS");
 				
-				Repayment r = new Repayment(id,amt,submitted,name,type,status);
+				Repayment r = new Repayment(id,amt,submitted,name,status,type);
 				resolved.add(r);
 			}
 			
@@ -253,7 +254,7 @@ public class RepaymentDaoImpl implements RepaymentDao{
 				mName += rs.getString("M_LNAME");
 				String type = rs.getString("RT_TYPE");
 				String status = rs.getString("RS_STATUS");
-				rp = new Repayment(id,amt,summary,submitted,resolved,eName,mName,type,status);
+				rp = new Repayment(id,amt,summary,submitted,resolved,eName,mName,status,type);
 			}
 			
 			conn.close();
@@ -265,6 +266,58 @@ public class RepaymentDaoImpl implements RepaymentDao{
 		}
 		
 		return rp;
+	}
+
+	@Override
+	public void updateStatus(int rid, int sid) {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "{call APPROVE_REPAYMENT(?,?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//set and register parameters
+			cs.setInt(1, rid);
+			cs.setInt(2, sid);
+			
+			//execute
+			cs.execute();
+			
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public byte[] getReceipt(int rid) {
+		Blob img = null;
+		byte b[] = null;
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "{call GET_RECEIPT(?,?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//set and register parameters
+			cs.setInt(1, rid);
+			cs.registerOutParameter(2, OracleTypes.BLOB);
+			
+			//execute and store returned image
+			cs.execute();
+			img = cs.getBlob(2);
+			b = img.getBytes(1, (int)img.length());
+			
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return b;
 	}
 
 }

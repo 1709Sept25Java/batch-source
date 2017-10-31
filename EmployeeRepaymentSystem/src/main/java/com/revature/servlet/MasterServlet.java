@@ -9,6 +9,7 @@ public class MasterServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
 		HttpSession session = req.getSession();
+		System.out.println(session.getAttribute("uid"));
 		if(session != null && session.getAttribute("uid") != null) {
 			boolean mgr = (Boolean)session.getAttribute("mgr");
 			if(mgr) {

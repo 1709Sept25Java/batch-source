@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface RepaymentDao {
 	public List<Repayment> resolvedForEmp(int eid);
 	
 	public Repayment repaymentById(int rid);
+	
+	public void updateStatus(int rid,int sid);
+	
+	public byte[] getReceipt(int rid);
 }
