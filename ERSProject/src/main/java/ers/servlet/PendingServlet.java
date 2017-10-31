@@ -6,6 +6,8 @@ import javax.servlet.*;
 import java.io.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ers.dao.ReimbursementsDao;
@@ -29,7 +31,8 @@ public class PendingServlet extends HttpServlet {
 		List<Reimbursements> rl = rd.getPending();
 		resp.setContentType("application/json");
 		ObjectMapper om = new ObjectMapper();
-		String str = om.writeValueAsString(rd);
+		om.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+		String str = om.writeValueAsString(rl);
 		resp.getWriter().write("{\"reimbursements\":"+str+"}");
 	}
 	

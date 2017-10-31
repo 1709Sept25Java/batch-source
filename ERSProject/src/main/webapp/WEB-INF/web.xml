@@ -57,4 +57,20 @@
     <servlet-name>resolved</servlet-name>
     <url-pattern>/resolved</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>empPending</servlet-name>
+    <servlet-class>ers.servlet.EmpPendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>empPending</servlet-name>
+    <url-pattern>/empPending</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>empResolved</servlet-name>
+    <servlet-class>ers.servlet.EmpResolvedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>empResolved</servlet-name>
+    <url-pattern>/empResolved</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -6,8 +6,8 @@ import javax.servlet.*;
 import java.io.*;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ers.dao.ReimbursementsDao;
@@ -16,19 +16,21 @@ import ers.dao.UsersDaoImpl;
 import ers.domain.Reimbursements;
 import ers.domain.Users;
 
-public class ResolvedServlet extends HttpServlet {
-
+public class EmpPendingServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
-	public ResolvedServlet() {
+	public EmpPendingServlet() {
 		super();
 	}
 
 	@Override 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		HttpSession session = req.getSession();
 		ReimbursementsDao rd = new ReimbursementsDaoImpl();
-		List<Reimbursements> rl = rd.getResolved();
+		int id = (int) session.getAttribute("user_id");
+		List<Reimbursements> rl = rd.getPendingByUserId(id);
 		resp.setContentType("application/json");
 		ObjectMapper om = new ObjectMapper();
 		om.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
@@ -41,4 +43,3 @@ public class ResolvedServlet extends HttpServlet {
 		
 	}
 }
-

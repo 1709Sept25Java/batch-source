@@ -35,7 +35,7 @@ public class Driver {
 		System.out.println(fd.addFlashcard(new Flashcard("How many states are in the U.S.A?", "50 states", s2)));
 		*/
 		
-		executeNamedQuery(s1);
+		//executeNamedQuery(s1);
 		lastNameMCriteria();
 		
 	}

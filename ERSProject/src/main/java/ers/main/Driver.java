@@ -15,11 +15,9 @@ public class Driver {
 
 	public static void main(String[] args){
 		
-		UsersDao ud = new UsersDaoImpl();
-		Users u = new Users();
-		List<Reimbursements> rl = new ArrayList<>();
 		ReimbursementsDao rd = new ReimbursementsDaoImpl();
-		rl = rd.getResolved();
+		List<Reimbursements> rl = new ArrayList<>();
+		rl = rd.getPendingByUserId(4);
 		System.out.println(rl.toString());
 		
 		

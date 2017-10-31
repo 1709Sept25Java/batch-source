@@ -10,8 +10,8 @@ public class Reimbursements {
 	private double amount;
 	private String description;
 	private Blob receipt;
-	private Date submitted; 
-	private Date resolved; 
+	private String submitted; 
+	private String resolved; 
 	private int id_author;
 	private int id_resolver;
 	private int type;
@@ -20,6 +20,7 @@ public class Reimbursements {
 	private String resolver;
 	private String type1;
 	private String status1;
+	private String amount1;
 	
 	public Reimbursements() {
 		super();
@@ -27,11 +28,11 @@ public class Reimbursements {
 
 
 		
-	public Reimbursements(int r_id, double amount, String description, Blob receipt, Date submitted, Date resolved,
+	public Reimbursements(int r_id, String amount2, String description, Blob receipt, String submitted, String resolved,
 			String author, String resolver, String type1, String status1) {
 		super();
 		this.r_id = r_id;
-		this.amount = amount;
+		this.amount1 = amount2;
 		this.description = description;
 		this.receipt = receipt;
 		this.submitted = submitted;
@@ -52,7 +53,7 @@ public class Reimbursements {
 	}
 
 
-	public Reimbursements(int r_id, double amount, String description, Blob receipt, Date submitted, Date resolved,
+	public Reimbursements(int r_id, double amount, String description, Blob receipt, String submitted, String resolved,
 			int id_author, int id_resolver, int type, int status) {
 		super();
 		this.r_id = r_id;
@@ -66,6 +67,31 @@ public class Reimbursements {
 		this.type = type;
 		this.status = status;
 	}
+
+	
+	
+
+	public Reimbursements(int r_id, String description, Blob receipt, String submitted, String resolved, int id_author,
+			int id_resolver, int type, int status, String author, String resolver, String type1, String status1,
+			String amount1) {
+		super();
+		this.r_id = r_id;
+		this.description = description;
+		this.receipt = receipt;
+		this.submitted = submitted;
+		this.resolved = resolved;
+		this.id_author = id_author;
+		this.id_resolver = id_resolver;
+		this.type = type;
+		this.status = status;
+		this.author = author;
+		this.resolver = resolver;
+		this.type1 = type1;
+		this.status1 = status1;
+		this.amount1 = amount1;
+	}
+
+
 
 	protected int getR_id() {
 		return r_id;
@@ -107,22 +133,22 @@ public class Reimbursements {
 	}
 
 
-	protected Date getSubmitted() {
+	protected String getSubmitted() {
 		return submitted;
 	}
 
 
-	protected void setSubmitted(Date submitted) {
+	protected void setSubmitted(String submitted) {
 		this.submitted = submitted;
 	}
 
 
-	protected Date getResolved() {
+	protected String getResolved() {
 		return resolved;
 	}
 
 
-	protected void setResolved(Date resolved) {
+	protected void setResolved(String resolved) {
 		this.resolved = resolved;
 	}
 
