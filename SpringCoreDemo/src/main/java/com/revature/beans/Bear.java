@@ -22,6 +22,10 @@ public abstract class Bear {
 		this.name = name;
 	}
 
+	public Cave getCave(){
+		return this.cave;
+	}
+	
 	public abstract void methodInBear();
 
 }
