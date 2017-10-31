@@ -12,15 +12,22 @@
 		<!-- need to switch page based on user -->
 		<table id="customer_table" class="customer_info"></table>
 		
+		Request a Reimbursement:
+		<form>
+		<input id="reinburseAmount" name="rAmount" type="number"/>
+		<input id="rsumbit" type="submit" value="Submit"/>
+		</form>
+		
 		<br></br><div id="fileUpload">Upload a File for Reimbursement!</div>
 		
 		<div id="logsuccess_return">
 		<a href="Login.html">Return to login</a>
 		</div>
 		
-		<div id="logsuccess_logout">
+		<br></br>
+		<form id="logsuccess_logout" name="logout" action="../login" method="post">
 		<a href="Logout.html">Logout!</a>
-		</div>
+		</form>
 	</body>
 
 <script type="text/javascript" src="../scripts/customerinfo.js"></script>

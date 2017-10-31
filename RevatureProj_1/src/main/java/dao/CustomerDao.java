@@ -8,7 +8,7 @@ import domain.Customer;
 public interface CustomerDao {
 
 	public List <Customer> getCustomer();
-	public void createCustomer(String user1, String pass1, String fname, String lname, String email);
+	public Customer createCustomer(String username, String password, String fname, String lname, String email);
 	
 	public Customer updateCustomer();
 	int deleteCustomer(Customer delete);

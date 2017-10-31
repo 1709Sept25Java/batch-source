@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 import driver.ManageConnection;
 import domain.Customer;
@@ -88,29 +89,29 @@ public class CustomerDaoImpl implements CustomerDao {
 	} 
  
 	@Override
-	public void createCustomer(String user1, String pass1, String fname, String lname, String email) {
+	public Customer createCustomer(String username, String password, String fname, String lname, String email) {
+		Customer customer=new Customer();	
 			try{  
 				Connection con=ManageConnection.getConnectionFromFile(); 
 				      
 				PreparedStatement ps=con.prepareStatement(  
-				"Insert into ERS_USERS(U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL) values (?,?,?,?,?)");  
+				"INSERT INTO ERS_USERS(U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL) VALUES(?,?,?,?,?)");  
 				//ps.setString(1,user1);  
 				//ps.setString(2,pass1);  
-				      
+				
+				ps.setString(1, username);
+				ps.setString(2, password);
+				ps.setString(3, fname);
+				ps.setString(4, lname);
+				ps.setString(5, email);
+				
 				ResultSet rs=ps.executeQuery();
 				ResultSetMetaData rms= rs.getMetaData();
 				ps.executeUpdate();
 				rms.getCatalogName(0);
+				con.close();
 				//if gets preparedstatement successfully, then returns true
-				while(rs.next())
-					{
-					ps.setString(1, user1);
-					ps.setString(2, pass1);
-					ps.setString(3, fname);
-					ps.setString(4, lname);
-					ps.setString(5, email);
-					}
-				}
+			}
 				catch(IOException ioe)
 				{
 					ioe.printStackTrace();
@@ -119,6 +120,8 @@ public class CustomerDaoImpl implements CustomerDao {
 				catch(Exception e){
 					e.printStackTrace();
 				}
+			
+			return customer;
 	}
 
 	
@@ -403,16 +406,14 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void sendBlob(String file, int id) {
 		try{  
 			Connection con=ManageConnection.getConnectionFromFile(); 
-			PreparedStatement ps=con.prepareStatement("Update ERS_REINBURSEMENTS SET R_RECEIPT=? WHERE R_ID=?");
-			ps.executeQuery();
+			PreparedStatement ps=con.prepareStatement("INSERT INTO ERS_REINBURSEMENTS(R_RECEIPT) Values(?) WHERE R_ID=?");
 			
-			File test=new File("C:\\Users\\jinli\\Desktop\\test1.txt");
 			FileInputStream fileStream=new FileInputStream(file);
-			ps.setBinaryStream(1, fileStream);
+			ps.setBinaryStream(1, fileStream, fileStream.available());
 			ps.setInt(2, id);
 			
-			ps.executeUpdate();
-			System.out.println("Testing file send out");
+			int i=ps.executeUpdate();
+			System.out.println("Testing file send out "+i+ +id+" "+file);
 			
 			fileStream.close();
 		}

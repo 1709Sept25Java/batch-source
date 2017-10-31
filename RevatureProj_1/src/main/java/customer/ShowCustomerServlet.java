@@ -29,7 +29,27 @@ public class ShowCustomerServlet extends HttpServlet {
 		
 		//gets session for username, and retrieves user information based on that
 		CustomerDaoImpl cdi= new CustomerDaoImpl();
-		resp.getWriter().write(cdi.getCustomerUserString(req.getSession(false).getAttribute("username").toString())
-				+"<br></br>" + cdi.getCustomerAccStringByUser(req.getSession(false).getAttribute("username").toString()));
+		String sess1=req.getSession(false).getAttribute("username").toString();
+		String useracc="<tr>"
+		+"<td>"+cdi.getCustomerByUser(sess1).getUsername()+"</td>"
+		+"<td>"+cdi.getCustomerByUser(sess1).getPassword()+"</td>"
+		+"<td>"+cdi.getCustomerByUser(sess1).getFirstname()+"</td>"
+		+"<td>"+cdi.getCustomerByUser(sess1).getLastname()+"</td>"
+		+"<td>"+cdi.getCustomerByUser(sess1).getEmail()+"</td></tr>";
+		String userheader="<tr><td>Username</td><td>Password</td><td>Firstname</td><td>Lastname</td><td>Email</td></tr>";
+		
+		String urein="<tr><td>"+cdi.getCustomerAccByUser(sess1).getR_Amount()+"</td>"+
+				"<td>"+cdi.getCustomerAccByUser(sess1).getR_Type()+"</td>"
+				+"<td>"+cdi.getCustomerAccByUser(sess1).getR_Status()+"</td></tr>";
+		String accheader="<tr><td>Amount</td><td>Type</td><td>Status</td>";
+		
+		resp.getWriter().write(userheader+useracc+"<br></br>"+accheader + urein);
+		
+		
+		//logout and end session
+		String logout= req.getParameter("logout");
+		if(logout!=null) {
+			session.invalidate();
+		}
 	}
 }

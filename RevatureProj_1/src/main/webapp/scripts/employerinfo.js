@@ -19,4 +19,27 @@ function getSelectedC(field){
     document.getElementById("getfield").innerHTML=select;
 }
 
+function addRow() {
+    var row = document.createElement('tr');
+    row.className = 'cDataTable';
+    row.contentEditable = "true"; 
+    row.id="select"+getMaxId()+"";
+    row.onclick= function(){getSelectedC(this.id)};
+    row.innerHTML = '<tr><td>'+ getMaxId() +'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+
+     document.getElementById('getCustomers').appendChild(row);
+}
+function getMaxId(){
+	var id=1;
+	nid=document.getElementById("getCustomers").getElementsByTagName("tr");
+	for(var i=1;i<nid.length;i++){
+		var c=document.getElementById("getCustomers").getElementsByTagName("tr")[i].childNodes[0].innerHTML;	
+		if((c==id))
+		{
+			id++;
+		}
+	}
+	return id;
+}
+	
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.CustomerDaoImpl;
 import domain.Customer;
+import util.employeeBlob;
 
 //employee view
 
@@ -57,7 +58,7 @@ public class GetCustomerServlet extends HttpServlet {
 		customer.setR_Type(cdi.getCustomerAccById(i).getR_Type());
 		customer.setR_Status(cdi.getCustomerAccById(i).getR_Status());
 		
-		resp.getWriter().write("<div><tr id=select"+i+" class='cDataTable' onClick='getSelectedC(this.id)'><td>"+ customer.getUserId()+"</td> <td>"+customer.getUsername()+ "</td> <td> "+customer.getPassword()+ "</td> <td> "
+		resp.getWriter().write("<div><tr contenteditable='true' id=select"+i+" class='cDataTable' onClick='getSelectedC(this.id)'><td>"+ customer.getUserId()+"</td> <td>"+customer.getUsername()+ "</td> <td> "+customer.getPassword()+ "</td> <td> "
 				+ customer.getFirstname()+ "</td> <td> "+ customer.getLastname()+ "</td> <td> "+ customer.getEmail());
 		
 		resp.getWriter().write("<td>"+customer.getR_Amount()+"</td>"+"<td>"+customer.getR_Type()+"</td>"+"<td>"+customer.getR_Status()+"</td> </tr></div>");
@@ -66,8 +67,6 @@ public class GetCustomerServlet extends HttpServlet {
 
 		//String getSelect=req.getParameter("getfield");
 		//make hidden field that changes on click
-		cdi.sendBlob("C:\\Users\\jinli\\Desktop\\test1.txt", 1);
-
 	}
 
 }
