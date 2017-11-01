@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Profile</title>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script type="text/javascript" src="scripts/Manager.js"></script>
+<link rel="stylesheet" href="styles/pending.css" />
+</head>
+<body>
+	<ul>
+		<li><a href="Manager.html">Home</a></li>
+		<li><a href="Profile.html">Profile</a></li>
+		<li><a href="ApproveDeny.html">Approve/Deny</a></li>
+		<li><a href="manpending.html">View Pending</a></li>
+		<li><a href="manResolved.html">View Resolved</a></li>
+		<li><a href="allEmployees.html">View Employee</a></li>
+		<li><a href="SEmployee.html">View Employee's Request</a></li>
+		<li style="float: right"><a class="action" href="logout">Logout</a></li>
+	</ul>
+
+	<div ng-controller="ProfileCtrl">
+		<div>
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Email</th>
+					<th>Userrole</th>
+					
+				</tr>
+				<tr ng-repeat="p in profile">
+					<td>{{p.userId}}</td>
+					<td>{{p.username}}</td>
+					<td>{{p.password}}</td>
+					<td>{{p.firstname}}</td>
+					<td>{{p.lastname}}</td>
+					<td>{{p.email}}</td>
+					<td>{{p.userRoleId.userRole}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

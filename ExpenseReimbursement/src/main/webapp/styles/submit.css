@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+ul{
+	List-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background-color:#535353;
+}
+li{
+	float:left;
+}
+li a{
+	display:block;
+	color:#ffffff;
+	text-align:center;
+	padding: 14px;
+	text-decoration:none;
+	
+}
+li a:hover:not(.active){
+	background-color:#008000;
+}
+.active{
+	background-color:#4CAf50;
+}
+.box{
+	background-color: #ffffff;
+	border: 5px black;
+	margin-top: 10px;
+	padding: 30px;
+	overflow: hidden;
+	height: 50px;
+}

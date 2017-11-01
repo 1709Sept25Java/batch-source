@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet" href="styles/pending.css">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+
+<script type="text/javascript" src="scripts/EmployeeProfile.js"></script>
+</head>
+<body>
+	<ul>
+		<li><a href="Employee.html">Home</a></li>
+		<li><a href="EmployeeProfile.html">Profile</a></li>
+		<li><a href="Submit.html">Submit Reimbursement</a></li>
+		<li><a href="pending.html">View Pending</a></li>
+		<li><a href="resolved.html">View Resolved</a></li>
+		<li><a href="update.html">Update information</a></li>
+		<li><a href="ResetPassword.html">Reset Password</a></li>
+		<li style="float:right"><a class="action" href="logout">Logout</a></li>
+	</ul>
+	<div ng-controller="EmpProfileCtrl">
+		<div>
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Email</th>
+					<th>Userrole</th>
+					
+				</tr>
+				<tr ng-repeat="ep in empProfile">
+					<td>{{ep.userId}}</td>
+					<td>{{ep.username}}</td>
+					<td>{{ep.password}}</td>
+					<td>{{ep.firstname}}</td>
+					<td>{{ep.lastname}}</td>
+					<td>{{ep.email}}</td>
+					<td>{{ep.userRoleId.userRole}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<a href="index.html">Go Back</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manager Resolved</title>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="scripts/ManagerResolved.js"></script>
+<link rel="stylesheet" href="styles/pending.css">
+</head>
+<body>
+	<ul>
+		<li><a href="Manager.html">Home</a></li>
+		<li><a href="Profile.html">Profile</a></li>
+		<li><a href="ApproveDeny.html">Approve/Deny</a></li>
+		<li><a href="manpending.html">View Pending</a></li>
+		<li><a href="manResolved.html">View Resolved</a></li>
+		<li><a href="allEmployees.html">View Employee</a></li>
+		<li><a href="SEmployee.html">View Employee's Request</a></li>
+		<li style="float: right"><a class="action" href="logout">Logout</a></li>
+	</ul>
+	<div class="box" ng-controller="ManagerResolvedCtrl">
+
+		<table>
+			<tr>
+				<th>Reimbursement Id</th>
+				<th>Amount</th>
+				<th>Description</th>
+				<th>Submitted</th>
+				<th>Resolved</th>
+				<th>Author </th>
+				<th>Resolver </th>
+				<th>Type</th>
+				<th>Status</th>
+			</tr>
+			<tr ng-repeat="r in managerresolved">
+				<td>{{r.reimId}}</td>
+				<td>{{r.amount}}</td>
+				<td>{{r.description}}</td>
+				<td>{{r.submitted}}</td>
+				<td>{{r.resolved}}</td>
+				<td>{{r.author.firstname}}</td>
+				<td>{{r.resolver.firstname}}</td>
+				<td>{{r.type.type}}</td>
+				<td>{{r.status.status}}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

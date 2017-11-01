@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Resolved Requests</title>
+<link rel="stylesheet" href="styles/pending.css">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="scripts/EmployeeResolved.js"></script>
+</head>
+<body>
+	<ul>
+		<li><a href="Employee.html">Home</a></li>
+		<li><a href="EmployeeProfile.html">Profile</a></li>
+		<li><a href="Submit.html">Submit Reimbursement</a></li>
+		<li><a href="employeepending">View Pending</a></li>
+		<li><a href="resolved.html">View Resolved</a></li>
+		<li><a href="update.html">Update information</a></li>
+		<li><a href="ResetPassword.html">Reset Password</a></li>
+		<li style="float:right"><a class="action" href="logout">Logout</a></li>
+	</ul>
+	<table ng-controller="EmployeeResolvedCtrl">
+		<tr>
+			<th>Reimbursement Id</th>
+			<th>Amount</th>
+			<th>Description</th>
+			<th>Submitted</th>
+			<th>Resolved</th>
+			<th>Author id</th>
+			<th>Resolver id</th>
+			<th>Type</th>
+			<th>Status</th>
+		</tr>
+		<tr ng-repeat="er in employeeresolved">
+		<td>{{er.reimId}}</td>
+		<td>{{er.amount}}</td>
+		<td>{{er.description}}</td>
+		<td>{{er.submitted}}</td>
+		<td>{{er.resolved}}</td>
+		<td>{{er.author.firstname}}</td>
+		<td>{{er.resolver.firstname}}</td>
+		<td>{{er.type.type}}</td>
+		<td>{{er.status.status}}</td>
+		</tr>
+	</table>
+</body>
+</html>

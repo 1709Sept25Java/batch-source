@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Employees</title>
+<link rel="stylesheet" href="styles/pending.css"/>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="scripts/ManagerEmployees.js"></script>	
+</head>
+<body>
+<div class="box">
+	<ul>
+		<li><a href="Manager.html">Home</a></li>
+		<li><a href="Profile.html">Profile</a></li>
+		<li><a href="ApproveDeny.html">Approve/Deny</a></li>
+		<li><a href="manpending.html">View Pending</a></li>
+		<li><a href="manResolved.html">View Resolved</a></li>
+		<li><a href="allEmployees.html">View All Employees</a></li>
+		<li><a href="SEmployee.html">View Employee's Request</a></li>
+		<li style="float: right"><a class="action" href="logout">Logout</a></li>
+	</ul>
+	</div>
+	<div ng-controller="ManagerEmployeesCtrl">
+		<table>
+			<tr>
+				<th>UserID</th>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+				<th>User role</th>
+			</tr>
+			
+			<tr ng-repeat="e in allemployees">
+				<td>{{e.userId}}</td>
+				<td>{{e.username}}</td>
+				<td>{{e.password}}</td>
+				<td>{{e.firstname}}</td>
+				<td>{{e.lastname}}</td>
+				<td>{{e.email}}</td>
+				<td>{{e.userRoleId.userRole}}</td>
+
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>
