@@ -82,8 +82,6 @@
   
   
   <!-- MANAGER -->
-  
-  
    <servlet>
     <servlet-name>manager</servlet-name>
     <servlet-class>com.revature.servlet.manager.ManagerServlet</servlet-class>
@@ -135,18 +133,23 @@
     <url-pattern>/resolvedReimbursements</url-pattern>
   </servlet-mapping> 
   
-  <!--    
+  
   <servlet>
-    <servlet-name>employeeReimbursements</servlet-name>
+    <servlet-name>employeeProfile</servlet-name>
+    <servlet-class>com.revature.servlet.manager.EmployeeProfileServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>employeeProfile</servlet-name>
+    <url-pattern>/employeeProfile</url-pattern>
+  </servlet-mapping>
+ <!-- /ERS/src/main/java/com/revature/servlet/manager/ReimbursementsServlet.java -->
+ <servlet>
+    <servlet-name>employeeReimbursementsProfile</servlet-name>
     <servlet-class>com.revature.servlet.manager.ReimbursementsServlet</servlet-class>
   </servlet>
    <servlet-mapping>
-    <servlet-name>employeeReimbursements</servlet-name>
-    <url-pattern>/employeeReimbursements</url-pattern>
+    <servlet-name>employeeReimbursementsProfile</servlet-name>
+    <url-pattern>/employeeReimbursementsProfile</url-pattern>
   </servlet-mapping>
-  
-  
-   
-   -->
-  
+ 
 </web-app>

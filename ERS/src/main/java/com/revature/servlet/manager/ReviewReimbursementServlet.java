@@ -18,18 +18,21 @@ public class ReviewReimbursementServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter pw = resp.getWriter();
-		int mID = (int) req.getSession().getAttribute("id");
-		String s = req.getParameter("status");
-		int status = 0;
-		if (s=="Approved") {
-			status = 7007;
+		try {
+			int mID = (int) req.getSession().getAttribute("id");
+			String s = req.getParameter("status");
+			int status = 0;
+			if (s=="Approved") {
+				status = 7007;
+			}
+			else {
+				status =7014;
+			}
+			int rID = Integer.parseInt(req.getParameter("rID"));
+			ManagerRequests.reviewReimbursement(rID, mID, status);
 		}
-		else {
-			status =7014;
+		catch (Exception e) {
+			resp.sendRedirect("manager");
 		}
-		int rID = Integer.parseInt(req.getParameter("rID"));
-		int success = ManagerRequests.reviewReimbursement(rID, mID, status);
-		pw.print(success);
-
 	}
 }

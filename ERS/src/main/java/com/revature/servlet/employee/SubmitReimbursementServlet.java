@@ -38,36 +38,7 @@ public class SubmitReimbursementServlet extends HttpServlet {
 		String description = req.getParameter("description");
 		int amount = Integer.parseInt(req.getParameter("amount"));
 		String type = req.getParameter("type");
-		int success = EmployeeRequests.submitReimbursement(amount, description, id, type);
+		EmployeeRequests.submitReimbursement(amount, description, id, type);
 		resp.sendRedirect("employee");
 	}	
-	
-//https://robots.thoughtbot.com/html5-powered-ajax-file-uploads	
-//	http://www.technicaladvices.com/2011/12/10/ajax-file-upload-to-a-java-servlet-in-html5/
-	
-//	@Override	
-//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		resp.setContentType("text/html");
-//		PrintWriter pw = resp.getWriter();
-//		//http://blog.teamtreehouse.com/uploading-files-ajax
-//		String image = req.getParameter("pic");
-//		File imageFile = new File(image);
-//		//File imageFile = new File("C:/168s.jpg");
-//		FileInputStream fin = new FileInputStream(imageFile);
-//		pw.println(fin.available());
-//		int success;
-//		try (Connection con = ConnectionUtil.getConnectionFromFile()) {
-//			String sql = "{call SUBMIT_IMAGE(?)}";
-//			CallableStatement ps;
-//			ps = con.prepareCall(sql);
-//			ps.setBinaryStream(1, fin, (int) fin.available());
-//			ps.executeUpdate();
-//			con.close();
-//		}catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		resp.sendRedirect("employee");
-//	}
-
-
 }

@@ -1,12 +1,7 @@
-//Found under the employee home, allows employee to see 
-//their own reimbursement requests
-
 window.onload = function() {
-	//Load reimbursements for employee
-	sendAjax("employeePendingReimbursements", employeeReimbursements);
-};
+	sendAjax("employeeReimbursementsProfile", employeeReimbursements);
+}
 
-//Function to send ajax request 
 function sendAjax(url, cFunction) {
 	var xhr;
 	if (window.XMLHttpRequest) {
@@ -26,17 +21,18 @@ function sendAjax(url, cFunction) {
 
 function employeeReimbursements(r){
 	var reimbursements = JSON.parse(r.responseText);
-	var pendingTable = "<h3>Pending reimbursements</h3><tr><th>Submitted</th><th>Amount</th><th>Description</th><th>Status</th><th>Type</th></tr>";
+	var div = "<h3>Pending reimbursements</h3>"
 	var resolvedTable = "<h3>Resolved reimbursements</h3><tr><th>Submitted</th><th>Amount</th><th>Description</th><th>Status</th><th>Type</th><th>Resolver</th></tr>";
-
 	for (var i=0; i<reimbursements.length; i++) {
-		
 		if (reimbursements[i].rtStatus === 7000) {
-			pendingTable += "<tr><td>" + reimbursements[i].rSubmitted +"</td>";
-			pendingTable += "<td>$" + reimbursements[i].rAmount +"</td>";
-			pendingTable += "<td>" + reimbursements[i].rDescription +"</td>";
-			pendingTable += "<td>Pending</td>";
-			pendingTable += "<td>" + reimbursements[i].rtType +"</td>";
+			div += "Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
+			div += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
+			div += "Amount: " + reimbursements[i].rAmount +"<br>";
+			div += "Description: " + reimbursements[i].rDescription +"<br>";
+			div += "Status: Pending<br>";
+			div += "<input id = 'Approved' name=" + reimbursements[i].rID + " type='submit' value='Approve Reimbursement'>";
+			div += "<input id = 'Denied' name=" + reimbursements[i].rID + " type='submit' value='Deny Reimbursement'>";
+			div += "<hr></div>";
 		}
 		else if (reimbursements[i].rtStatus === 7007) {
 			resolvedTable += "<tr><td>" + reimbursements[i].rSubmitted +"</td>";
@@ -56,17 +52,35 @@ function employeeReimbursements(r){
 		}
 		
 	}
-	document.getElementById("pendingTable").innerHTML = pendingTable;
+	document.getElementById("pendingReimbursements").innerHTML = div;
 	document.getElementById("resolvedTable").innerHTML = resolvedTable;
 
 	
 };
 
-document.getElementById("reimbursementRequest").addEventListener("click", function(){
-	sendAjax("reimbursementRequest",reimbursementRequest);
+
+
+document.getElementById("pendingReimbursements").addEventListener("click",function(){
+	var xhr;
+	if (window.XMLHttpRequest) {
+		xhr = new XMLHttpRequest();
+	}
+	else {
+		xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhr.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			reviewReimbursements(this);
+		}
+	};
+	
+	var rID=encodeURIComponent(event.target.name);
+	var status=encodeURIComponent(event.target.id);
+	xhr.open("GET", "reviewReimbursement?rID="+rID+"&status="+event.target.id, true)
+	xhr.send(null);
+	false;
 });
 
-function reimbursementRequest(r){
-	document.getElementById("reimbursementForm").innerHTML = r.responseText;
+function reviewReimbursements(r) {
+	sendAjax("employeeReimbursementsProfile", employeeReimbursements);
 };
-

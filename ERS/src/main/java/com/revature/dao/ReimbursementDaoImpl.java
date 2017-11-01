@@ -138,28 +138,20 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		return success;
 	}
-//CREATE OR REPLACE PROCEDURE REVIEW_REIMBURSEMENT(RID IN NUMBER, MID IN NUMBER, STATUS IN NUMBER, S OUT NUMBER)
 
 	@Override
-	public int updateReimbursement(int rID, int mID, int status) {
-		String sql = "{call REVIEW_REIMBURSEMENT(?,?,?,?)}";
+	public void updateReimbursement(int rID, int mID, int status) {
+		String sql = "{call REVIEW_REIMBURSEMENT(?,?,?)}";
 		CallableStatement pstmt;
-		int success = 0;
 		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
 			pstmt = con.prepareCall(sql);
 			pstmt.setInt(1,rID);
 			pstmt.setInt(2, mID);
 			pstmt.setInt(3, status);
-			pstmt.registerOutParameter(4, OracleTypes.NUMBER);
 			pstmt.executeUpdate();
-			ResultSet rs = (ResultSet) pstmt.getObject(4);
-			while(rs.next()){
-				success = rs.getInt(1);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return success;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
+//Ajax call under the manager link to view employees
+//Shows employees and allows manager to click on an employee 
+//to view profile
 window.onload = function() {
-	console.log("get employees");
 	sendAjax("viewEmployees", viewEmployees);
 };
 
@@ -22,12 +24,41 @@ function sendAjax(url, cFunction) {
 
 function viewEmployees(e) {
 	var employees = JSON.parse(e.responseText);
-	var table = "<tr><th>ID</th><th>username</th><th>first name</th><th>last name</th></tr>";
+	var employeeDiv = "";
 	for (var i=0; i<employees.length; i++) {
-		table += "<tr><td>" + employees[i].uID +"</td>";
-		table += "<td>" + employees[i].username +"</td>";
-		table += "<td>" + employees[i].firstName +"</td>";
-		table += "<td>" + employees[i].lastName +"</td></tr>";
+		employeeDiv += "Name: " + employees[i].firstName;
+		employeeDiv += " " + employees[i].lastName +"<br>";
+		employeeDiv += "ID: " + employees[i].uID +"<br>";
+		employeeDiv += "Username: " + employees[i].username +"<br>";
+		employeeDiv += "<form action = 'employeeProfile' method = 'POST' > <input type = hidden name=eID value='" +employees[i].uID + "'> <input type='submit' value='Employee Profile'></form>";
+		employeeDiv += "<hr>";
 	}
-	document.getElementById("employeesTable").innerHTML = table;
+	document.getElementById("viewEmployees").innerHTML = employeeDiv;
 };
+
+
+//
+//document.getElementById("viewEmployees").addEventListener("click",function(){
+//	var xhr;
+//	if (window.XMLHttpRequest) {
+//		xhr = new XMLHttpRequest();
+//	}
+//	else {
+//		xhr = new ActiveXObject("Microsoft.XMLHTTP");
+//	}
+//	xhr.onreadystatechange = function() {
+//		if (this.readyState == 4 && this.status == 200) {
+//			employeeProfile(this);
+//		}
+//	};
+//	console.log(event.target);
+////	var eID=encodeURIComponent(event.target.id);
+////	xhr.open("POST", "employeeProfile", true);
+////	xhr.send(eID);
+//	false;
+//});
+//
+
+//function employeeProfile(e) {
+//	console.log(e.response);
+//};

@@ -1,3 +1,6 @@
+//Ajax calls on the empoyee homepage
+//The main call is to display the employee information
+
 window.onload = function() {
 	//Load employee information
 	sendAjax("employeeInformation",employeeInformation);

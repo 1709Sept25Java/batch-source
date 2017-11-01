@@ -12,9 +12,8 @@ import com.revature.util.ConnectionUtil;
 
 import oracle.jdbc.OracleTypes;
 
-//This class is used to login and 
-//determine user id + role without direct interaction to database
-//prior to using DAOs
+//This class is used to login and determine user id + role 
+//without direct interaction to database
 
 public final class Login {
 
@@ -22,6 +21,9 @@ public final class Login {
 		super();
 	}
 
+	//There is direct interaction with database instead of through DAO
+	//because we still not determined whether user is employee or manager
+	//but could be changed
 	public static User login(String username, String password) {
 		User user = null;
 		try(Connection con = ConnectionUtil.getConnectionFromFile()) {

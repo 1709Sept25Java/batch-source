@@ -10,5 +10,5 @@ public interface ReimbursementDao {
 	public List<Reimbursement> getReimbursementsByStatus(int status);
 	public List<Reimbursement> getResolvedReimbursements();
 	public int createReimbursement(int amount, String description, int author, String type);
-	public int updateReimbursement(int rID, int mID, int status);
+	public void updateReimbursement(int rID, int mID, int status);
 }

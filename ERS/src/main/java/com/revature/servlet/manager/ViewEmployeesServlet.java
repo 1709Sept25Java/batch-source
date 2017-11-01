@@ -26,6 +26,4 @@ public class ViewEmployeesServlet extends HttpServlet {
 		String employeesAsString = objectMapper.writeValueAsString(employees);
 		pw.print(employeesAsString);
 	}
-
-
 }
