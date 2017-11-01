@@ -15,7 +15,7 @@ import com.revature.domain.Reimbursements;
 public class ManagerHomePageServlet extends HttpServlet {
 	
 
-	private UsersDaoImpl usersDaoImplM;
+	//private UsersDaoImpl usersDaoImplM;
 	
 
 	private static String manager_homepage = "views/ManagerHomePage.html";
@@ -23,7 +23,6 @@ public class ManagerHomePageServlet extends HttpServlet {
 
 	public ManagerHomePageServlet() {
 		super();
-		usersDaoImplM = new UsersDaoImpl();
 
 	}
 
@@ -36,19 +35,18 @@ public class ManagerHomePageServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		req.getRequestDispatcher(manager_homepage).include(req, resp);
 		
-		
-		String inputUridauth = req.getParameter("inputVal");
-	//	int dbUridauth = usersDaoImplM.getRInfoById(uidauthor).toString();
-		
+		UsersDaoImpl dao = new UsersDaoImpl();
+		int uidauthor = Integer.parseInt(req.getParameter("inputVal"));
+		dao.getRInfoById(uidauthor);
 		
 		
 
-	//	if (inputUridauth.equals(dbUridauth)) {
+	/*	if () {
 			
-	//		session.setAttribute("problem", uidauthor);
+			session.setAttribute("problem", uidauthor);
 			
 			
-	//	} 
+		} */
 		
 
 	}

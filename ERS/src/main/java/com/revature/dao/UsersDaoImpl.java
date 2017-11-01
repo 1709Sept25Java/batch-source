@@ -94,10 +94,10 @@ public class UsersDaoImpl implements UsersDao {
 
 // Write out a prepared statment and then call it on the ManagerHomePageServlet 
 	
-	public List<Reimbursements> getRInfoById(int uidauthor) {
-		List <Reimbursements> reimb = new ArrayList<>();
+	public Reimbursements getRInfoById(int uidauthor) {
 		
-		PreparedStatement pstmt = null;
+		Reimbursements reim = new Reimbursements();
+
 		//reimb = null;
 		
 		
@@ -105,7 +105,7 @@ public class UsersDaoImpl implements UsersDao {
 		{
 			Connection con = ConnectionUtil.getConnectionFromFile();
 			String sql = "SELECT * FROM ERS_REIMBURSEMENTS WHERE U_ID_AUTHOR = ?";
-			pstmt = con.prepareStatement(sql);
+			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, uidauthor);
 			ResultSet rs = pstmt.executeQuery();
 		
@@ -118,8 +118,8 @@ public class UsersDaoImpl implements UsersDao {
 					int uidauth = rs.getInt("U_ID_RESOLVER"); //refernences u_id
 					int rttype = rs.getInt("RT_TYPE"); //refernces rt_id
 					int rtstatus = rs.getInt("RT_STATUS"); //refernces rs_id 
-					reimb.add(new Reimbursements(uidauthor, amnt, uidauth, rttype, rtstatus, disc, reciept,
-							rsub, rres));
+					reim = new Reimbursements(uidauthor, amnt, uidauth, rttype, rtstatus, disc, reciept,
+							rsub, rres);
 					
 				}
 			con.close();
@@ -134,8 +134,8 @@ public class UsersDaoImpl implements UsersDao {
 			e.printStackTrace();
 		} 
 		
-		return reimb;
-		
+		return reim;
+
 	}
 	
 
