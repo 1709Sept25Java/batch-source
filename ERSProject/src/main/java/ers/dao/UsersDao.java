@@ -19,4 +19,6 @@ public interface UsersDao {
 	public List<Users> getEmployees();
 	
 	public String getUsername(int id);
+	
+	public int getUserId(String username);
 }

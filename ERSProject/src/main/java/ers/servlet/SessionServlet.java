@@ -29,7 +29,8 @@ public class SessionServlet extends HttpServlet {
 			response.getWriter().write("\"user_id\":\""+session.getAttribute("user_id")+"\",");
 			response.getWriter().write("\"firstname\":\""+session.getAttribute("firstname")+"\",");
 			response.getWriter().write("\"lastname\":\""+session.getAttribute("lastname")+"\",");
-			response.getWriter().write("\"email\":\""+session.getAttribute("email")+"\"}");
+			response.getWriter().write("\"email\":\""+session.getAttribute("email")+"\",");
+			response.getWriter().write("\"username1\":null}");
 		} else {
 			response.setContentType("application/json");
 			response.getWriter().write("{\"username\":null,");
@@ -37,7 +38,8 @@ public class SessionServlet extends HttpServlet {
 			response.getWriter().write("\"user_id\":null,");
 			response.getWriter().write("\"firstname\":null,");
 			response.getWriter().write("\"lastname\":null,");
-			response.getWriter().write("\"email\":null}");
+			response.getWriter().write("\"email\":null,");
+			response.getWriter().write("\"username1\":null}");
 		}
 	}
 

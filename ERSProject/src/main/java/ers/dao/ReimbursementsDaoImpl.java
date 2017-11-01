@@ -2,6 +2,7 @@ package ers.dao;
 
 import java.io.IOException;
 import java.sql.Blob;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -96,7 +97,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 				String formatDateSubmitted = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(date_submitted);
 				Timestamp resolved = rs.getTimestamp("R_RESOLVED");
 				Date date_resolved = new Date();
-				date_submitted.setTime(submit.getTime());
+				date_resolved.setTime(resolved.getTime());
 				String formatDateResolved = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(date_resolved);
 				int id_author = rs.getInt("U_ID_AUTHOR");
 				String author = ud.getUsername(id_author);
@@ -200,7 +201,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 				String formatDateSubmitted = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(date_submitted);
 				Timestamp resolved = rs.getTimestamp("R_RESOLVED");
 				Date date_resolved = new Date();
-				date_submitted.setTime(submit.getTime());
+				date_resolved.setTime(resolved.getTime());
 				String formatDateResolved = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a").format(date_resolved);
 				int id_author = rs.getInt("U_ID_AUTHOR");
 				String author = ud.getUsername(id_author);
@@ -224,6 +225,47 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 		}
 		
 		return rl;
+	}
+
+	@Override
+	public void approveReimbursements(int id, int u_id) {
+
+		CallableStatement stmt = null;
+		
+		try {
+			ConnectionUtil obj = ConnectionUtil.getinstance();
+			stmt = obj.establishedConnection().prepareCall("{call APPROVE(?, ?)}");
+			stmt.setInt(1, id);
+			stmt.setInt(2, u_id);
+			stmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void declineReimbursements(int id, int u_id) {
+		CallableStatement stmt = null;
+		
+		try {
+			ConnectionUtil obj = ConnectionUtil.getinstance();
+			stmt = obj.establishedConnection().prepareCall("{call DECLINE(?, ?)}");
+			stmt.setInt(1, id);
+			stmt.setInt(2, u_id);
+			stmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

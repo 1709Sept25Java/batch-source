@@ -18,6 +18,7 @@ public class Driver {
 		ReimbursementsDao rd = new ReimbursementsDaoImpl();
 		List<Reimbursements> rl = new ArrayList<>();
 		rl = rd.getPendingByUserId(4);
+		UsersDao ud = new UsersDaoImpl();
 		System.out.println(rl.toString());
 		
 		

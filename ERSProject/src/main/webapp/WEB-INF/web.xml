@@ -73,4 +73,36 @@
     <servlet-name>empResolved</servlet-name>
     <url-pattern>/empResolved</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>choose_action</servlet-name>
+    <servlet-class>ers.servlet.ApproveDeclineServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>choose_action</servlet-name>
+    <url-pattern>/choose_action</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>submit_new</servlet-name>
+    <servlet-class>ers.servlet.SubmitNewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>submit_new</servlet-name>
+    <url-pattern>/submit_new</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>show</servlet-name>
+    <servlet-class>ers.servlet.ShowEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>show</servlet-name>
+    <url-pattern>/show</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>empShow</servlet-name>
+    <servlet-class>ers.servlet.EmpShowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>empShow</servlet-name>
+    <url-pattern>/empShow</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -210,4 +210,30 @@ public class UsersDaoImpl implements UsersDao {
 		return uname;
 	}
 
+	@Override
+	public int getUserId(String username) {
+		PreparedStatement pstmt = null;
+		int id = 0;
+		
+		try {
+			ConnectionUtil obj = ConnectionUtil.getinstance();
+			String sql = "SELECT U_ID FROM ERS_USERS "
+					+ "WHERE U_USERNAME = ?";
+			pstmt = obj.establishedConnection().prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				id = rs.getInt("U_ID");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+
 }
