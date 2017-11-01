@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reimbursements</title>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="../Styles/DirectoryStyles.css">
+<link rel="stylesheet" href="../Styles/GeneralStyle.css">
+</head>
+<body>
+	<div id="contentDiv">
+		<div class="tab">
+			<button id="pending-tab" class="tab-name"
+				onmouseenter="changeTab(event, 'pending')">Pending Requests</button>
+			<button id="resolved-tab" class="tab-name"
+				onmouseenter="changeTab(event, 'resolved')">Resolved
+				Requests</button>
+		</div>
+
+		<div id="pending" class="tab-content">
+			<table id="pending-table"></table>
+		</div>
+
+		<div id="resolved" class="tab-content">
+			<table id="resolved-table"></table>
+		</div>
+	</div>
+	<script src="../Scripts/ReimbursementDirectory.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.field-content{
+	margin-left : 15px;
+}
+
+#fixed{
+	position: fixed; 
+	bottom : 20px;
+	left: 10px;
+}
+
+body {
+	min-height : 600px;
+}
+
+editDiv{
+	padding-left : 30px;
+}
+
+table {
+/* 	background-color :#f1f1f1 ; */
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title id="title">Employee Profile</title>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<!-- CDN (content delivery network) for bootstrap's CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<script src="../Scripts/ProfileReimbursements.js"></script>
+<!-- <script src="../Scripts/Profile.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="../Styles/ProfileStyle.css">
+<link rel="stylesheet" type="text/css"
+	href="../Styles/DirectoryStyles.css">
+<link rel="stylesheet" type="text/css" href="../Styles/GeneralStyle.css">
+</head>
+<body>
+	<div id="contentDiv">
+		<h3 id="heading">Employee Profile</h3>
+		<div id="employeeContent">
+			<p>Name:
+			<div id="name" class="field-content"></div>
+			</p>
+			<p>Email:
+			<div id="email" class="field-content"></div>
+			</p>
+			<div id="employee-fields">
+				<p>Manager
+				<div id="manager" class="field-content"></div>
+				</p>
+				<p>Scroll down to see requests</p>
+				<div class="tab">
+					<button id="pending-tab" class="tab-name"
+						onmouseenter="changeTab(event, 'pending')">Pending
+						Requests</button>
+					<button id="resolved-tab" class="tab-name"
+						onmouseenter="changeTab(event, 'resolved')">Resolved
+						Requests</button>
+				</div>
+				<div id="pending" class="tab-content">
+					<table id="pending-table"></table>
+				</div>
+
+				<div id="resolved" class="tab-content">
+					<table id="resolved-table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="fixed">
+		<span id="edit" class="glyphicon glyphicon-pencil">Edit</span>
+		<div id="back-link"></div>
+	</div>
+
+</body>
+</html>
