@@ -1,6 +1,7 @@
 package ers.dao;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import ers.domain.Reimbursements;
 import ers.util.ConnectionUtil;
+import oracle.sql.BLOB;
 
 public class ReimbursementsDaoImpl implements ReimbursementsDao{
 
@@ -257,6 +259,51 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 			stmt = obj.establishedConnection().prepareCall("{call DECLINE(?, ?)}");
 			stmt.setInt(1, id);
 			stmt.setInt(2, u_id);
+			stmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void newReimbursements(Double amount, String desc, InputStream rec, int author, String type) {
+		CallableStatement stmt = null;
+		
+		try {
+			ConnectionUtil obj = ConnectionUtil.getinstance();
+			stmt = obj.establishedConnection().prepareCall("{call NEW_REIMBURSEMENT(?, ?, ?, ?, ?)}");
+			stmt.setDouble(1, amount);
+			stmt.setString(2, desc);
+			stmt.setBinaryStream(3, rec, rec.available());
+			stmt.setInt(4, author);
+			stmt.setString(5, type);
+			stmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void noReceipt(Double amount, String desc, int author, String type) {
+CallableStatement stmt = null;
+		
+		try {
+			ConnectionUtil obj = ConnectionUtil.getinstance();
+			stmt = obj.establishedConnection().prepareCall("{call REIMBURSEMENT(?, ?, ?, ?)}");
+			stmt.setDouble(1, amount);
+			stmt.setString(2, desc);
+			stmt.setInt(3, author);
+			stmt.setString(4, type);
 			stmt.execute();
 		}catch(SQLException e) {
 			e.printStackTrace();

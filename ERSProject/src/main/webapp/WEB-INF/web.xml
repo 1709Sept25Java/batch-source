@@ -84,6 +84,10 @@
   <servlet>
     <servlet-name>submit_new</servlet-name>
     <servlet-class>ers.servlet.SubmitNewServlet</servlet-class>
+    <multipart-config>
+                <max-file-size>10485760</max-file-size>
+                <max-request-size>20971520</max-request-size>
+        </multipart-config>
   </servlet>
   <servlet-mapping>
     <servlet-name>submit_new</servlet-name>
