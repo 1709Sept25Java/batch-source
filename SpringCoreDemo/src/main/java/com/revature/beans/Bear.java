@@ -15,11 +15,15 @@ public abstract class Bear {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Cave getCave() {
+		return cave;
 	}
 
 	public abstract void methodInBear();

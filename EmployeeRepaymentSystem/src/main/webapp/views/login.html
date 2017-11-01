@@ -6,11 +6,22 @@
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="styles/mainStyle.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 </head>
 <body>
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header"><a class="navbar-brand" href="main">Employee Reimbursement System</a></div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="login"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+			</ul>
+		</div>
+	</nav>
+
 	<div class="container">
 		<form class="horizontal-form" action="login" method="post">
 			<div class="form-group">
@@ -28,8 +39,8 @@
   			</div>
   			<br><br>
   			<div class="form-group"> 
-    			<div class="col-sm-offset-2 col-sm-10">
-    	  			<button type="submit" class="btn btn-default">Submit</button>
+    			<div class="col-sm-offset-11 col-sm-10">
+    	  			<button type="submit" class="btn btn-primary">Submit</button>
     			</div>
   			</div>
 		</form>

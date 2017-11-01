@@ -23,6 +23,9 @@ public class BlobServlet extends HttpServlet{
 		RepaymentDao rDao = new RepaymentDaoImpl();
 		byte b[] = rDao.getReceipt(rid);
 		
+		//set response type to an image and write it as an outputstream
+		//This is what finally got me the last puzzle pieces to displaying the image
+		//https://stackoverflow.com/questions/1154254/help-getting-image-from-servlet-to-jsp-page
 		resp.setContentType("image/png");
 		resp.setContentLength(b.length);
 		resp.getOutputStream().write(b);

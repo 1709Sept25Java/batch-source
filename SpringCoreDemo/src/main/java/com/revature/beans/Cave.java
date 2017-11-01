@@ -24,10 +24,13 @@ public class Cave {
 	public Cave(){
 		super();
 	}
-
-	@Override
-	public String toString() {
-		return "Cave [id=" + id + ", name=" + name + "]";
+	
+	public void defaultInit() {
+		System.out.println("default init from Cave");
+	}
+	
+	public void defaultDestroy() {
+		System.out.println("default destroy from Cave");
 	}
 
 }

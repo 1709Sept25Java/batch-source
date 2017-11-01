@@ -2,6 +2,7 @@
 function pendingTable(xhr){
 	var pending = JSON.parse(xhr.responseText);
 	var table = document.getElementById("requests");
+	console.log("pendingtable");
 	
 	for(var i=0;i<pending.length;i++){
 		table.innerHTML += "<tr><td><a href='request?rid="+pending[i].id+"'>"+pending[i].amount+

@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+body{
+	background-color: #8C2E60;
+}
+
+.navbar{
+	background-color: #34001B;
+}
+
+#logo{
+	background-color: #500900;
+	margin: auto;
+	border-radius: 50%;
+	width: 300px;
+	height: 300px;
+	color: white;
+	text-align:center;
+	font-size: 150px;
+	line-height:300px;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
+}

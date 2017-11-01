@@ -8,7 +8,7 @@ function readReqData(xhr){
 	var rid = currUrl.substring(start,currUrl.length);
 	
 	table.innerHTML += "<tr><td>Amount</td><td>"+data.amount+"</td></tr><td>Summary</td><td>"+data.summary+
-		"</td></tr><tr><td>Receipt</td><td><img id='receipt' src='receipt?"+rid+"'></td></tr><td>Requester</td><td>"+
+		"</td></tr><tr><td>Receipt</td><td><img id='receipt' src='receipt?"+rid+"' width='350px'></td></tr><td>Requester</td><td>"+
 		data.empName+"</td></tr><tr><td>Sumbitted</td><td>"+data.submitted+"</td></tr><td>Resolver</td><td>"+
 		data.mgrName+"</td></tr><tr><td>Resolved</td><td>"+data.resolved+"</td></tr><td>Type</td><td>"+data.type+
 		"</td></tr><tr><td>Status</td><td>"+data.status+"</td></tr>";

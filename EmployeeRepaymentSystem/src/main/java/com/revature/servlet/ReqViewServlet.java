@@ -24,10 +24,12 @@ public class ReqViewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
 		int rid = Integer.parseInt(req.getParameter("rid"));
 		int status = Integer.parseInt(req.getParameter("status"));
+		HttpSession session = req.getSession();
+		int mid = (Integer)session.getAttribute("uid");
 		
 		//update the status
 		RepaymentDao rDao = new RepaymentDaoImpl();
-		rDao.updateStatus(rid, status);
+		rDao.updateStatus(rid,mid,status);
 		
 		this.doGet(req, resp);
 	}

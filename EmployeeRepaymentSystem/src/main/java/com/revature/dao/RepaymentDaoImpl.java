@@ -22,20 +22,17 @@ import oracle.sql.TIMESTAMP;
 public class RepaymentDaoImpl implements RepaymentDao{
 
 	@Override
-	public boolean newRepayment(int eid,double amt, String summary, String file, Timestamp submit, int type) {
+	public boolean newRepayment(int eid,double amt, String summary, InputStream in, Timestamp submit, int type) {
 		boolean success = false;
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			String sql = "{call NEW_REPAYMENT(?,?,?,?,?,?,?)}";
 			CallableStatement cs = conn.prepareCall(sql);
 			
-			//Set up the blob
-			InputStream img = new FileInputStream(file);
-			
 			//Set and register parameters
 			cs.setDouble(1, amt);
 			cs.setString(2, summary);
-			cs.setBinaryStream(3, img, img.available());
+			cs.setBinaryStream(3, in, in.available());
 			cs.setTimestamp(4, submit);
 			cs.setInt(5, eid);
 			cs.setInt(6, type);
@@ -269,15 +266,16 @@ public class RepaymentDaoImpl implements RepaymentDao{
 	}
 
 	@Override
-	public void updateStatus(int rid, int sid) {
+	public void updateStatus(int rid,int mid, int sid) {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "{call APPROVE_REPAYMENT(?,?)}";
+			String sql = "{call APPROVE_REPAYMENT(?,?,?)}";
 			CallableStatement cs = conn.prepareCall(sql);
 			//set and register parameters
 			cs.setInt(1, rid);
-			cs.setInt(2, sid);
+			cs.setInt(2, mid);
+			cs.setInt(3, sid);
 			
 			//execute
 			cs.execute();
@@ -307,7 +305,10 @@ public class RepaymentDaoImpl implements RepaymentDao{
 			//execute and store returned image
 			cs.execute();
 			img = cs.getBlob(2);
-			b = img.getBytes(1, (int)img.length());
+			if(img != null) {
+				b = img.getBytes(1, (int)img.length());
+			}
+			
 			
 			conn.close();
 			

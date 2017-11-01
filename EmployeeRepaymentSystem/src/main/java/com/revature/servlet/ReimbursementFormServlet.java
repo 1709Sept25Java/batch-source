@@ -1,9 +1,12 @@
 package com.revature.servlet;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
@@ -29,19 +32,19 @@ public class ReimbursementFormServlet extends HttpServlet{
 		double amt = Double.parseDouble(req.getParameter("amount"));
 		String desc = req.getParameter("desc");
 		String file = req.getParameter("img");
-		
+		InputStream in = new BufferedInputStream(req.getInputStream());
 		
 		
 		int type = Integer.parseInt(req.getParameter("type"));
 		Timestamp submit = new Timestamp(System.currentTimeMillis());
 		
 		RepaymentDao rDao = new RepaymentDaoImpl();
-		boolean success = rDao.newRepayment(uid,amt, desc, file, submit, type);
+		boolean success = rDao.newRepayment(uid,amt, desc, in, submit, type);
 		
 		if(success) {
 			resp.sendRedirect("employee");
 		} else {
-			resp.sendRedirect("request");
+			resp.sendRedirect("newrequest");
 		}
 	}
 	

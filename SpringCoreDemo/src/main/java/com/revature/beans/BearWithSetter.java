@@ -10,7 +10,7 @@ public class BearWithSetter extends Bear {
 
 	@Override
 	public void methodInBear() {
-		System.out.println("method in BearWithSetter");
+		System.out.println("method in BearWithSetter, this is: "+this.toString());
 		System.out.println("cave: "+cave.toString());
 		
 	}
