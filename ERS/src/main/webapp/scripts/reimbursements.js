@@ -75,4 +75,3 @@ document.getElementById("reimbursementRequest").addEventListener("click", functi
 function reimbursementRequest(r){
 	document.getElementById("reimbursementForm").innerHTML = r.responseText;
 };
-
