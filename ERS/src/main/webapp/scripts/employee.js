@@ -4,8 +4,6 @@
 window.onload = function() {
 	//Load employee information
 	sendAjax("employeeInformation",employeeInformation);
-	//Load reimbursements for employee
-	//sendAjax("employeeReimbursements", employeeReimbursements);
 };
 
 //Function to send ajax request 

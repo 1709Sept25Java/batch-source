@@ -25,5 +25,4 @@ public class EmployeePendingReimbursementsServlet extends HttpServlet {
 		String reimbursementsAsString = objectMapper.writeValueAsString(reimbursements);
 		pw.println(reimbursementsAsString);	
 	}
-
 }
