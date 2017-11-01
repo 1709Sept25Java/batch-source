@@ -1,0 +1,33 @@
+body {
+	text-align: center;
+	font-family: "bangla mn";	
+}
+
+#inputfields, #inputpassword, #inputusername {
+	width: 300px;
+	display:inline-block;	
+}
+
+span.glyphicon {
+    font-size: 1.5em;
+}
+
+.btn {
+	font-size: 14px;
+}
+
+.btn, .heading1, span.glyphicon {
+	color:#34877f;	
+}
+
+#aboutmep {
+	text-align: justify;
+	
+}
+
+a {
+    color: white;
+}
+
+
+
