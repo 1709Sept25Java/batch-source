@@ -21,41 +21,50 @@ function sendAjax(url, cFunction) {
 
 function employeeReimbursements(r){
 	var reimbursements = JSON.parse(r.responseText);
-	var div = "<h3>Pending reimbursements</h3>"
-	var resolvedTable = "<h3>Resolved reimbursements</h3><tr><th>Submitted</th><th>Amount</th><th>Description</th><th>Status</th><th>Type</th><th>Resolver</th></tr>";
+	var pendingHeader = "<h3>Pending Reimbursements</h3>"
+	var resolvedHeader = "<h3>Resolved Reimbursements</h3>";
+	var pending = "";
+	var resolved = "";
 	for (var i=0; i<reimbursements.length; i++) {
 		if (reimbursements[i].rtStatus === 7000) {
-			div += "Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
-			div += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
-			div += "Amount: " + reimbursements[i].rAmount +"<br>";
-			div += "Description: " + reimbursements[i].rDescription +"<br>";
-			div += "Status: Pending<br>";
-			div += "<input id = 'Approved' name=" + reimbursements[i].rID + " type='submit' value='Approve Reimbursement'>";
-			div += "<input id = 'Denied' name=" + reimbursements[i].rID + " type='submit' value='Deny Reimbursement'>";
-			div += "<hr></div>";
-		}
-		else if (reimbursements[i].rtStatus === 7007) {
-			resolvedTable += "<tr><td>" + reimbursements[i].rSubmitted +"</td>";
-			resolvedTable += "<td>$" + reimbursements[i].rAmount +"</td>";
-			resolvedTable += "<td>" + reimbursements[i].rDescription +"</td>";
-			resolvedTable += "<td>Approved</td>";
-			resolvedTable += "<td>" + reimbursements[i].rtType +"</td>";
-			resolvedTable += "<td>" + reimbursements[i].uIDResolver +"</td></tr>";
+			pending += "<div>Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
+			pending += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
+			pending += "Amount: " + reimbursements[i].rAmount +"<br>";
+			pending += "Description: " + reimbursements[i].rDescription +"<br>";
+			pending += "Status: Pending<br>";
+			pending += "<br><input id = 'Approved' name=" + reimbursements[i].rID + " type='submit' value='Approve Reimbursement'>";
+			pending += "<br><input id = 'Denied' name=" + reimbursements[i].rID + " type='submit' value='Deny Reimbursement'>";
+			pending += "</div><hr>";
 		}
 		else {
-			resolvedTable += "<tr><td>" + reimbursements[i].rSubmitted +"</td>";
-			resolvedTable += "<td>$" + reimbursements[i].rAmount +"</td>";
-			resolvedTable += "<td>" + reimbursements[i].rDescription +"</td>";
-			resolvedTable += "<td>Denied</td>";
-			resolvedTable += "<td>" + reimbursements[i].rtType +"</td>";
-			resolvedTable += "<td>" + reimbursements[i].uIDResolver +"</td></tr>";
-		}
-		
-	}
-	document.getElementById("pendingReimbursements").innerHTML = div;
-	document.getElementById("resolvedTable").innerHTML = resolvedTable;
+			resolved += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
+			resolved += "Amount: $" + reimbursements[i].rAmount +"<br>";
+			resolved += "Description: " + reimbursements[i].rDescription +"<br>";
+			if (reimbursements[i].rtStatus === 7007) {
+				resolved += "Status: Approved<br>";
+			}
+			else {
+				resolved += "Status: Denied<br>";
+			}
+			resolved += "Type: " + reimbursements[i].rtType +"<br>";
+			resolved += "Resolved: " + reimbursements[i].rResolved +"<br>";
+			resolved += "Resolver: " + reimbursements[i].uIDResolver +"<br><hr>";
 
+		}
+	}
+	if (pending=="") {
+		document.getElementById("pendingReimbursements").innerHTML = pendingHeader + "No pending reimbursements requests<hr>";
+	}
+	else {
+		document.getElementById("pendingReimbursements").innerHTML = pendingHeader + pending;
+	}
 	
+	if (resolved=="") {
+		document.getElementById("resolvedReimbursements").innerHTML = resolvedHeader + "No resolved reimbursements requests<hr>";
+	}
+	else {
+		document.getElementById("resolvedReimbursements").innerHTML = resolvedHeader + resolved;
+	}	
 };
 
 

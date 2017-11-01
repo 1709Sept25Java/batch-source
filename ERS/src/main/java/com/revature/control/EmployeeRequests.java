@@ -30,16 +30,16 @@ public final class EmployeeRequests {
 	//Allows employee to submit reimbursements and return a number indicating 
 	//sucess or failure
 	//The servlet should reload showing the new reimbursement 
-	public static int submitReimbursement(int amount, String description, int author, String type) {
+	public static void submitReimbursement(int amount, String description, int author, int type) {
 		ReimbursementDao rd = new ReimbursementDaoImpl();
-		return rd.createReimbursement(amount, description, author, type);
+		rd.createReimbursement(amount, description, author, type);
 	}
 	
 	//Allows user to update their own basic information
 	//The servlet should also reload showing the update information
-	public static int updateEmployee(int id, String un, String pw, String fn, String ln, String em) {
+	public static void updateEmployee(int id, String un, String pw, String fn, String ln, String em) {
 		UserDao ud = new UserDaoImpl();
-		return ud.updateEmployeeById(id, un, pw, fn, ln, em);
+		ud.updateEmployeeById(id, un, pw, fn, ln, em);
 	}
 	
 }

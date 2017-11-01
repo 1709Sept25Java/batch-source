@@ -2,7 +2,6 @@
 //The main call is to display pending reimbursements from all employees
 
 window.onload = function() {
-//	sendAjax("viewEmployees", viewEmployees);
 	sendAjax("pendingReimbursements", viewPendingReimbursements);
 	sendAjax("resolvedReimbursements", resolvedReimbursements);
 };
@@ -27,22 +26,23 @@ function sendAjax(url, cFunction) {
 
 function viewPendingReimbursements(r){
 	var reimbursements = JSON.parse(r.responseText);
+	var pendingHeader = "<h3>Pending Reimbursements</h3>";
 	if (reimbursements.length != 0) {
-		var div = "<div>";
+		var pending = "";
 		for (var i=0; i<reimbursements.length; i++) {
-			div += "Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
-			div += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
-			div += "Amount: " + reimbursements[i].rAmount +"<br>";
-			div += "Description: " + reimbursements[i].rDescription +"<br>";
-			div += "Status: Pending<br>";
-			div += "<input id = 'Approved' name=" + reimbursements[i].rID + " type='submit' value='Approve Reimbursement'>";
-			div += "<input id = 'Denied' name=" + reimbursements[i].rID + " type='submit' value='Deny Reimbursement'>";
-			div += "<hr></div>";
+			pending += "<div>Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
+			pending += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
+			pending += "Amount: " + reimbursements[i].rAmount +"<br>";
+			pending += "Description: " + reimbursements[i].rDescription +"<br>";
+			pending += "Status: Pending<br>";
+			pending += "<input id = 'Approved' name=" + reimbursements[i].rID + " type='submit' value='Approve Reimbursement'>";
+			pending += "<br><br><input id = 'Denied' name=" + reimbursements[i].rID + " type='submit' value='Deny Reimbursement'>";
+			pending += "<hr></div>";
 		}
-		document.getElementById("reviewReimbursements").innerHTML = div;
+		document.getElementById("reviewReimbursements").innerHTML = pendingHeader + pending;
 	}
 	else {
-		document.getElementById("reviewReimbursements").innerHTML = "No pending reimbursements";
+		document.getElementById("reviewReimbursements").innerHTML = pendingHeader + "No pending reimbursements";
 	}
 };
 
@@ -79,26 +79,27 @@ function viewEmployees(e) {
 
 function resolvedReimbursements(r) {
 	var reimbursements = JSON.parse(r.responseText);
+	var resolvedHeader = "<h3>Resolved Reimbursements</h3>"
 	if (reimbursements.length != 0) {
-		var div = "<div>";
+		var resolved = "";
 		for (var i=0; i<reimbursements.length; i++) {
-			div += "Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
-			div += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
-			div += "Amount: " + reimbursements[i].rAmount +"<br>";
-			div += "Description: " + reimbursements[i].rDescription +"<br>";
+			resolved += "<div>Employee ID: " + reimbursements[i].uIDAuthor +"<br>";
+			resolved += "Submitted: " + reimbursements[i].rSubmitted +"<br>";
+			resolved += "Amount: " + reimbursements[i].rAmount +"<br>";
+			resolved += "Description: " + reimbursements[i].rDescription +"<br>";
 			if (reimbursements[i].rtStatus==7014) {
-				div += "Status: Denied<br>";
+				resolved += "Status: Denied<br>";
 			}
 			else {
-				div += "Status: Approved<br>";
+				resolved += "Status: Approved<br>";
 			}
-			div += "Resolver:"+reimbursements[i].uIDResolver+"<br>";
-			div += "<hr></div>";
+			resolved += "Resolver:"+reimbursements[i].uIDResolver+"<br>";
+			resolved += "<hr></div>";
 		}
-		document.getElementById("resolvedReimbursements").innerHTML = div;
+		document.getElementById("resolvedReimbursements").innerHTML = resolvedHeader + resolved;
 	}
 	else {
-		document.getElementById("resolvedReimbursements").innerHTML = "No resolved reimbursements";
+		document.getElementById("resolvedReimbursements").innerHTML = resolvedHeader + "No resolved reimbursements";
 	}
 };
 

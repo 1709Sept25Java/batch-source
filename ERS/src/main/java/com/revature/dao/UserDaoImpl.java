@@ -47,8 +47,8 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public int updateEmployeeById(int id, String un, String pw, String fn, String ln, String em) {
-		String sql = "{call UPDATE_USER(?,?,?,?,?,?,?)}";
+	public void updateEmployeeById(int id, String un, String pw, String fn, String ln, String em) {
+		String sql = "{call UPDATE_USER(?,?,?,?,?,?)}";
 		CallableStatement pstmt;
 		int success = 0;
 		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
@@ -59,16 +59,10 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(4, fn);
 			pstmt.setString(5, ln);
 			pstmt.setString(6, em);
-			pstmt.registerOutParameter(7, OracleTypes.NUMBER);
 			pstmt.executeUpdate();
-			ResultSet rs = (ResultSet) pstmt.getObject(7);
-			while(rs.next()){
-				success = rs.getInt(1);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return success;
 	}
 
 	@Override

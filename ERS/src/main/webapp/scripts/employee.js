@@ -44,6 +44,7 @@ function employeeInformation(e) {
 };
 
 document.getElementById("updateEmployeeRequest").addEventListener("click", function(){
+	this.style.display="none";
 	sendAjax("employeeUpdate", updateEmployee);
 });
 

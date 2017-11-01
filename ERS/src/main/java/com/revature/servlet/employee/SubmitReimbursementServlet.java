@@ -37,8 +37,8 @@ public class SubmitReimbursementServlet extends HttpServlet {
 		int id = (int) req.getSession().getAttribute("id");
 		String description = req.getParameter("description");
 		int amount = Integer.parseInt(req.getParameter("amount"));
-		String type = req.getParameter("type");
-		EmployeeRequests.submitReimbursement(amount, description, id, type);
-		resp.sendRedirect("employee");
+		String type =  req.getParameter("type");
+		EmployeeRequests.submitReimbursement(amount, description, id, Integer.parseInt(type));
+		resp.sendRedirect("employeeReimbursements");
 	}	
 }

@@ -115,28 +115,19 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	
 
 	@Override
-	public int createReimbursement(int amount, String description, int author, String type) {
-		String sql = "{call SUBMIT_REIMBURSEMENT(?,?,?,?,?)}";
+	public void createReimbursement(int amount, String description, int author, int type) {
+		String sql = "{call SUBMIT_REIMBURSEMENT(?,?,?,?)}";
 		CallableStatement pstmt;
-		int success = 0;
 		try(Connection con = ConnectionUtil.getConnectionFromFile()) {
 			pstmt = con.prepareCall(sql);
 			pstmt.setInt(1,amount);
 			pstmt.setString(2, description);
 			pstmt.setInt(3, author);
-			ReimbursementTypeDao rtd = new ReimbursementTypeDaoImpl();
-			int existingType = rtd.getReimbursementTypeByName(type);
-			pstmt.setInt(4, existingType);
-			pstmt.registerOutParameter(5, OracleTypes.NUMBER);
+			pstmt.setInt(4, type);
 			pstmt.executeUpdate();
-			ResultSet rs = (ResultSet) pstmt.getObject(5);
-			while(rs.next()){
-				success = rs.getInt(1);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return success;
 	}
 
 	@Override
