@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 15%;
+  text-align: center;
+}
+.menuitem {
+  background-color: #B4555B;
+  padding: 10px;
+  margin-top: 7px;
+  font-color: #F3F7D4;
+  font-weight: bold;
+  margin-left: 30px;
+  border-radius: 2px;
+}
+.main {
+  float: left;
+  width: 63%;
+  padding: 10px;
+}
+.right {
+  background-color: #448D76;
+  float: right;
+  width: 20%;
+  height: 200px;
+  padding: 20px;
+  margin-top: 7px;
+  text-align: center;
+  font-color: #e5e5e5;
+  margin-right: 10px;
+}
+
+#title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 60px;
+	color: #13B47E;
+	font-family: Bowlby One;
+}
+
+#subtitle {
+	color: "#F3F7D4";
+}
+
+#tableTitle {
+	font-weight: bold;
+	color: #295648;
+	text-align: center;
+	relative: body;	
+}	
+
+#username {
+	color: #e5e5e5;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#loginDiv {
+	border: 10px solid #448D76;
+	border-radius: 2px;
+	padding: 15px;
+	width: 35%;
+	margin-top: 10px;
+	background-color: #e5e5e5;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+
+	
+	
+	
+	
+	

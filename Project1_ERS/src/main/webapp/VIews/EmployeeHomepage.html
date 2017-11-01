@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	
+	<link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Bowlby One' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Capriola' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="../Styles/Reciprocal.css"/>
+<title>HOME</title>
+</head>
+
+
+<body style="font-family:Capriola;background-color:#F3F7D4;">
+	<div style="background-color:#CBE432;padding:15px;text-align:center;">
+		<div>
+		</div>
+		<h1 id="title">Reciprocal</h1>
+		<h3 id="subtitle">Corporate Reimbursement Management System</h3>
+	</div>
+	<!-- <div class="container">  -->
+		<div style="overflow:auto">
+		  <div class="menu"><br>
+		    <div class="menuitem"><button type="submit">View All Requests</button></div><br>
+		    <div class="menuitem"><button type="submit">View Submitted</button></div><br>
+		    <div class="menuitem"><button type="submit">View Pending</button></div><br>
+		    <div class="menuitem"><button type="submit">View Reconciled</button></div><br>
+		    <div class="menuitem"><button type="submit">Submit New Request</button></div><br>
+		  </div>
+		
+		  <div class="main"><br><br>
+		    <h2 id="tableTitle">TABLE TITLE</h2>
+		    <div>
+			    <t>
+			    		<th>
+			    			<!-- figure out how to get column headers in here. we'll need:
+			    				 Request #, Status (see about mouseover descriptions of the 
+			    				 status), Amount Requested, Description, Submit Date,
+			    				 Arbitrator  -->
+			    		</th>
+			    			
+			    			<!-- this will have to go into my servlets (via PrintWriter) 
+			    				 in order to show accurate # of rows per view! ideally it 
+			    				 should loop through the ResultSet -->
+			    				 
+			    			<tr>
+			    			<td></td>
+			    			</tr>
+			    			
+			    			<tr>
+			    			<td></td>
+			    			</tr>
+			    			
+			    			<tr>
+			    			<td></td>
+			    			</tr>
+			    			
+			    			<tr>
+			    			<td></td>
+			    			</tr>
+			    </t>
+		    </div>
+		  </div>
+		
+		  <div class="right" >
+		    <p style="font-size:16px;font-color:#e5e5e5;">You are signed in as
+		    <h2 id="username">username</h2></p>
+		    <div class="btn-group">
+			  <button type="button" class="btn btn-secondary">Options</button>
+			  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  	<span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <div class="dropdown-menu">
+			    <a class="dropdown-item" action="" method="">View User Info</a>
+			    <a class="dropdown-item" action="" method="">Edit User Info</a>
+			    <div class="dropdown-divider"></div>
+			    <a class="dropdown-item" action="" method="">Manager Portal</a>
+			    <div class="dropdown-divider"></div>
+			    <a class="dropdown-item" action="" method="">Log Out</a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	<!-- </div>  -->
+	<br><br><br><br><br><br><br><br>
+	<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© Copyright 2017 Reciprocal Reimbursements Inc.</div>
+	<script src="../Scripts/events.js"></script>
+</body>
+</html>
