@@ -11,13 +11,34 @@ function getCustomer() {
   xhttp.open("POST", "../GetCustomerServlet?=", true);
   xhttp.send();
 }
-
+//onload
 getCustomer();
 
 function getSelectedC(field){
-	var select=document.getElementById(field).childNodes[2].innerHTML;
-    document.getElementById("getfield").innerHTML=select;
+	var select=document.getElementById(field).getElementsByTagName("td")[1].innerHTML;
+	//document.getElementById("getfield").innerHTML=select;
+	document.getElementById("userS").value=select;
 }
+
+//hidden field
+var select=document.getElementById("getfield").innerHTML;
+
+/*
+//get row selected
+select.onclick = function(){
+	http = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+
+	    document.getElementById("select").innerHTML = this.responseText;
+	    document.getElementById("subRow").innerHTML = this.responseText;
+	    }
+	  };
+	  xhttp.open("POST", "../GetCustomerServlet?=", true);
+	  xhttp.send();
+}
+//
+*/
 
 function addRow() {
     var row = document.createElement('tr');
@@ -25,6 +46,7 @@ function addRow() {
     row.contentEditable = "true"; 
     row.id="select"+getMaxId()+"";
     row.onclick= function(){getSelectedC(this.id)};
+    row.type="button";
     row.innerHTML = '<tr><td>'+ getMaxId() +'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
 
      document.getElementById('getCustomers').appendChild(row);
@@ -41,5 +63,5 @@ function getMaxId(){
 	}
 	return id;
 }
-	
+
 

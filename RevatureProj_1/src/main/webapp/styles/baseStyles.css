@@ -1,6 +1,5 @@
 body{
 	background-color:skyblue;
-	padding-left: 250px;
 }
 input{
 	border: 0.5px solid darkgrey;
@@ -40,8 +39,10 @@ td{
 	padding-right: 10px;
 }
 
-
 .cDataTable:hover { 
     background-color: yellow;
     cursor: pointer;
+}
+.padding-left{
+	padding-left: 250px;
 }

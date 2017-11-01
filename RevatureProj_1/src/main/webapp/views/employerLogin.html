@@ -29,7 +29,9 @@
 		
 		<div id="getfield" hidden=true></div>
 	
-		<input id="addRow" onclick="addRow()" value="Add Row"/>
+		<input id="addRow" onclick="addRow()" value="Add Row" contentEditable="false"/>
+		
+		<br></br><input id="subRow" name=subRow contentEditable="false" type="submit" value="Submit Changes to Selected Row?"/>
 		
 		<form id="form1" action="../GetCustomerServlet" method="post">
 		<br></br>Approve or Decline Reimbursements

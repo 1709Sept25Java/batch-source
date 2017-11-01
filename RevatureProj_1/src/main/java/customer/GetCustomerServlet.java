@@ -71,6 +71,7 @@ public class GetCustomerServlet extends HttpServlet {
 		
 		if (button1!=null) {
 		cdi.updateCustomerReinS(status, getUser);
+		resp.sendRedirect("views/employerLogin.html");
 		}
 		String getSelect=req.getParameter("getfield");
 		//make hidden field that changes on click

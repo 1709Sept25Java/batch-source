@@ -55,7 +55,6 @@ public class LoginServlet extends HttpServlet {
     	   
     	    else if(Login.credentials(username, password)){  
     	    	resp.sendRedirect("views/LoginSuccess.html");
-
     	    	session.setAttribute("username", username);
     			session.setAttribute("problem", null);
     	    	//pw.println("Login success!");
@@ -64,7 +63,10 @@ public class LoginServlet extends HttpServlet {
     	    }  
     	    
     	    else{ 
-    	        resp.sendRedirect("views/Login.html"); 
+    	        resp.sendRedirect("views/Login.html");
+    	        session.setAttribute("username", username);
+    			session.setAttribute("problem", null);
+    			//resp.getWriter().write("Incorrect Username/Password" + username);
     	        //pw.print("<p> Incorrect username or password! with the username "+username+"</p>");
     	    }        
     	    pw.close();  

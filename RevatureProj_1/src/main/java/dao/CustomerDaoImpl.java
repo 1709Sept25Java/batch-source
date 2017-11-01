@@ -42,6 +42,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				
 				cl.add(new Customer(cid,username,password,fname,lname,email,reinburseid));
 				}
+			con.close();
 			}
 			catch(IOException ioe)
 			{
@@ -83,8 +84,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-		}
-			      
+		}     
 		return customer;
 	} 
  
