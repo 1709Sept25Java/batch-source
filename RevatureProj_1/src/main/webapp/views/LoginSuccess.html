@@ -13,12 +13,13 @@
 		<table id="customer_table" class="customer_info"></table>
 		
 		Request a Reimbursement:
-		<form>
+		<form id="reinburse" action="../UpdateUsersServlet" method="post">
 		<input id="reinburseAmount" name="rAmount" type="number"/>
 		<input id="rsumbit" type="submit" value="Submit"/>
 		</form>
 		
 		<br></br><div id="fileUpload">Upload a File for Reimbursement!</div>
+		<!-- Content type=img -->
 		
 		<div id="logsuccess_return">
 		<a href="Login.html">Return to login</a>

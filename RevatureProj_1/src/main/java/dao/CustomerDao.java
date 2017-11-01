@@ -10,7 +10,7 @@ public interface CustomerDao {
 	public List <Customer> getCustomer();
 	public Customer createCustomer(String username, String password, String fname, String lname, String email);
 	
-	public Customer updateCustomer();
+	public Customer updateCustomer(String name);
 	int deleteCustomer(Customer delete);
 	
 	public Customer getCustomerById(int id);
@@ -29,5 +29,8 @@ public interface CustomerDao {
 	
 	public Customer getCustomerAccByUser(String user);
 	String getCustomerAccStringByUser(String user);
+	
+	public void updateCustomerReinA(int amount, String name);
+	public void updateCustomerReinS(String status, String name);
 	
 }

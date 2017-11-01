@@ -65,7 +65,14 @@ public class GetCustomerServlet extends HttpServlet {
 		
 		}
 
-		//String getSelect=req.getParameter("getfield");
+		String status= req.getParameter("rStatus");
+		String getUser= req.getParameter("userSelect");
+		String button1= req.getParameter("subad");
+		
+		if (button1!=null) {
+		cdi.updateCustomerReinS(status, getUser);
+		}
+		String getSelect=req.getParameter("getfield");
 		//make hidden field that changes on click
 	}
 

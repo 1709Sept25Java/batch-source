@@ -126,13 +126,14 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	
 	@Override
-	public Customer updateCustomer() {
+	public Customer updateCustomer(String name) {
 		Customer customer=null;
 		try{  
 			Connection con=ManageConnection.getConnectionFromFile(); 
 			      
 			PreparedStatement ps=con.prepareStatement(  
-			"Update ERS_USERS(U_ID,U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL,UR_ID) set (?,?,?,?,?,?,?) where U_ID=?");  
+			"Update ERS_USERS(U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL,UR_ID) "
+			+ "set (?,?,?,?,?,?) where U_USERNAME=?");  
 			//ps.setString(1,user1);  
 			//ps.setString(2,pass1);  
 			      
@@ -143,14 +144,13 @@ public class CustomerDaoImpl implements CustomerDao {
 			//if gets preparedstatement successfully, then returns true
 			while(rs.next())
 				{
-				ps.setInt(1, customer.getUserId());
-				ps.setString(2, customer.getUsername());
-				ps.setString(3, customer.getPassword());
-				ps.setString(4, customer.getFirstname());
-				ps.setString(5, customer.getLastname());
-				ps.setString(6, customer.getEmail());
-				ps.setInt(7, customer.getReinburse());
-				ps.setInt(8, customer.getUserId());					
+				ps.setString(1, customer.getUsername());
+				ps.setString(2, customer.getPassword());
+				ps.setString(3, customer.getFirstname());
+				ps.setString(4, customer.getLastname());
+				ps.setString(5, customer.getEmail());
+				ps.setInt(6, customer.getReinburse());
+				ps.setString(7, name);					
 				}
 			
 			customer= new Customer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7)); 
@@ -166,7 +166,60 @@ public class CustomerDaoImpl implements CustomerDao {
 		return customer;
 	}
 	
+	@Override
+	public void updateCustomerReinA(int amount, String name) {
+		try{  
+			Connection con=ManageConnection.getConnectionFromFile(); 
+			      
+			PreparedStatement ps=con.prepareStatement(  
+					"UPDATE ERS_REINBURSEMENTS "
+					+ "set R_AMOUNT = ? "
+					+ "where exists (SELECT * from ERS_USERS "
+					+ "where ERS_USERS.U_ID = ERS_REINBURSEMENTS.R_ID "
+					+ "and ERS_USERS.U_USERNAME=?)");   
 
+			ps.setInt(1, amount);
+			ps.setString(2, name);					
+			ps.executeUpdate();
+			//con.commit();
+			}
+			catch(IOException ioe)
+			{
+				ioe.printStackTrace();
+				System.out.println("IO Exception!");
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+	}
+	
+	@Override
+	public void updateCustomerReinS(String status, String name) {
+		try{  
+			Connection con=ManageConnection.getConnectionFromFile(); 
+			      
+			PreparedStatement ps=con.prepareStatement(  
+					"UPDATE ERS_REINBURSEMENT_STATUS"
+					+" set RS_STATUS= ?"
+					+" where exists (SELECT * from ERS_USERS"
+					+" where ERS_USERS.U_ID = ERS_REINBURSEMENT_STATUS.RS_ID"
+					+" and ERS_USERS.U_USERNAME=? )");   
+
+			ps.setString(1, status);
+			ps.setString(2, name);					
+			ps.executeUpdate();
+			//con.commit();
+			}
+			catch(IOException ioe)
+			{
+				ioe.printStackTrace();
+				System.out.println("IO Exception!");
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+	}
+	
 	@Override
 	public int deleteCustomer(Customer delete) {
 		int deleted=0;
@@ -196,6 +249,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			}
 		return deleted; 
 	}
+	
 	@Override
 	public String getCustomerIdString(int id) {
 		String customer;

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CustomerDaoImpl;
+import domain.Customer;
 
 //shows customer their information
 
@@ -29,6 +30,7 @@ public class ShowCustomerServlet extends HttpServlet {
 		
 		//gets session for username, and retrieves user information based on that
 		CustomerDaoImpl cdi= new CustomerDaoImpl();
+		Customer customer=new Customer();
 		String sess1=req.getSession(false).getAttribute("username").toString();
 		String useracc="<tr>"
 		+"<td>"+cdi.getCustomerByUser(sess1).getUsername()+"</td>"
@@ -44,7 +46,6 @@ public class ShowCustomerServlet extends HttpServlet {
 		String accheader="<tr><td>Amount</td><td>Type</td><td>Status</td>";
 		
 		resp.getWriter().write(userheader+useracc+"<br></br>"+accheader + urein);
-		
 		
 		//logout and end session
 		String logout= req.getParameter("logout");

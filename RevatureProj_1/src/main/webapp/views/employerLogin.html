@@ -23,12 +23,24 @@
 				<!--<div>id | user | password | fname | lname | email | rid |</div>-->
 				</table>
 				</form>
+
 		</div>
 		<br></br>
 		
 		<div id="getfield" hidden=true></div>
 	
 		<input id="addRow" onclick="addRow()" value="Add Row"/>
+		
+		<form id="form1" action="../GetCustomerServlet" method="post">
+		<br></br>Approve or Decline Reimbursements
+		<select name="rStatus">
+	  	<option value="Approved">Approve</option>
+	  	<option value="Declined">Decline</option>
+	  	<option value="Pending">Pending</option>
+		</select>
+		From User:<input id="userS" name="userSelect" type="text"/>
+		<input id="submitAD" name="subad" type="submit" value="Submit"/>
+		</form>
 		<div id="logsuccess_return">
 		<a href="Login.html">Return to login</a>
 		</div>
@@ -36,7 +48,6 @@
 		<div id="logsuccess_logout">
 		<a href="Logout.html">Logout!</a>
 		</div>
-	
 	</body>
 <script type="text/javascript" src="../scripts/employerinfo.js"></script>
 </html>

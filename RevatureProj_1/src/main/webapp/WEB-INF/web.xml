@@ -51,4 +51,14 @@
     <servlet-name>CreateAccServlet</servlet-name>
     <url-pattern>/CreateAccServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUsersServlet</display-name>
+    <servlet-name>UpdateUsersServlet</servlet-name>
+    <servlet-class>customer.UpdateUsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUsersServlet</servlet-name>
+    <url-pattern>/UpdateUsersServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
