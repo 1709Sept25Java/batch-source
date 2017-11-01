@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<style>
+.divImg {
+	background-image: url("Images/home.png");
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-color: #FFFAF0;
+}
+</style>
+</head>
+<body>
+
+	<form class="navbar-form navbar-left">
+		<div class="container-fluid">
+
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="Home.html">Home</a></li>
+				<li><a href="reimbursement.html">Reimbursement</a></li>
+				<li><a href="submittedRequest.html">Check Status</a></li>
+
+			</ul>
+		</div>
+	</form>
+	<div class="logout">
+		<form align="right" name="form2" method="post" action="LogoutServlet">
+			<button type="submit" class="btn btn-default">Log out</button>
+
+		</form>
+	</div>
+
+
+	<div class="divImg">
+		<h2 style="text-align: center">Employee Reimbursement System(ERS)</h2>
+	</div>
