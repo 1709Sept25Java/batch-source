@@ -20,7 +20,7 @@ public class Driver {
 //		System.out.println(employeeJSON);
 //		String str = ReimbursementDaoImpl.reimbursementsToJSON(ReimbursementDaoImpl.getReimbursements());
 //		EmployeeDaoImpl.updateName(1, "Carolyn", "Rehm");
-		
+		System.out.println(Util.getDate());
 	}
 	
 	

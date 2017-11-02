@@ -1,0 +1,1 @@
+document.getElementById("back-link").innerHTML = "<a href=\"EmployeeHome.html\">Back to Home Page</a>";

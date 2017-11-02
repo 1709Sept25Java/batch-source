@@ -4,6 +4,7 @@ function initProfile(){
 	sendAjaxGet('http://localhost:8082/ExpenseReimbursementSystem/employees', getEmployee);
 	document.getElementById("pending").style.display = "block";
 	document.getElementById("edit").addEventListener("click",editPage);
+	console.log("hello");
 }
 
 
@@ -35,10 +36,11 @@ function getEmployee(xhr){
 	currentUrl = window.location.href;
 	endIndex = currentUrl.indexOf("Profile.html");
 	urlRoot = currentUrl.substring(0,endIndex);
-	if (employeeId == 1 && document.referrer == urlRoot+"AllEmployees.html"){
+	console.log(employeeEmail);
+	if (employeeEmail == "crehm@gmail.com" && document.referrer == urlRoot+"AllEmployees.html"){
 		document.getElementById("employee-fields").remove();
 		document.getElementById("back-link").innerHTML = "<a href=\"AllEmployees.html\">Back to all Employees</a>";
-	} else if (employeeId == 1) {
+	} else if (employeeEmail == "crehm@gmail.com") {
 		document.getElementById("employee-fields").remove();
 		document.getElementById("back-link").innerHTML = "<a href=\"ManagerHome.html\">Back to Home Page</a>";
 	} else {

@@ -21,7 +21,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 <script src="../Scripts/ProfileReimbursements.js"></script>
-<!-- <script src="../Scripts/Profile.js"></script> -->
+<script src="../Scripts/Profile.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../Styles/ProfileStyle.css">
 <link rel="stylesheet" type="text/css"
@@ -32,31 +32,35 @@
 	<div id="contentDiv">
 		<h3 id="heading">Employee Profile</h3>
 		<div id="employeeContent">
-			<p>Name:
-			<div id="name" class="field-content"></div>
-			</p>
-			<p>Email:
-			<div id="email" class="field-content"></div>
-			</p>
-			<div id="employee-fields">
-				<p>Manager
-				<div id="manager" class="field-content"></div>
+			<div class = "sticky">
+				<p>Name:
+				<div id="name" class="field-content"></div>
 				</p>
-				<p>Scroll down to see requests</p>
+				<p>Email:
+				<div id="email" class="field-content"></div>
+				</p>
+			</div>
+			<div id="employee-fields">
+				<p class = "sticky">Manager
+				<div id="manager" class="field-content sticky"></div>
+				</p>
+				<div id="space"></div>
 				<div class="tab">
-					<button id="pending-tab" class="tab-name"
+					<button id="pending-tab" class="tab-name" style = "background-color : #f1f1f1;"
 						onmouseenter="changeTab(event, 'pending')">Pending
 						Requests</button>
 					<button id="resolved-tab" class="tab-name"
 						onmouseenter="changeTab(event, 'resolved')">Resolved
 						Requests</button>
 				</div>
-				<div id="pending" class="tab-content">
-					<table id="pending-table"></table>
-				</div>
+				<div id="tableDiv">
+					<div id="pending" class="tab-content">
+						<table id="pending-table"></table>
+					</div>
 
-				<div id="resolved" class="tab-content">
-					<table id="resolved-table"></table>
+					<div id="resolved" class="tab-content">
+						<table id="resolved-table"></table>
+					</div>
 				</div>
 			</div>
 		</div>

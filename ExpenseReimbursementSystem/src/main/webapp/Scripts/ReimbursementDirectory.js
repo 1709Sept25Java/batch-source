@@ -70,21 +70,40 @@ function getReimbursements(xhr) {
 			statusCell.innerHTML = reimb[reId].status;
 		}
 	}
+	sendAjaxGet("http://localhost:8082/ExpenseReimbursementSystem/employees", getEmployeeName);
+	window.setTimeout( function () {
+		rows = document.getElementsByTagName("tr");
+		rowArr = Array.from(rows);
+		idCells = document.getElementsByClassName("id-cell");
+		idCellArr = Array.from(idCells);
+		for (k = 0; k<rowArr.length; k++){
+			rowArr[k].onclick = function () { 
+			idNum = event.target.parentElement.firstChild.innerHTML;
+			window.location.href = "Reimbursement.html?id="+idNum;
+			}
+		}
+	}, 0);
+	
 }
 
 function getEmployeeName(xhr) {
 	employeeRes = JSON.parse(xhr.responseText);
+	sendAjaxGetWithArg("http://localhost:8082/ExpenseReimbursementSystem/GetIsManagerServlet", setAlerts, employeeRes);
+	setTimeout(function () {
 	authorElements = document.getElementsByClassName("authorid-cell");
+	console.log(authorElements[0]);
+	console.log(authorElements[1]);
 	arr = Array.from(authorElements);
+	console.log(authorElements);
 	for(j = 0; j<arr.length; j++){
 		arr[j].innerHTML = employeeRes[arr[j].innerHTML].name;
+		console.log(arr[j].innerHTML);
 	}
-	sendAjaxGetWithArg("http://localhost:8082/ExpenseReimbursementSystem/GetIsManagerServlet", setAlerts, employeeRes);
+	},500);
 }
 
 function setAlerts(xhr, employeeRes){
 	managerRes = JSON.parse(xhr.responseText);
-	console.log(managerRes);
 	managerId = managerRes.managerId;
 	ptRows = document.getElementById("pending-table").getElementsByTagName("tr");
 	for(i = 0; i<ptRows.length; i++){
@@ -96,7 +115,7 @@ function setAlerts(xhr, employeeRes){
 				break;
 			} 
 		}
-	}
+	}	
 }
 
 	
@@ -105,8 +124,7 @@ function init() {
 	sendAjaxGet(
 			"http://localhost:8082/ExpenseReimbursementSystem/reimbursements",
 			getReimbursements);
-	window.setTimeout(function() {
-		sendAjaxGet("http://localhost:8082/ExpenseReimbursementSystem/employees", getEmployeeName)  , 10000});
+	
 }
 	
 function changeTab(thisTab, tabName){

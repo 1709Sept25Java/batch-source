@@ -15,7 +15,7 @@ function getEmployees(xhr){
 	table = document.getElementById("employeeTable");
 	for (var i = 0; i<Object.keys(res).length; i++){
 		j = Object.keys(res)[i];
-		row = table.insertRow(2);
+		row = table.insertRow();
 		nameCell = row.insertCell(0);
 		nameCell.setAttribute("class","name-cell");
 		emailCell= row.insertCell(1);

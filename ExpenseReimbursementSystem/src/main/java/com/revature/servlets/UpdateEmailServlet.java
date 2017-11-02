@@ -39,6 +39,8 @@ public class UpdateEmailServlet extends HttpServlet {
 		String newEmail = request.getParameter("newEmail");
 		try {
 			EmployeeDaoImpl.updateEmail(id, newEmail);
+			String e = (String) session.getAttribute("email");
+			response.sendRedirect("Profile.html?email="+e);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

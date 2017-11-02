@@ -22,12 +22,6 @@ function sendAjaxGetWithArg(url, func, arg) {
 	xhr.send();
 }
 
-function link(idInput) {
-	console.log("we are in link");
-	window.location.href = "Reimbursement.html?id=" + idInput;
-	console.log("we are in link");
-}
-
 function getReimbursements(xhr, employeeId) {
 	pendingTable = document.getElementById("pending-table");
 	resolvedTable = document.getElementById("resolved-table");
@@ -38,37 +32,30 @@ function getReimbursements(xhr, employeeId) {
 		if (reimb[reId].author == employeeId) {
 			if (reimb[reId].status == "pending") {
 				row = pendingTable.insertRow();
-				console.log(reId);
-				row.setAttribute("data-href", "Reimbursement.html?id="+reId);
 				idCell = row.insertCell(0);
 				idCell.setAttribute("class", "id-cell");
 				idCell.innerHTML = reId;
-				idCell.setAttribute("href", "Reimbursement.html?id="+reId);
 				amountCell = row.insertCell(1);
 				amountCell.setAttribute("class", "amount-cell");
 				amountCell.innerHTML = "$" + reimb[reId].amount;
-				amountCell.setAttribute("href", "Reimbursement.html?id="+reId);
 				descriptionCell = row.insertCell(2);
 				descriptionCell.setAttribute("class", "description-cell");
 				descriptionCell.innerHTML = reimb[reId].description;
-				descriptionCell.setAttribute("href", "Reimbursement.html?id="+reId);
 				timeCell = row.insertCell(2);
 				timeCell.setAttribute("class", "time-cell");
 				timeCell.innerHTML = reimb[reId].timeSubmitted;
-				timeCell.setAttribute("href", "Reimbursement.html?id="+reId);
 			} else {
 				row = resolvedTable.insertRow();
 				row.setAttribute("data-href", "Reimbursement.html?id="+reId);
 				idCell = row.insertCell(0);
 				idCell.setAttribute("class", "id-cell");
 				idCell.innerHTML = reId;
-				console.log(reId);
 				amountCell = row.insertCell(1);
 				amountCell.setAttribute("class", "amount-cell");
 				amountCell.innerHTML = "$" + reimb[reId].amount;
 				descriptionCell = row.insertCell(2);
-				descriptionCell.setAttribute("class", "description-cell");
-				descriptionCell.innerHTML = reimb[reId].description;
+				descriptionCell.setAttribute("class", "description2");
+				descriptionCell.innerHTML = "  "+reimb[reId].description;
 				statusCell = row.insertCell(3);
 				statusCell.setAttribute("class", "status-cell");
 				statusCell.innerHTML = reimb[reId].status;
@@ -76,14 +63,18 @@ function getReimbursements(xhr, employeeId) {
 		}
 	}
 		
-//	window.setTimeout( function () {
-//		rows = document.getElementsByTagName("tr");
-//		console.log(rows);
-//		for (k = 0; k<rows.length; k++){
-//			num = rows[k].firstChild.innerHTML;
-//			rows[k].onclick = function () { window.location.href = "Reimbursement.html?id="+num; }
-//		}
-//	}, 2000);
+	window.setTimeout( function () {
+		rows = document.getElementsByTagName("tr");
+		rowArr = Array.from(rows);
+		idCells = document.getElementsByClassName("id-cell");
+		idCellArr = Array.from(idCells);
+		for (k = 0; k<rowArr.length; k++){
+			rowArr[k].onclick = function () { 
+			idNum = event.target.parentElement.firstChild.innerHTML;
+			window.location.href = "Reimbursement.html?id="+idNum;
+			}
+		}
+	}, 0);
 }
 
 function setAlerts(xhr, employeeRes) {
@@ -125,6 +116,7 @@ function init() {
 	document.getElementById("pending").style.display = "block";
 	sendAjaxGet("http://localhost:8082/ExpenseReimbursementSystem/employees",
 			getCurrent)
+	document.getElementById("resolved-tab").addEventListener("mouseenter", function() {document.getElementById("pending-tab").removeAttribute("style");})
 }
 
 function changeTab(thisTab, tabName) {

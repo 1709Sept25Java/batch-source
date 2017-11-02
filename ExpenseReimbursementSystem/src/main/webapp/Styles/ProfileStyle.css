@@ -1,23 +1,36 @@
 @charset "UTF-8";
 
-.field-content{
-	margin-left : 15px;
-}
-
-#fixed{
-	position: fixed; 
-	bottom : 20px;
+#fixed {
+	position: fixed;
+	bottom: 20px;
 	left: 10px;
 }
 
 body {
-	min-height : 600px;
+	min-height: 600px;
 }
 
-editDiv{
-	padding-left : 30px;
+editDiv {
+	padding-left: 30px;
 }
 
 table {
-/* 	background-color :#f1f1f1 ; */
+	margin: auto;
+	background-color: #f1f1f1;
+	position: relative;
+	bottom: 7px;
+}
+
+#space {
+	height: 20px;
+}
+
+td {
+	padding: 7px;
+	text-align: left;
+	margin-top: -10;
+}
+
+tr {
+	border-bottom: 1px solid #4a4a4a;
 }

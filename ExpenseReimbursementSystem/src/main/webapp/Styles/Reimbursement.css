@@ -5,3 +5,25 @@
      width:auto !important;
      text-align : center;
 }
+
+body {
+	background-color : #bbbbbb;
+	font-size : 20px;
+	min-width:600px;
+	min-height:600px;
+}
+
+#contentDiv{
+	text-align : center;
+    position: absolute;
+    left: 0;
+    top: 15%;
+    width: 100%;
+    font-size: 18px;
+}
+
+.field-content{
+	margin-bottom : 20px;
+	margin-top : -10px;
+	vertical-align : top;
+}

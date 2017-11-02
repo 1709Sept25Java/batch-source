@@ -44,7 +44,7 @@ public class ResolveServlet extends HttpServlet {
 		HttpSession s = request.getSession();
 		int managerId = (int) s.getAttribute("managerId");
 		int reimbursementId =  Integer.valueOf(request.getParameter("reimbursementId"));
-		String status = request.getParameter("status");
+		String status = request.getParameter("resolveStatus");
 		String time = Util.getDate();
 		try {
 			ReimbursementDaoImpl.resolveReimbursement(reimbursementId, managerId, status, time);
