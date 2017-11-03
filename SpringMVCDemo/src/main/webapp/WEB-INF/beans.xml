@@ -12,6 +12,9 @@
 	<!-- enable MVC annotations -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
+	<!-- enable static resource retrieval -->
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/"></mvc:resources>
+	
 	<!-- set up our View Resolver -->
 	<bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
