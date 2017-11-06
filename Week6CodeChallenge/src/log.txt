@@ -1,0 +1,36 @@
+2017-11-06 11:04:12 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:04:12 EST 2017]; root of context hierarchy
+2017-11-06 11:04:12 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:04:21 INFO  root:16 - int com.revature.service.CalculatorServiceImpl.add(int,int)
+2017-11-06 11:13:11 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:13:11 EST 2017]; root of context hierarchy
+2017-11-06 11:13:11 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:13:12 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.context.event.internalEventListenerProcessor': Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut loggingOp
+2017-11-06 11:13:41 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:13:41 EST 2017]; root of context hierarchy
+2017-11-06 11:13:41 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:13:42 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.context.event.internalEventListenerProcessor': Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut loggingOp
+2017-11-06 11:15:30 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:15:30 EST 2017]; root of context hierarchy
+2017-11-06 11:15:30 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:15:31 INFO  root:21 - Arguments :[]
+2017-11-06 11:16:30 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:16:30 EST 2017]; root of context hierarchy
+2017-11-06 11:16:30 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:16:31 INFO  root:21 - Arguments :[]
+2017-11-06 11:16:48 INFO  root:21 - Arguments :[5.12, 1.23]
+2017-11-06 11:16:48 INFO  root:26 - Method:sub
+2017-11-06 11:16:48 INFO  root:27 - Return value: 3.89
+2017-11-06 11:17:27 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:17:27 EST 2017]; root of context hierarchy
+2017-11-06 11:17:27 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:17:28 INFO  root:21 - Arguments :[]
+2017-11-06 11:17:55 INFO  root:21 - Arguments :[5, 4]
+2017-11-06 11:17:55 INFO  root:26 - Method:mult
+2017-11-06 11:17:55 INFO  root:27 - Return value: 9
+2017-11-06 11:18:36 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:18:36 EST 2017]; root of context hierarchy
+2017-11-06 11:18:36 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:18:36 INFO  root:21 - Arguments :[]
+2017-11-06 11:19:00 INFO  root:21 - Arguments :[1.5, 2.64]
+2017-11-06 11:19:00 INFO  root:26 - Method:mult
+2017-11-06 11:19:00 INFO  root:27 - Return value: 3.96
+2017-11-06 11:19:27 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e4705b: startup date [Mon Nov 06 11:19:27 EST 2017]; root of context hierarchy
+2017-11-06 11:19:27 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:19:28 INFO  root:21 - Arguments :[]
+2017-11-06 11:19:39 INFO  root:21 - Arguments :[5.14, 2.38]
+2017-11-06 11:19:39 INFO  root:26 - Method:div
+2017-11-06 11:19:39 INFO  root:27 - Return value: 2.1596638655462184
