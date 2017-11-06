@@ -27,7 +27,7 @@ public class EmployeeServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		ObjectMapper om = new ObjectMapper();
 		String empStr = om.writeValueAsString(ul);
-		resp.getWriter().write("{\"employees\":"+empStr+"}");
+		resp.getWriter().write(empStr);
 	}
 	
 	@Override 

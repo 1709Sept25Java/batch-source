@@ -22,6 +22,7 @@ public class TypeDaoImpl implements TypeDao {
 			while(rs.next()) {
 				type = rs.getString("RT_TYPE");
 			}
+			obj.establishedConnection().close();
 			return type;
 		}catch (SQLException e) {
 			e.printStackTrace();

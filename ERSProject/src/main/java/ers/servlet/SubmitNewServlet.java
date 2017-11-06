@@ -48,7 +48,7 @@ public class SubmitNewServlet extends HttpServlet{
 		System.out.println(id);
 		//byte[] image = filePart.getBytes();
 		Part filePart =  req.getPart("receipt");
-	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 		InputStream fileContent = filePart.getInputStream();
 	    ReimbursementsDao rd = new ReimbursementsDaoImpl();
 		rd.newReimbursements(amount, desc, fileContent, id, type);

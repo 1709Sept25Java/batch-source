@@ -22,6 +22,7 @@ public class StatusDaoImpl implements StatusDao{
 			while(rs.next()) {
 				status = rs.getString("RS_STATUS");
 			}
+			obj.establishedConnection().close();
 			return status;
 		}catch (SQLException e) {
 			e.printStackTrace();

@@ -33,6 +33,7 @@ public class UsersDaoImpl implements UsersDao {
 			while(rs.next()) {
 				id = rs.getInt("UR_ID");
 			}
+			obj.establishedConnection().close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch (IOException e1) {

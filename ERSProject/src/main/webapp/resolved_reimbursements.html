@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="webapp">
+<html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Reimbursements - Resolved</title>
@@ -10,7 +10,7 @@
 <script type="text/javascript"
 src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     
-<script src="scripts/ResolvedCtrl.js"></script>
+<script src="scripts/ResolvedRe.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -68,34 +68,28 @@ src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></s
 <div id="header">
 	<h>Reimbursements - Resolved</h>
 </div>
-<div ng-controller="ResolvedCtrl">
+<div>
 <div id="infoDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div>
 		<table style="width: 100%">
-			<tr>
-				<th>ID</th>
-				<th>Amount</th>
-				<th>Description</th>
-				<th>Receipt</th>
-				<th>Date Submitted</th>
-				<th>Date Resolved</th>
-				<th>Submitted By</th>
-				<th>Resolved By</th>
-				<th>Type</th>
-				<th>Status</th>
-			</tr>
-			<tr ng-repeat="r in reimbursements">
-				<td>{{r.r_id}}</td>
-				<td>{{r.amount1}}</td>
-				<td>{{r.description}}</td>
-				<td>{{r.receipt}}</td>
-				<td>{{r.submitted}}</td>
-				<td>{{r.resolved}}</td>
-				<td>{{r.author}}</td>
-				<td>{{r.resolver}}</td>
-				<td>{{r.type1}}</td>
-				<td>{{r.status1}}</td>
-			</tr>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>Receipt</th>
+					<th>Date Submitted</th>
+					<th>Date Resolved</th>
+					<th>Submitted By</th>
+					<th>Resolved By</th>
+					<th>Type</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="resolved">
+			
+			
+			</tbody>
 		</table>
 	</div>
 

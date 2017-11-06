@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="webapp">
+<html">
 <head>
 <meta charset="ISO-8859-1">
 <title>Reimbursements - Pending</title>
@@ -10,7 +10,7 @@
 <script type="text/javascript"
 src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     
-<script src="scripts/PendingCtrl.js"></script>
+<script src="scripts/PendingRe.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -99,7 +99,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></s
 	</form>
 	<a style="color: #F5F5F5; margin-left: 20px; font-family: Georgia" href="pending_reimbursements.html">Show All</a>
 </div>
-<div ng-controller="PendingCtrl">
+<div>
 <div id="infoDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div>
 		<table style="width: 100%">
@@ -112,15 +112,10 @@ src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></s
 				<th>Submitted By</th>
 				<th>Type</th>
 			</tr>
-			<tr ng-repeat="r in reimbursements">
-				<td>{{r.r_id}}</td>
-				<td>{{r.amount1}}</td>
-				<td>{{r.description}}</td>
-				<td>{{r.receipt}}</td>
-				<td>{{r.submitted}}</td>
-				<td>{{r.author}}</td>
-				<td>{{r.type1}}</td>
-			</tr>
+			<tbody id="pending">
+			
+			
+			</tbody>
 		</table>
 	</div>
 </div>

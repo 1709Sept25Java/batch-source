@@ -60,8 +60,10 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 				rl.add(new Reimbursements(r_id, amount, desc, 
 						receipt, formatDateSubmitted, formatDateResolved, author, resolver,
 						type1, status1));
+
 			}
-			
+	
+			obj.establishedConnection().close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
@@ -113,7 +115,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 						receipt, formatDateSubmitted, formatDateResolved, author, resolver,
 						type1, status1));
 			}
-			
+			obj.establishedConnection().close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
@@ -165,7 +167,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 						receipt, formatDateSubmitted, formatDateResolved, author, resolver,
 						type1, status1));
 			}
-			
+			obj.establishedConnection().close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
@@ -217,7 +219,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 						receipt, formatDateSubmitted, formatDateResolved, author, resolver,
 						type1, status1));
 			}
-			
+			obj.establishedConnection().close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
@@ -240,6 +242,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 			stmt.setInt(1, id);
 			stmt.setInt(2, u_id);
 			stmt.execute();
+			obj.establishedConnection().close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}catch(IOException e) {
@@ -260,6 +263,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 			stmt.setInt(1, id);
 			stmt.setInt(2, u_id);
 			stmt.execute();
+			obj.establishedConnection().close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}catch(IOException e) {
@@ -283,6 +287,7 @@ public class ReimbursementsDaoImpl implements ReimbursementsDao{
 			stmt.setInt(4, author);
 			stmt.setString(5, type);
 			stmt.execute();
+			obj.establishedConnection().close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}catch(IOException e) {
@@ -305,6 +310,7 @@ CallableStatement stmt = null;
 			stmt.setInt(3, author);
 			stmt.setString(4, type);
 			stmt.execute();
+			obj.establishedConnection().close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}catch(IOException e) {

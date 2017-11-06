@@ -362,3 +362,22 @@ BEGIN
 END;
 
 DELETE FROM ERS_REIMBURSEMENTS WHERE R_ID = 596;
+
+-- INSERT MORE USERS
+INSERT INTO ERS_USERS(U_USERNAME, U_PASSWORD, U_FIRSTNAME, U_LASTNAME, U_EMAIL, UR_ID)
+VALUES('billyboy85', '1234', 'Billy', 'Brown', 'billyboy85@yahoo.com', 1);
+
+INSERT INTO ERS_USERS(U_USERNAME, U_PASSWORD, U_FIRSTNAME, U_LASTNAME, U_EMAIL, UR_ID)
+VALUES('kylesmith94', 'hihello', 'Kyle', 'Smith', 'kylesmith@yahoo.com', 1);
+
+INSERT INTO ERS_USERS(U_USERNAME, U_PASSWORD, U_FIRSTNAME, U_LASTNAME, U_EMAIL, UR_ID)
+VALUES('marypoppins', 'umbrella', 'Mary', 'Jenkins', 'marypoppins@gmail.com', 1);
+
+INSERT INTO ERS_USERS(U_USERNAME, U_PASSWORD, U_FIRSTNAME, U_LASTNAME, U_EMAIL, UR_ID)
+VALUES('kelsey218', 'cali', 'Kelsey', 'Green', 'kelsey218@gmail.com', 1);
+
+INSERT INTO ERS_USERS(U_USERNAME, U_PASSWORD, U_FIRSTNAME, U_LASTNAME, U_EMAIL, UR_ID)
+VALUES('ryry1212', '12121', 'Rylie', 'Adams', 'ryry12@yahoo.com', 1);
+
+INSERT INTO ERS_USERS(U_USERNAME, U_PASSWORD, UR_ID)
+VALUES('admin2', 'password', 2);

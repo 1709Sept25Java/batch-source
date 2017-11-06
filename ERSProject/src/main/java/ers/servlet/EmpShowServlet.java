@@ -40,7 +40,7 @@ public class EmpShowServlet extends HttpServlet {
 		ObjectMapper om = new ObjectMapper();
 		om.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		String str = om.writeValueAsString(rl);
-		resp.getWriter().write("{\"reimbursements\":"+str+"}");
+		resp.getWriter().write(str);
 	}
 	
 	@Override
