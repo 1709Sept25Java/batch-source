@@ -1,0 +1,19 @@
+2017-11-01 11:56:34 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Wed Nov 01 11:56:34 EDT 2017]; root of context hierarchy
+2017-11-01 11:56:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-01 11:56:34 INFO  root:16 - void com.revature.service.BearService.setIsWinter(Boolean)
+2017-11-01 11:56:34 INFO  root:16 - void com.revature.service.BearService.bearHibernates()
+2017-11-01 11:56:34 INFO  root:16 - void com.revature.service.BearService.wakeUpAnimal()
+2017-11-01 11:56:34 INFO  root:16 - void com.revature.service.BearService.animalChasesYou()
+2017-11-01 11:56:34 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Wed Nov 01 11:56:34 EDT 2017]; root of context hierarchy
+2017-11-01 12:02:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Wed Nov 01 12:02:39 EDT 2017]; root of context hierarchy
+2017-11-01 12:02:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-01 12:02:40 ERROR root:21 - com.revature.service.BearService@394a2528
+2017-11-01 12:02:40 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Wed Nov 01 12:02:39 EDT 2017]; root of context hierarchy
+2017-11-01 12:04:32 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Wed Nov 01 12:04:32 EDT 2017]; root of context hierarchy
+2017-11-01 12:04:32 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-01 12:04:33 ERROR root:21 - void com.revature.service.BearService.bearHibernates()
+2017-11-01 12:04:33 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Wed Nov 01 12:04:32 EDT 2017]; root of context hierarchy
+2017-11-06 09:37:56 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@157fcb0: startup date [Mon Nov 06 09:37:56 EST 2017]; root of context hierarchy
+2017-11-06 09:37:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 09:38:59 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@157fcb0: startup date [Mon Nov 06 09:38:59 EST 2017]; root of context hierarchy
+2017-11-06 09:38:59 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
