@@ -9,8 +9,9 @@ public class MasterServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
 		HttpSession session = req.getSession();
-		System.out.println(session.getAttribute("uid"));
-		if(session != null && session.getAttribute("uid") != null) {
+		Integer uid = (Integer)session.getAttribute("uid");
+		System.out.println("UID: "+uid);
+		if(session != null && uid != null) {
 			boolean mgr = (Boolean)session.getAttribute("mgr");
 			if(mgr) {
 				resp.sendRedirect("manager");
