@@ -1,0 +1,10 @@
+2017-11-06 11:35:05 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d82c5f3: startup date [Mon Nov 06 11:35:05 EST 2017]; root of context hierarchy
+2017-11-06 11:35:05 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:35:09 INFO  loggerA:21 - Number com.revature.service.CalculatorService.calculate()
+2017-11-06 11:35:09 INFO  loggerB:26 - com.revature.service.CalculatorService@68267da0
+2017-11-06 11:35:09 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@3d82c5f3: startup date [Mon Nov 06 11:35:05 EST 2017]; root of context hierarchy
+2017-11-06 11:35:17 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d82c5f3: startup date [Mon Nov 06 11:35:17 EST 2017]; root of context hierarchy
+2017-11-06 11:35:17 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:35:23 INFO  loggerA:21 - Number com.revature.service.CalculatorService.calculate()
+2017-11-06 11:35:23 INFO  loggerB:26 - com.revature.service.CalculatorService@68267da0
+2017-11-06 11:35:23 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@3d82c5f3: startup date [Mon Nov 06 11:35:17 EST 2017]; root of context hierarchy
