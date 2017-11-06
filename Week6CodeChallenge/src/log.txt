@@ -1,0 +1,92 @@
+2017-11-06 09:45:45 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 09:45:45 EST 2017]; root of context hierarchy
+2017-11-06 09:45:45 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 09:45:45 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 09:45:45 EST 2017]; root of context hierarchy
+2017-11-06 09:54:44 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 09:54:44 EST 2017]; root of context hierarchy
+2017-11-06 09:54:44 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 09:55:13 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 09:55:13 EST 2017]; root of context hierarchy
+2017-11-06 09:55:13 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 09:55:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 09:55:47 EST 2017]; root of context hierarchy
+2017-11-06 09:55:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 09:55:50 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 09:55:47 EST 2017]; root of context hierarchy
+2017-11-06 10:00:18 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:00:18 EST 2017]; root of context hierarchy
+2017-11-06 10:00:18 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:00:20 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:00:18 EST 2017]; root of context hierarchy
+2017-11-06 10:50:25 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:50:25 EST 2017]; root of context hierarchy
+2017-11-06 10:50:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:50:30 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:50:25 EST 2017]; root of context hierarchy
+2017-11-06 10:53:08 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:53:08 EST 2017]; root of context hierarchy
+2017-11-06 10:53:08 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:53:13 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:53:08 EST 2017]; root of context hierarchy
+2017-11-06 10:55:25 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:55:25 EST 2017]; root of context hierarchy
+2017-11-06 10:55:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:55:25 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'consoleService' defined in file [C:\Users\anahi\GitRepos\1709-sept25-java\batch-source\Week6CodeChallenge\target\classes\com\revature\service\ConsoleService.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: warning no match for this type name: com.revature.service.consoleService.result [Xlint:invalidAbsoluteTypeName]
+2017-11-06 10:56:09 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:56:09 EST 2017]; root of context hierarchy
+2017-11-06 10:56:09 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:56:09 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'consoleService' defined in file [C:\Users\anahi\GitRepos\1709-sept25-java\batch-source\Week6CodeChallenge\target\classes\com\revature\service\ConsoleService.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: warning no match for this type name: com.revature.service.ConsoleService.userInput [Xlint:invalidAbsoluteTypeName]
+2017-11-06 10:56:15 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:56:15 EST 2017]; root of context hierarchy
+2017-11-06 10:56:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:56:16 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'consoleService' defined in file [C:\Users\anahi\GitRepos\1709-sept25-java\batch-source\Week6CodeChallenge\target\classes\com\revature\service\ConsoleService.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: warning no match for this type name: com.revature.service.ConsoleService.userInput [Xlint:invalidAbsoluteTypeName]
+2017-11-06 10:56:22 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:56:22 EST 2017]; root of context hierarchy
+2017-11-06 10:56:22 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:56:32 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:56:32 EST 2017]; root of context hierarchy
+2017-11-06 10:56:32 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 10:56:35 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 10:56:32 EST 2017]; root of context hierarchy
+2017-11-06 11:17:49 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:17:49 EST 2017]; root of context hierarchy
+2017-11-06 11:17:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:17:52 INFO  root:21 - String com.revature.service.ConsoleService.datatypeInput()
+2017-11-06 11:17:52 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:17:49 EST 2017]; root of context hierarchy
+2017-11-06 11:20:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:20:39 EST 2017]; root of context hierarchy
+2017-11-06 11:20:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:20:41 INFO  root:21 - field-get
+2017-11-06 11:22:10 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:22:10 EST 2017]; root of context hierarchy
+2017-11-06 11:22:10 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:22:12 INFO  root:21 - field-get
+2017-11-06 11:23:46 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:23:46 EST 2017]; root of context hierarchy
+2017-11-06 11:23:46 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:23:48 INFO  root:21 - field-get
+2017-11-06 11:23:49 INFO  root:21 - field-get
+2017-11-06 11:23:49 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:23:46 EST 2017]; root of context hierarchy
+2017-11-06 11:24:33 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:24:33 EST 2017]; root of context hierarchy
+2017-11-06 11:24:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:24:36 INFO  root:21 - field-get
+2017-11-06 11:24:37 INFO  root:21 - field-get
+2017-11-06 11:24:38 INFO  root:21 - field-get
+2017-11-06 11:24:38 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:24:33 EST 2017]; root of context hierarchy
+2017-11-06 11:24:49 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:24:49 EST 2017]; root of context hierarchy
+2017-11-06 11:24:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:24:51 INFO  root:21 - field-get
+2017-11-06 11:24:52 INFO  root:21 - field-get
+2017-11-06 11:24:53 INFO  root:21 - field-get
+2017-11-06 11:24:53 INFO  root:21 - field-get
+2017-11-06 11:24:53 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:24:49 EST 2017]; root of context hierarchy
+2017-11-06 11:26:48 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:26:48 EST 2017]; root of context hierarchy
+2017-11-06 11:26:48 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:26:50 INFO  root:21 - execution(String com.revature.service.ConsoleService.datatypeInput())
+2017-11-06 11:26:51 INFO  root:21 - execution(Number com.revature.service.ConsoleService.numberInput(String,String))
+2017-11-06 11:26:51 INFO  root:21 - execution(Number com.revature.service.ConsoleService.numberInput(String,String))
+2017-11-06 11:26:51 INFO  root:21 - execution(Number com.revature.service.CalculatorService.add(Number,Number))
+2017-11-06 11:26:51 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:26:48 EST 2017]; root of context hierarchy
+2017-11-06 11:28:37 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:28:37 EST 2017]; root of context hierarchy
+2017-11-06 11:28:37 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:28:39 INFO  root:21 - com.revature.service.ConsoleService@6aaceffd
+2017-11-06 11:28:40 INFO  root:21 - com.revature.service.ConsoleService@6aaceffd
+2017-11-06 11:28:40 INFO  root:21 - com.revature.service.ConsoleService@6aaceffd
+2017-11-06 11:28:41 INFO  root:21 - com.revature.service.CalculatorService@c86b9e3
+2017-11-06 11:28:41 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:28:37 EST 2017]; root of context hierarchy
+2017-11-06 11:29:15 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:29:15 EST 2017]; root of context hierarchy
+2017-11-06 11:29:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:29:17 INFO  root:21 - [Ljava.lang.Object;@6aaceffd
+2017-11-06 11:29:18 INFO  root:21 - [Ljava.lang.Object;@c86b9e3
+2017-11-06 11:29:19 INFO  root:21 - [Ljava.lang.Object;@10aa41f2
+2017-11-06 11:29:19 INFO  root:21 - [Ljava.lang.Object;@3af9c5b7
+2017-11-06 11:29:19 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:29:15 EST 2017]; root of context hierarchy
+2017-11-06 11:31:40 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:31:40 EST 2017]; root of context hierarchy
+2017-11-06 11:31:40 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:31:40 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculatorService' defined in file [C:\Users\anahi\GitRepos\1709-sept25-java\batch-source\Week6CodeChallenge\target\classes\com\revature\service\CalculatorService.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2017-11-06 11:33:08 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:33:08 EST 2017]; root of context hierarchy
+2017-11-06 11:33:08 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-11-06 11:33:11 INFO  root:21 - int
+2017-11-06 11:33:11 INFO  root:21 - 2
+2017-11-06 11:33:12 INFO  root:21 - 3
+2017-11-06 11:33:12 INFO  root:21 - 5
+2017-11-06 11:33:12 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@61e4705b: startup date [Mon Nov 06 11:33:08 EST 2017]; root of context hierarchy
