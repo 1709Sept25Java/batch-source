@@ -17,7 +17,7 @@ public class Driver {
 		
 		//set up Java entity with which to interact 
 		
-		String serviceUrl = "http://localhost:8082/SoapServiceDemo/Library";
+		String serviceUrl = "http://ec2-54-71-133-254.us-west-2.compute.amazonaws.com:8080/SoapServiceDemo/Library";
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 		factory.setServiceClass(Library.class);
 		factory.setAddress(serviceUrl);

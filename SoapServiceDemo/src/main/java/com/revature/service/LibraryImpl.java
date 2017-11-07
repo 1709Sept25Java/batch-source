@@ -26,6 +26,6 @@ public class LibraryImpl implements Library {
 			//this is pretty arbitrary
 			throw new LibraryFullException("Library full. Cannot add book: "+book);
 		}
-		return "successfully added book with title: "+book.getTitle();
+		return "successfully added book by: "+book.getAuthor();
 	}
 }
