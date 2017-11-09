@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="forestApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Forest SPA</title>
+
+<!-- Angular and Bootstrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"
+    type="text/javascript"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+
+	<h1>AngularJS Single Page Application</h1>
+	<br>
+	<a class="btn btn-primary btn-md" href="#/">home</a>
+	<a class="btn btn-primary btn-md" href="#/animals">animals</a>
+	<a class="btn btn-primary btn-md" href="#/landscape">not animal</a>
+	
+	<!-- This is the real magic:swap out page content -->
+	<div ng-view></div>
+
+</body>
+<script src="app.js"></script>
+<script src="animal/AnimalCtrl.js"></script>
+<script src="landscape/GroundCtrl.js"></script>
+</html>

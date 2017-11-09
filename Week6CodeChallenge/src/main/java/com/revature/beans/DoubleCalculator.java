@@ -32,5 +32,29 @@ public class DoubleCalculator implements GenericCalculator{
 		
 		return result;
 	}
+	
+public Double calc(Number a, Number b, String op) {
+		
+		Double result=0.0;
+		
+		switch(op) {
+		case "+":
+			result = add(a,b);
+			break;
+		case "-":
+			result = subtract(a,b);
+			break;
+		case "*":
+			result = multiply(a,b);
+			break;
+		case "/":
+			result = divide(a,b);
+			break;
+		default:
+			break;
+		}
+		
+		return result;
+	}
 
 }

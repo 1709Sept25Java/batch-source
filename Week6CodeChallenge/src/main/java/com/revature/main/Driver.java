@@ -6,6 +6,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.revature.beans.ByteCalculator;
+import com.revature.beans.ShortCalculator;
+
 public class Driver {
 
 	public static void main(String[] args) {
@@ -26,14 +29,17 @@ public class Driver {
 		
 		switch (choice) {
 		case 1:
-			ac.getBean("byteCalculator");
+			ByteCalculator bc = (ByteCalculator)ac.getBean("byteCalculator");
 			System.out.println("Enter first number: ");
 			Byte a1 = Byte.parseByte(sc.nextLine());
 			System.out.println("Enter second number: ");
 			Byte b1 = Byte.parseByte(sc.nextLine());
+			
+			
+			
 			break;
 		case 2:
-			ac.getBean("shortCalculator");
+			ShortCalculator shc = (ShortCalculator) ac.getBean("shortCalculator");
 			System.out.println("Enter first number: ");
 			Short a2 = Short.parseShort(sc.nextLine());
 			System.out.println("Enter second number: ");
