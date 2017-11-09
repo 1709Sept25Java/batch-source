@@ -1,7 +1,39 @@
-<div ng-controller='AnimalCtrl' class="box" class="container" class="row">
-	<h3>Animals:</h3> <br>
-	<h4>Bears:</h4>
-	<div class="box">{{bears}}</div>
-	<h4>Bats:</h4>
-	<div class="box">{{bats}}</div>
-</div>
+<div ng-controller='AnimalCtrl' class="container-fluid"
+	class="row">
+	<h3>Animals:</h3>
+	<br>
+		<div class="col-md-6">
+			<h4>Bears:</h4>
+			<input type="text" ng-model="search">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Cave</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="bear in bears | filter:search | orderBy:'id'">
+						<td>{{bear.name}}</td>
+						<td>{{bear.bearType.name}}</td>
+						<td>{{bear.cave.name}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<h4>Bats:</h4>
+			<input type="text" ng-model="searchBat">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<th>Name</th>
+					<th>Cave</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="bat in bats | filter:searchBat | orderBy:'id'">
+						<td>{{bat.name}}</td>
+						<td>{{bat.cave.name}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>

@@ -22,4 +22,6 @@ angular.module('forestApp').controller(
 							console.log("oh no!");
 						});
 					}
+					
+					//we'd want to use $interval to refresh list periodically 
 				} ]);

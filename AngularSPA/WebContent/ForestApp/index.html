@@ -20,12 +20,14 @@
 <body class="container">
 	<div class="box">
 		<h1>AngularJS Single Page Application</h1>
-		<a class="btn btn-primary btn-md" href="#/">home</a>
-		<a class="btn btn-primary btn-md" href="#/animal">animals</a>
-		<a class="btn btn-primary btn-md" href="#/landscape">not animals</a>
+		<a class="btn btn-primary btn-md" href="#/">home</a> <a
+			class="btn btn-primary btn-md" href="#/animal">animals</a> <a
+			class="btn btn-primary btn-md" href="#/landscape">not animals</a>
 	</div>
-	<!-- this is the real magic: swap out page content -->
-	<div ng-view></div>
+	<div class="box">
+		<!-- this is the real magic: swap out page content -->
+		<div ng-view></div>
+	</div>
 </body>
 <script src="app.js"></script>
 <script src="animal/AnimalCtrl.js"></script>
