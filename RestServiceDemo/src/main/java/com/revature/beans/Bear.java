@@ -45,7 +45,7 @@ public class Bear extends Animal implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CAVE_ID")
 	private Cave cave;*/
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "BEAR_TYPE_ID")
 	private BearType bearType;
 	@Column(name = "BEAR_WEIGHT")
