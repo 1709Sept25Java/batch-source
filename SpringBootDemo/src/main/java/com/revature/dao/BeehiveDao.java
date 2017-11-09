@@ -2,11 +2,9 @@ package com.revature.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.beans.Cave;
+import com.revature.beans.Beehive;
 
 @Repository
-public interface CaveDao extends JpaRepository<Cave,Integer>{
-
-	public Cave getCaveByName(String name);
+public interface BeehiveDao extends JpaRepository<Beehive,Integer>{
 
 }

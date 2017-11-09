@@ -11,3 +11,5 @@ public interface BearDao extends JpaRepository<Bear,Integer>{
 	public Bear getBearByName(String name);
 
 }
+
+//JpaRepository extends CrudRepository, which you might see elsewhere

@@ -1,12 +1,13 @@
 package com.revature.dao;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.beans.Cave;
+import com.revature.beans.Bat;
 
 @Repository
-public interface CaveDao extends JpaRepository<Cave,Integer>{
+public interface BatDao extends JpaRepository<Bat,Integer>{
 
-	public Cave getCaveByName(String name);
+	public Bat getBatByName(String name);
 
 }
