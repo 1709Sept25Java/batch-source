@@ -1,0 +1,10 @@
+<div ng-controller="AuthorCreateCtrl">
+    <form ng-submit="createAuthor()" class="form-horizontal">
+              <label for="firstName" >First Name: </label><br />
+            <input type="text" id="firstname" ng-model="author.firstname" /> <br />
+              <label for="lastname" >Last Name: </label><br />
+            <input type="text" id="lastname" ng-model="author.lastname" /> <br />
+        <input type="submit" value="Submit" />
+
+    </form>
+</div>

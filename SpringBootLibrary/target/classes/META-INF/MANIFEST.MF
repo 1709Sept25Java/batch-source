@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: SpringBootLibrary
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: anahi
+Implementation-Vendor-Id: com.revature
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/SpringBootLi
+ brary/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

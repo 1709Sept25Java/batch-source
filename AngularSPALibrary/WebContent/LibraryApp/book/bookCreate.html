@@ -1,0 +1,9 @@
+<div ng-controller="BookCreateCtrl">
+    <form ng-submit="createBook()" class="form-horizontal">
+              <label for="title" >Title: </label><br />
+            <input type="text" id="title" ng-model="book.title" /> <br />
+              <label for="author" >Author: </label><br />
+            <input type="number" id="author" ng-model="book.author" /> <br />
+        <input type="submit" value="Submit" />
+    </form>
+</div>

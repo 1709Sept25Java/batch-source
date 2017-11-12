@@ -1,0 +1,24 @@
+<div ng-controller='AuthorCtrl' class="container-fluid">
+	<h3>Authors:</h3>
+	<br>
+		<div class="col-md-6">
+			<h4>Authors:</h4>
+			<input type="text" ng-model="search"/>
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Cave</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="author in authors | filter:search | orderBy:'id'">
+						<td>{{ author.id }}</td>
+						<td>{{ author.firstname }}</td>
+						<td>{{ author.lastname }}</td>
+   						<td><a ng-click="editAuthor(author.id)" class="btn btn-small btn-primary">edit</a></td>
+            			<td><a ng-click="deleteAuthor(author.id)" class="btn btn-small btn-danger">delete</a></td>					</tr>
+				</tbody>
+			</table>			
+		</div>
+		</br>
+</div>
