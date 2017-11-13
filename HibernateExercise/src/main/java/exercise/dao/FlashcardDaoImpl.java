@@ -18,7 +18,7 @@ public class FlashcardDaoImpl implements FlashcardDao {
 	@Override
 	public List<Flashcard> getFlashcards() {
 		Session s = HibernateUtil.getSession();
-		List<Flashcard> flashcards = s.createQuery("from FLASHCARD").list();
+		List<Flashcard> flashcards = s.createQuery("from Flashcard").list();
 		s.close();
 		return flashcards;
 	}

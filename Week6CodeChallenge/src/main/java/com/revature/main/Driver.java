@@ -15,6 +15,7 @@ public class Driver {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		while(true) {
 		System.out.println("What numeric type would you like to calculate with? (int or double)");
 		String type = sc.next();
 		
@@ -109,8 +110,9 @@ public class Driver {
 					System.out.println("Can not perform operation");
 					break;
 			}
+			
 		}
-		
-		
+		System.out.println("");
+		}
 	}
 }

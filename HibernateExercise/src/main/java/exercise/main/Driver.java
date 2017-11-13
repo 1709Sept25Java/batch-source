@@ -36,7 +36,11 @@ public class Driver {
 		*/
 		
 		//executeNamedQuery(s1);
-		lastNameMCriteria();
+		//lastNameMCriteria();
+		List<Flashcard> f = fd.getFlashcards();
+		for(Flashcard fl : f) {
+			System.out.println(fl.toString());
+		}
 		
 	}
 	//Write a named query to retrieve the first three Flashcards which belong to a student.
