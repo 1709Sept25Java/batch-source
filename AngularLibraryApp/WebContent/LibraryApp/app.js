@@ -2,7 +2,7 @@ var app = angular.module('libraryApp',['ngRoute']); //create module, pass in dep
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'index.html'
+		templateUrl:'home.html'
 	})
 	.when('/author',{
 		templateUrl: 'author/authorView.html',
@@ -23,12 +23,12 @@ app.factory('dataFactory',['$http',function($http){
 	};
 	dataFactory.newBook = function(book){
 		return $http.post(urlBase+'/book/new',JSON.stringify(book));
-	}
+	};
 	dataFactory.getAuthors = function(){
-		return $http.get(urlBase+'/author/all')
-	}
+		return $http.get(urlBase+'/author/all');
+	};
 	dataFactory.newAuthor = function(author){
 		return $http.post(urlBase+'/author/new',JSON.stringify(author));
-	}
+	};
 	return dataFactory;
 }]);

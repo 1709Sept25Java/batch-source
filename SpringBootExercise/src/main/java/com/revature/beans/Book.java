@@ -23,7 +23,7 @@ public class Book {
 	@Column(name="TITLE")
 	private String title;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "AUTHOR_ID")
 	private Author author;
 

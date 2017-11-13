@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.beans.Author;
 import com.revature.dao.*;
 
-@CrossOrigin(origins="http://localhost:8080")
+@CrossOrigin(origins="http://localhost:8082")
 @RestController
 @RequestMapping(value="/author")
 public class AuthorController {

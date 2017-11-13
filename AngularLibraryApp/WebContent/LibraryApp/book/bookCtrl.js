@@ -4,6 +4,9 @@ angular.module('libraryApp').controller(
 			function($scope, $interval, dataFactory){
 			$scope.books
 			getBooks();
+			$interval(function() {
+				getBooks();
+			}, 20000);
 			function getBooks(){
 				dataFactory.getBooks().then(function(response){
 					$scope.books = response.data;
