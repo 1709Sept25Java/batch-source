@@ -1,0 +1,24 @@
+<div ng-controller='BookCtrl' class='container-fluid' class="row">
+<h3>Books: </h3>
+<br>
+	<table>
+		<input type="text" ng-model="search">
+		<thread>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		</thread>
+		<tbody>
+			<tr ng-repeat="b in books">
+				<td>{{b.id}}</td>
+				<td>{{b.title}}</td>
+				<td>{{b.author.firstname}}</td>
+				<td>{{b.author.lastname}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+</div>
